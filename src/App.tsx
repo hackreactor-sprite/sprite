@@ -1,9 +1,17 @@
-import { useState } from 'react';
+import ProductDetail from './layout/ProductDetail';
+import RelatedProducts from './layout/RelatedProducts';
+import QuestionAnswer from './layout/QuestionAnswer';
+import RatingReview from './layout/RatingReview';
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <div className='App'></div>;
+  return (
+    <div className='App'>
+      <ProductDetail />
+      <RelatedProducts />
+      <QuestionAnswer />
+      <RatingReview />
+    </div>
+  );
 }
 
 export default App;
