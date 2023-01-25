@@ -3,11 +3,19 @@ import RelatedProducts from './layout/RelatedProducts.jsx';
 import QuestionAnswer from './layout/QuestionAnswer.jsx';
 import RatingReview from './layout/RatingReview.jsx';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function App() {
-  const [product, setProduct] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+  const [curProduct, setCurProduct] = useState({});
   useEffect(() => {
-    //fetch req to grab first item
+    axios
+      .get('/products')
+      .then((res) => {
+        setAllProducts(res.data);
+        setCurProduct(res.data[0]);
+      })
+      .catch((err) => new Error(err));
   }, []);
   return (
     <div className='App'>
