@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const router = require('./router.js');
 
 const app = express();
 app.use(express.json());
@@ -9,3 +10,5 @@ const PORT = process.env.port || 3000;
 
 app.listen(PORT);
 console.log(`Listening at http://localhost:${PORT}`);
+
+app.use('/products', router);
