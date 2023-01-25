@@ -1,0 +1,18 @@
+//Base
+@use './reset';
+
+//Layout
+@use '../layout/home';
+@use '../layout/productdetail';
+@use '../layout/questionanswer';
+@use '../layout/ratingreview';
+@use '../layout/relatedproducts';
+
+//Components
+//Product Detail
+
+//Question Answer
+@use '../components/questions';
+//Rating Review
+
+//Related Products

@@ -19,10 +19,30 @@ function App() {
   }, []);
   return (
     <div className='App'>
-      <ProductDetail product={product} setProduct={setProduct} />
-      <RelatedProducts product={product} setProduct={setProduct} />
-      <QuestionAnswer product={product} setProduct={setProduct} />
-      <RatingReview product={product} setProduct={setProduct} />
+      <ProductDetail
+        allProducts={allProducts}
+        setAllProducts={setAllProducts}
+        curProduct={curProduct}
+        setCurProduct={setCurProduct}
+      />
+      <RelatedProducts
+        allProducts={allProducts}
+        setAllProducts={setAllProducts}
+        curProduct={curProduct}
+        setCurProduct={setCurProduct}
+      />
+      <QuestionAnswer
+        allProducts={allProducts}
+        setAllProducts={setAllProducts}
+        curProduct={curProduct}
+        setCurProduct={setCurProduct}
+      />
+      <RatingReview
+        allProducts={allProducts}
+        setAllProducts={setAllProducts}
+        curProduct={curProduct}
+        setCurProduct={setCurProduct}
+      />
     </div>
   );
 }
