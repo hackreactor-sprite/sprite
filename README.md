@@ -39,14 +39,14 @@ git push
 ```
 
 
-# Staying up top date with main
+# Staying up to date with main
 If remote main branch gets updated, pull the changes down to your local branch main by running:
 ```
 git checkout main
 git pull
 ```
 
-Switch to your branch and make sure it is up to date with main branch by running:
+Switch to your branch and make sure it is up to date with main branch by running and resolve any conflicts:
 ```
 git checkout <branch name>
 git merge main
