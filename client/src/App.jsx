@@ -8,6 +8,7 @@ import axios from 'axios';
 function App() {
   const [allProducts, setAllProducts] = useState([]);
   const [curProduct, setCurProduct] = useState({});
+
   useEffect(() => {
     axios
       .get('/products')
