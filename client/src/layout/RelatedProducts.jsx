@@ -1,3 +1,9 @@
-export default function RelatedProducts() {
-  return <div>Related Products</div>;
+export default function RelatedProducts({currProduct}) {
+  console.log('this', currProduct);
+  return (
+  <>
+  <div>Related Products</div>
+  <div>{currProduct}</div>
+  </>
+  )
 }

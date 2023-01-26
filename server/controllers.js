@@ -15,5 +15,4 @@ module.exports = {
       headers: options.headers,
     });
   },
-  create: 'create',
 };
