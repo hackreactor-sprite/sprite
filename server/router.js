@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/products', (req, res) => {
   controllers
-    .getAll(`products`)
+    .getAll('products')
     .then((data) => {
       res.send(data.data);
     })
