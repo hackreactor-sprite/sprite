@@ -2,21 +2,20 @@ const express = require('express');
 const controllers = require('./controllers');
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/products', (req, res) => {
   controllers
-    .getAll('products')
+    .getAll(`products`)
     .then((data) => {
-      console.log(data.data, 'get data');
       res.send(data.data);
     })
     .catch((err) => new Error(err));
 });
 
-router.get('/:product_id', (req, res) => {
+router.get('/qa/:id', (req, res) => {
   controllers
-    .getAll('products/' + req.body)
+    .getAll(`qa/products/${req.params.id}`, req.params)
     .then((data) => {
-      console.log(data.data, 'get data');
+      console.log('backend data', data);
       res.send(data.data);
     })
     .catch((err) => new Error(err));
