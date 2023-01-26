@@ -1,4 +1,5 @@
 const path = require('path');
+// const HTMLWebpackPlugin = require('html-webpack-plugin');
 const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
 
@@ -16,7 +17,7 @@ module.exports = {
         use: ['babel-loader'],
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.css$/i,
         use: [
           // Creates `style` nodes from JS strings
           'style-loader',
