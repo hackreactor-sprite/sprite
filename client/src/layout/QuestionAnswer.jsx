@@ -8,7 +8,7 @@ export default function QuestionAnswer({ curProduct }) {
 
   useEffect(() => {
     axios
-      .get(`/qa/${curProduct.id}`, { params })
+      .get(`/qa/${curProduct.id}`)
       .then((res) => {
         setQAList(res.data.results);
         console.log('QA LIST', QAList);

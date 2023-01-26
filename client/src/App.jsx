@@ -8,7 +8,7 @@ import axios from 'axios';
 function App() {
   const [allProducts, setAllProducts] = useState([]);
   const [curProduct, setCurProduct] = useState({});
-  const [showModal, setShowModal] = useState(false);
+
   useEffect(() => {
     axios
       .get('/products')
@@ -20,13 +20,6 @@ function App() {
   }, []);
   return (
     <div className='App'>
-      {showModal ? (
-        <Modal>
-          <div></div>
-        </Modal>
-      ) : (
-        'something else'
-      )}
       <ProductDetail
         allProducts={allProducts}
         setAllProducts={setAllProducts}
