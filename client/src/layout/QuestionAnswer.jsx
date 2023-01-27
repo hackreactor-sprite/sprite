@@ -1,20 +1,23 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import QAItem from '../components/QuestionAnswers/QAItem.jsx';
-import Modal from '../components/reusable/Modal.jsx';
+import QAItem from '../components/QuestionAnswers/QAItem';
 
 export default function QuestionAnswer({ curProduct }) {
   const [QAList, setQAList] = useState([]);
   const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
+  const [queryCount, setQueryCount] = useState(10);
 
   useEffect(() => {
-    axios
-      .get(`/qa/${curProduct.id}`)
-      .then((res) => {
-        setQAList(res.data.results);
-        console.log('QA LIST', QAList);
-      })
-      .catch((err) => new Error(err));
+    if (curProduct.id) {
+      axios
+        .get(`/qa/questions/${curProduct.id}/${page}/${queryCount}`)
+        .then((res) => {
+          // console.log('QA LIST', res.data.results);
+          setQAList(res.data.results);
+        })
+        .catch((err) => new Error(err));
+    }
   }, [curProduct]);
 
   const handleSearch = (e) => {
