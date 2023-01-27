@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Helpful from '../reusable/Helpful';
+import Helpful from '../reusable/Helpful.jsx';
 export default function QAItem({ QA }) {
   return (
     <div>

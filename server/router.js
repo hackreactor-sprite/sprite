@@ -12,12 +12,11 @@ router.get('/products', (req, res) => {
     .catch((err) => new Error(err));
 });
 
-router.get('/qa/:id', (req, res) => {
+router.get('/reviews', (req, res) => {
   controllers
-    .getAll(`qa/products/${req.params.id}`, req.params)
-    .then((data) => {
-      console.log('backend data', data);
-      res.send(data.data);
+    .getAll('reviews')
+    .then(() => {
+      res.send();
     })
     .catch((err) => new Error(err));
 });

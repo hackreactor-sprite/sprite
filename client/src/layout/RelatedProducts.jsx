@@ -1,9 +1,7 @@
-export default function RelatedProducts({currProduct}) {
-  console.log('this', currProduct);
+import React from 'react';
+
+export default function RelatedProducts() {
   return (
-  <>
-  <div>Related Products</div>
-  <div>{currProduct}</div>
-  </>
-  )
+    <div>Related Products</div>
+  );
 }

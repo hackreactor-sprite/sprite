@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "nodemon ./node_modules/.bin/eslint test.js",
+    "lint": "nodemon ./node_modules/.bin/eslint",
     "build": "webpack --mode development --watch",
     "server": "npx nodemon server/index.js",
     "test": "jest"
