@@ -13,7 +13,7 @@ export default function QuestionAnswer({ curProduct }) {
       axios
         .get(`/qa/questions/${curProduct.id}/${page}/${queryCount}`)
         .then((res) => {
-          console.log('QA LIST', res.data.results);
+          // console.log('QA LIST', res.data.results);
           setQAList(res.data.results);
         })
         .catch((err) => new Error(err));
