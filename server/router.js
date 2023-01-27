@@ -40,11 +40,11 @@ router.get('/products/:productid/related', (req, res) => {
 });
 
 router.get('/reviews/:page/:count/:sort/:productid', (req, res) => {
-  // const id = req.query.product_id;
-  console.log(req.params, 'req');
   controllers
-    .getAll(`reviews/?page=${req.params.page}&count=${req.params.count}
-    &sort=${req.params.sort}&product_id=${req.params.productid}`)
+    .getAll(
+      `reviews/?page=${req.params.page}&count=${req.params.count}
+    &sort=${req.params.sort}&product_id=${req.params.productid}`,
+    )
     .then((data) => {
       console.log(data, 'data');
       res.send(data.data);
@@ -97,19 +97,26 @@ router.get('/reviews/meta/:productid', (req, res) => {
 // });
 
 router.get('/qa/questions/:productid/:page/:count', (req, res) => {
+  console.log(
+    'ARE YOU EVEN GETTING DATA',
+    req.params.productid,
+    req.params.page,
+    req.params.count,
+  );
   controllers
-    .getAll(`qa/questions/?product_id=${req.params.productid}
-    &page=${req.params.page}&count=${req.params.count}`)
+    .getAll(
+      `qa/questions/?product_id=${req.params.productid}
+    &page=${req.params.page}&count=${req.params.count}`,
+    )
     .then((data) => {
       res.send(data.data);
     })
     .catch((err) => new Error(err));
 });
 
-router.get('/qa/questions/:questionid/answers/:page/:count', (req, res) => {
+router.get('/qa/questions/:questionid/answers', (req, res) => {
   controllers
-    .getAll(`qa/questions/?question_id=${req.params.questionid}/answers/
-    ?page=${req.params.page}&count=${req.params.count}`)
+    .getAll(`qa/questions/${req.params.questionid}/answers`)
     .then((data) => {
       res.send(data.data);
     })
