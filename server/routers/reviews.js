@@ -5,7 +5,7 @@ const router = express.Router();
 
 // postman example: http://localhost:3000/reviews/?sort=newest&productid=40344
 router.get('/', (req, res) => {
-  // console.log(req.query);
+  console.log(req.query);
   controllers
     .getAll(`reviews/?page=${req.query.page || 1}&count=${req.query.count || 5}
     &sort=${req.query.sort}&product_id=${req.query.productid}`)
