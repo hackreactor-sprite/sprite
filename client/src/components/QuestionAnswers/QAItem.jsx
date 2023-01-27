@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Helpful from '../reusable/Helpful';
 
 export default function QAItem({ QA }) {
-  console.log('QUESTION :', QA);
+  // console.log('QUESTION :', QA);
   return (
     <div>
       <div>
@@ -22,7 +22,7 @@ export default function QAItem({ QA }) {
 }
 
 function AnswerItem(answer) {
-  console.log('ANSWER :', answer);
+  // console.log('ANSWER :', answer);
   return (
     <>
       <div>

@@ -5,21 +5,24 @@ const options = {
   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/',
   headers: {
     Authorization: `${config.TOKEN}`,
+    'User-Agent': 'request',
   },
 };
 module.exports = {
-  getAll: (extension) => {
-    console.log('EXTENSION : ', extension);
-    return axios({
-      method: 'get',
-      url: options.url + extension,
-      headers: options.headers,
-    });
-  },
-  // create: () => {
-
-  // },
-  // PUT : () => {
-
-  // }
+  getAll: (extension) => axios({
+    method: 'get',
+    url: options.url + extension,
+    headers: options.headers,
+  }),
+  create: (extension, param) => axios({
+    method: 'post',
+    url: options.url + extension,
+    headers: options.headers,
+    data: param,
+  }),
+  update: (extension) => axios({
+    method: 'put',
+    url: options.url + extension,
+    headers: options.headers,
+  }),
 };
