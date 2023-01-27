@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import QAItem from '../components/QuestionAnswers/QAItem.jsx';
 import Modal from '../components/reusable/Modal.jsx';
+
 export default function QuestionAnswer({ curProduct }) {
   const [QAList, setQAList] = useState([]);
   const [search, setSearch] = useState('');
@@ -28,8 +29,8 @@ export default function QuestionAnswer({ curProduct }) {
     <div>
       <h5>QUESTIONS & ANSWERS</h5>
       <input
-        type='text'
-        placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
+        type="text"
+        placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         onKeyDown={handleSearch}
