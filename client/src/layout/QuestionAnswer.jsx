@@ -29,8 +29,8 @@ export default function QuestionAnswer({ curProduct }) {
     <div>
       <h5>QUESTIONS & ANSWERS</h5>
       <input
-        type='text'
-        placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
+        type="text"
+        placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         onKeyDown={handleSearch}
