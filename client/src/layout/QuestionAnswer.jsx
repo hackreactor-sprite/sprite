@@ -11,11 +11,10 @@ export default function QuestionAnswer({ curProduct }) {
   useEffect(() => {
     if (curProduct.id) {
       axios
-        .get(`/qa/questions/${curProduct.id}/${page}/${queryCount}`)
-        .then((res) => {
-          // console.log('QA LIST', res.data.results);
-          setQAList(res.data.results);
-        })
+        .get(
+          `/qa/questions/?page=${page}&count=${queryCount}&productid=${curProduct.id}`,
+        )
+        .then((res) => setQAList(res.data.results))
         .catch((err) => new Error(err));
     }
   }, [curProduct]);
@@ -29,7 +28,7 @@ export default function QuestionAnswer({ curProduct }) {
   };
 
   return (
-    <div>
+    <section className="questionanswers">
       <h5>QUESTIONS & ANSWERS</h5>
       <input
         type="text"
@@ -38,16 +37,15 @@ export default function QuestionAnswer({ curProduct }) {
         onChange={(e) => setSearch(e.target.value)}
         onKeyDown={handleSearch}
       />
-      {QAList.map((QA, i) => (
-        <QAItem QA={QA} key={i} />
+      {QAList.map((QA) => (
+        <QAItem QA={QA} key={QA.id} />
       ))}
-
       <div>
-        <div>MORE ANSWERED QUESTION</div>
-        <div>ADD A QUESTION +</div>
+        <button type="button">MORE ANSWERED QUESTION</button>
+        <button type="button">ADD A QUESTION +</button>
       </div>
 
       {/* //SHOW MODAL */}
-    </div>
+    </section>
   );
 }
