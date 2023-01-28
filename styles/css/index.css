@@ -301,6 +301,48 @@ template {
   display: none;
 }
 
+button {
+  cursor: pointer;
+}
+
+.small-container {
+  display: flex;
+  gap: 1rem;
+}
+
+#root {
+  margin: 0 5rem;
+}
+
+.QA-list,
+.QA-body-container,
+.QA-body,
+.QA-answer-body,
+.QA-answer-detail {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.QA-body-container,
+.QA-answer {
+  width: 100%;
+}
+
+.QA-list {
+  flex-direction: column;
+}
+
+.QA-body-container {
+  justify-content: space-between;
+}
+
+.QA-btn-container {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 1rem;
+}
+
 .html {
   background: black;
 }/*# sourceMappingURL=index.css.map */

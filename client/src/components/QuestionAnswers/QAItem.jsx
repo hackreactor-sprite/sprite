@@ -4,10 +4,18 @@ import Helpful from '../reusable/Helpful';
 export default function QAItem({ QA }) {
   console.log('QUESTION :', QA);
   return (
-    <div>
-      <div className="QA-body">
-        <h5>Q:</h5>
-        <h5>{QA.question_body}</h5>
+    <>
+      <div className="QA-body-container">
+        <div className="QA-body">
+          <h5>Q: </h5>
+          <h5>{QA.question_body.toUpperCase()}</h5>
+        </div>
+        <div className="small-container">
+          <Helpful helpful={QA.question_helpfulness} />
+          <button>
+            <small>Add Answer</small>
+          </button>
+        </div>
       </div>
       <div className="QA-answer">
         {Object.keys(QA.answers).map((key) => (
@@ -15,7 +23,7 @@ export default function QAItem({ QA }) {
         ))}
       </div>
       <button type="button">LOAD MORE ANSWERS</button>
-    </div>
+    </>
   );
 }
 
@@ -27,11 +35,14 @@ function AnswerItem({ answer }) {
         <h5>A:</h5>
         <p>{answer.body}</p>
       </div>
-      <div className="QA-answer-detail">
-        <small>
+      <div className="small-container QA-answer-detail">
+        <p>
           {answer.answerer_name}, {answer.date}
-        </small>
-        <Helpful />
+        </p>
+        <Helpful helpful={answer.helpfulness} answerid={answer.id} />
+        <button>
+          <small>Report</small>
+        </button>
       </div>
     </>
   );

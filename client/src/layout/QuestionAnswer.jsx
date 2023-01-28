@@ -29,18 +29,23 @@ export default function QuestionAnswer({ curProduct }) {
 
   return (
     <section className="questionanswers">
-      <h5>QUESTIONS & ANSWERS</h5>
+      <div>
+        <small>QUESTIONS & ANSWERS</small>
+      </div>
       <input
+        className="QA-search"
         type="text"
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         onKeyDown={handleSearch}
       />
-      {QAList.map((QA) => (
-        <QAItem QA={QA} key={QA.id} />
-      ))}
-      <div>
+      <div className="QA-list">
+        {QAList.map((QA) => (
+          <QAItem QA={QA} key={QA.id} />
+        ))}
+      </div>
+      <div className="QA-btn-container">
         <button type="button">MORE ANSWERED QUESTION</button>
         <button type="button">ADD A QUESTION +</button>
       </div>

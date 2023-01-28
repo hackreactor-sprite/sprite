@@ -1,12 +1,21 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 
-export default function Helpful() {
+export default function Helpful({ helpful, answerid }) {
+  const sendHelpful = () => {
+    axios
+      .put(`qa/answers/${answerid}/helpful`)
+      .then(() => {
+        console.log('updated');
+      })
+      .catch((err) => new Error(err));
+  };
   return (
-    <div>
-      <small>Helpful? </small>
-      <small onClick={() => sendHelpful}>Yes</small>
-    </div>
+    <>
+      <small>Helpful? ({helpful})</small>
+      <button>
+        <small onClick={() => sendHelpful}>Yes</small>
+      </button>
+    </>
   );
 }
-
-function sendHelpful() {}
