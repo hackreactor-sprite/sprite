@@ -10,10 +10,6 @@ module.exports = {
     path: DIST_DIR,
   },
   resolve: {
-    alias: {
-      config$: './configs/app-config.js',
-      react: './vendor/react-master',
-    },
     extensions: ['.jsx', '.js'],
   },
   module: {
