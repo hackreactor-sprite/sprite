@@ -1,9 +1,9 @@
-import ProductDetail from './layout/ProductDetail.jsx';
-import RelatedProducts from './layout/RelatedProducts.jsx';
-import QuestionAnswer from './layout/QuestionAnswer.jsx';
-import RatingReview from './layout/RatingReview.jsx';
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import ProductDetail from './layout/ProductDetail';
+import RelatedProducts from './layout/RelatedProducts';
+import QuestionAnswer from './layout/QuestionAnswer';
+import RatingReview from './layout/RatingReview';
 
 function App() {
   const [allProducts, setAllProducts] = useState([]);
@@ -19,7 +19,7 @@ function App() {
       .catch((err) => new Error(err));
   }, []);
   return (
-    <div className='App'>
+    <div className="App">
       <ProductDetail
         allProducts={allProducts}
         setAllProducts={setAllProducts}
@@ -32,12 +32,7 @@ function App() {
         curProduct={curProduct}
         setCurProduct={setCurProduct}
       />
-      <QuestionAnswer
-        allProducts={allProducts}
-        setAllProducts={setAllProducts}
-        curProduct={curProduct}
-        setCurProduct={setCurProduct}
-      />
+      <QuestionAnswer curProduct={curProduct} />
       <RatingReview
         allProducts={allProducts}
         setAllProducts={setAllProducts}

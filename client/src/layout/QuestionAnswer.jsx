@@ -1,20 +1,22 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import QAItem from '../components/QuestionAnswers/QAItem.jsx';
-import Modal from '../components/reusable/Modal.jsx';
+import QAItem from '../components/QuestionAnswers/QAItem';
 
 export default function QuestionAnswer({ curProduct }) {
   const [QAList, setQAList] = useState([]);
   const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
+  const [queryCount, setQueryCount] = useState(10);
 
   useEffect(() => {
-    axios
-      .get(`/qa/${curProduct.id}`)
-      .then((res) => {
-        setQAList(res.data.results);
-        console.log('QA LIST', QAList);
-      })
-      .catch((err) => new Error(err));
+    if (curProduct.id) {
+      axios
+        .get(
+          `/qa/questions/?page=${page}&count=${queryCount}&productid=${curProduct.id}`,
+        )
+        .then((res) => setQAList(res.data.results))
+        .catch((err) => new Error(err));
+    }
   }, [curProduct]);
 
   const handleSearch = (e) => {
@@ -26,7 +28,7 @@ export default function QuestionAnswer({ curProduct }) {
   };
 
   return (
-    <div>
+    <section className="questionanswers">
       <h5>QUESTIONS & ANSWERS</h5>
       <input
         type="text"
@@ -35,16 +37,15 @@ export default function QuestionAnswer({ curProduct }) {
         onChange={(e) => setSearch(e.target.value)}
         onKeyDown={handleSearch}
       />
-      {QAList.map((QA, i) => (
-        <QAItem QA={QA} key={i} />
+      {QAList.map((QA) => (
+        <QAItem QA={QA} key={QA.id} />
       ))}
-
       <div>
-        <div>MORE ANSWERED QUESTION</div>
-        <div>ADD A QUESTION +</div>
+        <button type="button">MORE ANSWERED QUESTION</button>
+        <button type="button">ADD A QUESTION +</button>
       </div>
 
       {/* //SHOW MODAL */}
-    </div>
+    </section>
   );
 }
