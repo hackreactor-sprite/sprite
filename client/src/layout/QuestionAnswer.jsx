@@ -4,9 +4,11 @@ import QAItem from '../components/QuestionAnswers/QAItem';
 
 export default function QuestionAnswer({ curProduct }) {
   const [QAList, setQAList] = useState([]);
+  const [partialQAList, setPartialQAList] = useState([]);
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
-  const [queryCount, setQueryCount] = useState(10);
+  const [queryCount, setQueryCount] = useState(20);
+  const [shown, setShown] = useState(false);
 
   useEffect(() => {
     if (curProduct.id) {
@@ -14,7 +16,15 @@ export default function QuestionAnswer({ curProduct }) {
         .get(
           `/qa/questions/?page=${page}&count=${queryCount}&productid=${curProduct.id}`,
         )
-        .then((res) => setQAList(res.data.results))
+        .then((res) => {
+          const before = res.data.results;
+          const sorted = res.data.results.sort(
+            (a, b) => b.question_helpfulness - a.question_helpfulness,
+          );
+          console.log(before, 'not sorted <- compare -> sorted', sorted);
+          setPartialQAList(sorted.slice(0, 4));
+          setQAList(sorted);
+        })
         .catch((err) => new Error(err));
     }
   }, [curProduct]);
@@ -41,9 +51,9 @@ export default function QuestionAnswer({ curProduct }) {
         onKeyDown={handleSearch}
       />
       <div className="QA-list">
-        {QAList.map((QA) => (
-          <QAItem QA={QA} key={QA.id} />
-        ))}
+        {shown
+          ? QAList.map((QA) => <QAItem QA={QA} key={QA.id} />)
+          : partialQAList.map((QA) => <QAItem QA={QA} key={QA.id} />)}
       </div>
       <div className="QA-btn-container">
         <button type="button">MORE ANSWERED QUESTION</button>

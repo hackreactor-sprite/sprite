@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 export default function Helpful({ helpful, answerid }) {
-  const sendHelpful = () => {
+  const sendHelpful = (answerid) => {
+    console.log('invoked', answerid);
     axios
       .put(`qa/answers/${answerid}/helpful`)
       .then(() => {
@@ -14,7 +15,7 @@ export default function Helpful({ helpful, answerid }) {
     <>
       <small>Helpful? ({helpful})</small>
       <button>
-        <small onClick={() => sendHelpful}>Yes</small>
+        <small onClick={() => sendHelpful(answerid)}>Yes</small>
       </button>
     </>
   );
