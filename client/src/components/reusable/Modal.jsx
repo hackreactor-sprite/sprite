@@ -1,20 +1,12 @@
 import React from 'react';
 
-export default function Modal(props) {
-  var onClose = (e) => {
-    props.onClose && props.onClose(e);
-  };
-
+export default function Modal({ children, handleModal }) {
   return (
-    <>
-      {props.shown ? (
-        <div class="modal">
-          <div class="modal-content">{props.children}</div>
-          <div class="modal-actions">
-            <button onClick={onClose}>{props.closeButtonText}</button>
-          </div>
-        </div>
-      ) : null}
-    </>
+    <div className="modal">
+      <button type="button" onClick={() => handleModal()}>
+        <small>x</small>
+      </button>
+      {children}
+    </div>
   );
 }

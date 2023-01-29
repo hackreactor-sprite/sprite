@@ -4,10 +4,13 @@ import ProductDetail from './layout/ProductDetail';
 import RelatedProducts from './layout/RelatedProducts';
 import QuestionAnswer from './layout/QuestionAnswer';
 import RatingReview from './layout/RatingReview';
+import Modal from './components/Reusable/Modal';
+import AddQuestionForm from './components/Modal/AddQuestionForm';
 
 function App() {
   const [allProducts, setAllProducts] = useState([]);
   const [curProduct, setCurProduct] = useState({});
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     axios
@@ -18,8 +21,18 @@ function App() {
       })
       .catch((err) => new Error(err));
   }, []);
+
+  const handleModal = () => {
+    setShowModal(!showModal);
+  };
+
   return (
     <div className="App">
+      {showModal ? (
+        <Modal handleModal={handleModal}>
+          <AddQuestionForm curProduct={curProduct} handleModal={handleModal} />
+        </Modal>
+      ) : null}
       <ProductDetail
         allProducts={allProducts}
         setAllProducts={setAllProducts}
@@ -32,7 +45,11 @@ function App() {
         curProduct={curProduct}
         setCurProduct={setCurProduct}
       />
-      <QuestionAnswer curProduct={curProduct} />
+      <QuestionAnswer
+        curProduct={curProduct}
+        handleModal={handleModal}
+        showModal={showModal}
+      />
       <RatingReview
         allProducts={allProducts}
         setAllProducts={setAllProducts}

@@ -2,12 +2,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import QAItem from '../components/QuestionAnswers/QAItem';
 
-export default function QuestionAnswer({ curProduct }) {
+export default function QuestionAnswer({ curProduct, handleModal }) {
   const [QAList, setQAList] = useState([]);
   const [partialQAList, setPartialQAList] = useState([]);
   const [search, setSearch] = useState('');
-  const [page, setPage] = useState(1);
-  const [queryCount, setQueryCount] = useState(20);
+  const [page, setPage] = useState(2);
+  const [queryCount, setQueryCount] = useState(30);
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
@@ -17,25 +17,35 @@ export default function QuestionAnswer({ curProduct }) {
           `/qa/questions/?page=${page}&count=${queryCount}&productid=${curProduct.id}`,
         )
         .then((res) => {
-          const before = res.data.results;
           const sorted = res.data.results.sort(
             (a, b) => b.question_helpfulness - a.question_helpfulness,
           );
-          console.log(before, 'not sorted <- compare -> sorted', sorted);
           setPartialQAList(sorted.slice(0, 4));
           setQAList(sorted);
         })
         .catch((err) => new Error(err));
     }
-  }, [curProduct]);
+  }, [curProduct, queryCount]);
 
-  const handleSearch = (e) => {
+  function handleSearch(e) {
     if (search.length > 3 && e.key === 'enter') {
       const newList = [...QAList];
       newList.filter((el) => el.body.includes(search));
       setQAList(newList);
     }
-  };
+  }
+
+  function loadQuestions() {
+    setShown(!shown);
+    // if (!shown) {
+    //   setShown(!shown);
+    // } else if (queryCount < 50) {
+    //   setQueryCount(queryCount + 5);
+    // } else {
+    //   setPage(page + 1);
+    //   setQueryCount(10);
+    // }
+  }
 
   return (
     <section className="questionanswers">
@@ -48,19 +58,27 @@ export default function QuestionAnswer({ curProduct }) {
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        onKeyDown={handleSearch}
+        onKeyDown={(e) => handleSearch(e)}
       />
       <div className="QA-list">
-        {shown
-          ? QAList.map((QA) => <QAItem QA={QA} key={QA.id} />)
-          : partialQAList.map((QA) => <QAItem QA={QA} key={QA.id} />)}
+        {!shown
+          ? partialQAList.map((QA) => <QAItem QA={QA} key={QA.id} />)
+          : QAList.map((QA) => <QAItem QA={QA} key={QA.id} />)}
       </div>
       <div className="QA-btn-container">
-        <button type="button">MORE ANSWERED QUESTION</button>
-        <button type="button">ADD A QUESTION +</button>
+        {!shown ? (
+          <button type="button" onClick={() => loadQuestions()}>
+            MORE ANSWERED QUESTIONS
+          </button>
+        ) : (
+          <button type="button" onClick={() => loadQuestions()}>
+            COLLAPSE ANSWERS
+          </button>
+        )}
+        <button type="button" onClick={() => handleModal()}>
+          ADD A QUESTION +
+        </button>
       </div>
-
-      {/* //SHOW MODAL */}
     </section>
   );
 }

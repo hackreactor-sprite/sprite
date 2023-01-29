@@ -1,8 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import Helpful from '../reusable/Helpful';
+import Helpful from '../Reusable/Helpful';
+import Report from '../Reusable/Report';
 
 export default function QAItem({ QA }) {
-  console.log('QUESTION :', QA);
+  const [shown, setShown] = useState(false);
+  const [shownAnswer, setShownAnswer] = useState(false);
+  const [answerList, setAnswerList] = useState([]);
+  const [partialAnswers, setPartialAnswers] = useState([]);
+
+  useEffect(() => {
+    const sort = Object.values(QA.answers).sort(
+      (a, b) => b.helpfulness - a.helpfulness,
+    );
+    if (sort.length !== 0) setShownAnswer(!shownAnswer);
+    setPartialAnswers(sort.slice(0, 2));
+    setAnswerList(sort);
+  }, []);
+
   return (
     <>
       <div className="QA-body-container">
@@ -12,23 +26,44 @@ export default function QAItem({ QA }) {
         </div>
         <div className="small-container">
           <Helpful helpful={QA.question_helpfulness} />
-          <button>
+          <button type="button">
             <small>Add Answer</small>
           </button>
         </div>
       </div>
+
       <div className="QA-answer">
-        {Object.keys(QA.answers).map((key) => (
-          <AnswerItem answer={QA.answers[key]} key={key} />
-        ))}
+        {!shown
+          ? partialAnswers.map((answer) => <AnswerItem answer={answer} />)
+          : answerList.map((answer) => <AnswerItem answer={answer} />)}
       </div>
-      <button type="button">LOAD MORE ANSWERS</button>
+      {answerList.length !== 0 ? (
+        <AnswerButton shown={shown} setShown={setShown} />
+      ) : null}
     </>
   );
 }
 
+function AnswerButton({ shown, setShown }) {
+  return (
+    <button type="button" onClick={() => setShown(!shown)}>
+      <small>{!shown ? 'LOAD MORE ANSWERS' : 'COLLAPSE'}</small>
+    </button>
+  );
+}
+
 function AnswerItem({ answer }) {
-  console.log('ANSWER :', answer);
+  const [reported, setReported] = useState(false);
+
+  const options = {
+    month: 'long',
+    year: 'numeric',
+    day: 'numeric',
+  };
+  const convertedDate = new Date(answer.date).toLocaleDateString(
+    undefined,
+    options,
+  );
   return (
     <>
       <div className="QA-answer-body">
@@ -36,13 +71,27 @@ function AnswerItem({ answer }) {
         <p>{answer.body}</p>
       </div>
       <div className="small-container QA-answer-detail">
-        <p>
-          {answer.answerer_name}, {answer.date}
-        </p>
+        <small>
+          {'by '}
+          {answer.answerer_name}
+          {/* {sellerName === answer.answerer_name
+            ? answer.answerer_name
+            : 'SELLER'}
+          THIS DOESNT MAKES SENSE THEY ARE ASKING TO CHECK SELLER NAME BUT NOT
+          AVAIL */}
+          {', '}
+          {convertedDate}
+        </small>
         <Helpful helpful={answer.helpfulness} answerid={answer.id} />
-        <button>
-          <small>Report</small>
-        </button>
+        {reported ? (
+          <small>Reported</small>
+        ) : (
+          <Report
+            answerid={answer.id}
+            setReported={setReported}
+            reported={reported}
+          />
+        )}
       </div>
     </>
   );

@@ -1,22 +1,40 @@
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import React, { useState } from 'react';
 
 export default function Helpful({ helpful, answerid }) {
-  const sendHelpful = (answerid) => {
-    console.log('invoked', answerid);
+  const [helpfulCount, setHelpfulCount] = useState(0);
+  const [submit, setSubmit] = useState(false);
+  useEffect(() => {
+    if (helpful) {
+      setHelpfulCount(helpful);
+    }
+  }, []);
+  function sendHelpful() {
     axios
       .put(`qa/answers/${answerid}/helpful`)
       .then(() => {
-        console.log('updated');
+        setHelpfulCount(helpfulCount + 1);
+        setSubmit(!submit);
+        console.log('helpful sucess');
       })
       .catch((err) => new Error(err));
-  };
+  }
   return (
     <>
-      <small>Helpful? ({helpful})</small>
-      <button>
-        <small onClick={() => sendHelpful(answerid)}>Yes</small>
+      <div className="helpful-detail">
+        <small>Helpful?</small>
+        <small>
+          {' ( '}
+          {helpfulCount}
+          {' ) '}
+        </small>
+      </div>
+      <button type="button" onClick={!submit ? () => sendHelpful() : null}>
+        <small>Yes</small>
       </button>
     </>
   );
 }
+// link should appear next to the text “Helpful?” reading “Yes (#)” with the count
+// Clicking on this link should increase the count for that response.
+// A customer should not be able to vote more than once for this selection.
