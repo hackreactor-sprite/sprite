@@ -75,7 +75,7 @@ export default function QuestionAnswer({ curProduct, handleModal }) {
             COLLAPSE ANSWERS
           </button>
         )}
-        <button type="button" onClick={() => handleModal()}>
+        <button type="button" onClick={() => handleModal('AddQuestionForm')}>
           ADD A QUESTION +
         </button>
       </div>

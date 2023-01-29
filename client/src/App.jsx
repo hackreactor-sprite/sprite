@@ -5,12 +5,13 @@ import RelatedProducts from './layout/RelatedProducts';
 import QuestionAnswer from './layout/QuestionAnswer';
 import RatingReview from './layout/RatingReview';
 import Modal from './components/Reusable/Modal';
-import AddQuestionForm from './components/Modal/AddQuestionForm';
+import ModalRoute from './components/Modal/ModalRoute';
 
 function App() {
   const [allProducts, setAllProducts] = useState([]);
   const [curProduct, setCurProduct] = useState({});
   const [showModal, setShowModal] = useState(false);
+  const [modalDetail, setModalDetail] = useState('');
 
   useEffect(() => {
     axios
@@ -30,7 +31,11 @@ function App() {
     <div className="App">
       {showModal ? (
         <Modal handleModal={handleModal}>
-          <AddQuestionForm curProduct={curProduct} handleModal={handleModal} />
+          <ModalRoute
+            curProduct={curProduct}
+            handleModal={handleModal}
+            modalDetail={modalDetail}
+          />
         </Modal>
       ) : null}
       <ProductDetail
