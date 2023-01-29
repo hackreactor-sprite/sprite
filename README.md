@@ -67,7 +67,7 @@ git merge main
 On your main branch, run the following in the terminal:
 ```
 git remote -v
-git remote add origin git@github.com:hackreactor-sprite/sprite.git
+git remote set-url origin <repo-url>
 git remote -v
 git pull origin main --allow-unrelated-histories
 ```
