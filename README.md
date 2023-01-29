@@ -62,3 +62,15 @@ Switch to your branch and make sure it is up to date with main branch by running
 git checkout <branch name>
 git merge main
 ```
+#Changing remote origin main
+
+On your main branch, run the following in the terminal:
+```
+git remote -v
+git remote add origin git@github.com:hackreactor-sprite/sprite.git
+git remote -v
+git pull origin main --allow-unrelated-histories
+```
+On your local component branch, run:
+```
+git push -u origin <branchname>
