@@ -10,6 +10,7 @@ import ModalRoute from './components/Modal/ModalRoute';
 function App() {
   const [allProducts, setAllProducts] = useState([]);
   const [curProduct, setCurProduct] = useState({});
+  const [curQuestion, setCurQuestion] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [modalDetail, setModalDetail] = useState('');
 
@@ -23,7 +24,8 @@ function App() {
       .catch((err) => new Error(err));
   }, []);
 
-  const handleModal = () => {
+  const handleModal = (caseSwitch) => {
+    setModalDetail(caseSwitch);
     setShowModal(!showModal);
   };
 
@@ -33,6 +35,7 @@ function App() {
         <Modal handleModal={handleModal}>
           <ModalRoute
             curProduct={curProduct}
+            curQuestion={curQuestion}
             handleModal={handleModal}
             modalDetail={modalDetail}
           />
@@ -52,6 +55,7 @@ function App() {
       />
       <QuestionAnswer
         curProduct={curProduct}
+        setCurQuestion={setCurQuestion}
         handleModal={handleModal}
         showModal={showModal}
       />

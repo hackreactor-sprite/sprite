@@ -1,8 +1,13 @@
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import QAItem from '../components/QuestionAnswers/QAItem';
 
-export default function QuestionAnswer({ curProduct, handleModal }) {
+export default function QuestionAnswer({
+  curProduct,
+  setCurQuestion,
+  handleModal,
+}) {
   const [QAList, setQAList] = useState([]);
   const [partialQAList, setPartialQAList] = useState([]);
   const [search, setSearch] = useState('');
@@ -62,8 +67,26 @@ export default function QuestionAnswer({ curProduct, handleModal }) {
       />
       <div className="QA-list">
         {!shown
-          ? partialQAList.map((QA) => <QAItem QA={QA} key={QA.id} />)
-          : QAList.map((QA) => <QAItem QA={QA} key={QA.id} />)}
+          ? partialQAList.map((QA) => (
+              // eslint-disable-next-line react/jsx-indent
+              <QAItem
+                QA={QA}
+                key={QA.id}
+                handleModal={handleModal}
+                setCurQuestion={setCurQuestion}
+              />
+              // eslint-disable-next-line indent
+            ))
+          : QAList.map((QA) => (
+              // eslint-disable-next-line react/jsx-indent
+              <QAItem
+                QA={QA}
+                key={QA.id}
+                handleModal={handleModal}
+                setCurQuestion={setCurQuestion}
+              />
+              // eslint-disable-next-line indent
+            ))}
       </div>
       <div className="QA-btn-container">
         {!shown ? (
@@ -82,3 +105,11 @@ export default function QuestionAnswer({ curProduct, handleModal }) {
     </section>
   );
 }
+
+QuestionAnswer.propTypes = {
+  curProduct: PropTypes.shape({
+    id: PropTypes.string,
+  }).isRequired,
+  setCurQuestion: PropTypes.func.isRequired,
+  handleModal: PropTypes.func.isRequired,
+};

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Helpful from '../Reusable/Helpful';
 import Report from '../Reusable/Report';
 
-export default function QAItem({ QA }) {
+export default function QAItem({ QA, setCurQuestion, handleModal }) {
   const [shown, setShown] = useState(false);
   const [shownAnswer, setShownAnswer] = useState(false);
   const [answerList, setAnswerList] = useState([]);
@@ -26,7 +27,13 @@ export default function QAItem({ QA }) {
         </div>
         <div className="small-container">
           <Helpful helpful={QA.question_helpfulness} />
-          <button type="button">
+          <button
+            type="button"
+            onClick={() => {
+              setCurQuestion(QA);
+              handleModal('AddAnswerForm');
+            }}
+          >
             <small>Add Answer</small>
           </button>
         </div>
@@ -41,14 +48,6 @@ export default function QAItem({ QA }) {
         <AnswerButton shown={shown} setShown={setShown} />
       ) : null}
     </>
-  );
-}
-
-function AnswerButton({ shown, setShown }) {
-  return (
-    <button type="button" onClick={() => setShown(!shown)}>
-      <small>{!shown ? 'LOAD MORE ANSWERS' : 'COLLAPSE'}</small>
-    </button>
   );
 }
 
@@ -96,3 +95,39 @@ function AnswerItem({ answer }) {
     </>
   );
 }
+
+function AnswerButton({ shown, setShown }) {
+  return (
+    <button type="button" onClick={() => setShown(!shown)}>
+      <small>{!shown ? 'LOAD MORE ANSWERS' : 'COLLAPSE'}</small>
+    </button>
+  );
+}
+
+QAItem.propTypes = {
+  QA: PropTypes.shape({
+    id: PropTypes.number,
+    answers: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+    question_body: PropTypes.string,
+    question_helpfulness: PropTypes.number,
+  }).isRequired,
+  setCurQuestion: PropTypes.func.isRequired,
+  handleModal: PropTypes.func.isRequired,
+};
+
+AnswerItem.propTypes = {
+  answer: PropTypes.shape({
+    id: PropTypes.number,
+    date: PropTypes.number,
+    answerer_name: PropTypes.string,
+    body: PropTypes.string,
+    helpfulness: PropTypes.number,
+  }).isRequired,
+};
+
+AnswerButton.propTypes = {
+  shown: PropTypes.bool.isRequired,
+  setShown: PropTypes.func.isRequired,
+};
