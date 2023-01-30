@@ -5,6 +5,7 @@ import RelatedProd from './RelatedProd';
 
 export default function RelatedProducts({ curProduct, setCurProduct }) {
   const [relatedProds, setRelatedProds] = useState([]);
+  const [outfit, setOutfit] = useState([]);
   useEffect(() => {
     if (curProduct.id) {
       axios.get(`/products/${curProduct.id}/related`)
@@ -15,10 +16,14 @@ export default function RelatedProducts({ curProduct, setCurProduct }) {
   }, [curProduct]);
   return (
     <>
-      <h5>RelatedProducts</h5>
-      <div>
+      <h4>Related Products</h4>
+      <ul className="carousel-list">
         {relatedProds.map((id) => <RelatedProd id={id} key={id} setCurProduct={setCurProduct} />)}
-      </div>
+      </ul>
+      <h4>Your Outfit</h4>
+      <ul className="carousel-list">
+        <li>Add to Outfit</li>
+      </ul>
     </>
   );
 }
