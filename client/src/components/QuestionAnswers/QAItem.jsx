@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Helpful from '../reusable/Helpful';
 
 export default function QAItem({ QA }) {
-  console.log('QUESTION :', QA);
+  // console.log('QUESTION :', QA);
   return (
     <div>
       <div className="QA-body">
@@ -20,7 +20,7 @@ export default function QAItem({ QA }) {
 }
 
 function AnswerItem({ answer }) {
-  console.log('ANSWER :', answer);
+  // console.log('ANSWER :', answer);
   return (
     <>
       <div className="QA-answer-body">
@@ -29,7 +29,10 @@ function AnswerItem({ answer }) {
       </div>
       <div className="QA-answer-detail">
         <small>
-          {answer.answerer_name}, {answer.date}
+          {answer.answerer_name}
+          ,
+          {' '}
+          {answer.date}
         </small>
         <Helpful />
       </div>
