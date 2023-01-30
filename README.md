@@ -62,7 +62,7 @@ Switch to your branch and make sure it is up to date with main branch by running
 git checkout <branch name>
 git merge main
 ```
-#Changing remote origin main
+# Changing remote origin main
 
 On your main branch, run the following in the terminal:
 ```
