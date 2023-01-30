@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import Helpful from '../Reusable/Helpful';
 import Report from '../Reusable/Report';
+import HiddenButton from '../Reusable/HiddenButton';
+import ModalRoute from '../Modal/ModalRoute';
+import Modal from '../reusable/Modal';
 
-export default function QAItem({ QA, setCurQuestion, handleModal }) {
+export default function QAItem({ QA, curProduct }) {
   const [shown, setShown] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [shownAnswer, setShownAnswer] = useState(false);
   const [answerList, setAnswerList] = useState([]);
   const [partialAnswers, setPartialAnswers] = useState([]);
@@ -15,9 +20,9 @@ export default function QAItem({ QA, setCurQuestion, handleModal }) {
     );
     if (sort.length !== 0) setShownAnswer(!shownAnswer);
     setPartialAnswers(sort.slice(0, 2));
-    setAnswerList(sort);
+    setAnswerList(sort.slice(4));
   }, []);
-
+  const content = { QA, curProduct };
   return (
     <>
       <div className="QA-body-container">
@@ -27,33 +32,39 @@ export default function QAItem({ QA, setCurQuestion, handleModal }) {
         </div>
         <div className="small-container">
           <Helpful helpful={QA.question_helpfulness} />
-          <button
-            type="button"
-            onClick={() => {
-              setCurQuestion(QA);
-              handleModal('AddAnswerForm');
-            }}
-          >
+          <button type="button" onClick={() => setShowModal(!showModal)}>
             <small>Add Answer</small>
           </button>
+          {/* eslint-disable-next-line operator-linebreak */}
+          {showModal &&
+            createPortal(
+              <Modal showModal={showModal} setShowModal={setShowModal}>
+                <ModalRoute route="AddAnswerForm" content={content} />
+              </Modal>,
+              document.body,
+            )}
         </div>
       </div>
 
       <div className="QA-answer">
-        {!shown
-          ? partialAnswers.map((answer) => <AnswerItem answer={answer} />)
-          : answerList.map((answer) => <AnswerItem answer={answer} />)}
+        {(!shown ? partialAnswers : answerList).map((answer, i) => (
+          <AnswerItem answer={answer} key={i} />
+        ))}
       </div>
       {answerList.length !== 0 ? (
-        <AnswerButton shown={shown} setShown={setShown} />
+        <HiddenButton
+          state={shown}
+          setState={setShown}
+          content={!shown ? 'LOAD MORE ANSWERS' : 'COLLAPSE'}
+        />
       ) : null}
     </>
   );
 }
 
 function AnswerItem({ answer }) {
+  const [showModal, setShowModal] = useState(false);
   const [reported, setReported] = useState(false);
-
   const options = {
     month: 'long',
     year: 'numeric',
@@ -63,44 +74,62 @@ function AnswerItem({ answer }) {
     undefined,
     options,
   );
+
   return (
     <>
       <div className="QA-answer-body">
         <h5>A:</h5>
         <p>{answer.body}</p>
       </div>
+      {/* eslint-disable-next-line operator-linebreak */}
+
+      <div className="answer-photo-container">
+        {answer.photos.map((photo, i) => (
+          <>
+            {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
+
+            <img
+              src={photo}
+              alt="Answer Image"
+              className="answer-photo"
+              key={i}
+              onClick={() => setShowModal(!showModal)}
+            />
+            {/* eslint-disable-next-line operator-linebreak */}
+            {showModal &&
+              createPortal(
+                <Modal showModal={showModal} setShowModal={setShowModal}>
+                  <ModalRoute
+                    route="AddAnswerForm"
+                    showModal={showModal}
+                    setShowModal={setShowModal}
+                    content={photo}
+                  />
+                </Modal>,
+                document.body,
+              )}
+          </>
+        ))}
+      </div>
       <div className="small-container QA-answer-detail">
         <small>
           {'by '}
           {answer.answerer_name}
-          {/* {sellerName === answer.answerer_name
-            ? answer.answerer_name
-            : 'SELLER'}
-          THIS DOESNT MAKES SENSE THEY ARE ASKING TO CHECK SELLER NAME BUT NOT
-          AVAIL */}
           {', '}
           {convertedDate}
         </small>
         <Helpful helpful={answer.helpfulness} answerid={answer.id} />
-        {reported ? (
-          <small>Reported</small>
-        ) : (
+        {!reported ? (
           <Report
             answerid={answer.id}
             setReported={setReported}
             reported={reported}
           />
+        ) : (
+          <small>Reported</small>
         )}
       </div>
     </>
-  );
-}
-
-function AnswerButton({ shown, setShown }) {
-  return (
-    <button type="button" onClick={() => setShown(!shown)}>
-      <small>{!shown ? 'LOAD MORE ANSWERS' : 'COLLAPSE'}</small>
-    </button>
   );
 }
 
@@ -113,21 +142,17 @@ QAItem.propTypes = {
     question_body: PropTypes.string,
     question_helpfulness: PropTypes.number,
   }).isRequired,
-  setCurQuestion: PropTypes.func.isRequired,
-  handleModal: PropTypes.func.isRequired,
+  curProduct: PropTypes.shape({
+    id: PropTypes.number,
+  }).isRequired,
 };
 
 AnswerItem.propTypes = {
   answer: PropTypes.shape({
     id: PropTypes.number,
-    date: PropTypes.number,
+    date: PropTypes.string,
     answerer_name: PropTypes.string,
     body: PropTypes.string,
     helpfulness: PropTypes.number,
   }).isRequired,
-};
-
-AnswerButton.propTypes = {
-  shown: PropTypes.bool.isRequired,
-  setShown: PropTypes.func.isRequired,
 };

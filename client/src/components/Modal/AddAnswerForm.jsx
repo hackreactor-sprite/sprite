@@ -54,7 +54,7 @@ export default function AddQuestionForm({
           For privacy reasons, do not use your full name or email address
         </small>
       </div>
-      <input
+      <textarea
         type="text"
         name="body"
         placeholder="Your Answer"
@@ -64,6 +64,9 @@ export default function AddQuestionForm({
           newInput.name = e.target.value;
           setAnswerForm(newInput);
         }}
+        maxLength="1000"
+        rows="4"
+        cols="50"
       />
       <div>
         <input

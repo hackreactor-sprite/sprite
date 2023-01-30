@@ -26,3 +26,13 @@
   gap: 1.5rem;
   padding-top: 1rem;
 }
+
+.answer-photo-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.answer-photo {
+  height: 4rem;
+  object-fit: scale-down;
+}

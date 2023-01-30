@@ -4,15 +4,10 @@ import ProductDetail from './layout/ProductDetail';
 import RelatedProducts from './layout/RelatedProducts';
 import QuestionAnswer from './layout/QuestionAnswer';
 import RatingReview from './layout/RatingReview';
-import Modal from './components/Reusable/Modal';
-import ModalRoute from './components/Modal/ModalRoute';
 
 function App() {
   const [allProducts, setAllProducts] = useState([]);
   const [curProduct, setCurProduct] = useState({});
-  const [curQuestion, setCurQuestion] = useState({});
-  const [showModal, setShowModal] = useState(false);
-  const [modalDetail, setModalDetail] = useState('');
 
   useEffect(() => {
     axios
@@ -24,23 +19,8 @@ function App() {
       .catch((err) => new Error(err));
   }, []);
 
-  const handleModal = (caseSwitch) => {
-    setModalDetail(caseSwitch);
-    setShowModal(!showModal);
-  };
-
   return (
     <div className="App">
-      {showModal ? (
-        <Modal handleModal={handleModal}>
-          <ModalRoute
-            curProduct={curProduct}
-            curQuestion={curQuestion}
-            handleModal={handleModal}
-            modalDetail={modalDetail}
-          />
-        </Modal>
-      ) : null}
       <ProductDetail
         allProducts={allProducts}
         setAllProducts={setAllProducts}
@@ -53,12 +33,7 @@ function App() {
         curProduct={curProduct}
         setCurProduct={setCurProduct}
       />
-      <QuestionAnswer
-        curProduct={curProduct}
-        setCurQuestion={setCurQuestion}
-        handleModal={handleModal}
-        showModal={showModal}
-      />
+      <QuestionAnswer curProduct={curProduct} />
       <RatingReview
         allProducts={allProducts}
         setAllProducts={setAllProducts}

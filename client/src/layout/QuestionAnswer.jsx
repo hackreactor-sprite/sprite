@@ -1,55 +1,44 @@
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import HiddenButton from '../components/Reusable/HiddenButton';
 import QAItem from '../components/QuestionAnswers/QAItem';
+import ModalRoute from '../components/Modal/ModalRoute';
+import Modal from '../components/reusable/Modal';
 
-export default function QuestionAnswer({
-  curProduct,
-  setCurQuestion,
-  handleModal,
-}) {
+export default function QuestionAnswer({ curProduct }) {
   const [QAList, setQAList] = useState([]);
   const [partialQAList, setPartialQAList] = useState([]);
   const [search, setSearch] = useState('');
-  const [page, setPage] = useState(2);
-  const [queryCount, setQueryCount] = useState(30);
+  const [page, setPage] = useState(1);
+  const [queryCount, setQueryCount] = useState(100);
   const [shown, setShown] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     if (curProduct.id) {
       axios
-        .get(
-          `/qa/questions/?page=${page}&count=${queryCount}&productid=${curProduct.id}`,
-        )
+        .get(`/qa/questions/?page=${page}&count=${queryCount}&productid=40348`)
         .then((res) => {
           const sorted = res.data.results.sort(
             (a, b) => b.question_helpfulness - a.question_helpfulness,
           );
+
           setPartialQAList(sorted.slice(0, 4));
           setQAList(sorted);
         })
         .catch((err) => new Error(err));
     }
-  }, [curProduct, queryCount]);
+  }, [curProduct]);
 
   function handleSearch(e) {
-    if (search.length > 3 && e.key === 'enter') {
+    if (search.length > 3 && e.key === 'Enter') {
       const newList = [...QAList];
-      newList.filter((el) => el.body.includes(search));
+      newList.filter((question) => question.question_body.includes(search));
+      setPartialQAList(newList.slice(0, 4));
       setQAList(newList);
     }
-  }
-
-  function loadQuestions() {
-    setShown(!shown);
-    // if (!shown) {
-    //   setShown(!shown);
-    // } else if (queryCount < 50) {
-    //   setQueryCount(queryCount + 5);
-    // } else {
-    //   setPage(page + 1);
-    //   setQueryCount(10);
-    // }
   }
 
   return (
@@ -62,45 +51,37 @@ export default function QuestionAnswer({
         type="text"
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => {
+          setSearch(e.target.value);
+          handleSearch(e);
+        }}
         onKeyDown={(e) => handleSearch(e)}
       />
       <div className="QA-list">
-        {!shown
-          ? partialQAList.map((QA) => (
-              // eslint-disable-next-line react/jsx-indent
-              <QAItem
-                QA={QA}
-                key={QA.id}
-                handleModal={handleModal}
-                setCurQuestion={setCurQuestion}
-              />
-              // eslint-disable-next-line indent
-            ))
-          : QAList.map((QA) => (
-              // eslint-disable-next-line react/jsx-indent
-              <QAItem
-                QA={QA}
-                key={QA.id}
-                handleModal={handleModal}
-                setCurQuestion={setCurQuestion}
-              />
-              // eslint-disable-next-line indent
-            ))}
+        {(!shown ? partialQAList : QAList).map((QA, i) => (
+          <QAItem QA={QA} key={i} curProduct={curProduct} />
+        ))}
       </div>
       <div className="QA-btn-container">
-        {!shown ? (
-          <button type="button" onClick={() => loadQuestions()}>
-            MORE ANSWERED QUESTIONS
-          </button>
-        ) : (
-          <button type="button" onClick={() => loadQuestions()}>
-            COLLAPSE ANSWERS
-          </button>
-        )}
-        <button type="button" onClick={() => handleModal('AddQuestionForm')}>
+        {QAList.length !== 0 ? (
+          <HiddenButton
+            state={shown}
+            setState={setShown}
+            content={!shown ? 'MORE ANSWERED QUESTIONS' : 'COLLAPSE ANSWERS'}
+          />
+        ) : null}
+
+        <button type="button" onClick={() => setShowModal(!shown)}>
           ADD A QUESTION +
         </button>
+        {/* eslint-disable-next-line operator-linebreak */}
+        {showModal &&
+          createPortal(
+            <Modal showModal={showModal} setShowModal={setShowModal}>
+              <ModalRoute route="AddQuestionForm" content={curProduct} />
+            </Modal>,
+            document.body,
+          )}
       </div>
     </section>
   );
@@ -108,8 +89,6 @@ export default function QuestionAnswer({
 
 QuestionAnswer.propTypes = {
   curProduct: PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.number,
   }).isRequired,
-  setCurQuestion: PropTypes.func.isRequired,
-  handleModal: PropTypes.func.isRequired,
 };

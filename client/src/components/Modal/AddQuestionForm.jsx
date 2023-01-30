@@ -49,7 +49,7 @@ export default function AddQuestionForm({ curProduct, handleModal }) {
           For privacy reasons, do not use your full name or email address
         </small>
       </div>
-      <input
+      <textarea
         type="text"
         name="body"
         placeholder="Your Question?"
@@ -59,6 +59,9 @@ export default function AddQuestionForm({ curProduct, handleModal }) {
           newInput.body = e.target.value;
           setQuestionForm(newInput);
         }}
+        maxLength="1000"
+        rows="4"
+        cols="50"
       />
       <div>
         <input

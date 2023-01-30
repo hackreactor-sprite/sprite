@@ -4,39 +4,38 @@ import AddQuestionForm from './AddQuestionForm';
 import AddAnswerForm from './AddAnswerForm';
 import ImageExpand from './ImageExpand';
 
-export default function ModalRoute({
-  curProduct,
-  curQuestion,
-  handleModal,
-  modalDetail,
-}) {
-  switch (modalDetail) {
+export default function ModalRoute({ content, route }) {
+  console.log('THIS IS CONTENT', content);
+  switch (route) {
     case 'AddQuestionForm':
-      return (
-        <AddQuestionForm curProduct={curProduct} handleModal={handleModal} />
-      );
+      return <AddQuestionForm curProduct={content} />;
     case 'AddAnswerForm':
       return (
         <AddAnswerForm
-          curQuestion={curQuestion}
-          curProduct={curProduct}
-          handleModal={handleModal}
+          curQuestion={content.QA}
+          curProduct={content.curProduct}
         />
       );
     case 'ImageExpand':
-      return <ImageExpand curProduct={curProduct} handleModal={handleModal} />;
+      return <ImageExpand url={content.curPhoto} alt="Expanded Image" />;
     default:
       return <h3>Undefined Path</h3>;
   }
 }
 
 ModalRoute.propTypes = {
-  curProduct: PropTypes.shape({
-    id: PropTypes.number,
+  content: PropTypes.shape({
+    curProduct: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+    QA: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+    curPhoto: PropTypes.shape({
+      url: PropTypes.string,
+      alt: PropTypes.string,
+    }),
   }).isRequired,
-  curQuestion: PropTypes.shape({
-    id: PropTypes.number,
-  }).isRequired,
-  handleModal: PropTypes.func.isRequired,
-  modalDetail: PropTypes.string.isRequired,
+
+  route: PropTypes.string.isRequired,
 };
