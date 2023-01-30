@@ -5,7 +5,7 @@ import Helpful from '../Reusable/Helpful';
 import Report from '../Reusable/Report';
 import HiddenButton from '../Reusable/HiddenButton';
 import ModalRoute from '../Modal/ModalRoute';
-import Modal from '../reusable/Modal';
+import Modal from '../Reusable/Modal';
 
 export default function QAItem({ QA, curProduct }) {
   const [shown, setShown] = useState(false);
@@ -65,6 +65,8 @@ export default function QAItem({ QA, curProduct }) {
 function AnswerItem({ answer }) {
   const [showModal, setShowModal] = useState(false);
   const [reported, setReported] = useState(false);
+  const [curPhoto, setCurPhoto] = useState('');
+
   const options = {
     month: 'long',
     year: 'numeric',
@@ -74,6 +76,11 @@ function AnswerItem({ answer }) {
     undefined,
     options,
   );
+
+  const handleImage = (photo) => {
+    setCurPhoto(photo);
+    setShowModal(!showModal);
+  };
 
   return (
     <>
@@ -93,17 +100,22 @@ function AnswerItem({ answer }) {
               alt="Answer Image"
               className="answer-photo"
               key={i}
-              onClick={() => setShowModal(!showModal)}
+              onClick={() => handleImage(photo)}
             />
+
             {/* eslint-disable-next-line operator-linebreak */}
             {showModal &&
               createPortal(
-                <Modal showModal={showModal} setShowModal={setShowModal}>
+                <Modal
+                  showModal={showModal}
+                  setShowModal={setShowModal}
+                  key={i}
+                >
                   <ModalRoute
-                    route="AddAnswerForm"
+                    route="ImageExpand"
                     showModal={showModal}
                     setShowModal={setShowModal}
-                    content={photo}
+                    content={{ photo: curPhoto }}
                   />
                 </Modal>,
                 document.body,

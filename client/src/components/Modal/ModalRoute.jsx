@@ -5,7 +5,6 @@ import AddAnswerForm from './AddAnswerForm';
 import ImageExpand from './ImageExpand';
 
 export default function ModalRoute({ content, route }) {
-  console.log('THIS IS CONTENT', content);
   switch (route) {
     case 'AddQuestionForm':
       return <AddQuestionForm curProduct={content} />;
@@ -17,7 +16,7 @@ export default function ModalRoute({ content, route }) {
         />
       );
     case 'ImageExpand':
-      return <ImageExpand url={content.curPhoto} alt="Expanded Image" />;
+      return <ImageExpand url={content.photo} alt="Expanded Image" />;
     default:
       return <h3>Undefined Path</h3>;
   }
@@ -31,9 +30,8 @@ ModalRoute.propTypes = {
     QA: PropTypes.shape({
       id: PropTypes.number,
     }),
-    curPhoto: PropTypes.shape({
+    photo: PropTypes.shape({
       url: PropTypes.string,
-      alt: PropTypes.string,
     }),
   }).isRequired,
 

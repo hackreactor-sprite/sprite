@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import HiddenButton from '../components/Reusable/HiddenButton';
 import QAItem from '../components/QuestionAnswers/QAItem';
 import ModalRoute from '../components/Modal/ModalRoute';
-import Modal from '../components/reusable/Modal';
+import Modal from '../components/Reusable/Modal';
 
 export default function QuestionAnswer({ curProduct }) {
   const [QAList, setQAList] = useState([]);
