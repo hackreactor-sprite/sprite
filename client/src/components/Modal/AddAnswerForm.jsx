@@ -5,7 +5,8 @@ import axios from 'axios';
 export default function AddQuestionForm({
   curProduct,
   curQuestion,
-  handleModal,
+  showModal,
+  setShowModal,
 }) {
   const [answerForm, setAnswerForm] = useState({
     name: '',
@@ -25,8 +26,7 @@ export default function AddQuestionForm({
     axios
       .post(`/qa/questions/${curProduct.id}/answers`, formObj)
       .then(() => {
-        console.log('success');
-        handleModal();
+        setShowModal(!showModal);
       })
       .catch((err) => new Error(err));
   }

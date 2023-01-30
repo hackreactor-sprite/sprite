@@ -39,7 +39,12 @@ export default function QAItem({ QA, curProduct }) {
           {showModal &&
             createPortal(
               <Modal showModal={showModal} setShowModal={setShowModal}>
-                <ModalRoute route="AddAnswerForm" content={content} />
+                <ModalRoute
+                  route="AddAnswerForm"
+                  content={content}
+                  state={showModal}
+                  setState={setShowModal}
+                />
               </Modal>,
               document.body,
             )}
@@ -48,7 +53,7 @@ export default function QAItem({ QA, curProduct }) {
 
       <div className="QA-answer">
         {(!shown ? partialAnswers : answerList).map((answer, i) => (
-          <AnswerItem answer={answer} key={i} />
+          <AnswerItem answer={answer} key={answer.id} />
         ))}
       </div>
       {answerList.length !== 0 ? (
@@ -93,8 +98,6 @@ function AnswerItem({ answer }) {
       <div className="answer-photo-container">
         {answer.photos.map((photo, i) => (
           <>
-            {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-
             <img
               src={photo}
               alt="Answer Image"
@@ -113,8 +116,6 @@ function AnswerItem({ answer }) {
                 >
                   <ModalRoute
                     route="ImageExpand"
-                    showModal={showModal}
-                    setShowModal={setShowModal}
                     content={{ photo: curPhoto }}
                   />
                 </Modal>,

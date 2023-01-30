@@ -4,15 +4,24 @@ import AddQuestionForm from './AddQuestionForm';
 import AddAnswerForm from './AddAnswerForm';
 import ImageExpand from './ImageExpand';
 
-export default function ModalRoute({ content, route }) {
+// eslint-disable-next-line object-curly-newline
+export default function ModalRoute({ content, route, state, setState }) {
   switch (route) {
     case 'AddQuestionForm':
-      return <AddQuestionForm curProduct={content} />;
+      return (
+        <AddQuestionForm
+          curProduct={content}
+          state={state}
+          setState={setState}
+        />
+      );
     case 'AddAnswerForm':
       return (
         <AddAnswerForm
           curQuestion={content.QA}
           curProduct={content.curProduct}
+          state={state}
+          setState={setState}
         />
       );
     case 'ImageExpand':
@@ -23,6 +32,11 @@ export default function ModalRoute({ content, route }) {
 }
 
 ModalRoute.propTypes = {
+  // eslint-disable-next-line react/require-default-props
+  state: PropTypes.bool,
+  // eslint-disable-next-line react/require-default-props
+  setState: PropTypes.func,
+  route: PropTypes.string.isRequired,
   content: PropTypes.shape({
     curProduct: PropTypes.shape({
       id: PropTypes.number,
@@ -34,6 +48,4 @@ ModalRoute.propTypes = {
       url: PropTypes.string,
     }),
   }).isRequired,
-
-  route: PropTypes.string.isRequired,
 };

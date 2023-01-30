@@ -15,7 +15,6 @@ export default function Helpful({ helpful, answerid }) {
       .then(() => {
         setHelpfulCount(helpfulCount + 1);
         setSubmit(!submit);
-        console.log('helpful sucess');
       })
       .catch((err) => new Error(err));
   }

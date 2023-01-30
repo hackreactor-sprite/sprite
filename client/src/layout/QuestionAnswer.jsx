@@ -78,7 +78,12 @@ export default function QuestionAnswer({ curProduct }) {
         {showModal &&
           createPortal(
             <Modal showModal={showModal} setShowModal={setShowModal}>
-              <ModalRoute route="AddQuestionForm" content={curProduct} />
+              <ModalRoute
+                route="AddQuestionForm"
+                content={curProduct}
+                state={showModal}
+                setState={setShowModal}
+              />
             </Modal>,
             document.body,
           )}
