@@ -74,7 +74,6 @@ function AnswerItem({ answer }) {
     undefined,
     options,
   );
-
   return (
     <>
       <div className="QA-answer-body">
@@ -117,6 +116,7 @@ function AnswerItem({ answer }) {
           {answer.answerer_name}
           {', '}
           {convertedDate}
+
         </small>
         <Helpful helpful={answer.helpfulness} answerid={answer.id} />
         {!reported ? (
