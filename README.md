@@ -11,7 +11,7 @@ Run the following terminal commands in sequence:
 ```
 npm install
 npm run build
-npm start
+npm run server
 ```
 
 # How to push changes to your branch
