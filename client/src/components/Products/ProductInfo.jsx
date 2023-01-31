@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export default function ProductInfo({ curProduct, curStyle }) {
   // line 11 price needs to be set to the style's price
-  console.log('line 5 of product info: ', curStyle);
+  // console.log('line 5 of product info: ', curStyle);
   return (
     <section>
       <h3>Product Info</h3>

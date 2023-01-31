@@ -32,7 +32,7 @@ export default function ProductDetail({ curProduct }) {
           displayPic={displayPic}
           setDisplayPic={setDisplayPic}
         />
-        <AddToCart curProduct={curProduct} />
+        <AddToCart curProduct={curProduct} curStyle={curStyle} />
       </section>
     </section>
   );
