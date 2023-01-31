@@ -10,15 +10,18 @@ export default function RatingDashboard({ reviewList }) {
     5: 0,
   });
   const [totalRank, setTotalRank] = useState(0);
+  const [recPercent, setRecPercent] = useState(0);
 
   useEffect(() => {
     const rank = { ...reviewRank };
     let count = 0;
+    let recommendCount = 0;
     reviewList.forEach((review) => {
+      if (review.recommend) recommendCount += 1;
       rank[review.rating] += 1;
       count += review.rating;
     });
-
+    setRecPercent(recommendCount / reviewList.length);
     setTotalRank(Math.ceil(4 * (count / reviewList.length)) / 4);
     setReviewRank(rank);
   }, [reviewList]);
@@ -26,9 +29,10 @@ export default function RatingDashboard({ reviewList }) {
   return (
     <div>
       <h1>{totalRank}</h1>
+      <p>{`${recPercent * 100}% of reviews recommend this product`}</p>
       {Object.keys(reviewRank).map((rank) => (
-        <div>
-          <label className="rating-progress-bar">
+        <div className="rating-progress-bar">
+          <label>
             <ins>{`${rank} stars`}</ins>
             <progress max={reviewList.length} value={reviewRank[rank]}>
               {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
