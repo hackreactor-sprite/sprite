@@ -1,19 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import '../../../styles/css/Modal.css';
+import React from 'react';
 
-export default function Modal(props) {
-  var onClose = (e) => {
-    props.onClose && props.onClose(e);
-  };
-
-  if (props.shown) {
-    return (
-      <div class='modal'>
-        <div class='modal-content'>{props.children}</div>
-        <div class='modal-actions'>
-          <button onClick={onClose}>{props.closeButtonText}</button>
-        </div>
-      </div>
-    );
-  }
+export default function Modal({ children, showModal, setShowModal }) {
+  return (
+    <div className="modal">
+      <button type="button" onClick={() => setShowModal(!showModal)}>
+        <small>x</small>
+      </button>
+      {children}
+    </div>
+  );
 }
