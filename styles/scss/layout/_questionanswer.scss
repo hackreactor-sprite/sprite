@@ -1,0 +1,39 @@
+.QA-list,
+.QA-body-container,
+.QA-body,
+.QA-answer-body,
+.QA-answer-detail {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.QA-body-container,
+.QA-answer {
+  width: 100%;
+}
+
+.QA-list {
+  flex-direction: column;
+}
+
+.QA-body-container {
+  justify-content: space-between;
+}
+
+.QA-btn-container {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 1rem;
+}
+
+.answer-photo-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.answer-photo {
+  height: 4rem;
+  object-fit: scale-down;
+  cursor: pointer;
+}

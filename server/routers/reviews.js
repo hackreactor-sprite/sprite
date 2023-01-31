@@ -20,7 +20,7 @@ router.get('/meta', (req, res) => {
     .then((data) => {
       res.send(data.data);
     })
-    .catch((err) => new Error(err));
+    .catch((err) => res.send(err));
 });
 
 // {"product_id": 40344, "rating": 4, "summary": "gdasgdasgdas",
