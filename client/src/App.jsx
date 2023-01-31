@@ -24,12 +24,13 @@ function App() {
     if (curProduct.id) {
       axios
         .get(`reviews/meta/?product_id=${curProduct.id}`)
-        .then((data) => {
-          setMetadata(data);
+        .then((res) => {
+          setMetadata(res.data);
         })
         .catch((err) => new Error(err));
     }
   }, [curProduct]);
+
   return (
     <div className="App">
       <ProductDetail
