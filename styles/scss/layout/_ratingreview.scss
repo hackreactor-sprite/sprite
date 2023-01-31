@@ -1,0 +1,24 @@
+.ratingreview {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reviewitem-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-body {
+  overflow-wrap: break-word;
+}
+
+.rating-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+section,
+.review-item {
+  border: 1px black solid;
+}
