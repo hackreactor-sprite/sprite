@@ -25,36 +25,40 @@ export default function QAItem({ QA, curProduct }) {
   const content = { QA, curProduct };
   return (
     <>
-      <div className="QA-body-container">
-        <div className="QA-body">
-          <h5>{'Q: '}</h5>
-          <h5>{QA.question_body.toUpperCase()}</h5>
-        </div>
-        <div className="small-container">
-          <Helpful helpful={QA.question_helpfulness} />
-          <button type="button" onClick={() => setShowModal(!showModal)}>
-            <small>Add Answer</small>
-          </button>
-          {/* eslint-disable-next-line operator-linebreak */}
-          {showModal &&
-            createPortal(
-              <Modal showModal={showModal} setShowModal={setShowModal}>
-                <ModalRoute
-                  route="AddAnswerForm"
-                  content={content}
-                  state={showModal}
-                  setState={setShowModal}
-                />
-              </Modal>,
-              document.body,
-            )}
-        </div>
-      </div>
 
-      <div className="QA-answer">
-        {(!shown ? partialAnswers : answerList).map((answer, i) => (
-          <AnswerItem answer={answer} key={answer.id} />
-        ))}
+      <div className="QA-item-container">
+        <div className="QA-body-container">
+          <div className="QA-body">
+            <h5>{'Q: '}</h5>
+            <h5>{QA.question_body.toUpperCase()}</h5>
+          </div>
+          <div className="small-container">
+            <Helpful helpful={QA.question_helpfulness} />
+            <button type="button" onClick={() => setShowModal(!showModal)}>
+              <small>Add Answer</small>
+            </button>
+            {/* eslint-disable-next-line operator-linebreak */}
+            {showModal &&
+              createPortal(
+                <Modal showModal={showModal} setShowModal={setShowModal}>
+                  <ModalRoute
+                    route="AddAnswerForm"
+                    content={content}
+                    state={showModal}
+                    setState={setShowModal}
+                  />
+                </Modal>,
+                document.body,
+              )}
+          </div>
+
+        </div>
+
+        <div className="QA-answer">
+          {(!shown ? partialAnswers : answerList).map((answer, i) => (
+            <AnswerItem answer={answer} key={answer.id} />
+          ))}
+        </div>
       </div>
       {answerList.length !== 0 ? (
         <HiddenButton
@@ -88,7 +92,7 @@ function AnswerItem({ answer }) {
   };
 
   return (
-    <>
+    <div>
       <div className="QA-answer-body">
         <h5>{'A: '}</h5>
         <p>{answer.body}</p>
@@ -143,7 +147,7 @@ function AnswerItem({ answer }) {
           <small>Reported</small>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
