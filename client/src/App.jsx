@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
     if (curProduct.id) {
       axios
-        .get(`reviews/meta/?product_id=${curProduct.id}`)
+        .get(`reviews/meta/?productid=${curProduct.id}`)
         .then((res) => {
           setMetadata(res.data);
         })
