@@ -379,11 +379,13 @@ section,
   gap: 1rem;
 }
 
+
 .reviewitem-header,
 .rating-content {
   display: flex;
   justify-content: space-between;
 }
+
 
 .rating-content {
   gap: 0.5rem;
@@ -399,6 +401,7 @@ section,
   width: 100%;
   justify-content: center;
   gap: 0.5rem;
+
 }
 
 .modal {

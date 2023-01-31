@@ -12,6 +12,7 @@ export default function RatingDashboard({ reviewList }) {
   const [totalRank, setTotalRank] = useState(0);
   const [recPercent, setRecPercent] = useState(0);
 
+
   useEffect(() => {
     const rank = { ...reviewRank };
     let count = 0;
