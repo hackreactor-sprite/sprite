@@ -11,7 +11,7 @@ Run the following terminal commands in sequence:
 ```
 npm install
 npm run build
-npm start
+npm run server
 ```
 
 # How to push changes to your branch
@@ -62,3 +62,15 @@ Switch to your branch and make sure it is up to date with main branch by running
 git checkout <branch name>
 git merge main
 ```
+# Changing remote origin main
+
+On your main branch, run the following in the terminal:
+```
+git remote -v
+git remote set-url origin <repo-url>
+git remote -v
+git pull origin main --allow-unrelated-histories
+```
+On your local component branch, run:
+```
+git push -u origin <branchname>
