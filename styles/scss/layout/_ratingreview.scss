@@ -4,7 +4,6 @@
   gap: 1rem;
 }
 
-
 .reviewitem-header,
 .rating-content {
   display: flex;
@@ -17,6 +16,9 @@
 
 .reviewitem-body {
   overflow-wrap: anywhere;
+}
+.rating-right {
+  width: 100%;
 }
 
 .rating-progress-bar {
