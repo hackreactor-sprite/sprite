@@ -44,7 +44,7 @@ export default function QuestionAnswer({ curProduct }) {
   return (
     <section className="questionanswers">
       <div>
-        <small>QUESTIONS & ANSWERS</small>
+        <strong>QUESTIONS & ANSWERS</strong>
       </div>
       <input
         className="QA-search"
@@ -62,7 +62,7 @@ export default function QuestionAnswer({ curProduct }) {
           <QAItem QA={QA} key={i} curProduct={curProduct} />
         ))}
       </div>
-      <div className="QA-btn-container">
+      <div className="section-btn-container">
         {QAList.length !== 0 ? (
           <HiddenButton
             state={shown}
@@ -72,7 +72,7 @@ export default function QuestionAnswer({ curProduct }) {
         ) : null}
 
         <button type="button" onClick={() => setShowModal(!shown)}>
-          ADD A QUESTION +
+          <small>ADD A QUESTION +</small>
         </button>
         {/* eslint-disable-next-line operator-linebreak */}
         {showModal &&

@@ -27,7 +27,7 @@ export default function QAItem({ QA, curProduct }) {
     <>
       <div className="QA-body-container">
         <div className="QA-body">
-          <h5>Q: </h5>
+          <h5>{'Q: '}</h5>
           <h5>{QA.question_body.toUpperCase()}</h5>
         </div>
         <div className="small-container">
@@ -90,7 +90,7 @@ function AnswerItem({ answer }) {
   return (
     <>
       <div className="QA-answer-body">
-        <h5>A:</h5>
+        <h5>{'A: '}</h5>
         <p>{answer.body}</p>
       </div>
       {/* eslint-disable-next-line operator-linebreak */}
@@ -134,7 +134,8 @@ function AnswerItem({ answer }) {
         <Helpful helpful={answer.helpfulness} answerid={answer.id} />
         {!reported ? (
           <Report
-            answerid={answer.id}
+            id={answer.id}
+            type="answers"
             setReported={setReported}
             reported={reported}
           />
