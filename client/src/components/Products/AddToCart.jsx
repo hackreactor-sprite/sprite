@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 
 export default function AddToCart({ curProduct }) {
   // console.log('add to cart cur product: ', curProduct);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <div>
       <h3>Checkout</h3>
-      <form>
+      <form onSubmit={handleSubmit}>
         <select placeholder="select size...">
           <option value="small">Small</option>
           <option value="medium">Medium</option>
