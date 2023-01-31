@@ -320,6 +320,16 @@ button {
   margin: 0 5rem;
 }
 
+section {
+  margin: 1rem 0 1rem;
+}
+
+section,
+.review-item,
+.QA-item-container {
+  border: 1px black solid;
+}
+
 .QA-list,
 .QA-body-container,
 .QA-body,
@@ -354,6 +364,10 @@ button {
   gap: 0.5rem;
 }
 
+.QA-item-container {
+  width: 100%;
+}
+
 .answer-photo {
   height: 4rem;
   -o-object-fit: scale-down;
@@ -367,23 +381,29 @@ button {
   gap: 1rem;
 }
 
-.reviewitem-header {
-  display: flex;
-  justify-content: space-between;
-}
 
-.review-body {
-  overflow-wrap: break-word;
-}
-
+.reviewitem-header,
 .rating-content {
   display: flex;
   justify-content: space-between;
 }
 
-section,
-.review-item {
-  border: 1px black solid;
+
+.rating-content {
+  gap: 0.5rem;
+}
+
+.reviewitem-body {
+  overflow-wrap: anywhere;
+}
+
+.rating-progress-bar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  gap: 0.5rem;
+
 }
 
 .modal {

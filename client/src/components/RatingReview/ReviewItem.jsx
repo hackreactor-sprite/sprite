@@ -28,7 +28,9 @@ export default function ReviewItem({ review }) {
         </small>
       </div>
       <h5>{review.summary.substring(0, 60)}</h5>
-      <p>{!showBody ? review.body : review.body.substring(0, 250)}</p>
+      <p className="reviewitem-body">
+        {!showBody ? review.body : review.body.substring(0, 250)}
+      </p>
       <div className="review-item-photos">
         {review.photos.map((photo) => (
           // eslint-disable-next-line jsx-a11y/img-redundant-alt
