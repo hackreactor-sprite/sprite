@@ -1,0 +1,13 @@
+.modal {
+  position: absolute;
+  background: grey;
+  top: 20rem;
+  border-radius: 1rem;
+  padding: 0 2rem 2rem 2rem;
+}
+
+.modal,
+.modal-form {
+  display: flex;
+  flex-direction: column;
+}
