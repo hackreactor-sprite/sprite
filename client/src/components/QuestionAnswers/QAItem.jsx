@@ -25,6 +25,7 @@ export default function QAItem({ QA, curProduct }) {
   const content = { QA, curProduct };
   return (
     <>
+
       <div className="QA-item-container">
         <div className="QA-body-container">
           <div className="QA-body">
@@ -50,6 +51,7 @@ export default function QAItem({ QA, curProduct }) {
                 document.body,
               )}
           </div>
+
         </div>
 
         <div className="QA-answer">
