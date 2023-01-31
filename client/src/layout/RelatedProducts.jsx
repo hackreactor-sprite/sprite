@@ -17,7 +17,7 @@ export default function RelatedProducts({ curProduct, setCurProduct }) {
   }, [curProduct]);
   return (
     <>
-      <h4>Related Products</h4>
+      <h4 className="carousel">Related Products</h4>
       <ul className="carousel-list">
         <Carousel>
           {
