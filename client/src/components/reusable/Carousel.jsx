@@ -15,7 +15,7 @@ import React from 'react';
 
 export function handleLeftClick(ev) {
   ev.preventDefault();
-  const container = document.querySelector('#item-container');
+  const container = ev.target.parentElement.children[1];
   const scrollOptions = {
     top: 0,
     left: -50,
@@ -25,7 +25,7 @@ export function handleLeftClick(ev) {
 }
 export function handleRightClick(ev) {
   ev.preventDefault();
-  const container = document.querySelector('#item-container');
+  const container = ev.target.parentElement.children[1];
   const scrollOptions = {
     top: 0,
     left: 50,
