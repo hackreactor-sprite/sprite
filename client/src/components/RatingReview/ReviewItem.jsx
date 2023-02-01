@@ -15,7 +15,7 @@ export default function ReviewItem({ review }) {
     undefined,
     options,
   );
-
+  console.log('review', review);
   return (
     <div className="review-item">
       <div className="reviewitem-header">
