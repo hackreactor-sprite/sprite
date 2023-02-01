@@ -10,7 +10,9 @@ export default function RelatedProducts({ curProduct, setCurProduct, metadata })
   const [outfits, setOutfits] = useState([]);
   function handleAddOutfit(ev) {
     ev.preventDefault();
-    setOutfits([...outfits, curProduct.id]);
+    if (outfits.indexOf(curProduct.id) === -1) {
+      setOutfits([...outfits, curProduct.id]);
+    }
   }
   useEffect(() => {
     if (curProduct.id) {
