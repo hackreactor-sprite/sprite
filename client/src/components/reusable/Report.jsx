@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 
-export default function Report({ answerid, reported, setReported }) {
+export default function Report({ id, type, reported, setReported }) {
   function sendReport() {
     axios
-      .put(`qa/answers/${answerid}/report`)
+      .put(`qa/${type}/${id}/report`)
       .then(() => {
         setReported(!reported);
         console.log('success');

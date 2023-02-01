@@ -320,6 +320,7 @@ button {
   margin: 0 5rem;
 }
 
+
 .productDetail {
   display: flex;
   justify-content: space-around;
@@ -349,7 +350,7 @@ button {
   justify-content: space-between;
 }
 
-.QA-btn-container {
+.section-btn-container {
   display: flex;
   gap: 1.5rem;
   padding-top: 1rem;
@@ -360,11 +361,48 @@ button {
   gap: 0.5rem;
 }
 
+.QA-item-container {
+  width: 100%;
+}
+
 .answer-photo {
   height: 4rem;
   -o-object-fit: scale-down;
      object-fit: scale-down;
   cursor: pointer;
+}
+
+.ratingreview {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reviewitem-header,
+.rating-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rating-content {
+  gap: 0.5rem;
+}
+
+.reviewitem-body {
+  overflow-wrap: anywhere;
+}
+
+.rating-right {
+  width: 100%;
+}
+
+.rating-progress-bar,
+.rating-bar-label {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .modal {

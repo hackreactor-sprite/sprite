@@ -101,5 +101,6 @@ AddQuestionForm.propTypes = {
     id: PropTypes.number,
     question_body: PropTypes.string,
   }).isRequired,
-  handleModal: PropTypes.func.isRequired,
+  showModal: PropTypes.bool.isRequired,
+  setShowModal: PropTypes.func.isRequired,
 };

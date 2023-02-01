@@ -8,6 +8,7 @@ import RatingReview from './layout/RatingReview';
 function App() {
   const [allProducts, setAllProducts] = useState([]);
   const [curProduct, setCurProduct] = useState({});
+  const [metadata, setMetadata] = useState({});
 
   useEffect(() => {
     axios
@@ -19,6 +20,17 @@ function App() {
       .catch((err) => new Error(err));
   }, []);
 
+  useEffect(() => {
+    if (curProduct.id) {
+      axios
+        .get(`reviews/meta/?productid=${curProduct.id}`)
+        .then((res) => {
+          setMetadata(res.data);
+        })
+        .catch((err) => new Error(err));
+    }
+  }, [curProduct]);
+
   return (
     <div className="App">
       <ProductDetail
@@ -26,12 +38,14 @@ function App() {
         setAllProducts={setAllProducts}
         curProduct={curProduct}
         setCurProduct={setCurProduct}
+        metadata={metadata}
       />
       <RelatedProducts
         allProducts={allProducts}
         setAllProducts={setAllProducts}
         curProduct={curProduct}
         setCurProduct={setCurProduct}
+        metadata={metadata}
       />
       <QuestionAnswer curProduct={curProduct} />
       <RatingReview
@@ -39,6 +53,7 @@ function App() {
         setAllProducts={setAllProducts}
         curProduct={curProduct}
         setCurProduct={setCurProduct}
+        metadata={metadata}
       />
     </div>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AddQuestionForm from './AddQuestionForm';
 import AddAnswerForm from './AddAnswerForm';
+import AddReviewForm from './AddReviewForm';
 import ImageExpand from './ImageExpand';
 
 // eslint-disable-next-line object-curly-newline
@@ -23,6 +24,10 @@ export default function ModalRoute({ content, route, state, setState }) {
           state={state}
           setState={setState}
         />
+      );
+    case 'AddReviewForm':
+      return (
+        <AddReviewForm curProduct={content} state={state} setState={setState} />
       );
     case 'ImageExpand':
       return <ImageExpand url={content.photo} alt="Expanded Image" />;
