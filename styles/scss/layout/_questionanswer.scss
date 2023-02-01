@@ -21,7 +21,7 @@
   justify-content: space-between;
 }
 
-.QA-btn-container {
+.section-btn-container {
   display: flex;
   gap: 1.5rem;
   padding-top: 1rem;
@@ -30,6 +30,10 @@
 .answer-photo-container {
   display: flex;
   gap: 0.5rem;
+}
+
+.QA-item-container {
+  width: 100%;
 }
 
 .answer-photo {

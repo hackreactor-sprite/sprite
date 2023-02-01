@@ -2,13 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-export default function AddQuestionForm({
-  curProduct,
-  curQuestion,
-  showModal,
-  setShowModal,
-}) {
-  const [answerForm, setAnswerForm] = useState({
+export default function AddQuestionForm({ curProduct, handleModal }) {
+  const [questionForm, setQuestionForm] = useState({
     name: '',
     body: '',
     email: '',
@@ -20,34 +15,34 @@ export default function AddQuestionForm({
       body: e.target.body.value,
       name: e.target.name.value,
       email: e.target.email.value,
-      photos: [...e.target.photos.value],
-      question_id: curQuestion.id,
+      product_id: curProduct.id,
     };
+    console.log('Submitted Form :', formObj);
     axios
-      .post(`/qa/questions/${curProduct.id}/answers`, formObj)
+      .post('/qa/questions', formObj)
       .then(() => {
-        setShowModal(!showModal);
+        console.log('success');
+        handleModal();
       })
       .catch((err) => new Error(err));
   }
   return (
     <form className="modal-form" onSubmit={handleSubmit}>
-      <h3>Your Answer</h3>
+      <h3>Ask your Question</h3>
       <small>
+        {'About the '}
         {curProduct.name}
-        {' : '}
-        {curQuestion.question_body}
       </small>
       <div>
         <input
           type="text"
           name="name"
           placeholder="Name"
-          value={answerForm.name}
+          value={questionForm.name}
           onChange={(e) => {
-            const newInput = { ...answerForm };
+            const newInput = { ...questionForm };
             newInput.name = e.target.value;
-            setAnswerForm(newInput);
+            setQuestionForm(newInput);
           }}
         />
         <small>
@@ -57,12 +52,12 @@ export default function AddQuestionForm({
       <textarea
         type="text"
         name="body"
-        placeholder="Your Answer"
-        value={answerForm.body}
+        placeholder="Your Question?"
+        value={questionForm.body}
         onChange={(e) => {
-          const newInput = { ...answerForm };
-          newInput.name = e.target.value;
-          setAnswerForm(newInput);
+          const newInput = { ...questionForm };
+          newInput.body = e.target.value;
+          setQuestionForm(newInput);
         }}
         maxLength="1000"
         rows="4"
@@ -73,20 +68,14 @@ export default function AddQuestionForm({
           type="text"
           name="email"
           placeholder="Please input your email"
-          value={answerForm.email}
+          value={questionForm.email}
           onChange={(e) => {
-            const newInput = { ...answerForm };
-            newInput.name = e.target.value;
-            setAnswerForm(newInput);
+            const newInput = { ...questionForm };
+            newInput.email = e.target.value;
+            setQuestionForm(newInput);
           }}
         />
       </div>
-      <input
-        type="file"
-        name="photos"
-        accept="image/png, image/jpeg"
-        placeholder="upload a photo"
-      />
       <button type="submit">Submit</button>
     </form>
   );
@@ -97,10 +86,5 @@ AddQuestionForm.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
   }).isRequired,
-  curQuestion: PropTypes.shape({
-    id: PropTypes.number,
-    question_body: PropTypes.string,
-  }).isRequired,
-  showModal: PropTypes.bool.isRequired,
-  setShowModal: PropTypes.func.isRequired,
+  handleModal: PropTypes.func.isRequired,
 };
