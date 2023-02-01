@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import RelatedProd from './RelatedProd';
 import Carousel, { handleLeftClick, handleRightClick } from '../components/reusable/Carousel';
 
-export default function RelatedProducts({ curProduct, setCurProduct }) {
+export default function RelatedProducts({ curProduct, setCurProduct, metadata }) {
   const [relatedProds, setRelatedProds] = useState([]);
   const [outfit, setOutfit] = useState([]);
   useEffect(() => {
@@ -17,18 +17,27 @@ export default function RelatedProducts({ curProduct, setCurProduct }) {
   }, [curProduct]);
   return (
     <>
-      <h4>Related Products</h4>
-      <ul className="carousel-list">
+      <h4 className="carousel">Related Products</h4>
+      <div className="carousel-list">
         <Carousel>
           {
-        relatedProds.map((id) => <RelatedProd id={id} key={id} setCurProduct={setCurProduct} />)
+        relatedProds.map((id) => (
+          <RelatedProd
+            id={id}
+            key={id}
+            curProduct={curProduct}
+            setCurProduct={setCurProduct}
+            metadata={metadata}
+          />
+        ))
         }
         </Carousel>
-      </ul>
+      </div>
       <h4>Your Outfit</h4>
-      <ul className="carousel-list">
+      <div className="carousel-list">
         <li>Add to Outfit</li>
-      </ul>
+      </div>
+      x
     </>
   );
 }
@@ -38,4 +47,7 @@ RelatedProducts.propTypes = {
     id: PropTypes.number,
   }).isRequired,
   setCurProduct: PropTypes.func.isRequired,
+  metadata: PropTypes.shape({
+    product_id: PropTypes.string,
+  }).isRequired,
 };
