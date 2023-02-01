@@ -4,11 +4,14 @@ import axios from 'axios';
 
 export default function AddQuestionForm({ curProduct }) {
   const [questionForm, setQuestionForm] = useState({
-    star: '',
-    recommend: false,
-    email: '',
+    overall: '',
+    size: '',
+    width: '',
+    comfort: '',
+    quality: '',
+    length: '',
+    fit: '',
   });
-  const [displayRatingTip, setDisplayRatingTip] = useState('');
   const ratingObj = {
     1: 'Poor',
     2: 'Fair',
@@ -64,10 +67,15 @@ export default function AddQuestionForm({ curProduct }) {
   function handleSubmit(e) {
     e.preventDefault();
     const formObj = {
-      body: e.target.body.value,
-      name: e.target.name.value,
-      email: e.target.email.value,
-      product_id: curProduct.id,
+      product_id: e.target.body.value,
+      rating: e.target.name.value,
+      summary: e.target.email.value,
+      body: curProduct.id,
+      recommend: curProduct.id,
+      name: curProduct.id,
+      email: curProduct.id,
+      photos: curProduct.id,
+      characteristics: curProduct.id,
     };
     console.log('Submitted Form :', formObj);
     axios
@@ -76,6 +84,12 @@ export default function AddQuestionForm({ curProduct }) {
         console.log('success');
       })
       .catch((err) => new Error(err));
+  }
+
+  function handleCharacteristicTip(type, rank) {
+    const set = { ...questionForm };
+    set[type] = characteristics[type][rank];
+    setQuestionForm(set);
   }
   return (
     <form className="modal-form" onSubmit={handleSubmit}>
@@ -87,9 +101,19 @@ export default function AddQuestionForm({ curProduct }) {
 
       <div>
         <h5>Overall Rating</h5>
+        <p>{questionForm.overall}</p>
         {Object.keys(ratingObj).map((rating) => (
-          <label htmlFor={ratingObj[rating]}>
-            <input type="radio" value={ratingObj[rating]} />
+          <label htmlFor="overall-rating">
+            <input
+              type="radio"
+              value={rating}
+              name="overall-rating"
+              onClick={() => {
+                const set = { ...questionForm };
+                set.overall = ratingObj[rating];
+                setQuestionForm(set);
+              }}
+            />
             {rating}
           </label>
         ))}
@@ -110,9 +134,15 @@ export default function AddQuestionForm({ curProduct }) {
       {Object.keys(characteristics).map((type) => (
         <div>
           <h5>{type}</h5>
+          <p>{questionForm[type]}</p>
           {Object.keys(characteristics[type]).map((rank) => (
             <label htmlFor={type}>
-              <input type="radio" value={rank} />
+              <input
+                type="radio"
+                value={rank}
+                name={type}
+                onClick={() => handleCharacteristicTip(type, rank)}
+              />
               {rank}
             </label>
           ))}
