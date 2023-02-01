@@ -41,7 +41,7 @@ export default function Carousel({ children }) {
       <div
         id="item-container"
         style={{
-          display: 'flex', gap: '15px', padding: '15px', border: '1px solid black', margin: '15px', maxWidth: '900px', overflowX: 'hidden',
+          display: 'flex', gap: '15px', padding: '15px', border: '1px solid black', margin: '15px', width: '800px', overflowX: 'hidden',
         }}
       >
         {children}
