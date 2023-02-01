@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import RelatedProd from './RelatedProd';
+import Carousel, { handleLeftClick, handleRightClick } from '../components/reusable/Carousel';
 
 export default function RelatedProducts({ curProduct, setCurProduct }) {
   const [relatedProds, setRelatedProds] = useState([]);
@@ -18,7 +19,11 @@ export default function RelatedProducts({ curProduct, setCurProduct }) {
     <>
       <h4>Related Products</h4>
       <ul className="carousel-list">
-        {relatedProds.map((id) => <RelatedProd id={id} key={id} setCurProduct={setCurProduct} />)}
+        <Carousel>
+          {
+        relatedProds.map((id) => <RelatedProd id={id} key={id} setCurProduct={setCurProduct} />)
+        }
+        </Carousel>
       </ul>
       <h4>Your Outfit</h4>
       <ul className="carousel-list">
