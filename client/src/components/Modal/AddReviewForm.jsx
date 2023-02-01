@@ -2,80 +2,152 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-export default function AddQuestionForm({ curProduct, handleModal }) {
+export default function AddQuestionForm({ curProduct }) {
   const [questionForm, setQuestionForm] = useState({
-    name: '',
-    body: '',
-    email: '',
+    overall: '',
+    size: '',
+    width: '',
+    comfort: '',
+    quality: '',
+    length: '',
+    fit: '',
   });
+  const ratingObj = {
+    1: 'Poor',
+    2: 'Fair',
+    3: 'Average',
+    4: 'Good',
+    5: 'Great',
+  };
+  const characteristics = {
+    size: {
+      1: 'A size too small',
+      2: '1/2 a size too small',
+      3: 'Perfect',
+      4: '1/2 a size too big',
+      5: 'A size too big',
+    },
+    width: {
+      1: 'Too narrow',
+      2: 'Slightly narrow',
+      3: 'Perfect',
+      4: 'Slightly wide',
+      5: 'Too wide',
+    },
+    comfort: {
+      1: 'Uncomfortable',
+      2: 'Slightly uncomfortable',
+      3: 'Ok',
+      4: 'Comfortable',
+      5: 'Perfect',
+    },
+    quality: {
+      1: 'Poor',
+      2: 'Below average',
+      3: 'What I expected',
+      4: 'Pretty great',
+      5: 'Perfect',
+    },
+    length: {
+      1: 'Runs short',
+      2: 'Runs slightly short',
+      3: 'Perfect',
+      4: 'Runs slightly long',
+      5: 'Runs long',
+    },
+    fit: {
+      1: 'Runs tight',
+      2: 'Runs slightly tight',
+      3: 'Perfect',
+      4: 'Runs slightly long',
+      5: 'Runs long',
+    },
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
     const formObj = {
-      body: e.target.body.value,
-      name: e.target.name.value,
-      email: e.target.email.value,
-      product_id: curProduct.id,
+      product_id: e.target.body.value,
+      rating: e.target.name.value,
+      summary: e.target.email.value,
+      body: curProduct.id,
+      recommend: curProduct.id,
+      name: curProduct.id,
+      email: curProduct.id,
+      photos: curProduct.id,
+      characteristics: curProduct.id,
     };
     console.log('Submitted Form :', formObj);
     axios
       .post('/qa/questions', formObj)
       .then(() => {
         console.log('success');
-        handleModal();
       })
       .catch((err) => new Error(err));
   }
+
+  function handleCharacteristicTip(type, rank) {
+    const set = { ...questionForm };
+    set[type] = characteristics[type][rank];
+    setQuestionForm(set);
+  }
   return (
     <form className="modal-form" onSubmit={handleSubmit}>
-      <h3>Ask your Question</h3>
+      <h3>Write your Review</h3>
       <small>
         {'About the '}
         {curProduct.name}
       </small>
+
       <div>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={questionForm.name}
-          onChange={(e) => {
-            const newInput = { ...questionForm };
-            newInput.name = e.target.value;
-            setQuestionForm(newInput);
-          }}
-        />
-        <small>
-          For privacy reasons, do not use your full name or email address
-        </small>
+        <h5>Overall Rating</h5>
+        <p>{questionForm.overall}</p>
+        {Object.keys(ratingObj).map((rating) => (
+          <label htmlFor="overall-rating">
+            <input
+              type="radio"
+              value={rating}
+              name="overall-rating"
+              onClick={() => {
+                const set = { ...questionForm };
+                set.overall = ratingObj[rating];
+                setQuestionForm(set);
+              }}
+            />
+            {rating}
+          </label>
+        ))}
       </div>
-      <textarea
-        type="text"
-        name="body"
-        placeholder="Your Question?"
-        value={questionForm.body}
-        onChange={(e) => {
-          const newInput = { ...questionForm };
-          newInput.body = e.target.value;
-          setQuestionForm(newInput);
-        }}
-        maxLength="1000"
-        rows="4"
-        cols="50"
-      />
       <div>
-        <input
-          type="text"
-          name="email"
-          placeholder="Please input your email"
-          value={questionForm.email}
-          onChange={(e) => {
-            const newInput = { ...questionForm };
-            newInput.email = e.target.value;
-            setQuestionForm(newInput);
-          }}
-        />
+        <h5>Do you recommend this product?</h5>
+        <div>
+          <label htmlFor="yes">
+            <input type="radio" value="yes" />
+            Yes
+          </label>
+          <label htmlFor="no">
+            <input type="radio" value="no" />
+            No
+          </label>
+        </div>
       </div>
+      {Object.keys(characteristics).map((type) => (
+        <div>
+          <h5>{type}</h5>
+          <p>{questionForm[type]}</p>
+          {Object.keys(characteristics[type]).map((rank) => (
+            <label htmlFor={type}>
+              <input
+                type="radio"
+                value={rank}
+                name={type}
+                onClick={() => handleCharacteristicTip(type, rank)}
+              />
+              {rank}
+            </label>
+          ))}
+        </div>
+      ))}
       <button type="submit">Submit</button>
     </form>
   );
@@ -86,5 +158,4 @@ AddQuestionForm.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
   }).isRequired,
-  handleModal: PropTypes.func.isRequired,
 };

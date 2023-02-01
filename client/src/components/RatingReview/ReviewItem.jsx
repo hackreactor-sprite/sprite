@@ -15,7 +15,6 @@ export default function ReviewItem({ review }) {
     undefined,
     options,
   );
-
   return (
     <div className="review-item">
       <div className="reviewitem-header">
