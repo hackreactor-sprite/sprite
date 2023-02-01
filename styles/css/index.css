@@ -320,6 +320,7 @@ button {
   margin: 0 5rem;
 }
 
+
 .productDetail {
   display: flex;
   justify-content: space-around;
@@ -387,13 +388,11 @@ section,
   gap: 1rem;
 }
 
-
 .reviewitem-header,
 .rating-content {
   display: flex;
   justify-content: space-between;
 }
-
 
 .rating-content {
   gap: 0.5rem;
@@ -403,13 +402,17 @@ section,
   overflow-wrap: anywhere;
 }
 
-.rating-progress-bar {
+.rating-right {
+  width: 100%;
+}
+
+.rating-progress-bar,
+.rating-bar-label {
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: center;
   gap: 0.5rem;
-
 }
 
 .modal {

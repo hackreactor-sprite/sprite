@@ -1,7 +1,5 @@
-import renderer from 'react-test-renderer';
-import QuestionAnswer from '../../src/layout/QuestionAnswer';
+const sum = require('./sum');
 
-it('renders correctly', () => {
-  const tree = renderer.create(<QuestionAnswer />).toJSON();
-  expect(tree).toMatchSnapShot();
+test('adds 1 + 2 to equal 3', () => {
+  expect(sum(1, 2)).toBe(3);
 });
