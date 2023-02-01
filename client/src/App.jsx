@@ -30,6 +30,7 @@ function App() {
         .catch((err) => new Error(err));
     }
   }, [curProduct]);
+
   return (
     <div className="App">
       <ProductDetail
