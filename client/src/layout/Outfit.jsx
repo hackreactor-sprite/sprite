@@ -33,7 +33,7 @@ export default function Outfit({ id }) {
         <div>{product.default_price}</div>
         <div>
           {average}
-          /5 stars
+          /5 ★★★★★
         </div>
       </div>
     </div>

@@ -3,6 +3,10 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import getAverage from '../helper/getAverage';
 
+// function (number) {
+//   return
+// }
+
 // TODO: sales price, mock star rating database?
 export default function RelatedProd({ id }) {
   const [product, setProduct] = useState({});
@@ -32,10 +36,13 @@ export default function RelatedProd({ id }) {
         {photo ? <img className="productPhoto" src={photo} alt="primary product style" style={{ width: '200px', height: '225px', objectFit: 'cover' }} /> : <img className="productPhoto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png" alt="not found" style={{ width: '200px', height: '225px', objectFit: 'cover' }} />}
         <div>{product.category}</div>
         <div>{product.name}</div>
-        <div>{product.default_price}</div>
+        <div>
+          ﹩
+          {product.default_price}
+        </div>
         <div>
           {average}
-          /5 stars
+          /5 ★★★★★
         </div>
       </div>
     </div>
