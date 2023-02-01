@@ -15,7 +15,7 @@ import React from 'react';
 
 export function handleLeftClick(ev) {
   ev.preventDefault();
-  const container = document.querySelector('#item-container');
+  const container = ev.target.parentElement.children[1];
   const scrollOptions = {
     top: 0,
     left: -50,
@@ -25,7 +25,7 @@ export function handleLeftClick(ev) {
 }
 export function handleRightClick(ev) {
   ev.preventDefault();
-  const container = document.querySelector('#item-container');
+  const container = ev.target.parentElement.children[1];
   const scrollOptions = {
     top: 0,
     left: 50,
@@ -36,17 +36,17 @@ export function handleRightClick(ev) {
 
 export default function Carousel({ children }) {
   return (
-    <div style={{ display: 'flex' }}>
-      <button onClick={handleLeftClick} style={{ height: '20px', marginTop: 'auto' }}>left</button>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <button type="button" onClick={handleLeftClick} style={{ height: '20px', marginTop: 'auto' }}>left</button>
       <div
         id="item-container"
         style={{
-          display: 'flex', gap: '15px', padding: '15px', border: '1px solid black', margin: '15px', maxWidth: '235px', overflowX: 'hidden',
+          display: 'flex', gap: '15px', padding: '15px', border: '1px solid black', margin: '15px', width: '800px', overflowX: 'hidden',
         }}
       >
         {children}
       </div>
-      <button onClick={handleRightClick} style={{ height: '20px', marginTop: 'auto' }}>right</button>
+      <button type="button" onClick={handleRightClick} style={{ height: '20px', marginTop: 'auto' }}>right</button>
     </div>
   );
 }
