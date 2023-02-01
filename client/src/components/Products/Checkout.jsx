@@ -5,18 +5,14 @@ export default function Checkout({ allSkus, setSelectedSku, skus }) {
   console.log('line 5 checkout skus: ', skus);
 
   const handleUpdate = (event) => {
-    console.log(skus);
+    setSelectedSku(event.target.value);
   };
-
-
 
   return (
     <div>
       <select onChange={handleUpdate}>
-        {Object.values(skus).map((sku) => <Size key={sku.id} sku={sku} />)}
-      </select>
-      <select onChange={handleUpdate}>
-        {Object.values(skus).map((sku) => <Size key={sku.id} sku={sku} />)}
+        <option>Select Size</option>
+        {Object.keys(skus).map((sku) => <Size key={sku} sku={sku} skus={skus} />)}
       </select>
     </div>
   );

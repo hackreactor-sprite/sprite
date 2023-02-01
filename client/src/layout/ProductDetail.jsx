@@ -9,6 +9,9 @@ export default function ProductDetail({ curProduct }) {
   const [styles, setStyles] = useState([]);
   const [curStyle, setCurStyle] = useState({});
   const [displayPic, setDisplayPic] = useState('');
+  console.log('line 12 styles: ', styles);
+  // want displayPic to just be an index number of array of current styles pictures
+
   // const [allSkus, setAllSkus] = useState([]);
   // ask about moving this to original get call
   // set the state of all skus that are given using Object.entries

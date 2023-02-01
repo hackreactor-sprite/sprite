@@ -18,13 +18,12 @@ export default function ProductInfo({ curProduct, curStyle }) {
         )
         : (
           <div>
-            <p className="crossOut">
-              $
-              {curStyle.original_price}
-            </p>
-            <p>
+            <p className="saleOut">
               $
               {curStyle.sale_price}
+            </p>
+            <p className="crossOut">
+              <s>${curStyle.original_price}</s>
             </p>
           </div>
         )}
