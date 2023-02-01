@@ -23,9 +23,9 @@ function App() {
   useEffect(() => {
     if (curProduct.id) {
       axios
-        .get(`reviews/meta/?product_id=${curProduct.id}`)
-        .then((data) => {
-          setMetadata(data);
+        .get(`reviews/meta/?productid=${curProduct.id}`)
+        .then((res) => {
+          setMetadata(res.data);
         })
         .catch((err) => new Error(err));
     }
