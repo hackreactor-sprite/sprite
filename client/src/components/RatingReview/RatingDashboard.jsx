@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 export default function RatingDashboard({ reviewList, metadata }) {
-  console.log('METADATA', metadata);
   const [reviewRank, setReviewRank] = useState({});
   const [totalRank, setTotalRank] = useState(0);
   const [recPercent, setRecPercent] = useState(0);
