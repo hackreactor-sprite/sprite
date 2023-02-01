@@ -27,11 +27,7 @@ export default function ModalRoute({ content, route, state, setState }) {
       );
     case 'AddReviewForm':
       return (
-        <AddReviewForm
-          curProduct={content.curProduct}
-          state={state}
-          setState={setState}
-        />
+        <AddReviewForm curProduct={content} state={state} setState={setState} />
       );
     case 'ImageExpand':
       return <ImageExpand url={content.photo} alt="Expanded Image" />;

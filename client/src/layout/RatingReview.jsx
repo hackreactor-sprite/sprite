@@ -6,7 +6,7 @@ import ReviewItem from '../components/RatingReview/ReviewItem';
 import ModalRoute from '../components/Modal/ModalRoute';
 import Modal from '../components/Reusable/Modal';
 
-export default function RatingReview({ curProduct }) {
+export default function RatingReview({ curProduct, metadata }) {
   const [partialReviewList, setPartialReviewList] = useState([]);
   const [reviewList, setReviewList] = useState([]);
   const [sortType, setSortType] = useState('newest');
@@ -43,7 +43,7 @@ export default function RatingReview({ curProduct }) {
       </div>
 
       <div className="rating-content">
-        <RatingDashboard reviewList={reviewList} />
+        <RatingDashboard reviewList={reviewList} metadata={metadata} />
         <div className="rating-right">
           <h3>
             <label className="rating-sort">
@@ -65,7 +65,7 @@ export default function RatingReview({ curProduct }) {
                 <small>MORE REVIEWS</small>
               </button>
             ) : null}
-            <button type="button">
+            <button type="button" onClick={() => setShowModal(!showModal)}>
               <small>ADD A REVIEW +</small>
             </button>
           </div>
