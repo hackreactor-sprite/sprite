@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Checkout from './Checkout';
 
 export default function AddToCart({ curProduct, curStyle }) {
   // console.log('add to cart cur product: ', curProduct);
-  const [selectedSku, setSelectedSku] = useState({});
-  const [allSkus, setAllSkus] = useState([]);
+  const [selectedSku, setSelectedSku] = useState({}); // {id: , size: }
+  const [allSkus, setAllSkus] = useState({}); // {323212: {xs: 12}, s: 4, m: 7}
+  const [sizeId, setSizeId] = useState('');
+
+  useEffect(() => {
+    setAllSkus((curStyle.skus));
+  }, [curStyle]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,7 +32,8 @@ export default function AddToCart({ curProduct, curStyle }) {
     <div>
       <h3>Checkout</h3>
       <form onSubmit={handleSubmit}>
-        {styleLoaded ? <Checkout allSkus={allSkus} setSelectedSku={setSelectedSku} skus={curStyle.skus} /> : null}
+        {styleLoaded ? <Checkout allSkus={allSkus} setSizeId={setSizeId} sizeId={sizeId} setSelectedSku={setSelectedSku} skus={curStyle.skus} /> : null}
+
         {/* <select placeholder="select size...">
           {size
             ? Object.values(curStyle.skus).map((sku) => <Size key={sku.size} sku={sku} />) : null}

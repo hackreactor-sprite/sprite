@@ -9,6 +9,7 @@ function App() {
   const [allProducts, setAllProducts] = useState([]);
   const [curProduct, setCurProduct] = useState({});
   const [metadata, setMetadata] = useState({});
+  const [curStyle, setCurStyle] = useState({});
 
   useEffect(() => {
     axios
@@ -39,6 +40,8 @@ function App() {
         curProduct={curProduct}
         setCurProduct={setCurProduct}
         metadata={metadata}
+        curStyle={curStyle}
+        setCurStyle={setCurStyle}
       />
       <RelatedProducts
         allProducts={allProducts}
