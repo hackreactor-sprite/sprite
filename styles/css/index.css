@@ -72,7 +72,8 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -319,14 +320,11 @@ button {
   margin: 0 5rem;
 }
 
-section {
-  margin: 1rem 0 1rem;
-}
 
-section,
-.review-item,
-.QA-item-container {
-  border: 1px black solid;
+.productDetail {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
 }
 
 .QA-list,
@@ -369,7 +367,8 @@ section,
 
 .answer-photo {
   height: 4rem;
-  object-fit: scale-down;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
   cursor: pointer;
 }
 

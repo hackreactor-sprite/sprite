@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import getAverage from '../helper/getAverage';
+import getAverage from '../../helper/getAverage';
 
 export default function Outfit({ id }) {
   const [product, setProduct] = useState({});
