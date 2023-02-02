@@ -329,6 +329,10 @@ section,
   border: 1px black solid;
 }
 
+.starsvg {
+  fill: black;
+}
+
 .QA-list,
 .QA-body-container,
 .QA-body,
