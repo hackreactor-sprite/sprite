@@ -8,6 +8,8 @@ import ModalRoute from '../Modal/ModalRoute';
 import Modal from '../Reusable/Modal';
 
 export default function QAItem({ QA, curProduct }) {
+  console.log(QA, 'QA');
+
   const [shown, setShown] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [shownAnswer, setShownAnswer] = useState(false);
@@ -25,7 +27,6 @@ export default function QAItem({ QA, curProduct }) {
   const content = { QA, curProduct };
   return (
     <>
-
       <div className="QA-item-container">
         <div className="QA-body-container">
           <div className="QA-body">
@@ -51,12 +52,11 @@ export default function QAItem({ QA, curProduct }) {
                 document.body,
               )}
           </div>
-
         </div>
 
         <div className="QA-answer">
           {(!shown ? partialAnswers : answerList).map((answer, i) => (
-            <AnswerItem answer={answer} key={answer.id} />
+            <AnswerItem answer={answer} key={i} />
           ))}
         </div>
       </div>
@@ -101,12 +101,11 @@ function AnswerItem({ answer }) {
 
       <div className="answer-photo-container">
         {answer.photos.map((photo, i) => (
-          <>
+          <div key={i}>
             <img
               src={photo}
               alt="Answer Image"
               className="answer-photo"
-              key={i}
               onClick={() => handleImage(photo)}
             />
 
@@ -125,7 +124,7 @@ function AnswerItem({ answer }) {
                 </Modal>,
                 document.body,
               )}
-          </>
+          </div>
         ))}
       </div>
       <div className="small-container QA-answer-detail">

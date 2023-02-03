@@ -23,7 +23,7 @@ export default function StyleSelector({ styles, setStyles, curStyle, setCurStyle
 
   return (
     <section>
-      <h3>Select Style</h3>
+      <h3>Selected Style &gt; {curStyle.name} </h3>
       {!setStyles
         ? <div />
         : styles.map((style) => (
