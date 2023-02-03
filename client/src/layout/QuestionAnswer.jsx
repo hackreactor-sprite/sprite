@@ -2,10 +2,10 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import HiddenButton from '../components/Reusable/HiddenButton';
 import QAItem from '../components/QuestionAnswers/QAItem';
 import ModalRoute from '../components/Modal/ModalRoute';
 import Modal from '../components/Reusable/Modal';
+import handleContentLoad from '../helper/handleContentLoad';
 
 export default function QuestionAnswer({ curProduct }) {
   const [QAList, setQAList] = useState([]);
@@ -33,9 +33,12 @@ export default function QuestionAnswer({ curProduct }) {
   }, [curProduct]);
 
   function handleSearch(e) {
-    if (search.length > 3 && e.key === 'Enter') {
-      const newList = [...QAList];
-      newList.filter((question) => question.question_body.includes(search));
+    if (search.length > 3 || e.key === 'Enter') {
+      let newList = [...QAList];
+      newList = newList.filter((question) => {
+        const body = question.question_body.toLowerCase();
+        return body.includes(search.toLowerCase());
+      });
       setPartialQAList(newList.slice(0, 4));
       setQAList(newList);
     }
@@ -58,19 +61,29 @@ export default function QuestionAnswer({ curProduct }) {
         onKeyDown={(e) => handleSearch(e)}
       />
       <div className="QA-list">
-        {(!shown ? partialQAList : QAList).map((QA, i) => (
+        {partialQAList.map((QA, i) => (
           <QAItem QA={QA} key={i} curProduct={curProduct} />
         ))}
       </div>
       <div className="section-btn-container">
-        {QAList.length !== 0 ? (
-          <HiddenButton
-            state={shown}
-            setState={setShown}
-            content={!shown ? 'MORE ANSWERED QUESTIONS' : 'COLLAPSE ANSWERS'}
-          />
+        {QAList.length > 2 && partialQAList.length < QAList.length ? (
+          <button
+            type="button"
+            onClick={() =>
+              handleContentLoad({
+                partialList: partialQAList,
+                setPartialList: setPartialQAList,
+                totalList: QAList,
+              })
+            }
+          >
+            <small>
+              {partialQAList.length !== QAList.length
+                ? 'MORE ANSWERED QUESTIONS'
+                : 'COLLAPSE QUESTIONS'}
+            </small>
+          </button>
         ) : null}
-
         <button type="button" onClick={() => setShowModal(!shown)}>
           <small>ADD A QUESTION +</small>
         </button>

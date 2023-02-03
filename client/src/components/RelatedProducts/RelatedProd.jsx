@@ -32,7 +32,10 @@ export default function RelatedProd({ id }) {
 
   return (
     <div className="carousel-item">
-      <div className="product">
+      <div className="product" style={{ border: '1px solid black', position: 'relative' }}>
+        <button type="button" style={{ position: 'absolute', right: '0%' }}>
+          ☆
+        </button>
         {photo ? <img className="productPhoto" src={photo} alt="primary product style" style={{ width: '200px', height: '225px', objectFit: 'cover' }} /> : <img className="productPhoto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png" alt="not found" style={{ width: '200px', height: '225px', objectFit: 'cover' }} />}
         <div>{product.category}</div>
         <div>{product.name}</div>

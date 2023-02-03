@@ -3,14 +3,10 @@ import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import Helpful from '../Reusable/Helpful';
 import Report from '../Reusable/Report';
-import HiddenButton from '../Reusable/HiddenButton';
 import ModalRoute from '../Modal/ModalRoute';
 import Modal from '../Reusable/Modal';
 
 export default function QAItem({ QA, curProduct }) {
-  console.log(QA, 'QA');
-
-  const [shown, setShown] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [shownAnswer, setShownAnswer] = useState(false);
   const [answerList, setAnswerList] = useState([]);
@@ -55,17 +51,28 @@ export default function QAItem({ QA, curProduct }) {
         </div>
 
         <div className="QA-answer">
-          {(!shown ? partialAnswers : answerList).map((answer, i) => (
+          {partialAnswers.map((answer, i) => (
             <AnswerItem answer={answer} key={i} />
           ))}
         </div>
       </div>
-      {answerList.length !== 0 ? (
-        <HiddenButton
-          state={shown}
-          setState={setShown}
-          content={!shown ? 'LOAD MORE ANSWERS' : 'COLLAPSE'}
-        />
+      {answerList.length > 2 && partialAnswers.length < answerList.length ? (
+        <button
+          type="button"
+          onClick={() =>
+            handleContentLoad({
+              partialList: partialAnswers,
+              setPartialList: setPartialAnswers,
+              totalList: answerList,
+            })
+          }
+        >
+          <small>
+            {partialAnswers.length !== answerList.length
+              ? 'LOAD MORE ANSWERS'
+              : 'COLLAPSE'}
+          </small>
+        </button>
       ) : null}
     </>
   );

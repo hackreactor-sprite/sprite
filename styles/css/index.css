@@ -72,8 +72,7 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted; /* 2 */
+  text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -320,15 +319,24 @@ button {
   margin: 0 5rem;
 }
 
+section {
+  margin: 1rem 0 1rem;
+}
+
+section,
+.review-item,
+.QA-item-container {
+  border: 1px black solid;
+}
+
+.starsvg {
+  fill: black;
+}
 
 .productDetail {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-}
-
-.starsvg {
-  fill: black;
 }
 
 .QA-list,
@@ -371,8 +379,7 @@ button {
 
 .answer-photo {
   height: 4rem;
-  -o-object-fit: scale-down;
-     object-fit: scale-down;
+  object-fit: scale-down;
   cursor: pointer;
 }
 
@@ -407,6 +414,25 @@ button {
   width: 100%;
   justify-content: center;
   gap: 0.5rem;
+}
+
+.rating-filterdropdown {
+  background: none;
+  -webkit-appearance: none;
+  border: none;
+  border-bottom: 0.1rem solid black;
+}
+
+.chevron-down {
+  height: 1rem;
+  width: 1rem;
+  border-bottom: 0.1rem solid black;
+  align-items: baseline;
+}
+
+.rating-sort {
+  display: flex;
+  align-content: baseline;
 }
 
 .modal {

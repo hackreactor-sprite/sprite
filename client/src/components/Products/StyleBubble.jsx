@@ -10,7 +10,8 @@ export default function StyleBubble({ style, styles, setCurStyle, setDisplayPic 
   };
 
   return (
-    <div className="styleThumbnails">
+    <div>
+      <label>{style.name}</label>
       <img
         className="styleThumb"
         onClick={handleClick}
