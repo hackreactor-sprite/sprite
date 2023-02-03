@@ -8,6 +8,7 @@ export default function Gallery({ displayPic, setDisplayPic, styles, curStyle })
     thumbnails = false;
   } else {
     thumbnails = true;
+    console.log('line 11: ', curStyle.photos);
   }
 
   return (
