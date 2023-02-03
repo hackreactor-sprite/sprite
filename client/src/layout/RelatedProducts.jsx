@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import RelatedProd from './RelatedProd';
-import Outfit from './Outfit';
-import Carousel, { handleLeftClick, handleRightClick } from '../components/reusable/Carousel';
+import RelatedProd from '../components/RelatedProducts/RelatedProd';
+import Outfit from '../components/RelatedProducts/Outfit';
+import Carousel from '../components/reusable/Carousel';
 
 export default function RelatedProducts({ curProduct, setCurProduct, metadata }) {
   const [relatedProds, setRelatedProds] = useState([]);
