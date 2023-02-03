@@ -6,6 +6,7 @@ import ReviewItem from '../components/RatingReview/ReviewItem';
 import ModalRoute from '../components/Modal/ModalRoute';
 import Modal from '../components/Reusable/Modal';
 import handleContentLoad from '../helper/handleContentLoad';
+import ChevronDown from '../assets/chevron-down.svg';
 
 export default function RatingReview({ curProduct, metadata }) {
   const [partialReviewList, setPartialReviewList] = useState([]);
@@ -37,20 +38,22 @@ export default function RatingReview({ curProduct, metadata }) {
       <div className="rating-content">
         <RatingDashboard reviewList={reviewList} metadata={metadata} />
         <div className="rating-right">
-          <h3>
-            <label className="rating-sort">
-              {reviewList.length} reviews, sorted by
-              <ins>
-                <select onChange={(e) => setSortType(e.target.value)}>
-                  {sortOptions.map((option, i) => (
-                    <option value={option} key={i}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </ins>
-            </label>
-          </h3>
+          <div className="rating-sort">
+            <h3>
+              {reviewList.length} reviews, sorted by{' '}
+              <select
+                className="rating-filterdropdown"
+                onChange={(e) => setSortType(e.target.value)}
+              >
+                {sortOptions.map((option, i) => (
+                  <option value={option} key={i}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="chevron-down" />
+            </h3>
+          </div>
           {partialReviewList.map((review, i) => (
             <ReviewItem review={review} key={i} />
           ))}
