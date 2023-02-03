@@ -8,7 +8,7 @@ export default function AddToCart({ curProduct, curStyle }) {
   const [sizeId, setSizeId] = useState('');
 
   useEffect(() => {
-    setAllSkus((curStyle.skus));
+    setAllSkus(curStyle.skus);
   }, [curStyle]);
 
   const handleSubmit = (event) => {
@@ -16,7 +16,6 @@ export default function AddToCart({ curProduct, curStyle }) {
   };
 
   const handleUpdate = (event) => {
-    console.log(event.target);
     // setSelectedSku(event.target);
   };
 
@@ -32,7 +31,15 @@ export default function AddToCart({ curProduct, curStyle }) {
     <div>
       <h3>Checkout</h3>
       <form onSubmit={handleSubmit}>
-        {styleLoaded ? <Checkout allSkus={allSkus} setSizeId={setSizeId} sizeId={sizeId} setSelectedSku={setSelectedSku} skus={curStyle.skus} /> : null}
+        {styleLoaded ? (
+          <Checkout
+            allSkus={allSkus}
+            setSizeId={setSizeId}
+            sizeId={sizeId}
+            setSelectedSku={setSelectedSku}
+            skus={curStyle.skus}
+          />
+        ) : null}
 
         {/* <select placeholder="select size...">
           {size

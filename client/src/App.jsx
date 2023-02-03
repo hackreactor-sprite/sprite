@@ -10,6 +10,7 @@ function App() {
   const [curProduct, setCurProduct] = useState({});
   const [metadata, setMetadata] = useState({});
   const [curStyle, setCurStyle] = useState({});
+  const [styles, setStyles] = useState([]);
 
   useEffect(() => {
     axios
@@ -27,6 +28,11 @@ function App() {
         .get(`reviews/meta/?productid=${curProduct.id}`)
         .then((res) => {
           setMetadata(res.data);
+          return axios.get(`/products/${curProduct.id}/styles`);
+        })
+        .then((res) => {
+          setStyles(res.data.results);
+          setCurStyle(res.data.results[0]);
         })
         .catch((err) => new Error(err));
     }
@@ -48,6 +54,7 @@ function App() {
         setAllProducts={setAllProducts}
         curProduct={curProduct}
         setCurProduct={setCurProduct}
+        curStyle={curStyle}
         metadata={metadata}
       />
       <QuestionAnswer curProduct={curProduct} />
