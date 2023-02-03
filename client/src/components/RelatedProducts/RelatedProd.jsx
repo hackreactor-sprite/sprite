@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import getAverage from '../helper/getAverage';
+import getAverage from '../../helper/getAverage';
 
 // function (number) {
 //   return
@@ -51,5 +51,4 @@ export default function RelatedProd({ id }) {
 
 RelatedProd.propTypes = {
   id: PropTypes.number.isRequired,
-  setCurProduct: PropTypes.func.isRequired,
 };
