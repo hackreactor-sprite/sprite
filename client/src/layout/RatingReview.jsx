@@ -26,6 +26,7 @@ export default function RatingReview({ curProduct, metadata }) {
     }
   }, [curProduct, sortType]);
 
+  console.log('reviewlist', reviewList);
   const handleReviewLoad = () => {
     const partial = [...partialReviewList].length + 1;
     for (let i = partial; i < partial + 2; i += 1) {
@@ -49,8 +50,10 @@ export default function RatingReview({ curProduct, metadata }) {
             <label className="rating-sort">
               {`${reviewList.length} reviews, sorted by `}
               <select onChange={(e) => setSortType(e.target.value)}>
-                {sortOptions.map((option) => (
-                  <option value={option}>{option}</option>
+                {sortOptions.map((option, i) => (
+                  <option value={option} key={i}>
+                    {option}
+                  </option>
                 ))}
               </select>
             </label>
