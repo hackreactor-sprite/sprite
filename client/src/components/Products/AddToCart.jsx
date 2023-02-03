@@ -10,7 +10,6 @@ export default function AddToCart({ curProduct, curStyle }) {
   };
 
   const handleUpdate = (event) => {
-    console.log(event.target);
     // setSelectedSku(event.target);
   };
 
@@ -21,12 +20,13 @@ export default function AddToCart({ curProduct, curStyle }) {
     styleLoaded = true;
   }
 
-  console.log('line 9 sku objects: ', curStyle.skus);
   return (
     <div>
       <h3>Checkout</h3>
       <form onSubmit={handleSubmit}>
-        {styleLoaded ? <Checkout setSelectedSku={setSelectedSku} skus={curStyle.skus} /> : null}
+        {styleLoaded ? (
+          <Checkout setSelectedSku={setSelectedSku} skus={curStyle.skus} />
+        ) : null}
         {/* <select placeholder="select size...">
           {size
             ? Object.values(curStyle.skus).map((sku) => <Size key={sku.size} sku={sku} />) : null}
