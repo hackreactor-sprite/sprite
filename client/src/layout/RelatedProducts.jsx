@@ -5,13 +5,15 @@ import RelatedProd from '../components/RelatedProducts/RelatedProd';
 import Outfit from '../components/RelatedProducts/Outfit';
 import Carousel from '../components/reusable/Carousel';
 
-export default function RelatedProducts({ curProduct, setCurProduct, metadata }) {
+export default function RelatedProducts({
+  curProduct, setCurProduct, metadata, curStyle,
+}) {
   const [relatedProds, setRelatedProds] = useState([]);
   const [outfits, setOutfits] = useState([]);
   function handleAddOutfit(ev) {
     ev.preventDefault();
-    if (outfits.indexOf(curProduct.id) === -1) {
-      setOutfits([...outfits, curProduct.id]);
+    if (outfits.indexOf(curStyle.style_id) === -1) {
+      setOutfits([...outfits, curStyle.style_id]);
     }
   }
   useEffect(() => {
@@ -66,6 +68,7 @@ export default function RelatedProducts({ curProduct, setCurProduct, metadata })
             curProduct={curProduct}
             setCurProduct={setCurProduct}
             metadata={metadata}
+            curStyle={curStyle}
           />
         ))
         }

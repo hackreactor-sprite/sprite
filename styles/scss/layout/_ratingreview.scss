@@ -29,3 +29,22 @@
   justify-content: center;
   gap: 0.5rem;
 }
+
+.rating-filterdropdown {
+  background: none;
+  -webkit-appearance: none;
+  border: none;
+  border-bottom: 0.1rem solid black;
+}
+
+.chevron-down {
+  height: 1rem;
+  width: 1rem;
+  border-bottom: 0.1rem solid black;
+  align-items: baseline;
+}
+
+.rating-sort {
+  display: flex;
+  align-content: baseline;
+}
