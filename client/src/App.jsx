@@ -48,6 +48,7 @@ function App() {
         setAllProducts={setAllProducts}
         curProduct={curProduct}
         setCurProduct={setCurProduct}
+        curStyle={curStyle}
         metadata={metadata}
       />
       <QuestionAnswer curProduct={curProduct} />
