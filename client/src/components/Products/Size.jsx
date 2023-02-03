@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export default function Size({ sku }) {
-  return <option value={sku.size}>{sku.size}</option>;
+export default function Size({ sku, skus }) {
+  console.log('line 4 of size info: ', skus[sku]);
+
+  return <option value={sku}>{skus[sku].size}</option>;
 }

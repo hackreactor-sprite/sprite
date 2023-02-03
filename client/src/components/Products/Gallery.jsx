@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import GalleryThumbnails from './GalleryThumbnails';
 
 export default function Gallery({ displayPic, setDisplayPic, styles, curStyle }) {
-  console.log('line 5 of Gallery the styles for gallery: ', curStyle.photos);
+  // console.log('line 5 of Gallery the styles for gallery: ', curStyle.photos);
   let thumbnails;
   if (curStyle.photos === undefined) {
     thumbnails = false;
