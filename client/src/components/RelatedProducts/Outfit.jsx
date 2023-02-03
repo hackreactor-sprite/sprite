@@ -14,7 +14,7 @@ export default function Outfit({ curProduct, curStyle, metadata }) {
         setPhoto(photoUrl);
       })
       .catch((err) => new Error(err));
-  }, [curStyle]);
+  }, []);
 
   return (
     <div className="carousel-item">
