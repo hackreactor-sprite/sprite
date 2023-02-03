@@ -5,9 +5,8 @@ import AddToCart from '../components/Products/AddToCart';
 import ProductInfo from '../components/Products/ProductInfo';
 import ProductOverview from '../components/Products/ProductOverview';
 
-export default function ProductDetail({ curProduct, curStyle, setCurStyle }) {
-  const [styles, setStyles] = useState([]);
-  const [displayPic, setDisplayPic] = useState('');
+export default function ProductDetail({ displayPic, setDisplayPic, curProduct, styles, setStyles, curStyle, setCurStyle }) {
+  // const [styles, setStyles] = useState([]);
   // want displayPic to just be an index number of array of current styles pictures
 
   // const [allSkus, setAllSkus] = useState([]);
