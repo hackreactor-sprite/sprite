@@ -3,7 +3,11 @@ import Size from './Size';
 import Quantity from './Quantity';
 
 export default function Checkout({
-  allSkus, setSelectedSku, setSizeId, sizeId, skus,
+  allSkus,
+  setSelectedSku,
+  setSizeId,
+  sizeId,
+  skus,
 }) {
   // console.log('line 5 checkout skus: ', skus);
 
@@ -34,13 +38,21 @@ export default function Checkout({
   return (
     <div>
       <select onChange={handleUpdate}>
-        <option disabled selected>Select Size</option>
-        {Object.keys(skus).map((sku) => <Size key={sku} skus={skus} sku={sku} />)}
+        <option disabled selected>
+          Select Size
+        </option>
+        {Object.keys(skus).map((sku) => (
+          <Size key={sku} skus={skus} sku={sku} />
+        ))}
       </select>
       <select>
-        <option disabled selected>-</option>
+        <option disabled selected>
+          -
+        </option>
         {isLoaded
-          ? range(allSkus, sizeId).map((num) => <Quantity key={num} num={num} />)
+          ? range(allSkus, sizeId).map((num) => (
+              <Quantity key={num} num={num} />
+            ))
           : null}
       </select>
     </div>

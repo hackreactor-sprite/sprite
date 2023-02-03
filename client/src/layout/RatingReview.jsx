@@ -5,6 +5,8 @@ import RatingDashboard from '../components/RatingReview/RatingDashboard';
 import ReviewItem from '../components/RatingReview/ReviewItem';
 import ModalRoute from '../components/Modal/ModalRoute';
 import Modal from '../components/Reusable/Modal';
+import handleContentLoad from '../helper/handleContentLoad';
+import ChevronDown from '../assets/chevron-down.svg';
 
 export default function RatingReview({ curProduct, metadata }) {
   const [partialReviewList, setPartialReviewList] = useState([]);
@@ -26,16 +28,6 @@ export default function RatingReview({ curProduct, metadata }) {
     }
   }, [curProduct, sortType]);
 
-  console.log('reviewlist', reviewList);
-  const handleReviewLoad = () => {
-    const partial = [...partialReviewList].length + 1;
-    for (let i = partial; i < partial + 2; i += 1) {
-      if (reviewList[i]) {
-        setPartialReviewList([reviewList[i], ...partialReviewList]);
-      }
-    }
-  };
-
   const sortOptions = ['Newest', 'Helpful', 'Relevant'];
   return (
     <section className="ratingreview">
@@ -46,25 +38,38 @@ export default function RatingReview({ curProduct, metadata }) {
       <div className="rating-content">
         <RatingDashboard reviewList={reviewList} metadata={metadata} />
         <div className="rating-right">
-          <h3>
-            <label className="rating-sort">
-              {`${reviewList.length} reviews, sorted by `}
-              <select onChange={(e) => setSortType(e.target.value)}>
+          <div className="rating-sort">
+            <h3>
+              {reviewList.length} reviews, sorted by{' '}
+              <select
+                className="rating-filterdropdown"
+                onChange={(e) => setSortType(e.target.value)}
+              >
                 {sortOptions.map((option, i) => (
                   <option value={option} key={i}>
                     {option}
                   </option>
                 ))}
               </select>
-            </label>
-          </h3>
+              <ChevronDown className="chevron-down" />
+            </h3>
+          </div>
           {partialReviewList.map((review, i) => (
             <ReviewItem review={review} key={i} />
           ))}
           <div className="section-btn-container">
             {reviewList.length > 2 &&
             partialReviewList.length < reviewList.length ? (
-              <button type="button" onClick={() => handleReviewLoad()}>
+              <button
+                type="button"
+                onClick={() =>
+                  handleContentLoad({
+                    partialList: partialReviewList,
+                    setPartialList: setPartialReviewList,
+                    totalList: reviewList,
+                  })
+                }
+              >
                 <small>MORE REVIEWS</small>
               </button>
             ) : null}
