@@ -327,6 +327,16 @@ button {
   flex-direction: row;
 }
 
+section {
+  margin: 1rem 0 1rem;
+}
+
+section,
+.review-item,
+.QA-item-container {
+  border: 1px black solid;
+}
+
 .QA-list,
 .QA-body-container,
 .QA-body,

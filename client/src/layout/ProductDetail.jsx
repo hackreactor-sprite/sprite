@@ -5,10 +5,17 @@ import AddToCart from '../components/Products/AddToCart';
 import ProductInfo from '../components/Products/ProductInfo';
 import ProductOverview from '../components/Products/ProductOverview';
 
-export default function ProductDetail({ curProduct }) {
+export default function ProductDetail({ curProduct, curStyle, setCurStyle }) {
   const [styles, setStyles] = useState([]);
-  const [curStyle, setCurStyle] = useState({});
   const [displayPic, setDisplayPic] = useState('');
+  // want displayPic to just be an index number of array of current styles pictures
+
+  // const [allSkus, setAllSkus] = useState([]);
+  // ask about moving this to original get call
+  // set the state of all skus that are given using Object.entries
+  // to push objects containing id, size, and quantity into an array state
+  // then I can access the state and grab the id, size, and quantity
+  // whenever I need
 
   return (
     <section className="productDetail">
