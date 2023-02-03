@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// import Star from '../Reusable/Stars';
 
 export default function RatingDashboard({ reviewList, metadata }) {
   const [reviewRank, setReviewRank] = useState({});
@@ -34,9 +35,12 @@ export default function RatingDashboard({ reviewList, metadata }) {
     <div>
       <h1>{totalRank}</h1>
       <p>{`${recPercent * 100}% of reviews recommend this product`}</p>
-      {Object.keys(reviewRank).map((rank) => (
-        <div className="rating-progress-bar">
-          <label class="rating-bar-label">
+
+      {/* <Star totalRanking={totalRank} /> */}
+
+      {Object.keys(reviewRank).map((rank, i) => (
+        <div className="rating-progress-bar" key={i}>
+          <label className="rating-bar-label">
             <ins>{`${rank} stars`}</ins>
             <progress max={1} value={reviewRank[rank] / totalRating}>
               {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
@@ -46,14 +50,15 @@ export default function RatingDashboard({ reviewList, metadata }) {
         </div>
       ))}
       {metadata.characteristics
-        ? Object.keys(metadata.characteristics).map((char) => (
-            <div>
+        ? Object.keys(metadata.characteristics).map((char, i) => (
+            <div key={i}>
               <div>{char}</div>
               <input
                 type="range"
                 min="1"
                 max="5"
                 value={metadata.characteristics[char].value}
+                readOnly
               />
             </div>
           ))

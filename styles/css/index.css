@@ -327,6 +327,10 @@ button {
   flex-direction: row;
 }
 
+.starsvg {
+  fill: black;
+}
+
 .QA-list,
 .QA-body-container,
 .QA-body,

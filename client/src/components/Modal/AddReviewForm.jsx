@@ -148,6 +148,12 @@ export default function AddQuestionForm({ curProduct }) {
           ))}
         </div>
       ))}
+      <input
+        type="file"
+        name="photos"
+        accept="image/png, image/jpeg"
+        placeholder="upload a photo"
+      />
       <button type="submit">Submit</button>
     </form>
   );
