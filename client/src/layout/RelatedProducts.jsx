@@ -17,6 +17,13 @@ export default function RelatedProducts({
       setOutfits([...outfits, curStyle]);
     }
   }
+  function handleDeleteOutfit(ev) {
+    ev.preventDefault();
+    const updatedOutfits = outfits.filter(
+      (outfit) => outfit.style_id !== Number(ev.target.parentElement.id),
+    );
+    setOutfits(updatedOutfits);
+  }
   useEffect(() => {
     if (curProduct.id) {
       axios.get(`/products/${curProduct.id}/related`)
@@ -69,6 +76,7 @@ export default function RelatedProducts({
             style={style}
             metadata={metadata}
             curProduct={curProduct}
+            handleDeleteOutfit={handleDeleteOutfit}
           />
         ))
         }
