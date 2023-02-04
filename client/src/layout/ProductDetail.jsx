@@ -18,7 +18,7 @@ export default function ProductDetail({ displayPic, setDisplayPic, curProduct, s
 
   return (
     <section className="productDetail">
-      <section className="left">
+      <div className="left">
         <Gallery
           displayPic={displayPic}
           setDisplayPic={setDisplayPic}
@@ -26,8 +26,8 @@ export default function ProductDetail({ displayPic, setDisplayPic, curProduct, s
           curStyle={curStyle}
         />
         <ProductOverview curStyle={curStyle} curProduct={curProduct} />
-      </section>
-      <section className="right">
+      </div>
+      <div className="right">
         <ProductInfo curProduct={curProduct} curStyle={curStyle} />
         <StyleSelector
           styles={styles}
@@ -39,7 +39,7 @@ export default function ProductDetail({ displayPic, setDisplayPic, curProduct, s
           setDisplayPic={setDisplayPic}
         />
         <AddToCart curProduct={curProduct} curStyle={curStyle} />
-      </section>
+      </div>
     </section>
   );
 }

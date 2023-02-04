@@ -4,6 +4,7 @@ import AddQuestionForm from './AddQuestionForm';
 import AddAnswerForm from './AddAnswerForm';
 import AddReviewForm from './AddReviewForm';
 import ImageExpand from './ImageExpand';
+import Comparison from './Comparison';
 
 // eslint-disable-next-line object-curly-newline
 export default function ModalRoute({ content, route, state, setState }) {
@@ -31,6 +32,8 @@ export default function ModalRoute({ content, route, state, setState }) {
       );
     case 'ImageExpand':
       return <ImageExpand url={content.photo} alt="Expanded Image" />;
+    case 'Comparison':
+      return <Comparison />;
     default:
       return <h3>Undefined Path</h3>;
   }
