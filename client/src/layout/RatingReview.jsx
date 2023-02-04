@@ -32,15 +32,15 @@ export default function RatingReview({ curProduct, metadata }) {
   return (
     <section className="ratingreview">
       <div>
-        <strong>RATINGS AND REVIEWS</strong>
+        <header>RATINGS AND REVIEWS</header>
       </div>
 
       <div className="rating-content">
         <RatingDashboard reviewList={reviewList} metadata={metadata} />
         <div className="rating-right">
           <div className="rating-sort">
-            <h3>
-              {reviewList.length} reviews, sorted by{' '}
+            <h2>{`${reviewList.length} reviews, sorted by `}</h2>
+            <div className="rating-inner-search">
               <select
                 className="rating-filterdropdown"
                 onChange={(e) => setSortType(e.target.value)}
@@ -52,7 +52,7 @@ export default function RatingReview({ curProduct, metadata }) {
                 ))}
               </select>
               <ChevronDown className="chevron-down" />
-            </h3>
+            </div>
           </div>
           {partialReviewList.map((review, i) => (
             <ReviewItem review={review} key={i} />

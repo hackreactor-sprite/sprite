@@ -7,11 +7,15 @@ section {
 }
 
 section,
-.review-item,
-.QA-item-container {
+.review-item {
   border: 1px black solid;
 }
 
 .starsvg {
   fill: black;
+}
+
+h5,
+p {
+  margin: 0.75rem 0;
 }
