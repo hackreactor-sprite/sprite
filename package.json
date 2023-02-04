@@ -7,7 +7,7 @@
     "lint": "nodemon ./node_modules/.bin/eslint",
     "build": "webpack --mode development --watch",
     "server": "npx nodemon server/index.js",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
