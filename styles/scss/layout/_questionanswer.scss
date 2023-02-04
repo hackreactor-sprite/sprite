@@ -1,11 +1,16 @@
-.QA-list,
-.QA-body-container,
-.QA-body,
-.QA-answer-body,
-.QA-answer-detail {
+.QA-answer-detail,
+.helpful-detail {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+.helpful-detail {
+  gap: 0.5rem;
+}
+
+.QA-body {
+  display: flex;
+  justify-content: space-between;
 }
 
 .QA-body-container,
@@ -13,12 +18,18 @@
   width: 100%;
 }
 
-.QA-list {
+.QA-list,
+.QA-body-container,
+.QA-answer-body {
+  display: flex;
   flex-direction: column;
 }
 
 .QA-body-container {
   justify-content: space-between;
+}
+.QA-body-content {
+  display: flex;
 }
 
 .section-btn-container {
@@ -27,17 +38,55 @@
   padding-top: 1rem;
 }
 
+.QA-answer-container,
 .answer-photo-container {
   display: flex;
   gap: 0.5rem;
 }
 
 .QA-item-container {
+  display: flex;
   width: 100%;
+  padding-bottom: 1rem;
+  border-bottom: 1px grey solid;
+}
+
+.QA-title {
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
 }
 
 .answer-photo {
   height: 4rem;
   object-fit: scale-down;
   cursor: pointer;
+}
+
+.QA-answer-detail > small {
+  padding-right: 1rem;
+  border-right: 1px solid black;
+}
+
+.helpful-detail {
+  padding-right: 1rem;
+  border-right: 1px solid black;
+}
+
+.QA-search {
+  border: black 1px black;
+  width: 99%;
+  height: 3rem;
+  margin: 1rem 0;
+}
+
+.QA-mag-glass {
+  height: 2rem;
+}
+
+.QA-list {
+  height: 50vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0 1rem;
 }

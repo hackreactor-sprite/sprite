@@ -19,19 +19,14 @@ export default function Helpful({ helpful, answerid }) {
       .catch((err) => new Error(err));
   }
   return (
-    <>
-      <div className="helpful-detail">
-        <small>Helpful?</small>
-        <small>
-          {' ( '}
-          {helpfulCount}
-          {' ) '}
-        </small>
-      </div>
+    <div className="helpful-detail">
+      {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+      <small>Helpful? {`(${helpfulCount})`}</small>
+
       <button type="button" onClick={!submit ? () => sendHelpful() : null}>
         <small>Yes</small>
       </button>
-    </>
+    </div>
   );
 }
 // link should appear next to the text “Helpful?” reading “Yes (#)” with the count
