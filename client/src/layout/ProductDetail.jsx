@@ -5,9 +5,8 @@ import AddToCart from '../components/Products/AddToCart';
 import ProductInfo from '../components/Products/ProductInfo';
 import ProductOverview from '../components/Products/ProductOverview';
 
-export default function ProductDetail({ curProduct, curStyle, setCurStyle }) {
-  const [styles, setStyles] = useState([]);
-  const [displayPic, setDisplayPic] = useState('');
+export default function ProductDetail({ displayPic, setDisplayPic, curProduct, styles, setStyles, curStyle, setCurStyle }) {
+  // const [styles, setStyles] = useState([]);
   // want displayPic to just be an index number of array of current styles pictures
 
   // const [allSkus, setAllSkus] = useState([]);
@@ -19,7 +18,7 @@ export default function ProductDetail({ curProduct, curStyle, setCurStyle }) {
 
   return (
     <section className="productDetail">
-      <section className="left">
+      <div className="left">
         <Gallery
           displayPic={displayPic}
           setDisplayPic={setDisplayPic}
@@ -27,8 +26,8 @@ export default function ProductDetail({ curProduct, curStyle, setCurStyle }) {
           curStyle={curStyle}
         />
         <ProductOverview curStyle={curStyle} curProduct={curProduct} />
-      </section>
-      <section className="right">
+      </div>
+      <div className="right">
         <ProductInfo curProduct={curProduct} curStyle={curStyle} />
         <StyleSelector
           styles={styles}
@@ -40,7 +39,7 @@ export default function ProductDetail({ curProduct, curStyle, setCurStyle }) {
           setDisplayPic={setDisplayPic}
         />
         <AddToCart curProduct={curProduct} curStyle={curStyle} />
-      </section>
+      </div>
     </section>
   );
 }

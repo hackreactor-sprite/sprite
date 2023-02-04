@@ -21,14 +21,14 @@ export default function RatingDashboard({ reviewList, metadata }) {
       );
 
       setTotalRating(total);
-      setTotalRank(Math.round(weight / total / 0.25) * 0.25);
+      setTotalRank(Math.round((weight / total) * 4) / 4);
 
       const totalrec =
         parseInt(metadata.recommended.true) +
         parseInt(metadata.recommended.false);
 
       const weightedAverage = parseInt(metadata.recommended.true) / totalrec;
-      setRecPercent(Math.round(weightedAverage / 0.25) * 0.25);
+      setRecPercent(Math.round(weightedAverage * 4) / 4);
     }
   }, [metadata]);
   return (
@@ -51,12 +51,13 @@ export default function RatingDashboard({ reviewList, metadata }) {
       ))}
       {metadata.characteristics
         ? Object.keys(metadata.characteristics).map((char, i) => (
-            <div key={i}>
+            <div key={i} className="rating-slider-container">
               <div>{char}</div>
               <input
                 type="range"
                 min="1"
                 max="5"
+                className="rating-slider"
                 value={metadata.characteristics[char].value}
                 readOnly
               />

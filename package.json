@@ -7,7 +7,7 @@
     "lint": "nodemon ./node_modules/.bin/eslint",
     "build": "webpack --mode development --watch",
     "server": "npx nodemon server/index.js",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -24,11 +24,11 @@
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
+    "@svgr/webpack": "^6.5.1",
     "@testing-library/dom": "^8.20.0",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/user-event": "^14.4.3",
-    "@svgr/webpack": "^6.5.1",
     "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
     "dotenv": "^16.0.3",

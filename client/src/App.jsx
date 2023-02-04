@@ -11,6 +11,7 @@ function App() {
   const [metadata, setMetadata] = useState({});
   const [curStyle, setCurStyle] = useState({});
   const [styles, setStyles] = useState([]);
+  const [displayPic, setDisplayPic] = useState('');
 
   useEffect(() => {
     axios
@@ -33,6 +34,7 @@ function App() {
         .then((res) => {
           setStyles(res.data.results);
           setCurStyle(res.data.results[0]);
+          setDisplayPic(res.data.results[0].photos[0].url);
         })
         .catch((err) => new Error(err));
     }
@@ -46,8 +48,12 @@ function App() {
         curProduct={curProduct}
         setCurProduct={setCurProduct}
         metadata={metadata}
+        styles={styles}
+        setStyles={setStyles}
         curStyle={curStyle}
         setCurStyle={setCurStyle}
+        displayPic={displayPic}
+        setDisplayPic={setDisplayPic}
       />
       <RelatedProducts
         allProducts={allProducts}
@@ -55,6 +61,8 @@ function App() {
         curProduct={curProduct}
         setCurProduct={setCurProduct}
         curStyle={curStyle}
+        styles={styles}
+        setStyles={setStyles}
         metadata={metadata}
       />
       <QuestionAnswer curProduct={curProduct} />
