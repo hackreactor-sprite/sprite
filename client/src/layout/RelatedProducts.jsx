@@ -6,15 +6,15 @@ import Outfit from '../components/RelatedProducts/Outfit';
 import Carousel from '../components/reusable/Carousel';
 
 export default function RelatedProducts({
-  curProduct, setCurProduct, metadata, curStyle,
+  curProduct, setCurProduct, metadata, curStyle, styles, setStyles,
 }) {
   const [relatedProds, setRelatedProds] = useState([]);
   const [outfits, setOutfits] = useState([]);
   // todo: save entire curstyle
   function handleAddOutfit(ev) {
     ev.preventDefault();
-    if (outfits.indexOf(curStyle.style_id) === -1) {
-      setOutfits([curStyle.style_id, ...outfits]);
+    if (outfits.filter((outfit) => outfit.style_id === curStyle.style_id).length === 0) {
+      setOutfits([...outfits, curStyle]);
     }
   }
   useEffect(() => {
@@ -62,14 +62,13 @@ export default function RelatedProducts({
             </div>
           </div>
           {
-        outfits.map((id) => (
+        outfits.map((style) => (
           <Outfit
-            id={id}
-            key={id}
-            curProduct={curProduct}
-            setCurProduct={setCurProduct}
+            id={style.style_id}
+            key={style.style_id}
+            style={style}
             metadata={metadata}
-            curStyle={curStyle}
+            curProduct={curProduct}
           />
         ))
         }

@@ -13,7 +13,6 @@ function App() {
   const [styles, setStyles] = useState([]);
   const [displayPic, setDisplayPic] = useState('');
 
-
   useEffect(() => {
     axios
       .get('/products')
@@ -62,6 +61,8 @@ function App() {
         curProduct={curProduct}
         setCurProduct={setCurProduct}
         curStyle={curStyle}
+        styles={styles}
+        setStyles={setStyles}
         metadata={metadata}
       />
       <QuestionAnswer curProduct={curProduct} />
