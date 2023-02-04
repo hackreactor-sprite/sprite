@@ -6,7 +6,8 @@ import threequarter from '../../assets/star-three-quarter.svg';
 import filled from '../../assets/star-filled.svg';
 
 export default function Star({ totalRanking }) {
-  let stars = [];
+  // Total Ranking 3.75 // 5
+  const stars = [];
   const map = {
     0: empty,
     0.25: onequarter,
@@ -14,14 +15,15 @@ export default function Star({ totalRanking }) {
     0.75: threequarter,
     1: filled,
   };
-
-  for (let i = 0; i < 5; i++) {
-    if (totalRanking >= 1) {
+  let rank = totalRanking;
+  for (let i = 0; i < 5; i += 1) {
+    rank = -1;
+    if (rank > 1) {
       stars.push(map[1]);
-    } else if (i === totalRanking) {
-      stars.push(map[totalRanking]);
+    } else if (rank < 1 && rank > 0) {
+      stars.push(map[rank]);
     } else {
-      stars.push(<CustomStar key={i} fillPercentage={0} />);
+      stars.push(map[0]);
     }
   }
 
