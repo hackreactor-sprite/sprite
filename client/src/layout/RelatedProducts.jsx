@@ -8,6 +8,7 @@ import Carousel from '../components/reusable/Carousel';
 export default function RelatedProducts({
   curProduct, setCurProduct, metadata, curStyle, styles, setStyles,
 }) {
+  console.log('this is curProduct', curProduct);
   const [relatedProds, setRelatedProds] = useState([]);
   const [outfits, setOutfits] = useState([]);
   // todo: save entire curstyle
