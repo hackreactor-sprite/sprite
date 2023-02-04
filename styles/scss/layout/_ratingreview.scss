@@ -21,6 +21,11 @@
   width: 100%;
 }
 
+.review-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px grey solid;
+}
+
 .rating-progress-bar,
 .rating-bar-label {
   display: flex;
