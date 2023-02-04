@@ -6,6 +6,7 @@ import QAItem from '../components/QuestionAnswers/QAItem';
 import ModalRoute from '../components/Modal/ModalRoute';
 import Modal from '../components/Reusable/Modal';
 import handleContentLoad from '../helper/handleContentLoad';
+import MagnifyingGlassSVG from '../assets/magnifying-glass.svg';
 
 export default function QuestionAnswer({ curProduct }) {
   const [QAList, setQAList] = useState([]);
@@ -47,8 +48,9 @@ export default function QuestionAnswer({ curProduct }) {
   return (
     <section className="questionanswers">
       <div>
-        <strong>QUESTIONS & ANSWERS</strong>
+        <header>QUESTIONS & ANSWERS</header>
       </div>
+
       <input
         className="QA-search"
         type="text"
@@ -59,7 +61,13 @@ export default function QuestionAnswer({ curProduct }) {
           handleSearch(e);
         }}
         onKeyDown={(e) => handleSearch(e)}
+        style={{
+          backgroundImage: `url(${MagnifyingGlassSVG})`,
+          backgroundPosition: 'right',
+          backgroundRepeat: 'no - repeat',
+        }}
       />
+
       <div className="QA-list">
         {partialQAList.map((QA, i) => (
           <QAItem QA={QA} key={i} curProduct={curProduct} />
