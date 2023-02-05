@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Size({ sku, skus }) {
-  console.log('line 4 of size info: ', skus[sku]);
+  console.log('line 4 of size info: ', sku);
 
-  return <option value={sku}>{skus[sku].size}</option>;
+  return <option className="sizeOption" value={sku}>{skus[sku].size}</option>;
 }
