@@ -8,7 +8,6 @@ import Carousel from '../components/reusable/Carousel';
 export default function RelatedProducts({
   curProduct, setCurProduct, metadata, curStyle, styles, setStyles,
 }) {
-  console.log('this is curProduct', curProduct);
   const [relatedProds, setRelatedProds] = useState([]);
   const [outfits, setOutfits] = useState([]);
   // todo: save entire curstyle
@@ -34,7 +33,7 @@ export default function RelatedProducts({
     }
   }, [curProduct]);
   return (
-    <>
+    <section className="relatedproducts">
       <h4 className="carousel">Related Products</h4>
       <div className="carousel-list">
         <Carousel>
@@ -83,7 +82,7 @@ export default function RelatedProducts({
         }
         </Carousel>
       </div>
-    </>
+    </section>
   );
 }
 
