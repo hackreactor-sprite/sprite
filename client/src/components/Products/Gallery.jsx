@@ -5,29 +5,33 @@ import Modal from '../reusable/Modal';
 import GalleryThumbnails from './GalleryThumbnails';
 
 export default function Gallery({
-  displayPic,
-  setDisplayPic,
   styles,
   curStyle,
 }) {
   // console.log('line 5 of Gallery the styles for gallery: ', curStyle.photos);
   const [showBigImage, setShowBigImage] = useState(false);
+  const [displayIndex, setDisplayIndex] = useState(0);
 
   let thumbnails;
+  let bigImage;
+  let content;
   if (curStyle.photos === undefined) {
     thumbnails = false;
+    bigImage = false;
   } else {
     thumbnails = true;
+    bigImage = true;
     // console.log('line 11: ', curStyle.photos);
+    content = { photo: curStyle.photos[displayIndex].url };
   }
-
-  const content = { photo: displayPic };
 
   return (
     <section>
       <h3>Image Gallery</h3>
       <div className="galleryPic">
-        <img src={displayPic} alt="" height="400px" />
+        {bigImage
+          ? <img src={curStyle.photos[displayIndex].url} alt="" height="400px" />
+          : null}
         <button type="button" onClick={() => { setShowBigImage(!showBigImage); }}>+</button>
       </div>
       {showBigImage
@@ -44,12 +48,12 @@ export default function Gallery({
         )}
       <div className="galleryThumbs">
         {thumbnails ? (
-          curStyle.photos.map((picture) => (
+          curStyle.photos.map((picture, i) => (
             <GalleryThumbnails
               picture={picture}
-              displayPic={displayPic}
-              setDisplayPic={setDisplayPic}
               key={picture.url}
+              setDisplayIndex={setDisplayIndex}
+              i={i}
             />
           ))
         ) : (

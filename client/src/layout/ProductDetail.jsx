@@ -30,7 +30,7 @@ export default function ProductDetail({ displayPic, setDisplayPic, curProduct, s
         <ProductOverview curStyle={curStyle} curProduct={curProduct} />
       </div>
       <div className="right">
-        <ProductInfo curProduct={curProduct} curStyle={curStyle} />
+        <ProductInfo curProduct={curProduct} curStyle={curStyle} metadata={metadata} setMetadata={setMetadata} />
         <StyleSelector
           styles={styles}
           setStyles={setStyles}
