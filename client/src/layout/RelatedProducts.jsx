@@ -10,7 +10,7 @@ export default function RelatedProducts({
 }) {
   const [relatedProds, setRelatedProds] = useState([]);
   const [outfits, setOutfits] = useState([]);
-  // todo: save entire curstyle
+
   function handleAddOutfit(ev) {
     ev.preventDefault();
     if (outfits.filter((outfit) => outfit.style_id === curStyle.style_id).length === 0) {
