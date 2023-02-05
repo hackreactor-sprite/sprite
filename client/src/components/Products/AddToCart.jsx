@@ -26,7 +26,7 @@ export default function AddToCart({ curProduct, curStyle }) {
     styleLoaded = true;
   }
 
-  console.log('line 25 sku objects: ', curStyle.skus);
+  // console.log('line 25 sku objects: ', curStyle.skus);
   return (
     <div>
       <h3>Checkout</h3>

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Helpful from '../Reusable/Helpful';
 import Report from '../Reusable/Report';
+import Star from '../Reusable/Stars';
 
 export default function ReviewItem({ review }) {
   const [reported, setReported] = useState(false);
@@ -18,7 +19,8 @@ export default function ReviewItem({ review }) {
   return (
     <div className="review-item">
       <div className="reviewitem-header">
-        <div>{review.rating}</div>
+        <Star totalRanking={review.rating} />
+
         <small>
           {'by '}
           {review.reviewer_name}

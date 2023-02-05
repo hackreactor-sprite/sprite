@@ -18,19 +18,17 @@ export default function QuestionAnswer({ curProduct }) {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    if (curProduct.id) {
-      axios
-        .get(`/qa/questions/?page=${page}&count=${queryCount}&productid=40348`)
-        .then((res) => {
-          const sorted = res.data.results.sort(
-            (a, b) => b.question_helpfulness - a.question_helpfulness,
-          );
+    axios
+      .get(`/qa/questions/?page=${page}&count=${queryCount}&productid=40348`)
+      .then((res) => {
+        const sorted = res.data.results.sort(
+          (a, b) => b.question_helpfulness - a.question_helpfulness,
+        );
 
-          setPartialQAList(sorted.slice(0, 4));
-          setQAList(sorted);
-        })
-        .catch((err) => new Error(err));
-    }
+        setPartialQAList(sorted.slice(0, 4));
+        setQAList(sorted);
+      })
+      .catch((err) => new Error(err));
   }, [curProduct]);
 
   function handleSearch(e) {

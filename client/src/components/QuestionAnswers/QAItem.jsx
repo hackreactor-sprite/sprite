@@ -11,7 +11,6 @@ export default function QAItem({ QA, curProduct }) {
   const [shownAnswer, setShownAnswer] = useState(false);
   const [answerList, setAnswerList] = useState([]);
   const [partialAnswers, setPartialAnswers] = useState([]);
-
   useEffect(() => {
     const sort = Object.values(QA.answers).sort(
       (a, b) => b.helpfulness - a.helpfulness,
@@ -19,7 +18,7 @@ export default function QAItem({ QA, curProduct }) {
     if (sort.length !== 0) setShownAnswer(!shownAnswer);
     setPartialAnswers(sort.slice(0, 2));
     setAnswerList(sort.slice(4));
-  }, []);
+  }, [QA]);
   const content = { QA, curProduct };
   return (
     <>
