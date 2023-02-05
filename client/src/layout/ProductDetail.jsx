@@ -5,9 +5,19 @@ import AddToCart from '../components/Products/AddToCart';
 import ProductInfo from '../components/Products/ProductInfo';
 import ProductOverview from '../components/Products/ProductOverview';
 
-export default function ProductDetail({
-  displayPic, setDisplayPic, curProduct, styles, setStyles, curStyle, setCurStyle,
-}) {
+export default function ProductDetail({ displayPic, setDisplayPic, curProduct, styles, setStyles, curStyle, setCurStyle, metadata, setMetadata }) {
+  // const [styles, setStyles] = useState([]);
+  // want displayPic to just be an index number of array of current styles pictures
+
+  // const [allSkus, setAllSkus] = useState([]);
+  // ask about moving this to original get call
+  // set the state of all skus that are given using Object.entries
+  // to push objects containing id, size, and quantity into an array state
+  // then I can access the state and grab the id, size, and quantity
+  // whenever I need
+
+  console.log('line 19: ', metadata.ratings);
+
   return (
     <section className="productDetail">
       <div className="left">

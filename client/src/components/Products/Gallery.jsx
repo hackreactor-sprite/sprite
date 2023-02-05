@@ -5,7 +5,10 @@ import Modal from '../reusable/Modal';
 import GalleryThumbnails from './GalleryThumbnails';
 
 export default function Gallery({
-  displayPic, setDisplayPic, styles, curStyle,
+  displayPic,
+  setDisplayPic,
+  styles,
+  curStyle,
 }) {
   // console.log('line 5 of Gallery the styles for gallery: ', curStyle.photos);
   const [showBigImage, setShowBigImage] = useState(false);
@@ -15,7 +18,7 @@ export default function Gallery({
     thumbnails = false;
   } else {
     thumbnails = true;
-    console.log('line 11: ', displayPic);
+    // console.log('line 11: ', curStyle.photos);
   }
 
   const content = { photo: displayPic };
@@ -40,8 +43,8 @@ export default function Gallery({
           document.body,
         )}
       <div className="galleryThumbs">
-        {thumbnails
-          ? curStyle.photos.map((picture) => (
+        {thumbnails ? (
+          curStyle.photos.map((picture) => (
             <GalleryThumbnails
               picture={picture}
               displayPic={displayPic}
@@ -49,7 +52,9 @@ export default function Gallery({
               key={picture.url}
             />
           ))
-          : <div />}
+        ) : (
+          <div />
+        )}
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import Star from '../Reusable/Stars';
+import Star from '../Reusable/Stars';
 
 export default function RatingDashboard({ reviewList, metadata }) {
   const [reviewRank, setReviewRank] = useState({});
@@ -36,7 +36,7 @@ export default function RatingDashboard({ reviewList, metadata }) {
       <h1>{totalRank}</h1>
       <p>{`${recPercent * 100}% of reviews recommend this product`}</p>
 
-      {/* <Star totalRanking={totalRank} /> */}
+      <Star totalRanking={totalRank} />
 
       {Object.keys(reviewRank).map((rank, i) => (
         <div className="rating-progress-bar" key={i}>
@@ -49,7 +49,7 @@ export default function RatingDashboard({ reviewList, metadata }) {
           </label>
         </div>
       ))}
-      {metadata.characteristics
+      {totalRating
         ? Object.keys(metadata.characteristics).map((char, i) => (
             <div key={i} className="rating-slider-container">
               <div>{char}</div>
