@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Star from '../reusable/Stars';
+import getAverage from '../../helper/getAverage';
 
 export default function ProductInfo({ curProduct, curStyle }) {
   // line 11 price needs to be set to the style's price
