@@ -5,10 +5,8 @@ export default function Helpful({ helpful, answerid }) {
   const [helpfulCount, setHelpfulCount] = useState(0);
   const [submit, setSubmit] = useState(false);
   useEffect(() => {
-    if (helpful) {
-      setHelpfulCount(helpful);
-    }
-  }, []);
+    setHelpfulCount(helpful);
+  }, [helpful]);
   function sendHelpful() {
     axios
       .put(`qa/answers/${answerid}/helpful`)

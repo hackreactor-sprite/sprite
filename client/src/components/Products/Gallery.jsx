@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import GalleryThumbnails from './GalleryThumbnails';
 
 export default function Gallery({
-  displayPic, setDisplayPic, styles, curStyle,
+  displayPic,
+  setDisplayPic,
+  styles,
+  curStyle,
 }) {
   // console.log('line 5 of Gallery the styles for gallery: ', curStyle.photos);
   let thumbnails;
@@ -10,7 +13,7 @@ export default function Gallery({
     thumbnails = false;
   } else {
     thumbnails = true;
-    console.log('line 11: ', curStyle.photos);
+    // console.log('line 11: ', curStyle.photos);
   }
 
   return (
@@ -20,8 +23,8 @@ export default function Gallery({
         <img src={displayPic} alt="" height="400px" />
       </div>
       <div className="galleryThumbs">
-        {thumbnails
-          ? curStyle.photos.map((picture) => (
+        {thumbnails ? (
+          curStyle.photos.map((picture) => (
             <GalleryThumbnails
               picture={picture}
               displayPic={displayPic}
@@ -29,7 +32,9 @@ export default function Gallery({
               key={picture.url}
             />
           ))
-          : <div />}
+        ) : (
+          <div />
+        )}
       </div>
     </section>
   );
