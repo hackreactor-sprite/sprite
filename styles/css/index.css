@@ -72,8 +72,7 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted; /* 2 */
+  text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -407,8 +406,7 @@ p {
 
 .answer-photo {
   height: 4rem;
-  -o-object-fit: scale-down;
-     object-fit: scale-down;
+  object-fit: scale-down;
   cursor: pointer;
 }
 
@@ -534,7 +532,6 @@ progress {
   left: 50%;
   transform: translate(-50%, -50%);
   background: grey;
-  top: 20rem;
   border-radius: 1rem;
   padding: 0 2rem 2rem 2rem;
 }
@@ -543,4 +540,14 @@ progress {
 .modal-form {
   display: flex;
   flex-direction: column;
+}
+
+.stars {
+  display: flex;
+  margin: 0.25rem 0;
+}
+
+.starsvg {
+  height: 1rem;
+  width: 1rem;
 }/*# sourceMappingURL=index.css.map */
