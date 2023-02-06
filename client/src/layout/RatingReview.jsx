@@ -14,18 +14,16 @@ export default function RatingReview({ curProduct, metadata }) {
   const [sortType, setSortType] = useState('newest');
   const [showModal, setShowModal] = useState(false);
   useEffect(() => {
-    if (curProduct.id) {
-      axios
-        .get(`/reviews/?sort=${sortType}&productid=40348`)
-        .then((res) => {
-          const sorted = res.data.results.sort(
-            (a, b) => b.helpfulness - a.helpfulness,
-          );
-          setPartialReviewList(sorted.slice(0, 2));
-          setReviewList(sorted);
-        })
-        .catch((err) => new Error(err));
-    }
+    axios
+      .get(`/reviews/?sort=${sortType}&productid=40348`)
+      .then((res) => {
+        const sorted = res.data.results.sort(
+          (a, b) => b.helpfulness - a.helpfulness,
+        );
+        setPartialReviewList(sorted.slice(0, 2));
+        setReviewList(sorted);
+      })
+      .catch((err) => new Error(err));
   }, [curProduct, sortType]);
 
   const sortOptions = ['Newest', 'Helpful', 'Relevant'];
