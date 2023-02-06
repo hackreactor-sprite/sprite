@@ -7,7 +7,7 @@ import ModalRoute from '../Modal/ModalRoute';
 import Modal from '../reusable/Modal';
 import Star from '../reusable/Stars';
 
-export default function RelatedProd({ id, curProduct }) {
+export default function RelatedProd({ id, curProduct, handleProductClick }) {
   const [product, setProduct] = useState({});
   const [average, setAverage] = useState(0);
   const [photo, setPhoto] = useState('');
@@ -41,8 +41,8 @@ export default function RelatedProd({ id, curProduct }) {
 
   return (
     <div className="carousel-item">
-      <div className="product" style={{ border: '1px solid black', position: 'relative' }}>
-        <button type="button" style={{ position: 'absolute', right: '0%' }} onClick={() => setShowModal(!showModal)}>
+      <div className="product" style={{ border: '1px solid black', position: 'relative', cursor: 'pointer' }} onClick={handleProductClick} id={id}>
+        <button type="button" style={{ position: 'absolute', right: '0%' }} onClick={(ev) => { ev.stopPropagation(); setShowModal(!showModal); }}>
           ☆
         </button>
         {showModal && createPortal(
