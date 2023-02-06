@@ -37,7 +37,7 @@ export default function RelatedProducts({
         .then((result) => {
           setRelatedProds([...new Set(result.data)]);
         })
-        .catch((err) => new Error(err));
+        .catch((err) => console.log(err));
     }
   }, [curProduct]);
   return (
