@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import getAverage from '../../helper/getAverage';
+import Star from '../reusable/Stars';
 
 export default function Outfit({
   style, metadata, curProduct, handleDeleteOutfit, id,
@@ -35,8 +36,7 @@ export default function Outfit({
           </>
         )}
         <div>
-          {getAverage(metadata.ratings)}
-          /5 ★★★★★
+          <Star totalRanking={getAverage(metadata.ratings)} />
         </div>
       </div>
     </div>
