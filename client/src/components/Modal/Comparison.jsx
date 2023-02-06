@@ -7,10 +7,7 @@ export default function Comparison({
 }) {
   const curProdChar = curProd.features;
   const prodChar = product.features;
-  console.log('this is curProdchar', curProdChar);
-  console.log('this is prodChar', prodChar);
   const compareChars = comparing(curProdChar, prodChar);
-  console.log('this is comparing', compareChars);
 
   return (
     <>
@@ -25,7 +22,7 @@ export default function Comparison({
         </thead>
         <tbody>
           {compareChars.map((char) => (
-            <tr>
+            <tr key={char.name}>
               <td>{char.curProd && '✓'}</td>
               <td>{char.name}</td>
               <td>{char.relProd && '✓'}</td>
