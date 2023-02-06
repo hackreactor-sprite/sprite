@@ -41,7 +41,14 @@ export default function RelatedProd({ id, curProduct, handleProductClick }) {
 
   return (
     <div className="carousel-item">
-      <div className="product" style={{ border: '1px solid black', position: 'relative', cursor: 'pointer' }} onClick={handleProductClick} id={id}>
+      <div
+        className="product"
+        style={{
+          width: 200, boxSizing: 'border-box', border: '1px solid black', position: 'relative', cursor: 'pointer',
+        }}
+        onClick={handleProductClick}
+        id={id}
+      >
         <button type="button" style={{ position: 'absolute', right: '0%' }} onClick={(ev) => { ev.stopPropagation(); setShowModal(!showModal); }}>
           ☆
         </button>
