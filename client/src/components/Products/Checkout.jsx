@@ -10,7 +10,7 @@ export default function Checkout({
   sizeId,
   skus,
 }) {
-  console.log('line 5 checkout sizeId: ', skus);
+  //console.log('line 5 checkout sizeId: ', skus);
 
   const handleUpdate = (event) => {
     setSizeId(event.target.value);

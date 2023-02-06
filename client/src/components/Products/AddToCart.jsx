@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Checkout from './Checkout';
 
 export default function AddToCart({ curProduct, curStyle }) {
-  // console.log('add to cart cur product: ', curProduct);
+  // //console.log('add to cart cur product: ', curProduct);
   const [selectedSku, setSelectedSku] = useState({}); // {id: , size: }
   const [allSkus, setAllSkus] = useState({}); // {323212: {xs: 12}, s: 4, m: 7}
   const [sizeId, setSizeId] = useState('');
@@ -26,7 +26,7 @@ export default function AddToCart({ curProduct, curStyle }) {
     styleLoaded = true;
   }
 
-  // console.log('line 25 sku objects: ', curStyle.skus);
+  // //console.log('line 25 sku objects: ', curStyle.skus);
   return (
     <div>
       <h3>Checkout</h3>

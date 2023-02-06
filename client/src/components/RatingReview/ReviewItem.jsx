@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Helpful from '../Reusable/Helpful';
 import Report from '../Reusable/Report';
-import Star from '../Reusable/Stars';
+import Star from '../reusable/Stars';
 
 export default function ReviewItem({ review }) {
   const [reported, setReported] = useState(false);

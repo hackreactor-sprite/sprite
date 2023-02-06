@@ -21,11 +21,11 @@ export default function AddQuestionForm({
       email: e.target.email.value,
       product_id: curProduct.id,
     };
-    console.log('Submitted Form :', formObj);
+    //console.log('Submitted Form :', formObj);
     axios
       .post('/qa/questions', formObj)
       .then(() => {
-        console.log('success');
+        //console.log('success');
         setShowModal(!showModal);
       })
       .catch((err) => new Error(err));

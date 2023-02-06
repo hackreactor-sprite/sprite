@@ -4,7 +4,7 @@ import getAverage from '../../helper/getAverage';
 
 export default function ProductInfo({ curProduct, curStyle, metadata, setMetadata }) {
   // line 11 price needs to be set to the style's price
-  // console.log('line 5 of product info: ', curStyle);
+  // //console.log('line 5 of product info: ', curStyle);
   const [reviewRank, setReviewRank] = useState({});
   const [totalRank, setTotalRank] = useState(0);
 
@@ -26,7 +26,7 @@ export default function ProductInfo({ curProduct, curStyle, metadata, setMetadat
     }
   }, [metadata]);
 
-  console.log('this is the metadata line 29 of product info: ', metadata);
+  //console.log('this is the metadata line 29 of product info: ', metadata);
 
   return (
     <section>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import StyleBubble from './StyleBubble';
 
 export default function StyleSelector({ styles, setStyles, curStyle, setCurStyle, curProduct, displayPic, setDisplayPic }) {
-  console.log('line 6 curStyle: ', curStyle);
+  //console.log('line 6 curStyle: ', curStyle);
 
   return (
     <section>
