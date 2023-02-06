@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function ImageExpand({ url, alt }) {
-  return <img className="ImageExpand" src={url} alt={alt} />;
+  return (
+    <div className="expanded">
+      <div className="leftArrow">&lt;</div>
+      <img className="ImageExpand" src={url} alt={alt} />
+      <div className="rightArrow">&gt;</div>
+    </div>
+  );
 }
 
 ImageExpand.propTypes = {

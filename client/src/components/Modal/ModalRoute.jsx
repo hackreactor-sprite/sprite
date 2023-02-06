@@ -33,7 +33,14 @@ export default function ModalRoute({ content, route, state, setState }) {
     case 'ImageExpand':
       return <ImageExpand url={content.photo} alt="Expanded Image" />;
     case 'Comparison':
-      return <Comparison />;
+      return (
+        <Comparison
+          curProd={content.curProd}
+          product={content.product}
+          state={state}
+          setState={setState}
+        />
+      );
     default:
       return <h3>Undefined Path</h3>;
   }
