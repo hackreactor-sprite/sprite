@@ -1,3 +1,7 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import QuestionAnswer from './QuestionAnswer';
+
 const mockProduct = {
   id: 40344,
   campus: 'hr-rfp',
@@ -10,3 +14,9 @@ const mockProduct = {
   created_at: '2021-08-13T14:38:44.509Z',
   updated_at: '2021-08-13T14:38:44.509Z',
 };
+
+test('should show load component with header, searchbox, and list', async () => {
+  render(<QuestionAnswer curProduct={mockProduct} />);
+
+  expect(screen.getByRole('region', { name: /questionanswers/i })).toBeTruthy();
+});

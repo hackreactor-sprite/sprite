@@ -17,13 +17,9 @@ export default function Helpful({ helpful, answerid }) {
       .catch((err) => new Error(err));
   }
   return (
-    <div
-      className="helpful-detail"
-      aria-roledescription="helpful count"
-      aria-labelledby="slideheading"
-    >
+    <div className="helpful-detail" aria-label="slideheading">
       {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-      <small>Helpful? {`(${helpfulCount})`}</small>
+      <small> {`Helpful? (${helpfulCount})`}</small>
       <button type="button" onClick={!submit ? () => sendHelpful() : null}>
         <small>Yes</small>
       </button>
