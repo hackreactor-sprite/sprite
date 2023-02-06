@@ -6,7 +6,6 @@ import QuestionAnswer from './layout/QuestionAnswer';
 import RatingReview from './layout/RatingReview';
 
 function App() {
-  const [allProducts, setAllProducts] = useState([]);
   const [curProduct, setCurProduct] = useState({});
   const [metadata, setMetadata] = useState({});
   const [curStyle, setCurStyle] = useState({});
@@ -15,10 +14,9 @@ function App() {
 
   useEffect(() => {
     axios
-      .get('/products')
+      .get('/products/40346')
       .then((res) => {
-        setAllProducts(res.data);
-        setCurProduct(res.data[0]);
+        setCurProduct(res.data);
       })
       .catch((err) => new Error(err));
   }, []);
@@ -43,8 +41,6 @@ function App() {
   return (
     <div className="App">
       <ProductDetail
-        allProducts={allProducts}
-        setAllProducts={setAllProducts}
         curProduct={curProduct}
         setCurProduct={setCurProduct}
         metadata={metadata}
@@ -56,8 +52,6 @@ function App() {
         setDisplayPic={setDisplayPic}
       />
       <RelatedProducts
-        allProducts={allProducts}
-        setAllProducts={setAllProducts}
         curProduct={curProduct}
         setCurProduct={setCurProduct}
         curStyle={curStyle}
@@ -67,8 +61,6 @@ function App() {
       />
       <QuestionAnswer curProduct={curProduct} />
       <RatingReview
-        allProducts={allProducts}
-        setAllProducts={setAllProducts}
         curProduct={curProduct}
         setCurProduct={setCurProduct}
         metadata={metadata}
