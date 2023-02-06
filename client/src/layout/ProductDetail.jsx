@@ -16,7 +16,7 @@ export default function ProductDetail({ displayPic, setDisplayPic, curProduct, s
   // then I can access the state and grab the id, size, and quantity
   // whenever I need
 
-  console.log('line 19: ', metadata.ratings);
+  //console.log('line 19: ', metadata.ratings);
 
   return (
     <section className="productDetail">

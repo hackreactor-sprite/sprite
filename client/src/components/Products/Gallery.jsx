@@ -8,7 +8,7 @@ export default function Gallery({
   styles,
   curStyle,
 }) {
-  // console.log('line 5 of Gallery the styles for gallery: ', curStyle.photos);
+  // //console.log('line 5 of Gallery the styles for gallery: ', curStyle.photos);
   const [showBigImage, setShowBigImage] = useState(false);
   const [displayIndex, setDisplayIndex] = useState(0);
 
@@ -21,7 +21,7 @@ export default function Gallery({
   } else {
     thumbnails = true;
     bigImage = true;
-    // console.log('line 11: ', curStyle.photos);
+    // //console.log('line 11: ', curStyle.photos);
     content = { photo: curStyle.photos[displayIndex].url };
   }
 
