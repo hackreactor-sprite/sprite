@@ -4,7 +4,7 @@ import axios from 'axios';
 import RatingDashboard from '../components/RatingReview/RatingDashboard';
 import ReviewItem from '../components/RatingReview/ReviewItem';
 import ModalRoute from '../components/Modal/ModalRoute';
-import Modal from '../components/Reusable/Modal';
+import Modal from '../components/reusable/Modal';
 import handleContentLoad from '../helper/handleContentLoad';
 import ChevronDown from '../assets/chevron-down.svg';
 
@@ -14,18 +14,16 @@ export default function RatingReview({ curProduct, metadata }) {
   const [sortType, setSortType] = useState('newest');
   const [showModal, setShowModal] = useState(false);
   useEffect(() => {
-    if (curProduct.id) {
-      axios
-        .get(`/reviews/?sort=${sortType}&productid=40348`)
-        .then((res) => {
-          const sorted = res.data.results.sort(
-            (a, b) => b.helpfulness - a.helpfulness,
-          );
-          setPartialReviewList(sorted.slice(0, 2));
-          setReviewList(sorted);
-        })
-        .catch((err) => new Error(err));
-    }
+    axios
+      .get(`/reviews/?sort=${sortType}&productid=40348`)
+      .then((res) => {
+        const sorted = res.data.results.sort(
+          (a, b) => b.helpfulness - a.helpfulness,
+        );
+        setPartialReviewList(sorted.slice(0, 2));
+        setReviewList(sorted);
+      })
+      .catch((err) => new Error(err));
   }, [curProduct, sortType]);
 
   const sortOptions = ['Newest', 'Helpful', 'Relevant'];
@@ -58,27 +56,25 @@ export default function RatingReview({ curProduct, metadata }) {
             <ReviewItem review={review} key={i} />
           ))}
           <div className="section-btn-container">
-            {reviewList.length > 2 &&
-            partialReviewList.length < reviewList.length ? (
+            {reviewList.length > 2
+            && partialReviewList.length < reviewList.length ? (
               <button
                 type="button"
-                onClick={() =>
-                  handleContentLoad({
-                    partialList: partialReviewList,
-                    setPartialList: setPartialReviewList,
-                    totalList: reviewList,
-                  })
-                }
+                onClick={() => handleContentLoad({
+                  partialList: partialReviewList,
+                  setPartialList: setPartialReviewList,
+                  totalList: reviewList,
+                })}
               >
                 <small>MORE REVIEWS</small>
               </button>
-            ) : null}
+              ) : null}
             <button type="button" onClick={() => setShowModal(!showModal)}>
               <small>ADD A REVIEW +</small>
             </button>
           </div>
-          {showModal &&
-            createPortal(
+          {showModal
+            && createPortal(
               <Modal showModal={showModal} setShowModal={setShowModal}>
                 <ModalRoute
                   route="AddReviewForm"

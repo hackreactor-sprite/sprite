@@ -77,11 +77,11 @@ export default function AddQuestionForm({ curProduct }) {
       photos: curProduct.id,
       characteristics: curProduct.id,
     };
-    console.log('Submitted Form :', formObj);
+    //console.log('Submitted Form :', formObj);
     axios
       .post('/qa/questions', formObj)
       .then(() => {
-        console.log('success');
+        //console.log('success');
       })
       .catch((err) => new Error(err));
   }

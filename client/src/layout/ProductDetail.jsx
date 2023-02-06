@@ -16,7 +16,7 @@ export default function ProductDetail({ displayPic, setDisplayPic, curProduct, s
   // then I can access the state and grab the id, size, and quantity
   // whenever I need
 
-  console.log('line 19: ', metadata.ratings);
+  //console.log('line 19: ', metadata.ratings);
 
   return (
     <section className="productDetail">
@@ -30,7 +30,7 @@ export default function ProductDetail({ displayPic, setDisplayPic, curProduct, s
         <ProductOverview curStyle={curStyle} curProduct={curProduct} />
       </div>
       <div className="right">
-        <ProductInfo curProduct={curProduct} curStyle={curStyle} />
+        <ProductInfo curProduct={curProduct} curStyle={curStyle} metadata={metadata} setMetadata={setMetadata} />
         <StyleSelector
           styles={styles}
           setStyles={setStyles}

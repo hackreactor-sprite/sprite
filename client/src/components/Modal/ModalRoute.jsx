@@ -31,9 +31,16 @@ export default function ModalRoute({ content, route, state, setState }) {
         <AddReviewForm curProduct={content} state={state} setState={setState} />
       );
     case 'ImageExpand':
-      return <ImageExpand url={content.photo} alt="Expanded Image" />;
+      return <ImageExpand length={content.length} setDisplayIndex={content.setDisplayIndex} displayIndex={content.displayIndex} url={content.photo} alt="Expanded Image" />;
     case 'Comparison':
-      return <Comparison />;
+      return (
+        <Comparison
+          curProd={content.curProd}
+          product={content.product}
+          state={state}
+          setState={setState}
+        />
+      );
     default:
       return <h3>Undefined Path</h3>;
   }

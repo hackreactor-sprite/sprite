@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import QAItem from '../components/QuestionAnswers/QAItem';
 import ModalRoute from '../components/Modal/ModalRoute';
-import Modal from '../components/Reusable/Modal';
+import Modal from '../components/reusable/Modal';
 import handleContentLoad from '../helper/handleContentLoad';
 import MagnifyingGlassSVG from '../assets/magnifying-glass.svg';
 

@@ -10,7 +10,7 @@ export default function Checkout({
   sizeId,
   skus,
 }) {
-  // console.log('line 5 checkout skus: ', skus);
+  //console.log('line 5 checkout sizeId: ', skus);
 
   const handleUpdate = (event) => {
     setSizeId(event.target.value);
@@ -38,7 +38,7 @@ export default function Checkout({
 
   return (
     <div>
-      <select onChange={handleUpdate}>
+      <select data-testid="sizeSelect" onChange={handleUpdate}>
         <option disabled selected>
           Select Size
         </option>
@@ -46,14 +46,14 @@ export default function Checkout({
           <Size key={sku} skus={skus} sku={sku} />
         ))}
       </select>
-      <select>
+      <select data-testid="quantitySelect">
         <option disabled selected>
           -
         </option>
         {isLoaded
           ? range(allSkus, sizeId).map((num) => (
               <Quantity key={num} num={num} />
-            ))
+          ))
           : null}
       </select>
     </div>

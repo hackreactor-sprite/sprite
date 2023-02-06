@@ -1,14 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Star from '../reusable/Stars';
 import getAverage from '../../helper/getAverage';
 
-export default function ProductInfo({ curProduct, curStyle }) {
+export default function ProductInfo({ curProduct, curStyle, metadata, setMetadata }) {
   // line 11 price needs to be set to the style's price
-  // console.log('line 5 of product info: ', curStyle);
+  // //console.log('line 5 of product info: ', curStyle);
+  const [reviewRank, setReviewRank] = useState({});
+  const [totalRank, setTotalRank] = useState(0);
+
+  useEffect(() => {
+    if (metadata.product_id) {
+      setReviewRank(metadata.ratings);
+
+      const total = Object.values(metadata.ratings).reduce(
+        (acc, cur) => acc + parseInt(cur),
+        0,
+      );
+      const weight = Object.keys(metadata.ratings).reduce(
+        (acc, cur) => acc + parseInt(cur) * parseInt(metadata.ratings[cur]),
+        0,
+      );
+
+      // setTotalRating(total);
+      setTotalRank(Math.round((weight / total) * 4) / 4);
+    }
+  }, [metadata]);
+
+  //console.log('this is the metadata line 29 of product info: ', metadata);
+
   return (
     <section>
       <h3>Product Info</h3>
-      <h5>Stars go here</h5>
+      <h5>{totalRank}</h5>
+      {/* <p>Read all {# of reviews} reviews</p> */}
+      <Star totalRanking={totalRank} />
       <h5>{curProduct.category}</h5>
       <h3>{curProduct.name}</h3>
       {!curStyle.sale_price
