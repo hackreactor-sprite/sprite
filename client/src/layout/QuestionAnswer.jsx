@@ -40,9 +40,17 @@ export default function QuestionAnswer({ curProduct }) {
         return body.includes(search.toLowerCase());
       });
       setPartialQAList(newList.slice(0, 4));
-      setQAList(newList);
     }
   }
+
+  useEffect(() => {
+    if (search.length > 3) {
+      handleSearch();
+    }
+    if (search.length === 0) {
+      setPartialQAList(QAList.slice(0, 4));
+    }
+  }, [search]);
 
   return (
     // eslint-disable-next-line jsx-a11y/no-redundant-roles
