@@ -24,9 +24,9 @@ export default function Comparison({
         <tbody>
           {compareChars.map((char) => (
             <tr>
-              {char.curProd ? <td>✓</td> : <td />}
+              <td>{char.curProd && '✓'}</td>
               <td>{char.name}</td>
-              {char.relProd ? <td>✓</td> : <td />}
+              <td>{char.relProd && '✓'}</td>
             </tr>
           ))}
         </tbody>
