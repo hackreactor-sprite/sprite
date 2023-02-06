@@ -26,7 +26,7 @@ export default function AddToCart({ curProduct, curStyle }) {
     styleLoaded = true;
   }
 
-  console.log('line 25 sku objects: ', curStyle.skus);
+  // console.log('line 25 sku objects: ', curStyle.skus);
   return (
     <div>
       <h3>Checkout</h3>
@@ -40,19 +40,6 @@ export default function AddToCart({ curProduct, curStyle }) {
             skus={curStyle.skus}
           />
         ) : null}
-
-        {/* <select placeholder="select size...">
-          {size
-            ? Object.values(curStyle.skus).map((sku) => <Size key={sku.size} sku={sku} />) : null}
-        </select>
-        <select placeholder="1">
-          {quantity
-            ? Object.values(curStyle.skus).map((sku) => <Quantity key={sku.size} sku={sku} />)
-            : null}
-          {/* <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select> */}
         <button type="submit">Add To Cart</button>
         <button type="button">heart</button>
       </form>

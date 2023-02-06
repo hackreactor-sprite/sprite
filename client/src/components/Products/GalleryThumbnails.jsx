@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 
-export default function GalleryThumbnails({ picture, setDisplayPic }) {
-  // console.log('this is the picture for thumbnails: ', picture);
-  const handleClick = (event) => {
-    setDisplayPic('');
-    setDisplayPic(event.target.alt);
+export default function GalleryThumbnails({ picture, setDisplayIndex, i }) {
+  console.log('this is the picture for thumbnails: ', picture);
+  console.log('this is the alt targeting: ', i);
+  const handleClick = () => {
+    setDisplayIndex(i);
   };
 
   return (

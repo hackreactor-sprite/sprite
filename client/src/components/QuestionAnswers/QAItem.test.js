@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import QAItem from '../../src/components/QuestionAnswers/QAItem';
 
