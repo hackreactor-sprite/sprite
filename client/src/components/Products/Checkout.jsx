@@ -38,7 +38,7 @@ export default function Checkout({
 
   return (
     <div>
-      <select onChange={handleUpdate}>
+      <select data-testid="sizeSelect" onChange={handleUpdate}>
         <option disabled selected>
           Select Size
         </option>
@@ -46,7 +46,7 @@ export default function Checkout({
           <Size key={sku} skus={skus} sku={sku} />
         ))}
       </select>
-      <select>
+      <select data-testid="quantitySelect">
         <option disabled selected>
           -
         </option>
