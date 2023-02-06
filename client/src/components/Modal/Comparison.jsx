@@ -7,6 +7,8 @@ export default function Comparison({
 }) {
   const curProdChar = curProd.features;
   const prodChar = product.features;
+  console.log('this is curProdchar', curProdChar);
+  console.log('this is prodChar', prodChar);
   const compareChars = comparing(curProdChar, prodChar);
   console.log('this is comparing', compareChars);
 
