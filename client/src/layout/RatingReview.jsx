@@ -23,7 +23,7 @@ export default function RatingReview({ curProduct, metadata }) {
         setPartialReviewList(sorted.slice(0, 2));
         setReviewList(sorted);
       })
-      .catch((err) => new Error(err));
+      .catch((err) => res.status(400).send(err));
   }, [curProduct, sortType]);
 
   const sortOptions = ['Newest', 'Helpful', 'Relevant'];

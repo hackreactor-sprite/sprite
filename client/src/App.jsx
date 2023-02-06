@@ -20,7 +20,7 @@ function App() {
         setAllProducts(res.data);
         setCurProduct(res.data[0]);
       })
-      .catch((err) => new Error(err));
+      .catch((err) => res.status(400).send(err));
   }, []);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function App() {
           setCurStyle(res.data.results[0]);
           setDisplayPic(res.data.results[0].photos[0].url);
         })
-        .catch((err) => new Error(err));
+        .catch((err) => res.status(400).send(err));
     }
   }, [curProduct]);
 

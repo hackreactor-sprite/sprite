@@ -14,7 +14,7 @@ export default function Helpful({ helpful, answerid }) {
         setHelpfulCount(helpfulCount + 1);
         setSubmit(!submit);
       })
-      .catch((err) => new Error(err));
+      .catch((err) => res.status(400).send(err));
   }
   return (
     <div className="helpful-detail">

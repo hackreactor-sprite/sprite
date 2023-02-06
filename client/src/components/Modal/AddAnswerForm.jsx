@@ -28,7 +28,7 @@ export default function AddQuestionForm({
       .then(() => {
         setShowModal(!showModal);
       })
-      .catch((err) => new Error(err));
+      .catch((err) => res.status(400).send(err));
   }
   return (
     <form className="modal-form" onSubmit={handleSubmit}>

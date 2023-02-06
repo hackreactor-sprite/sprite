@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     .then((data) => {
       res.send(data.data);
     })
-    .catch((err) => new Error(err));
+    .catch((err) => res.status(400).send(err));
 });
 
 // router.post('/', (req, res) => {

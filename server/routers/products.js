@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     .then((data) => {
       res.send(data.data);
     })
-    .catch((err) => new Error(err));
+    .catch((err) => res.status(400).send(err));
 });
 
 router.get('/:productid', (req, res) => {
@@ -18,7 +18,7 @@ router.get('/:productid', (req, res) => {
     .then((data) => {
       res.send(data.data);
     })
-    .catch((err) => new Error(err));
+    .catch((err) => res.status(400).send(err));
 });
 
 router.get('/:productid/styles', (req, res) => {
@@ -27,7 +27,7 @@ router.get('/:productid/styles', (req, res) => {
     .then((data) => {
       res.send(data.data);
     })
-    .catch((err) => new Error(err));
+    .catch((err) => res.status(400).send(err));
 });
 
 router.get('/:productid/related', (req, res) => {
@@ -36,7 +36,7 @@ router.get('/:productid/related', (req, res) => {
     .then((data) => {
       res.send(data.data);
     })
-    .catch((err) => new Error(err));
+    .catch((err) => res.status(400).send(err));
 });
 
 module.exports = router;

@@ -21,21 +21,24 @@ export default function RelatedProd({ id, curProduct }) {
       .then((result) => {
         setProduct(result.data);
       })
-      .catch((err) => new Error(err));
+      .catch((err) => res.status(400).send(err));
+
     axios.get(`/products/${id}/styles`)
       .then((result) => {
         const photoUrl = result.data.results[0].photos[0].url;
         setPhoto(photoUrl);
       })
-      .catch((err) => new Error(err));
+      .catch((err) => res.status(400).send(err));
+
     axios.get(`/reviews/meta/?productid=${id}`)
       .then((result) => setAverage(getAverage(result.data.ratings)))
-      .catch((err) => new Error(err));
+      .catch((err) => res.status(400).send(err));
+
     axios.get(`/products/${curProduct.id}`)
       .then((result) => {
         setCurProd(result.data);
       })
-      .catch((err) => new Error(err));
+      .catch((err) => res.status(400).send(err));
   }, [id]);
 
   return (

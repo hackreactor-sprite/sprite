@@ -28,7 +28,7 @@ export default function QuestionAnswer({ curProduct }) {
         setPartialQAList(sorted.slice(0, 4));
         setQAList(sorted);
       })
-      .catch((err) => new Error(err));
+      .catch((err) => res.status(400).send(err));
   }, [curProduct]);
 
   function handleSearch(e) {
@@ -75,13 +75,11 @@ export default function QuestionAnswer({ curProduct }) {
         {QAList.length > 2 && partialQAList.length < QAList.length ? (
           <button
             type="button"
-            onClick={() =>
-              handleContentLoad({
-                partialList: partialQAList,
-                setPartialList: setPartialQAList,
-                totalList: QAList,
-              })
-            }
+            onClick={() => handleContentLoad({
+              partialList: partialQAList,
+              setPartialList: setPartialQAList,
+              totalList: QAList,
+            })}
           >
             <small>
               {partialQAList.length !== QAList.length
