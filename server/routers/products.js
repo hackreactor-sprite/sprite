@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   controllers
-    .getAll('products')
+    .getAll(`products/?page${req.query.page || 1}&count=${req.query.count || 5}`)
     .then((data) => {
       res.send(data.data);
     })
