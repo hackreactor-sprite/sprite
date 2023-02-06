@@ -9,6 +9,7 @@ import handleContentLoad from '../helper/handleContentLoad';
 import MagnifyingGlassSVG from '../assets/magnifying-glass.svg';
 
 export default function QuestionAnswer({ curProduct }) {
+  console.log('Product', curProduct);
   const [QAList, setQAList] = useState([]);
   const [partialQAList, setPartialQAList] = useState([]);
   const [search, setSearch] = useState('');
@@ -44,14 +45,22 @@ export default function QuestionAnswer({ curProduct }) {
   }
 
   return (
-    <section className="questionanswers">
-      <div>
+    // eslint-disable-next-line jsx-a11y/no-redundant-roles
+    <section
+      className="questionanswers"
+      title="questionanswers"
+      role="region"
+      aria-label="questionanswers"
+    >
+      <div role="heading" aria-level="2">
         <header>QUESTIONS & ANSWERS</header>
       </div>
 
       <input
         className="QA-search"
-        type="text"
+        name="QA-search"
+        aria-label="questionanswer-search"
+        type="search"
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         value={search}
         onChange={(e) => {
@@ -66,7 +75,7 @@ export default function QuestionAnswer({ curProduct }) {
         }}
       />
 
-      <div className="QA-list">
+      <div className="QA-list" aria-label="list">
         {partialQAList.map((QA, i) => (
           <QAItem QA={QA} key={i} curProduct={curProduct} />
         ))}

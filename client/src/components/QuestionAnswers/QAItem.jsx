@@ -22,35 +22,34 @@ export default function QAItem({ QA, curProduct }) {
   const content = { QA, curProduct };
   return (
     <>
-      <div className="QA-item-container">
-        <div className="QA-body-container">
-          <div className="QA-body">
-            <div className="QA-body-content">
-              <h5 className="QA-title">{'Q: '}</h5>
-              <h5>{QA.question_body.toUpperCase()}</h5>
-            </div>
-            <div className="small-container">
-              <Helpful helpful={QA.question_helpfulness} />
-              <button type="button" onClick={() => setShowModal(!showModal)}>
-                <small>Add Answer</small>
-              </button>
-            </div>
-          </div>
-          <div className="QA-answer">
-            {partialAnswers.map((answer, i) => (
-              <AnswerItem answer={answer} key={i} />
-            ))}
-          </div>
+      <div className="QA-body">
+        <h4 id="QA-body-content" aria-level="3">
+          {'Q: '}
+          {QA.question_body.toUpperCase()}
+        </h4>
+
+        <div className="small-container">
+          <Helpful helpful={QA.question_helpfulness} />
+          <button type="button" onClick={() => setShowModal(!showModal)}>
+            <small>Add Answer</small>
+          </button>
         </div>
+      </div>
+      <div className="QA-answer" role="list" aria-label="QA-list">
+        {partialAnswers.map((answer, i) => (
+          <AnswerItem answer={answer} key={i} />
+        ))}
       </div>
       {answerList.length > 2 && partialAnswers.length < answerList.length ? (
         <button
           type="button"
-          onClick={() => handleContentLoad({
-            partialList: partialAnswers,
-            setPartialList: setPartialAnswers,
-            totalList: answerList,
-          })}
+          onClick={() =>
+            handleContentLoad({
+              partialList: partialAnswers,
+              setPartialList: setPartialAnswers,
+              totalList: answerList,
+            })
+          }
         >
           <small>
             {partialAnswers.length !== answerList.length
@@ -59,8 +58,8 @@ export default function QAItem({ QA, curProduct }) {
           </small>
         </button>
       ) : null}
-      {showModal
-        && createPortal(
+      {showModal &&
+        createPortal(
           <Modal showModal={showModal} setShowModal={setShowModal}>
             <ModalRoute
               route="AddAnswerForm"
@@ -97,12 +96,16 @@ function AnswerItem({ answer }) {
 
   return (
     <div className="QA-answer-container">
-      <div className="QA-answer-header">
+      <div className="QA-answer-header" role="heading" aria-level="4">
         <h5 className="QA-title">A:</h5>
       </div>
       <div className="QA-answer-body">
-        <p>{answer.body}</p>
-        <div className="answer-photo-container">
+        <p aria-labelledby="answer">{answer.body}</p>
+        <div
+          className="answer-photo-container"
+          role="img"
+          aria-label="answer-photo"
+        >
           {answer.photos.map((photo, i) => (
             <div key={i}>
               <img
@@ -113,8 +116,8 @@ function AnswerItem({ answer }) {
               />
             </div>
           ))}
-          {showModal
-            && createPortal(
+          {showModal &&
+            createPortal(
               <Modal showModal={showModal} setShowModal={setShowModal} key={i}>
                 <ModalRoute route="ImageExpand" content={{ photo: curPhoto }} />
               </Modal>,
