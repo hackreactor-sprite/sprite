@@ -26,10 +26,9 @@ export default function RelatedProducts({
   }
   function handleProductClick(ev) {
     ev.preventDefault();
-    const newCurProd = allProducts.filter((prod) => (
-      prod.id === Number(ev.target.parentElement.id)
-    ))[0];
-    setCurProduct(newCurProd);
+    axios.get(`/products/${ev.target.parentElement.id}`)
+      .then((res) => setCurProduct(res.data))
+      .catch((err) => new Error(err));
   }
 
   useEffect(() => {
@@ -37,7 +36,8 @@ export default function RelatedProducts({
       axios.get(`/products/${curProduct.id}/related`)
         .then((result) => {
           setRelatedProds([...new Set(result.data)]);
-        });
+        })
+        .catch((err) => new Error(err));
     }
   }, [curProduct]);
   return (
