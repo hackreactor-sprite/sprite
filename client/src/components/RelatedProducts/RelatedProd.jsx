@@ -10,8 +10,11 @@ export default function RelatedProd({ id, curProduct }) {
   const [product, setProduct] = useState({});
   const [average, setAverage] = useState(0);
   const [photo, setPhoto] = useState('');
+  const [curProd, setCurProd] = useState({});
   const [showModal, setShowModal] = useState(false);
-  const content = { curProduct, id };
+  const content = {
+    curProd, product,
+  };
 
   useEffect(() => {
     axios.get(`/products/${id}`)
@@ -27,6 +30,11 @@ export default function RelatedProd({ id, curProduct }) {
       .catch((err) => new Error(err));
     axios.get(`/reviews/meta/?productid=${id}`)
       .then((result) => setAverage(getAverage(result.data.ratings)))
+      .catch((err) => new Error(err));
+    axios.get(`/products/${curProduct.id}`)
+      .then((result) => {
+        setCurProd(result.data);
+      })
       .catch((err) => new Error(err));
   }, [id]);
 
