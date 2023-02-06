@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import getAverage from '../../helper/getAverage';
 import ModalRoute from '../Modal/ModalRoute';
 import Modal from '../reusable/Modal';
+import Star from '../reusable/Stars';
 
 export default function RelatedProd({ id, curProduct }) {
   const [product, setProduct] = useState({});
@@ -63,8 +64,7 @@ export default function RelatedProd({ id, curProduct }) {
           {product.default_price}
         </div>
         <div>
-          {average}
-          /5 ★★★★★
+          <Star totalRanking={average} />
         </div>
       </div>
     </div>
