@@ -24,20 +24,18 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (curProduct.id) {
-      axios
-        .get(`reviews/meta/?productid=${curProduct.id}`)
-        .then((res) => {
-          setMetadata(res.data);
-          return axios.get(`/products/${curProduct.id}/styles`);
-        })
-        .then((res) => {
-          setStyles(res.data.results);
-          setCurStyle(res.data.results[0]);
-          setDisplayPic(res.data.results[0].photos[0].url);
-        })
-        .catch((err) => new Error(err));
-    }
+    axios
+      .get(`/reviews/meta/?productid=${curProduct.id}`)
+      .then((res) => {
+        setMetadata(res.data);
+        return axios.get(`/products/${curProduct.id}/styles`);
+      })
+      .then((res) => {
+        setStyles(res.data.results);
+        setCurStyle(res.data.results[0]);
+        setDisplayPic(res.data.results[0].photos[0].url);
+      })
+      .catch((err) => new Error(err));
   }, [curProduct]);
 
   return (
@@ -66,13 +64,7 @@ function App() {
         metadata={metadata}
       />
       <QuestionAnswer curProduct={curProduct} />
-      <RatingReview
-        allProducts={allProducts}
-        setAllProducts={setAllProducts}
-        curProduct={curProduct}
-        setCurProduct={setCurProduct}
-        metadata={metadata}
-      />
+      <RatingReview curProduct={curProduct} metadata={metadata} />
     </div>
   );
 }
