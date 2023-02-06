@@ -40,12 +40,15 @@ export default function RelatedProd({ id, curProduct, handleProductClick }) {
   }, [id]);
 
   return (
-    <div className="carousel-item">
+    <div
+      className="carousel-item"
+      style={{
+        minWidth: '200px', width: '200px', overflow: 'hidden', boxShadow: '0 0 2px black',
+      }}
+    >
       <div
         className="product"
-        style={{
-          width: 200, boxSizing: 'border-box', border: '1px solid black', position: 'relative', cursor: 'pointer',
-        }}
+        style={{ cursor: 'pointer', position: 'relative' }}
         onClick={handleProductClick}
         id={id}
       >
