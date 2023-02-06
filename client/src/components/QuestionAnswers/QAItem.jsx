@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-import Helpful from '../Reusable/Helpful';
-import Report from '../Reusable/Report';
+import Helpful from '../reusable/Helpful';
+import Report from '../reusable/Report';
 import ModalRoute from '../Modal/ModalRoute';
 import Modal from '../reusable/Modal';
 

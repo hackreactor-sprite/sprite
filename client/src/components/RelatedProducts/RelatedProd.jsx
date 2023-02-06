@@ -4,7 +4,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import getAverage from '../../helper/getAverage';
 import ModalRoute from '../Modal/ModalRoute';
-import Modal from '../Reusable/Modal';
+import Modal from '../reusable/Modal';
 
 export default function RelatedProd({ id, curProduct }) {
   const [product, setProduct] = useState({});
