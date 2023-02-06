@@ -10,7 +10,7 @@ export default function RelatedProducts({
 }) {
   const [relatedProds, setRelatedProds] = useState([]);
   const [outfits, setOutfits] = useState([]);
-  // todo: save entire curstyle
+
   function handleAddOutfit(ev) {
     ev.preventDefault();
     if (outfits.filter((outfit) => outfit.style_id === curStyle.style_id).length === 0) {
@@ -33,7 +33,7 @@ export default function RelatedProducts({
     }
   }, [curProduct]);
   return (
-    <>
+    <section className="relatedproducts">
       <h4 className="carousel">Related Products</h4>
       <div className="carousel-list">
         <Carousel>
@@ -82,7 +82,7 @@ export default function RelatedProducts({
         }
         </Carousel>
       </div>
-    </>
+    </section>
   );
 }
 
