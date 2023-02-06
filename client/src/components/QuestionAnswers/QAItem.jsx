@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-import Helpful from '../Reusable/Helpful';
-import Report from '../Reusable/Report';
+import Helpful from '../reusable/Helpful';
+import Report from '../reusable/Report';
 import ModalRoute from '../Modal/ModalRoute';
 import Modal from '../reusable/Modal';
 
@@ -46,11 +46,13 @@ export default function QAItem({ QA, curProduct }) {
       {answerList.length > 2 && partialAnswers.length < answerList.length ? (
         <button
           type="button"
-          onClick={() => handleContentLoad({
-            partialList: partialAnswers,
-            setPartialList: setPartialAnswers,
-            totalList: answerList,
-          })}
+          onClick={() =>
+            handleContentLoad({
+              partialList: partialAnswers,
+              setPartialList: setPartialAnswers,
+              totalList: answerList,
+            })
+          }
         >
           <small>
             {partialAnswers.length !== answerList.length
@@ -59,8 +61,8 @@ export default function QAItem({ QA, curProduct }) {
           </small>
         </button>
       ) : null}
-      {showModal
-        && createPortal(
+      {showModal &&
+        createPortal(
           <Modal showModal={showModal} setShowModal={setShowModal}>
             <ModalRoute
               route="AddAnswerForm"
@@ -113,8 +115,8 @@ function AnswerItem({ answer }) {
               />
             </div>
           ))}
-          {showModal
-            && createPortal(
+          {showModal &&
+            createPortal(
               <Modal showModal={showModal} setShowModal={setShowModal} key={i}>
                 <ModalRoute route="ImageExpand" content={{ photo: curPhoto }} />
               </Modal>,
