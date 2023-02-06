@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Star from '../Reusable/Stars';
+import Star from '../reusable/Stars';
 
 export default function RatingDashboard({ reviewList, metadata }) {
   const [reviewRank, setReviewRank] = useState({});
@@ -23,9 +23,8 @@ export default function RatingDashboard({ reviewList, metadata }) {
       setTotalRating(total);
       setTotalRank(Math.round((weight / total) * 4) / 4);
 
-      const totalrec =
-        parseInt(metadata.recommended.true) +
-        parseInt(metadata.recommended.false);
+      const totalrec = parseInt(metadata.recommended.true)
+        + parseInt(metadata.recommended.false);
 
       const weightedAverage = parseInt(metadata.recommended.true) / totalrec;
       setRecPercent(Math.round(weightedAverage * 4) / 4);
@@ -51,18 +50,18 @@ export default function RatingDashboard({ reviewList, metadata }) {
       ))}
       {totalRating
         ? Object.keys(metadata.characteristics).map((char, i) => (
-            <div key={i} className="rating-slider-container">
-              <div>{char}</div>
-              <input
-                type="range"
-                min="1"
-                max="5"
-                className="rating-slider"
-                value={metadata.characteristics[char].value}
-                readOnly
-              />
-            </div>
-          ))
+          <div key={i} className="rating-slider-container">
+            <div>{char}</div>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              className="rating-slider"
+              value={metadata.characteristics[char].value}
+              readOnly
+            />
+          </div>
+        ))
         : null}
     </div>
   );

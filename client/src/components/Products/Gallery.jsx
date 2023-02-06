@@ -9,7 +9,7 @@ export default function Gallery({
   styles,
   curStyle,
 }) {
-  // console.log('line 5 of Gallery the styles for gallery: ', curStyle.photos);
+  // //console.log('line 5 of Gallery the styles for gallery: ', curStyle.photos);
   const [showBigImage, setShowBigImage] = useState(false);
   const [displayIndex, setDisplayIndex] = useState(0);
 
