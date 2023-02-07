@@ -7,7 +7,9 @@ import ModalRoute from '../Modal/ModalRoute';
 import Modal from '../reusable/Modal';
 import Star from '../reusable/Stars';
 
-export default function RelatedProd({ id, curProduct, handleProductClick }) {
+export default function RelatedProd({
+  id, curProduct, setCurProduct, setDisplayIndex,
+}) {
   const [product, setProduct] = useState({});
   const [average, setAverage] = useState(0);
   const [photo, setPhoto] = useState('');
@@ -16,6 +18,16 @@ export default function RelatedProd({ id, curProduct, handleProductClick }) {
   const content = {
     curProd, product,
   };
+
+  function handleProductClick(ev) {
+    ev.preventDefault();
+    axios.get(`/products/${ev.target.parentElement.id}`)
+      .then((res) => {
+        setCurProduct(res.data);
+        setDisplayIndex(0);
+      })
+      .catch((err) => { throw new Error(err); });
+  }
 
   useEffect(() => {
     axios.get(`/products/${id}`)
@@ -40,8 +52,21 @@ export default function RelatedProd({ id, curProduct, handleProductClick }) {
   }, [id]);
 
   return (
-    <div className="carousel-item">
-      <div className="product" style={{ border: '1px solid black', position: 'relative', cursor: 'pointer' }} onClick={handleProductClick} id={id}>
+    <div
+      className="carousel-item"
+      style={{
+        minWidth: '200px', width: '200px', overflow: 'hidden', boxShadow: '0 0 2px black',
+      }}
+    >
+      <div
+        role="button"
+        className="product"
+        style={{ cursor: 'pointer', position: 'relative' }}
+        onClick={handleProductClick}
+        onKeyPress={handleProductClick}
+        tabIndex="0"
+        id={id}
+      >
         <button type="button" style={{ position: 'absolute', right: '0%' }} onClick={(ev) => { ev.stopPropagation(); setShowModal(!showModal); }}>
           ☆
         </button>
@@ -73,4 +98,8 @@ export default function RelatedProd({ id, curProduct, handleProductClick }) {
 
 RelatedProd.propTypes = {
   id: PropTypes.number.isRequired,
+  curProduct: PropTypes.shape({
+    id: PropTypes.number,
+  }).isRequired,
+  setCurProduct: PropTypes.func.isRequired,
 };
