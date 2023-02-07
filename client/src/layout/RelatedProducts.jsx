@@ -1,27 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import RelatedProd from '../components/RelatedProducts/RelatedProd';
 import Outfit from '../components/RelatedProducts/Outfit';
 import Carousel from '../components/reusable/Carousel';
+import { handleAddOutfit } from '../helper/handleOutfits';
 
 export default function RelatedProducts({
-  curProduct, setCurProduct, metadata, curStyle, styles, setStyles, relatedProds,
+  curProduct, setCurProduct, metadata, curStyle, relatedProds,
 }) {
   const [outfits, setOutfits] = useState([]);
-  function handleAddOutfit(ev) {
-    ev.preventDefault();
-    if (outfits.filter((outfit) => outfit.style_id === curStyle.style_id).length === 0) {
-      setOutfits([...outfits, curStyle]);
-    }
-  }
-  function handleDeleteOutfit(ev) {
-    ev.preventDefault();
-    const updatedOutfits = outfits.filter(
-      (outfit) => outfit.style_id !== Number(ev.target.parentElement.id),
-    );
-    setOutfits(updatedOutfits);
-  }
+  console.log(metadata);
   return (
     <section className="relatedproducts">
       <h4 className="carousel">Related Products</h4>
@@ -64,7 +52,7 @@ export default function RelatedProducts({
                 }}
               />
               <div style={{ textAlign: 'center' }}>
-                <button type="button" onClick={handleAddOutfit}>
+                <button type="button" onClick={(ev) => handleAddOutfit(ev, curStyle, outfits, setOutfits)}>
                   <h5>Add to Outfit</h5>
                 </button>
               </div>
@@ -73,12 +61,12 @@ export default function RelatedProducts({
           {
         outfits.map((style) => (
           <Outfit
-            id={style.style_id}
             key={style.style_id}
             style={style}
             metadata={metadata}
             curProduct={curProduct}
-            handleDeleteOutfit={handleDeleteOutfit}
+            outfits={outfits}
+            setOutfits={setOutfits}
           />
         ))
         }
@@ -95,5 +83,9 @@ RelatedProducts.propTypes = {
   setCurProduct: PropTypes.func.isRequired,
   metadata: PropTypes.shape({
     product_id: PropTypes.string,
+  }).isRequired,
+  relatedProds: PropTypes.arrayOf(PropTypes.number).isRequired,
+  curStyle: PropTypes.shape({
+    product_id: PropTypes.number,
   }).isRequired,
 };

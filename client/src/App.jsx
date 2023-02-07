@@ -60,8 +60,6 @@ function App() {
         curProduct={curProduct}
         setCurProduct={setCurProduct}
         curStyle={curStyle}
-        styles={styles}
-        setStyles={setStyles}
         metadata={metadata}
         relatedProds={relatedProds}
       />
