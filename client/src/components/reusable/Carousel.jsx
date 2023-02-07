@@ -18,7 +18,7 @@ export function handleClick(ev, direction, offset) {
 }
 
 export default function Carousel({
-  children, size = 200, direction = 'row', numberToDisplay = 4, gap = 15,
+  children, size = 200, direction = 'row', numberToDisplay = 4, gap = 15, height = 20,
 }) {
   const containerSize = size * numberToDisplay + (numberToDisplay - 1) * gap;
   const scrollOffset = size + gap;
@@ -30,7 +30,7 @@ export default function Carousel({
   }
   return (
     <div style={{ display: 'flex', flexDirection: direction, justifyContent: 'center' }}>
-      <button type="button" onClick={(ev) => handleClick(ev, direction, -scrollOffset)} style={{ height: '20px', marginTop: 'auto' }}>{direction === 'row' ? '‹' : '⌃'}</button>
+      <button type="button" onClick={(ev) => handleClick(ev, direction, -scrollOffset)} style={{ height: `${height}px`, marginTop: 'auto' }}>{direction === 'row' ? '‹' : '⌃'}</button>
       <div
         className="item-container"
         style={{
@@ -45,7 +45,7 @@ export default function Carousel({
       >
         {children}
       </div>
-      <button type="button" onClick={(ev) => handleClick(ev, direction, scrollOffset)} style={{ height: '20px', marginTop: 'auto' }}>{direction === 'row' ? '›' : '⌄'}</button>
+      <button type="button" onClick={(ev) => handleClick(ev, direction, scrollOffset)} style={{ height: `${height}px`, marginTop: 'auto' }}>{direction === 'row' ? '›' : '⌄'}</button>
     </div>
   );
 }
@@ -55,12 +55,13 @@ Carousel.propTypes = {
   direction: PropTypes.string,
   numberToDisplay: PropTypes.number,
   gap: PropTypes.number,
+  height: PropTypes.number,
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
 };
 
-Carousel.defaultProps = {
-  size: 200,
-  direction: 'row',
-  numberToDisplay: 4,
-  gap: 15,
-};
+// Carousel.defaultProps = {
+//   size: 200,
+//   direction: 'row',
+//   numberToDisplay: 4,
+//   gap: 15,
+// };
