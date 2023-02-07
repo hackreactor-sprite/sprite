@@ -11,7 +11,9 @@ function App() {
   const [curStyle, setCurStyle] = useState({});
   const [styles, setStyles] = useState([]);
   const [displayPic, setDisplayPic] = useState('');
+  const [displayIndex, setDisplayIndex] = useState(0);
   const [relatedProds, setRelatedProds] = useState([]);
+
 
   useEffect(() => {
     axios
@@ -23,6 +25,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    setDisplayIndex(0);
     if (curProduct.id) {
       axios
         .get(`reviews/meta/?productid=${curProduct.id}`)
@@ -55,13 +58,17 @@ function App() {
         setCurStyle={setCurStyle}
         displayPic={displayPic}
         setDisplayPic={setDisplayPic}
+        displayIndex={displayIndex}
+        setDisplayIndex={setDisplayIndex}
       />
       <RelatedProducts
         curProduct={curProduct}
         setCurProduct={setCurProduct}
         curStyle={curStyle}
         metadata={metadata}
+        setDisplayIndex={setDisplayIndex}
         relatedProds={relatedProds}
+
       />
       <QuestionAnswer curProduct={curProduct} />
       <RatingReview

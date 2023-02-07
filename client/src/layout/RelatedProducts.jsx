@@ -6,7 +6,7 @@ import Carousel from '../components/reusable/Carousel';
 import { handleAddOutfit } from '../helper/handleOutfits';
 
 export default function RelatedProducts({
-  curProduct, setCurProduct, metadata, curStyle, relatedProds,
+  curProduct, setCurProduct, metadata, curStyle, styles, setStyles, allProducts, setDisplayIndex, relatedProds,
 }) {
   const [outfits, setOutfits] = useState([]);
   return (
