@@ -48,9 +48,9 @@ export default function Carousel({
   }
   return (
     <div style={{ display: 'flex', flexDirection: direction, justifyContent: 'center' }}>
-      <button type="button" onClick={(ev) => handleClick(ev, direction, -scrollOffset)} style={{ height: '20px', marginTop: 'auto' }}>{direction === 'row' ? 'left' : 'up'}</button>
+      <button type="button" onClick={(ev) => handleClick(ev, direction, -scrollOffset)} style={{ height: '20px', marginTop: 'auto' }}>{direction === 'row' ? '‹' : '⌃'}</button>
       <div
-        id="item-container"
+        className="item-container"
         style={{
           display: 'flex',
           flexDirection: direction,
@@ -63,7 +63,7 @@ export default function Carousel({
       >
         {children}
       </div>
-      <button type="button" onClick={(ev) => handleClick(ev, direction, scrollOffset)} style={{ height: '20px', marginTop: 'auto' }}>{direction === 'row' ? 'right' : 'down'}</button>
+      <button type="button" onClick={(ev) => handleClick(ev, direction, scrollOffset)} style={{ height: '20px', marginTop: 'auto' }}>{direction === 'row' ? '›' : '⌄'}</button>
     </div>
   );
 }
