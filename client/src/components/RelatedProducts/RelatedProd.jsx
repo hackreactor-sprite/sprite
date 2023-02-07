@@ -7,7 +7,9 @@ import ModalRoute from '../Modal/ModalRoute';
 import Modal from '../reusable/Modal';
 import Star from '../reusable/Stars';
 
-export default function RelatedProd({ id, curProduct, setCurProduct }) {
+export default function RelatedProd({
+  id, curProduct, setCurProduct, setDisplayIndex,
+}) {
   const [product, setProduct] = useState({});
   const [average, setAverage] = useState(0);
   const [photo, setPhoto] = useState('');
@@ -20,7 +22,10 @@ export default function RelatedProd({ id, curProduct, setCurProduct }) {
   function handleProductClick(ev) {
     ev.preventDefault();
     axios.get(`/products/${ev.target.parentElement.id}`)
-      .then((res) => setCurProduct(res.data))
+      .then((res) => {
+        setCurProduct(res.data);
+        setDisplayIndex(0);
+      })
       .catch((err) => { throw new Error(err); });
   }
 

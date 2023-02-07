@@ -1,6 +1,6 @@
 export default function range(skuObjects, chosenSize) {
   const creatingRange = [];
-  let total = skuObjects[chosenSize].quantity;
+  let total = skuObjects[chosenSize]?.quantity;
   if (total > 15) {
     total = 15;
   }
