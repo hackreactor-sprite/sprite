@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-export default function StyleBubble({ style, styles, setCurStyle, setDisplayPic }) {
+export default function StyleBubble({ style, setCurStyle, setSizeId }) {
   // //console.log('style bubble line 4 these are all the styles for style bubble: ', style);
 
-  const handleClick = (event) => {
+  const handleClick = () => {
     //console.log('events style: ', style);
+    // console.log('style for testing: ', style);
+    // set size and quantity states here before setting curStyle
+    setSizeId('');
     setCurStyle(style);
-    setDisplayPic(style.photos[0].url);
   };
 
   return (

@@ -1,52 +1,67 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-// const fakeData = ['product1', 'product2', 'product3', 'product4', 'product5'];
-
-// function Product({ name }) {
-//   return (
-//     <div style={{
-//       minWidth: '100px', width: '100px', height: '150px', backgroundColor: 'cyan',
-//     }}
-//     >
-//       {name}
-//     </div>
-//   );
-// }
-
-export function handleLeftClick(ev) {
+export function handleClick(ev, direction, offset) {
   ev.preventDefault();
+  let directionProp;
+  if (direction === 'row') {
+    directionProp = 'left';
+  } else if (direction === 'column') {
+    directionProp = 'top';
+  }
   const container = ev.target.parentElement.children[1];
   const scrollOptions = {
-    top: 0,
-    left: -50,
-    behavior: 'smooth',
-  };
-  container.scrollBy(scrollOptions);
-}
-export function handleRightClick(ev) {
-  ev.preventDefault();
-  const container = ev.target.parentElement.children[1];
-  const scrollOptions = {
-    top: 0,
-    left: 50,
+    [directionProp]: offset,
     behavior: 'smooth',
   };
   container.scrollBy(scrollOptions);
 }
 
-export default function Carousel({ children }) {
+export default function Carousel({
+  children, size = 200, direction = 'row', numberToDisplay = 4, gap = 15, height = 20,
+}) {
+  const containerSize = size * numberToDisplay + (numberToDisplay - 1) * gap;
+  const scrollOffset = size + gap;
+  let sizeProperty;
+  if (direction === 'column') {
+    sizeProperty = 'height';
+  } else if (direction === 'row') {
+    sizeProperty = 'width';
+  }
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <button type="button" onClick={handleLeftClick} style={{ height: '20px', marginTop: 'auto' }}>left</button>
+    <div style={{ display: 'flex', flexDirection: direction, justifyContent: 'center' }}>
+      <button type="button" onClick={(ev) => handleClick(ev, direction, -scrollOffset)} style={{ height: `${height}px`, marginTop: 'auto' }}>{direction === 'row' ? '‹' : '⌃'}</button>
       <div
-        id="item-container"
+        className="item-container"
         style={{
-          display: 'flex', gap: '15px', padding: '15px', border: '1px solid black', margin: '15px', width: '800px', overflowX: 'hidden',
+          display: 'flex',
+          flexDirection: direction,
+          gap: '15px',
+          padding: '5px',
+          margin: '15px',
+          [sizeProperty]: `${containerSize}px`,
+          overflow: 'hidden',
         }}
       >
         {children}
       </div>
-      <button type="button" onClick={handleRightClick} style={{ height: '20px', marginTop: 'auto' }}>right</button>
+      <button type="button" onClick={(ev) => handleClick(ev, direction, scrollOffset)} style={{ height: `${height}px`, marginTop: 'auto' }}>{direction === 'row' ? '›' : '⌄'}</button>
     </div>
   );
 }
+
+Carousel.propTypes = {
+  size: PropTypes.number,
+  direction: PropTypes.string,
+  numberToDisplay: PropTypes.number,
+  gap: PropTypes.number,
+  height: PropTypes.number,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+};
+
+// Carousel.defaultProps = {
+//   size: 200,
+//   direction: 'row',
+//   numberToDisplay: 4,
+//   gap: 15,
+// };

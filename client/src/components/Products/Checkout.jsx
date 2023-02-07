@@ -23,23 +23,10 @@ export default function Checkout({
     isLoaded = false;
   }
 
-  // function range(skuObjects, chosenSize) {
-  //   const creatingRange = [];
-  //   let total = skuObjects[chosenSize].quantity;
-  //   if (total > 15) {
-  //     total = 15;
-  //   }
-  //   for (let i = 1; i <= total; i += 1) {
-  //     creatingRange.push(i);
-  //   }
-  //   return creatingRange;
-  // }
-  // have a function that creates an array from 1 to quantity of selected sizeSku
-
   return (
     <div>
       <select data-testid="sizeSelect" onChange={handleUpdate}>
-        <option disabled selected>
+        <option value="" selected>
           Select Size
         </option>
         {Object.keys(skus).map((sku) => (
@@ -47,7 +34,7 @@ export default function Checkout({
         ))}
       </select>
       <select data-testid="quantitySelect">
-        <option disabled selected>
+        <option value="" selected>
           -
         </option>
         {isLoaded
