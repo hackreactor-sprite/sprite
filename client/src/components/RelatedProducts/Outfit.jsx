@@ -53,7 +53,6 @@ export default function Outfit({
     </div>
   );
 }
-// PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
 Outfit.propTypes = {
   curProduct: PropTypes.shape({
     id: PropTypes.number,
@@ -62,11 +61,11 @@ Outfit.propTypes = {
   metadata: PropTypes.shape({
     product_id: PropTypes.string,
     ratings: PropTypes.shape({
-      1: PropTypes.number,
-      2: PropTypes.number,
-      3: PropTypes.number,
-      4: PropTypes.number,
-      5: PropTypes.number,
+      1: PropTypes.string,
+      2: PropTypes.string,
+      3: PropTypes.string,
+      4: PropTypes.string,
+      5: PropTypes.string,
     }),
   }).isRequired,
   style: PropTypes.shape({

@@ -9,7 +9,6 @@ export default function RelatedProducts({
   curProduct, setCurProduct, metadata, curStyle, relatedProds,
 }) {
   const [outfits, setOutfits] = useState([]);
-  console.log(metadata);
   return (
     <section className="relatedproducts">
       <h4 className="carousel">Related Products</h4>

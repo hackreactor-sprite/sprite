@@ -21,7 +21,7 @@ export default function RelatedProd({ id, curProduct, setCurProduct }) {
     ev.preventDefault();
     axios.get(`/products/${ev.target.parentElement.id}`)
       .then((res) => setCurProduct(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => { throw new Error(err); });
   }
 
   useEffect(() => {
@@ -54,9 +54,12 @@ export default function RelatedProd({ id, curProduct, setCurProduct }) {
       }}
     >
       <div
+        role="button"
         className="product"
         style={{ cursor: 'pointer', position: 'relative' }}
         onClick={handleProductClick}
+        onKeyPress={handleProductClick}
+        tabIndex="0"
         id={id}
       >
         <button type="button" style={{ position: 'absolute', right: '0%' }} onClick={(ev) => { ev.stopPropagation(); setShowModal(!showModal); }}>
@@ -90,4 +93,8 @@ export default function RelatedProd({ id, curProduct, setCurProduct }) {
 
 RelatedProd.propTypes = {
   id: PropTypes.number.isRequired,
+  curProduct: PropTypes.shape({
+    id: PropTypes.number,
+  }).isRequired,
+  setCurProduct: PropTypes.func.isRequired,
 };
