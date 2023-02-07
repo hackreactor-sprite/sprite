@@ -11,8 +11,8 @@ function App() {
   const [curStyle, setCurStyle] = useState({});
   const [styles, setStyles] = useState([]);
   const [displayPic, setDisplayPic] = useState('');
-  const [relatedProds, setRelatedProds] = useState([]);
   const [displayIndex, setDisplayIndex] = useState(0);
+  const [relatedProds, setRelatedProds] = useState([]);
 
   useEffect(() => {
     axios
@@ -65,8 +65,9 @@ function App() {
         setCurProduct={setCurProduct}
         curStyle={curStyle}
         metadata={metadata}
-        relatedProds={relatedProds}
         setDisplayIndex={setDisplayIndex}
+        relatedProds={relatedProds}
+
       />
       <QuestionAnswer curProduct={curProduct} />
       <RatingReview
