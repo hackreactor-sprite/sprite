@@ -1,23 +1,5 @@
 import React from 'react';
-
-export function handleLeftClick(ev, offset) {
-  ev.preventDefault();
-  const container = ev.target.parentElement.children[1];
-  const scrollOptions = {
-    left: -offset,
-    behavior: 'smooth',
-  };
-  container.scrollBy(scrollOptions);
-}
-export function handleRightClick(ev, offset) {
-  ev.preventDefault();
-  const container = ev.target.parentElement.children[1];
-  const scrollOptions = {
-    left: offset,
-    behavior: 'smooth',
-  };
-  container.scrollBy(scrollOptions);
-}
+import PropTypes from 'prop-types';
 
 export function handleClick(ev, direction, offset) {
   ev.preventDefault();
@@ -67,3 +49,18 @@ export default function Carousel({
     </div>
   );
 }
+
+Carousel.propTypes = {
+  size: PropTypes.number,
+  direction: PropTypes.string,
+  numberToDisplay: PropTypes.number,
+  gap: PropTypes.number,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+};
+
+Carousel.defaultProps = {
+  size: 200,
+  direction: 'row',
+  numberToDisplay: 4,
+  gap: 15,
+};
