@@ -8,7 +8,6 @@ export default function Outfit({
   style, metadata, curProduct, outfits, setOutfits,
 }) {
   const photo = style.photos[0].url;
-
   return (
     <div
       className="carousel-item"
@@ -53,32 +52,32 @@ export default function Outfit({
     </div>
   );
 }
-Outfit.propTypes = {
-  curProduct: PropTypes.shape({
-    id: PropTypes.number,
-    category: PropTypes.string,
-  }).isRequired,
-  metadata: PropTypes.shape({
-    product_id: PropTypes.string,
-    ratings: PropTypes.shape({
-      1: PropTypes.string,
-      2: PropTypes.string,
-      3: PropTypes.string,
-      4: PropTypes.string,
-      5: PropTypes.string,
-    }),
-  }).isRequired,
-  style: PropTypes.shape({
-    style_id: PropTypes.number,
-    name: PropTypes.string,
-    original_price: PropTypes.string,
-    sale_price: PropTypes.string,
-    photos: PropTypes.arrayOf(PropTypes.shape({
-      url: PropTypes.string,
-    })),
-  }).isRequired,
-  outfits: PropTypes.arrayOf(PropTypes.shape({
-    product_id: PropTypes.number,
-  })).isRequired,
-  setOutfits: PropTypes.func.isRequired,
-};
+// Outfit.propTypes = {
+//   curProduct: PropTypes.shape({
+//     id: PropTypes.number,
+//     category: PropTypes.string,
+//   }).isRequired,
+//   metadata: PropTypes.shape({
+//     product_id: PropTypes.string,
+//     ratings: PropTypes.shape({
+//       1: PropTypes.string,
+//       2: PropTypes.string,
+//       3: PropTypes.string,
+//       4: PropTypes.string,
+//       5: PropTypes.string,
+//     }),
+//   }).isRequired,
+//   style: PropTypes.shape({
+//     style_id: PropTypes.number,
+//     name: PropTypes.string,
+//     original_price: PropTypes.string,
+//     sale_price: PropTypes.string,
+//     photos: PropTypes.arrayOf(PropTypes.shape({
+//       url: PropTypes.string,
+//     })),
+//   }).isRequired,
+//   outfits: PropTypes.arrayOf(PropTypes.shape({
+//     product_id: PropTypes.number,
+//   })).isRequired,
+//   setOutfits: PropTypes.func.isRequired,
+// };

@@ -4,7 +4,7 @@ import getAverage from '../../helper/getAverage';
 
 export default function ProductInfo({ curProduct, curStyle, metadata }) {
   // line 11 price needs to be set to the style's price
-  console.log('line 5 of product info: ', metadata);
+  // console.log('line 5 of product info: ', metadata);
   const [reviewRank, setReviewRank] = useState({});
   const [totalRank, setTotalRank] = useState(0);
 
@@ -48,7 +48,10 @@ export default function ProductInfo({ curProduct, curStyle, metadata }) {
               {curStyle.sale_price}
             </p>
             <p className="crossOut">
-              <s>${curStyle.original_price}</s>
+              <s>
+                $
+                {curStyle.original_price}
+              </s>
             </p>
           </div>
         )}
