@@ -6,7 +6,7 @@ import Outfit from '../components/RelatedProducts/Outfit';
 import Carousel from '../components/reusable/Carousel';
 
 export default function RelatedProducts({
-  curProduct, setCurProduct, metadata, curStyle, styles, setStyles, allProducts,
+  curProduct, setCurProduct, metadata, curStyle, styles, setStyles, allProducts, setDisplayIndex,
 }) {
   const [relatedProds, setRelatedProds] = useState([]);
   const [outfits, setOutfits] = useState([]);
@@ -27,7 +27,10 @@ export default function RelatedProducts({
   function handleProductClick(ev) {
     ev.preventDefault();
     axios.get(`/products/${ev.target.parentElement.id}`)
-      .then((res) => setCurProduct(res.data))
+      .then((res) => {
+        setCurProduct(res.data);
+        setDisplayIndex(0);
+      })
       .catch((err) => new Error(err));
   }
 

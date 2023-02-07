@@ -2,21 +2,20 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import StyleBubble from './StyleBubble';
 
-export default function StyleSelector({ styles, setStyles, curStyle, setCurStyle, curProduct, displayPic, setDisplayPic }) {
-  //console.log('line 6 curStyle: ', curStyle);
+export default function StyleSelector({ styles, setStyles, curStyle, setCurStyle, setSizeId }) {
+  // console.log('line 6 styles: ', styles);
 
   return (
     <section>
       <h3>Selected Style &gt; {curStyle.name} </h3>
       {!setStyles
-        ? <div />
+        ? <div className="empty" />
         : styles.map((style) => (
           <StyleBubble
             key={style.style_id}
             setCurStyle={setCurStyle}
-            setDisplayPic={setDisplayPic}
             style={style}
-            styles={styles}
+            setSizeId={setSizeId}
           />
         ))}
     </section>

@@ -8,15 +8,17 @@ import Carousel from '../reusable/Carousel';
 export default function Gallery({
   styles,
   curStyle,
+  displayIndex,
+  setDisplayIndex
 }) {
   // //console.log('line 5 of Gallery the styles for gallery: ', curStyle.photos);
   const [showBigImage, setShowBigImage] = useState(false);
-  const [displayIndex, setDisplayIndex] = useState(0);
 
   let thumbnails;
   let bigImage;
   let content;
   let length;
+  let photoUrl;
   if (curStyle.photos === undefined) {
     thumbnails = false;
     bigImage = false;
@@ -25,12 +27,19 @@ export default function Gallery({
     bigImage = true;
     // console.log('line 11: ', curStyle.photos);
     length = curStyle.photos.length - 1;
-    content = {
-      photo: curStyle.photos[displayIndex].url || curStyle.photos[0].url,
-      displayIndex,
-      setDisplayIndex,
-      length,
-    };
+    if (curStyle.photos[displayIndex].url === undefined) {
+      photoUrl = curStyle.photos[0].url;
+    } else {
+      console.log('in the else: ', curStyle.photos[displayIndex].url);
+      photoUrl = curStyle.photos[displayIndex].url;
+
+      content = {
+        photo: photoUrl,
+        displayIndex,
+        setDisplayIndex,
+        length,
+      };
+    }
   }
 
   return (
@@ -82,18 +91,3 @@ export default function Gallery({
     </section>
   );
 }
-// <div className="carousel-list">
-//   <Carousel>
-//     {
-//   relatedProds.map((id) => (
-//     <RelatedProd
-//       id={id}
-//       key={id}
-//       curProduct={curProduct}
-//       setCurProduct={setCurProduct}
-//       metadata={metadata}
-//     />
-//   ))
-//   }
-//   </Carousel>
-// </div>
