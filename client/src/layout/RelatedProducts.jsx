@@ -8,7 +8,7 @@ import { handleAddOutfit } from '../helper/handleOutfits';
 export default function RelatedProducts({
   curProduct, setCurProduct, metadata, curStyle, styles, setStyles, allProducts, setDisplayIndex, relatedProds,
 }) {
-  const [relatedProds, setRelatedProds] = useState([]);
+
   const [outfits, setOutfits] = useState([]);
   return (
     <section className="relatedproducts">
@@ -23,7 +23,6 @@ export default function RelatedProducts({
             curProduct={curProduct}
             setCurProduct={setCurProduct}
             metadata={metadata}
-            handleProductClick={handleProductClick}
           />
         ))
         }
