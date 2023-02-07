@@ -6,9 +6,9 @@ import QAItem from '../components/QuestionAnswers/QAItem';
 import ModalRoute from '../components/Modal/ModalRoute';
 import Modal from '../components/reusable/Modal';
 import handleContentLoad from '../helper/handleContentLoad';
+import handleSearch from '../helper/handleSearch';
 
 export default function QuestionAnswer({ curProduct }) {
-  console.log('Product', curProduct);
   const [QAList, setQAList] = useState([]);
   const [partialQAList, setPartialQAList] = useState([]);
   const [search, setSearch] = useState('');
@@ -19,7 +19,9 @@ export default function QuestionAnswer({ curProduct }) {
 
   useEffect(() => {
     axios
-      .get(`/qa/questions/?page=${page}&count=${queryCount}&productid=40348`)
+      .get(
+        `/qa/questions/?page=${page}&count=${queryCount}&productid=${curProduct.id}`,
+      )
       .then((res) => {
         const sorted = res.data.results.sort(
           (a, b) => b.question_helpfulness - a.question_helpfulness,
@@ -31,17 +33,6 @@ export default function QuestionAnswer({ curProduct }) {
       .catch((err) => new Error(err));
   }, [curProduct]);
 
-  function handleSearch(e) {
-    if (search.length > 3 || e.key === 'Enter') {
-      let newList = [...QAList];
-      newList = newList.filter((question) => {
-        const body = question.question_body.toLowerCase();
-        return body.includes(search.toLowerCase());
-      });
-      setPartialQAList(newList.slice(0, 4));
-    }
-  }
-
   useEffect(() => {
     if (search.length > 3) {
       handleSearch();
@@ -50,7 +41,6 @@ export default function QuestionAnswer({ curProduct }) {
       setPartialQAList(QAList.slice(0, 4));
     }
   }, [search]);
-
   return (
     // eslint-disable-next-line jsx-a11y/no-redundant-roles
     <section
@@ -74,15 +64,24 @@ export default function QuestionAnswer({ curProduct }) {
           setSearch(e.target.value);
           handleSearch(e);
         }}
-        onKeyDown={(e) => handleSearch(e)}
+        onKeyDown={
+          (e) =>
+            // eslint-disable-next-line implicit-arrow-linebreak
+            handleSearch({
+              e,
+              search,
+              list: QAList,
+              setPartialList: setPartialQAList,
+            })
+          // eslint-disable-next-line react/jsx-curly-newline
+        }
         style={{
-          backgroundImage: `url(${MagnifyingGlassSVG})`,
           backgroundPosition: 'right',
           backgroundRepeat: 'no - repeat',
         }}
       />
 
-      <div className="QA-list" aria-label="list">
+      <div className="QA-list" aria-label="list" data-testid="list" role="tree">
         {partialQAList.map((QA, i) => (
           <QAItem QA={QA} key={i} curProduct={curProduct} />
         ))}
@@ -106,7 +105,11 @@ export default function QuestionAnswer({ curProduct }) {
             </small>
           </button>
         ) : null}
-        <button type="button" onClick={() => setShowModal(!shown)}>
+        <button
+          type="button"
+          data-testid="question-form-button"
+          onClick={() => setShowModal(!shown)}
+        >
           <small>ADD A QUESTION +</small>
         </button>
         {/* eslint-disable-next-line operator-linebreak */}

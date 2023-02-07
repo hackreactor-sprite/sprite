@@ -371,6 +371,10 @@ p {
   flex-direction: column;
 }
 
+#load-answers {
+  width: fit-content;
+}
+
 .QA-body-container {
   justify-content: space-between;
 }

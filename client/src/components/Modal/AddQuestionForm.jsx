@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-export default function AddQuestionForm({
-  curProduct,
-  showModal,
-  setShowModal,
-}) {
+export default function AddQuestionForm({ curProduct, state, setState }) {
   const [questionForm, setQuestionForm] = useState({
     name: '',
     body: '',
@@ -26,7 +22,7 @@ export default function AddQuestionForm({
       .post('/qa/questions', formObj)
       .then(() => {
         //console.log('success');
-        setShowModal(!showModal);
+        setState(!state);
       })
       .catch((err) => new Error(err));
   }
@@ -90,6 +86,6 @@ AddQuestionForm.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
   }).isRequired,
-  showModal: PropTypes.bool.isRequired,
-  setShowModal: PropTypes.func.isRequired,
+  state: PropTypes.bool.isRequired,
+  setState: PropTypes.func.isRequired,
 };

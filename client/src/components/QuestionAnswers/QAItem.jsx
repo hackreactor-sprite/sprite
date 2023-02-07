@@ -22,42 +22,45 @@ export default function QAItem({ QA, curProduct }) {
   const content = { QA, curProduct };
   return (
     <>
-      <div className="QA-body">
-        <h4 id="QA-body-content" aria-level="3">
-          {'Q: '}
-          {QA.question_body.toUpperCase()}
-        </h4>
+      <div className="QA-item" role="treeitem" aria-selected="false">
+        <div className="QA-body">
+          <h4 id="QA-body-content" aria-level="3">
+            {'Q: '}
+            {QA.question_body.toUpperCase()}
+          </h4>
 
-        <div className="small-container">
-          <Helpful helpful={QA.question_helpfulness} />
-          <button type="button" onClick={() => setShowModal(!showModal)}>
-            <small>Add Answer</small>
-          </button>
+          <div className="small-container">
+            <Helpful helpful={QA.question_helpfulness} />
+            <button type="button" onClick={() => setShowModal(!showModal)}>
+              <small>Add Answer</small>
+            </button>
+          </div>
         </div>
+        <div className="QA-answer" role="list" aria-label="QA-list">
+          {partialAnswers.map((answer, i) => (
+            <AnswerItem answer={answer} key={i} />
+          ))}
+        </div>
+        {answerList.length > 2 && partialAnswers.length < answerList.length ? (
+          <button
+            id="load-answers"
+            type="button"
+            onClick={() =>
+              handleContentLoad({
+                partialList: partialAnswers,
+                setPartialList: setPartialAnswers,
+                totalList: answerList,
+              })
+            }
+          >
+            <small>
+              {partialAnswers.length !== answerList.length
+                ? 'LOAD MORE ANSWERS'
+                : 'COLLAPSE'}
+            </small>
+          </button>
+        ) : null}
       </div>
-      <div className="QA-answer" role="list" aria-label="QA-list">
-        {partialAnswers.map((answer, i) => (
-          <AnswerItem answer={answer} key={i} />
-        ))}
-      </div>
-      {answerList.length > 2 && partialAnswers.length < answerList.length ? (
-        <button
-          type="button"
-          onClick={() =>
-            handleContentLoad({
-              partialList: partialAnswers,
-              setPartialList: setPartialAnswers,
-              totalList: answerList,
-            })
-          }
-        >
-          <small>
-            {partialAnswers.length !== answerList.length
-              ? 'LOAD MORE ANSWERS'
-              : 'COLLAPSE'}
-          </small>
-        </button>
-      ) : null}
       {showModal &&
         createPortal(
           <Modal showModal={showModal} setShowModal={setShowModal}>
