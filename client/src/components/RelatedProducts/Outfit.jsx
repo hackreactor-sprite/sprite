@@ -10,8 +10,19 @@ export default function Outfit({
   const photo = style.photos[0].url;
 
   return (
-    <div className="carousel-item">
-      <div className="outfit" style={{ border: '1px solid black', position: 'relative' }} id={id}>
+    <div
+      className="carousel-item"
+      style={{
+        minWidth: '200px', width: '200px', overflow: 'hidden', boxShadow: '0 0 2px black',
+      }}
+    >
+      <div
+        className="outfit"
+        style={{
+          position: 'relative',
+        }}
+        id={id}
+      >
         <button type="button" style={{ position: 'absolute', right: '0%' }} onClick={handleDeleteOutfit}>
           X
         </button>

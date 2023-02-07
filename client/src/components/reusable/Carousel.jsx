@@ -69,7 +69,6 @@ export default function Carousel({
           flexDirection: direction,
           gap: '15px',
           padding: '5px',
-          border: '1px solid blue',
           margin: '15px',
           [sizeProperty]: `${containerSize}px`,
           overflow: 'hidden',
