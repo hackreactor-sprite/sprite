@@ -6,11 +6,9 @@ import Outfit from '../components/RelatedProducts/Outfit';
 import Carousel from '../components/reusable/Carousel';
 
 export default function RelatedProducts({
-  curProduct, setCurProduct, metadata, curStyle, styles, setStyles,
+  curProduct, setCurProduct, metadata, curStyle, styles, setStyles, relatedProds,
 }) {
-  const [relatedProds, setRelatedProds] = useState([]);
   const [outfits, setOutfits] = useState([]);
-
   function handleAddOutfit(ev) {
     ev.preventDefault();
     if (outfits.filter((outfit) => outfit.style_id === curStyle.style_id).length === 0) {
@@ -24,14 +22,6 @@ export default function RelatedProducts({
     );
     setOutfits(updatedOutfits);
   }
-  useEffect(() => {
-    if (curProduct.id) {
-      axios.get(`/products/${curProduct.id}/related`)
-        .then((result) => {
-          setRelatedProds(result.data);
-        });
-    }
-  }, [curProduct]);
   return (
     <section className="relatedproducts">
       <h4 className="carousel">Related Products</h4>

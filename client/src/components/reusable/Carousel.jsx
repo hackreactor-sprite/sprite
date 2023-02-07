@@ -1,18 +1,5 @@
 import React from 'react';
 
-// const fakeData = ['product1', 'product2', 'product3', 'product4', 'product5'];
-
-// function Product({ name }) {
-//   return (
-//     <div style={{
-//       minWidth: '100px', width: '100px', height: '150px', backgroundColor: 'cyan',
-//     }}
-//     >
-//       {name}
-//     </div>
-//   );
-// }
-
 export function handleLeftClick(ev, offset) {
   ev.preventDefault();
   const container = ev.target.parentElement.children[1];
