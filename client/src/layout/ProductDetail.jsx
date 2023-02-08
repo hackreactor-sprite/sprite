@@ -6,8 +6,6 @@ import ProductInfo from '../components/Products/ProductInfo';
 import ProductOverview from '../components/Products/ProductOverview';
 
 export default function ProductDetail({
-  displayPic,
-  setDisplayPic,
   curProduct,
   styles,
   setStyles,
@@ -16,7 +14,7 @@ export default function ProductDetail({
   metadata,
   setMetadata,
   displayIndex,
-  setDisplayIndex
+  setDisplayIndex,
 }) {
   // const [styles, setStyles] = useState([]);
   // want displayPic to just be an index number of array of current styles pictures
@@ -29,15 +27,12 @@ export default function ProductDetail({
   // then I can access the state and grab the id, size, and quantity
   // whenever I need
 
-  // console.log('line 19: ', metadata.ratings);
+  //  ('line 19: ', metadata.ratings);
 
   return (
     <section className="productDetail">
       <div className="left">
         <Gallery
-          displayPic={displayPic}
-          setDisplayPic={setDisplayPic}
-          styles={styles}
           curStyle={curStyle}
           displayIndex={displayIndex}
           setDisplayIndex={setDisplayIndex}
@@ -45,19 +40,27 @@ export default function ProductDetail({
         <ProductOverview curStyle={curStyle} curProduct={curProduct} />
       </div>
       <div className="right">
-        <ProductInfo curProduct={curProduct} curStyle={curStyle} metadata={metadata} setMetadata={setMetadata} />
+        <ProductInfo
+          curProduct={curProduct}
+          curStyle={curStyle}
+          metadata={metadata}
+          setMetadata={setMetadata}
+        />
         <StyleSelector
           styles={styles}
           setStyles={setStyles}
           curStyle={curStyle}
           setCurStyle={setCurStyle}
           curProduct={curProduct}
-          displayPic={displayPic}
-          setDisplayPic={setDisplayPic}
           sizeId={sizeId}
           setSizeId={setSizeId}
         />
-        <AddToCart curProduct={curProduct} curStyle={curStyle} sizeId={sizeId} setSizeId={setSizeId} />
+        <AddToCart
+          curProduct={curProduct}
+          curStyle={curStyle}
+          sizeId={sizeId}
+          setSizeId={setSizeId}
+        />
       </div>
     </section>
   );

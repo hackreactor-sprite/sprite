@@ -6,12 +6,11 @@ import GalleryThumbnails from './GalleryThumbnails';
 import Carousel from '../reusable/Carousel';
 
 export default function Gallery({
-  styles,
   curStyle,
   displayIndex,
   setDisplayIndex,
 }) {
-  // //console.log('line 5 of Gallery the styles for gallery: ', curStyle.photos);
+  // // ('line 5 of Gallery the styles for gallery: ', curStyle.photos);
   const [showBigImage, setShowBigImage] = useState(false);
 
   let thumbnails;
@@ -25,7 +24,7 @@ export default function Gallery({
   } else {
     thumbnails = true;
     bigImage = true;
-    // console.log('line 11: ', curStyle.photos);
+    //  ('line 11: ', curStyle.photos);
     length = curStyle.photos.length - 1;
     if (curStyle.photos[displayIndex].url === undefined) {
       photoUrl = curStyle.photos[0].url;
@@ -46,23 +45,44 @@ export default function Gallery({
     <section>
       <h3>Image Gallery</h3>
       <div className="galleryPic">
-        {bigImage
-          ? (
-            <>
-              {displayIndex >= 1
-                ? <div onClick={() => { setDisplayIndex(displayIndex - 1); }}>&lt;</div>
-                : null}
-              <img src={curStyle.photos[displayIndex].url} alt="" height="400px" />
-              {displayIndex < length
-                ? <div onClick={() => { setDisplayIndex(displayIndex + 1); }}>&gt;</div>
-                : null}
-            </>
-          )
-          : null}
-        <button type="button" onClick={() => { setShowBigImage(!showBigImage); }}>+</button>
+        {bigImage ? (
+          <>
+            {displayIndex >= 1 ? (
+              <div
+                onClick={() => {
+                  setDisplayIndex(displayIndex - 1);
+                }}
+              >
+                &lt;
+              </div>
+            ) : null}
+            <img
+              src={curStyle.photos[displayIndex].url}
+              alt=""
+              height="400px"
+            />
+            {displayIndex < length ? (
+              <div
+                onClick={() => {
+                  setDisplayIndex(displayIndex + 1);
+                }}
+              >
+                &gt;
+              </div>
+            ) : null}
+          </>
+        ) : null}
+        <button
+          type="button"
+          onClick={() => {
+            setShowBigImage(!showBigImage);
+          }}
+        >
+          +
+        </button>
       </div>
-      {showBigImage
-        && createPortal(
+      {showBigImage &&
+        createPortal(
           <Modal showModal={showBigImage} setShowModal={setShowBigImage}>
             <ModalRoute
               route="ImageExpand"
@@ -74,19 +94,18 @@ export default function Gallery({
           document.body,
         )}
       <div className="galleryThumbs">
-        {thumbnails
-          ? (
-            <Carousel>
-              {curStyle.photos.map((picture, i) => (
-                <GalleryThumbnails
-                  picture={picture}
-                  key={picture.url}
-                  setDisplayIndex={setDisplayIndex}
-                  i={i}
-                />
-              ))}
-            </Carousel>
-          ) : null}
+        {thumbnails ? (
+          <Carousel>
+            {curStyle.photos.map((picture, i) => (
+              <GalleryThumbnails
+                picture={picture}
+                key={picture.url}
+                setDisplayIndex={setDisplayIndex}
+                i={i}
+              />
+            ))}
+          </Carousel>
+        ) : null}
       </div>
     </section>
   );

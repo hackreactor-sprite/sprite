@@ -6,67 +6,75 @@ import QAItem from '../components/QuestionAnswers/QAItem';
 import ModalRoute from '../components/Modal/ModalRoute';
 import Modal from '../components/reusable/Modal';
 import handleContentLoad from '../helper/handleContentLoad';
-import MagnifyingGlassSVG from '../assets/magnifying-glass.svg';
+import handleSearch from '../helper/handleSearch';
 
-export default function QuestionAnswer({ curProduct }) {
-  const [QAList, setQAList] = useState([]);
+export default function QuestionAnswer({ curProduct, QAList }) {
   const [partialQAList, setPartialQAList] = useState([]);
   const [search, setSearch] = useState('');
-  const [page, setPage] = useState(1);
-  const [queryCount, setQueryCount] = useState(100);
-  const [shown, setShown] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`/qa/questions/?page=${page}&count=${queryCount}&productid=40348`)
-      .then((res) => {
-        const sorted = res.data.results.sort(
-          (a, b) => b.question_helpfulness - a.question_helpfulness,
-        );
+    const sorted = QAList.sort(
+      (a, b) => b.question_helpfulness - a.question_helpfulness,
+    );
 
-        setPartialQAList(sorted.slice(0, 4));
-        setQAList(sorted);
-      })
-      .catch((err) => new Error(err));
-  }, [curProduct]);
+    setPartialQAList(sorted.slice(0, 4));
+  }, [QAList]);
 
-  function handleSearch(e) {
-    if (search.length > 3 || e.key === 'Enter') {
-      let newList = [...QAList];
-      newList = newList.filter((question) => {
-        const body = question.question_body.toLowerCase();
-        return body.includes(search.toLowerCase());
+  useEffect(() => {
+    const nothing = null;
+    if (search.length >= 3) {
+      handleSearch({
+        nothing,
+        search,
+        list: QAList,
+        setPartialList: setPartialQAList,
       });
-      setPartialQAList(newList.slice(0, 4));
-      setQAList(newList);
     }
-  }
-
+    if (search.length === 0) {
+      setPartialQAList(QAList.slice(0, 4));
+    }
+  }, [search]);
   return (
-    <section className="questionanswers">
-      <div>
+    // eslint-disable-next-line jsx-a11y/no-redundant-roles
+    <section
+      className="questionanswers"
+      title="questionanswers"
+      role="region"
+      aria-label="questionanswers"
+    >
+      <div role="heading" aria-level="2">
         <header>QUESTIONS & ANSWERS</header>
       </div>
 
       <input
         className="QA-search"
-        type="text"
+        name="QA-search"
+        aria-label="questionanswer-search"
+        type="search"
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         value={search}
         onChange={(e) => {
           setSearch(e.target.value);
-          handleSearch(e);
         }}
-        onKeyDown={(e) => handleSearch(e)}
+        onKeyDown={
+          (e) =>
+            // eslint-disable-next-line implicit-arrow-linebreak
+            handleSearch({
+              e,
+              search,
+              list: QAList,
+              setPartialList: setPartialQAList,
+            })
+          // eslint-disable-next-line react/jsx-curly-newline
+        }
         style={{
-          backgroundImage: `url(${MagnifyingGlassSVG})`,
           backgroundPosition: 'right',
           backgroundRepeat: 'no - repeat',
         }}
       />
 
-      <div className="QA-list">
+      <div className="QA-list" aria-label="list" data-testid="list" role="tree">
         {partialQAList.map((QA, i) => (
           <QAItem QA={QA} key={i} curProduct={curProduct} />
         ))}
@@ -90,7 +98,11 @@ export default function QuestionAnswer({ curProduct }) {
             </small>
           </button>
         ) : null}
-        <button type="button" onClick={() => setShowModal(!shown)}>
+        <button
+          type="button"
+          data-testid="question-form-button"
+          onClick={() => setShowModal(!showModal)}
+        >
           <small>ADD A QUESTION +</small>
         </button>
         {/* eslint-disable-next-line operator-linebreak */}

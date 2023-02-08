@@ -5,7 +5,9 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   controllers
-    .getAll(`products/?page${req.query.page || 1}&count=${req.query.count || 5}`)
+    .getAll(
+      `products/?page${req.query.page || 1}&count=${req.query.count || 5}`,
+    )
     .then((data) => {
       res.send(data.data);
     })
@@ -19,7 +21,7 @@ router.get('/:productid', (req, res) => {
       res.send(data.data);
     })
     .catch((err) => {
-      console.log(err);
+      err;
       res.status(400).send(err);
     });
 });

@@ -10,9 +10,9 @@ function App() {
   const [metadata, setMetadata] = useState({});
   const [curStyle, setCurStyle] = useState({});
   const [styles, setStyles] = useState([]);
-  const [displayPic, setDisplayPic] = useState('');
   const [displayIndex, setDisplayIndex] = useState(0);
   const [relatedProds, setRelatedProds] = useState([]);
+  const [QAList, setQAList] = useState([]);
   useEffect(() => {
     axios
       .get('/products/40346')
@@ -34,11 +34,16 @@ function App() {
         .then((res) => {
           setStyles(res.data.results);
           setCurStyle(res.data.results[0]);
-          setDisplayPic(res.data.results[0].photos[0].url);
           return axios.get(`/products/${curProduct.id}/related`);
         })
         .then((res) => {
           setRelatedProds([...new Set(res.data)]);
+          return axios.get(
+            `/qa/questions/?page=1&count=30&productid=${curProduct.id}`,
+          );
+        })
+        .then((res) => {
+          setQAList(res.data.results);
         })
         .catch((err) => new Error(err));
     }
@@ -54,8 +59,6 @@ function App() {
         setStyles={setStyles}
         curStyle={curStyle}
         setCurStyle={setCurStyle}
-        displayPic={displayPic}
-        setDisplayPic={setDisplayPic}
         displayIndex={displayIndex}
         setDisplayIndex={setDisplayIndex}
       />
@@ -66,9 +69,8 @@ function App() {
         metadata={metadata}
         setDisplayIndex={setDisplayIndex}
         relatedProds={relatedProds}
-
       />
-      <QuestionAnswer curProduct={curProduct} />
+      <QuestionAnswer curProduct={curProduct} QAList={QAList} />
       <RatingReview
         curProduct={curProduct}
         setCurProduct={setCurProduct}
