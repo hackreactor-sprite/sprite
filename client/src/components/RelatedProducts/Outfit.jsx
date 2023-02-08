@@ -10,7 +10,7 @@ export default function Outfit({
   const photo = style.photos[0].url;
   return (
     <div
-      className="carousel-item"
+      className="outfit-item"
       style={{
         minWidth: '200px', width: '200px', overflow: 'hidden', boxShadow: '0 0 2px black',
       }}

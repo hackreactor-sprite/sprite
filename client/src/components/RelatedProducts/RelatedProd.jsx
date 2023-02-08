@@ -96,10 +96,10 @@ export default function RelatedProd({
   );
 }
 
-RelatedProd.propTypes = {
-  id: PropTypes.number.isRequired,
-  curProduct: PropTypes.shape({
-    id: PropTypes.number,
-  }).isRequired,
-  setCurProduct: PropTypes.func.isRequired,
-};
+// RelatedProd.propTypes = {
+//   id: PropTypes.number.isRequired,
+//   curProduct: PropTypes.shape({
+//     id: PropTypes.number,
+//   }).isRequired,
+//   setCurProduct: PropTypes.func.isRequired,
+// };
