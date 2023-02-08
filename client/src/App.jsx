@@ -13,7 +13,6 @@ function App() {
   const [displayPic, setDisplayPic] = useState('');
   const [displayIndex, setDisplayIndex] = useState(0);
   const [relatedProds, setRelatedProds] = useState([]);
-
   useEffect(() => {
     axios
       .get('/products/40346')

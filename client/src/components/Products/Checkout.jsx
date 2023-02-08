@@ -5,7 +5,6 @@ import range from '../../helper/getRange';
 
 export default function Checkout({
   allSkus,
-  setSelectedSku,
   setSizeId,
   sizeId,
   skus,

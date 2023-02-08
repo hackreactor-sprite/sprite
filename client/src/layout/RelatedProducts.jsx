@@ -6,13 +6,14 @@ import Carousel from '../components/reusable/Carousel';
 import { handleAddOutfit } from '../helper/handleOutfits';
 
 export default function RelatedProducts({
-  curProduct, setCurProduct, metadata, curStyle, styles, setStyles, allProducts, setDisplayIndex, relatedProds,
+  curProduct, setCurProduct, metadata, curStyle, relatedProds,
 }) {
+
   const [outfits, setOutfits] = useState([]);
   return (
     <section className="relatedproducts">
-      <h4 className="carousel">Related Products</h4>
-      <div className="carousel-list">
+      <h4 className="rel-prod-heading">Related Products</h4>
+      <div className="rel-prod-list">
         <Carousel>
           {
         relatedProds.map((id) => (
@@ -27,11 +28,11 @@ export default function RelatedProducts({
         }
         </Carousel>
       </div>
-      <h4>Your Outfit</h4>
-      <div className="carousel-list">
+      <h4 className="outfits-heading">Your Outfit</h4>
+      <div className="outfits-list">
         <Carousel>
           <div
-            className="carousel-item"
+            className="outfit-item"
             style={{
               minWidth: '200px', width: '200px', overflow: 'hidden', boxShadow: '0 0 2px black',
             }}
@@ -43,29 +44,27 @@ export default function RelatedProducts({
               }}
             >
               <img
-                className="outfitPlaceholder"
+                id="outfitPlaceholder"
                 src="https://cdn1.iconfinder.com/data/icons/shopping-and-commerce-17/64/98-512.png"
                 alt="not found"
                 style={{
-                  width: '200px', height: '225px', objectFit: 'cover',
+                  width: '200px', height: '225px', objectFit: 'cover', border: '1px solid black',
                 }}
               />
-              <div style={{ textAlign: 'center' }}>
-                <button type="button" onClick={(ev) => handleAddOutfit(ev, curStyle, outfits, setOutfits)}>
-                  <h5>Add to Outfit</h5>
-                </button>
+              <div style={{ cursor: 'pointer' }} onClick={handleAddOutfit} onKeyPress={handleAddOutfit} role="button" tabIndex="0">
+                Add to Outfit
               </div>
             </div>
           </div>
           {
         outfits.map((style) => (
           <Outfit
+            id={style.style_id}
             key={style.style_id}
             style={style}
             metadata={metadata}
             curProduct={curProduct}
-            outfits={outfits}
-            setOutfits={setOutfits}
+            handleDeleteOutfit={handleDeleteOutfit}
           />
         ))
         }
@@ -75,16 +74,16 @@ export default function RelatedProducts({
   );
 }
 
-RelatedProducts.propTypes = {
-  curProduct: PropTypes.shape({
-    id: PropTypes.number,
-  }).isRequired,
-  setCurProduct: PropTypes.func.isRequired,
-  metadata: PropTypes.shape({
-    product_id: PropTypes.string,
-  }).isRequired,
-  relatedProds: PropTypes.arrayOf(PropTypes.number).isRequired,
-  curStyle: PropTypes.shape({
-    product_id: PropTypes.number,
-  }).isRequired,
-};
+// RelatedProducts.propTypes = {
+//   curProduct: PropTypes.shape({
+//     id: PropTypes.number,
+//   }).isRequired,
+//   setCurProduct: PropTypes.func.isRequired,
+//   metadata: PropTypes.shape({
+//     product_id: PropTypes.string,
+//   }).isRequired,
+//   relatedProds: PropTypes.arrayOf(PropTypes.number).isRequired,
+//   curStyle: PropTypes.shape({
+//     product_id: PropTypes.number,
+//   }).isRequired,
+// };
