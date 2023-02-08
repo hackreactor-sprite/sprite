@@ -39,6 +39,12 @@ function App() {
         })
         .then((res) => {
           setRelatedProds([...new Set(res.data)]);
+          return axios.get(
+            `/qa/questions/?page=1&count=30&productid=${curProduct.id}`,
+          );
+        })
+        .then((res) => {
+          setQAList(res.data.results);
         })
         .catch((err) => new Error(err));
     }
@@ -66,9 +72,8 @@ function App() {
         metadata={metadata}
         setDisplayIndex={setDisplayIndex}
         relatedProds={relatedProds}
-
       />
-      <QuestionAnswer curProduct={curProduct} />
+      <QuestionAnswer curProduct={curProduct} QAList={QAList} />
       <RatingReview
         curProduct={curProduct}
         setCurProduct={setCurProduct}

@@ -21,8 +21,8 @@ export default function AddToCart({ curStyle, sizeId, setSizeId }) {
     styleLoaded = true;
   }
 
-  // console.log('line 25 curStyle.skus: ', curStyle.skus);
-  // console.log('line 26 allSkus: ', allSkus);
+  //  ('line 25 curStyle.skus: ', curStyle.skus);
+  //  ('line 26 allSkus: ', allSkus);
   return (
     <div>
       <h3>Checkout</h3>
