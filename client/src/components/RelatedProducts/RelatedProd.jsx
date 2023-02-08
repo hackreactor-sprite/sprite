@@ -8,7 +8,7 @@ import Modal from '../reusable/Modal';
 import Star from '../reusable/Stars';
 
 export default function RelatedProd({
-  id, curProduct, setCurProduct, setDisplayIndex,
+  id, curProduct, setCurProduct,
 }) {
   const [product, setProduct] = useState({});
   const [average, setAverage] = useState(0);
@@ -21,12 +21,7 @@ export default function RelatedProd({
 
   function handleProductClick(ev) {
     ev.preventDefault();
-    axios.get(`/products/${ev.target.parentElement.id}`)
-      .then((res) => {
-        setCurProduct(res.data);
-        setDisplayIndex(0);
-      })
-      .catch((err) => { throw new Error(err); });
+    setCurProduct(product);
   }
 
   useEffect(() => {
@@ -67,7 +62,7 @@ export default function RelatedProd({
         tabIndex="0"
         id={id}
       >
-        <button type="button" style={{ position: 'absolute', right: '0%' }} onClick={(ev) => { ev.stopPropagation(); setShowModal(!showModal); }}>
+        <button type="button" className="open-modal-button" style={{ position: 'absolute', right: '0%' }} onClick={(ev) => { ev.stopPropagation(); setShowModal(!showModal); }}>
           ☆
         </button>
         {showModal && createPortal(
@@ -96,10 +91,10 @@ export default function RelatedProd({
   );
 }
 
-RelatedProd.propTypes = {
-  id: PropTypes.number.isRequired,
-  curProduct: PropTypes.shape({
-    id: PropTypes.number,
-  }).isRequired,
-  setCurProduct: PropTypes.func.isRequired,
-};
+// RelatedProd.propTypes = {
+//   id: PropTypes.number.isRequired,
+//   curProduct: PropTypes.shape({
+//     id: PropTypes.number,
+//   }).isRequired,
+//   setCurProduct: PropTypes.func.isRequired,
+// };

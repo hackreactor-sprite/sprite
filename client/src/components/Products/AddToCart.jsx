@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Checkout from './Checkout';
 
-export default function AddToCart({ curProduct, curStyle, sizeId, setSizeId }) {
-  // // ('add to cart cur product: ', curProduct);
-  const [selectedSku, setSelectedSku] = useState({}); // {id: , size: }
+export default function AddToCart({ curStyle, sizeId, setSizeId }) {
+  // //console.log('add to cart cur product: ', curProduct);
   const [allSkus, setAllSkus] = useState({}); // {323212: {xs: 12}, s: 4, m: 7}
 
   useEffect(() => {
@@ -32,7 +31,6 @@ export default function AddToCart({ curProduct, curStyle, sizeId, setSizeId }) {
           <Checkout
             setSizeId={setSizeId}
             sizeId={sizeId}
-            setSelectedSku={setSelectedSku}
             allSkus={allSkus}
             skus={curStyle.skus}
           />

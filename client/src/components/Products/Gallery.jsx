@@ -30,7 +30,7 @@ export default function Gallery({
     if (curStyle.photos[displayIndex].url === undefined) {
       photoUrl = curStyle.photos[0].url;
     } else {
-      'in the else: ', curStyle.photos[displayIndex].url;
+      // console.log('in the else: ', curStyle.photos[displayIndex].url);
       photoUrl = curStyle.photos[displayIndex].url;
 
       content = {

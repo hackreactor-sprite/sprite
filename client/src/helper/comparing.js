@@ -1,4 +1,4 @@
-export default function comparing(curProd, relProd) {
+export default function comparing(curProd = [], relProd = []) {
   const result = [];
   const allChars = curProd.concat(relProd);
   const uniqueChars = [...new Set(allChars.map((char) => (!char.value ? `${char.feature}` : `${char.value} ${char.feature}`)))];
