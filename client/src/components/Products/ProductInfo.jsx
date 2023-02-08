@@ -28,7 +28,7 @@ export default function ProductInfo({ curProduct, curStyle, metadata }) {
 
   return (
     <section>
-      <h3>Product Info</h3>
+      <h3 data-testid="productInfo">Product Info</h3>
       <h5>{totalRank}</h5>
       {/* <p>Read all {# of reviews} reviews</p> */}
       <Star totalRanking={totalRank} />

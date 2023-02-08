@@ -8,6 +8,7 @@ import { handleAddOutfit } from '../helper/handleOutfits';
 export default function RelatedProducts({
   curProduct, setCurProduct, metadata, curStyle, styles, setStyles, allProducts, setDisplayIndex, relatedProds,
 }) {
+
   const [outfits, setOutfits] = useState([]);
   return (
     <section className="relatedproducts">
@@ -30,42 +31,30 @@ export default function RelatedProducts({
       <h4>Your Outfit</h4>
       <div className="carousel-list">
         <Carousel>
-          <div
-            className="carousel-item"
-            style={{
-              minWidth: '200px', width: '200px', overflow: 'hidden', boxShadow: '0 0 2px black',
-            }}
-          >
-            <div
-              className="outfit"
-              style={{
-                position: 'relative',
-              }}
-            >
+          <div className="carousel-item">
+            <div className="product">
               <img
                 className="outfitPlaceholder"
                 src="https://cdn1.iconfinder.com/data/icons/shopping-and-commerce-17/64/98-512.png"
                 alt="not found"
                 style={{
-                  width: '200px', height: '225px', objectFit: 'cover',
+                  width: '200px', height: '225px', objectFit: 'cover', border: '1px solid black',
                 }}
               />
-              <div style={{ textAlign: 'center' }}>
-                <button type="button" onClick={(ev) => handleAddOutfit(ev, curStyle, outfits, setOutfits)}>
-                  <h5>Add to Outfit</h5>
-                </button>
+              <div style={{ cursor: 'pointer' }} onClick={handleAddOutfit} onKeyPress={handleAddOutfit} role="button" tabIndex="0">
+                Add to Outfit
               </div>
             </div>
           </div>
           {
         outfits.map((style) => (
           <Outfit
+            id={style.style_id}
             key={style.style_id}
             style={style}
             metadata={metadata}
             curProduct={curProduct}
-            outfits={outfits}
-            setOutfits={setOutfits}
+            handleDeleteOutfit={handleDeleteOutfit}
           />
         ))
         }
@@ -82,9 +71,5 @@ RelatedProducts.propTypes = {
   setCurProduct: PropTypes.func.isRequired,
   metadata: PropTypes.shape({
     product_id: PropTypes.string,
-  }).isRequired,
-  relatedProds: PropTypes.arrayOf(PropTypes.number).isRequired,
-  curStyle: PropTypes.shape({
-    product_id: PropTypes.number,
   }).isRequired,
 };
