@@ -7,7 +7,7 @@ export default function Report({ id, type, reported, setReported }) {
       .put(`qa/${type}/${id}/report`)
       .then(() => {
         setReported(!reported);
-        //console.log('success');
+        // ('success');
       })
       .catch((err) => new Error(err));
   }

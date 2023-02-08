@@ -10,7 +10,7 @@ export default function Comparison({
   const compareChars = comparing(curProdChar, prodChar);
 
   return (
-    <>
+    <div className="comparison-modal">
       <div>Comparing</div>
       <table style={{ border: '1px solid black' }}>
         <thead>
@@ -30,6 +30,6 @@ export default function Comparison({
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
