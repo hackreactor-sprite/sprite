@@ -6,7 +6,6 @@ import GalleryThumbnails from './GalleryThumbnails';
 import Carousel from '../reusable/Carousel';
 
 export default function Gallery({
-  styles,
   curStyle,
   displayIndex,
   setDisplayIndex,
