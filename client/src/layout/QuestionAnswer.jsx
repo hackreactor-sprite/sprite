@@ -8,34 +8,28 @@ import Modal from '../components/reusable/Modal';
 import handleContentLoad from '../helper/handleContentLoad';
 import handleSearch from '../helper/handleSearch';
 
-export default function QuestionAnswer({ curProduct }) {
-  const [QAList, setQAList] = useState([]);
+export default function QuestionAnswer({ curProduct, QAList }) {
   const [partialQAList, setPartialQAList] = useState([]);
   const [search, setSearch] = useState('');
-  const [page, setPage] = useState(1);
-  const [queryCount, setQueryCount] = useState(100);
-  const [shown, setShown] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(
-        `/qa/questions/?page=${page}&count=${queryCount}&productid=${curProduct.id}`,
-      )
-      .then((res) => {
-        const sorted = res.data.results.sort(
-          (a, b) => b.question_helpfulness - a.question_helpfulness,
-        );
+    const sorted = QAList.sort(
+      (a, b) => b.question_helpfulness - a.question_helpfulness,
+    );
 
-        setPartialQAList(sorted.slice(0, 4));
-        setQAList(sorted);
-      })
-      .catch((err) => new Error(err));
-  }, [curProduct]);
+    setPartialQAList(sorted.slice(0, 4));
+  }, [QAList]);
 
   useEffect(() => {
-    if (search.length > 3) {
-      handleSearch();
+    const nothing = null;
+    if (search.length >= 3) {
+      handleSearch({
+        nothing,
+        search,
+        list: QAList,
+        setPartialList: setPartialQAList,
+      });
     }
     if (search.length === 0) {
       setPartialQAList(QAList.slice(0, 4));
@@ -62,7 +56,6 @@ export default function QuestionAnswer({ curProduct }) {
         value={search}
         onChange={(e) => {
           setSearch(e.target.value);
-          handleSearch(e);
         }}
         onKeyDown={
           (e) =>
@@ -108,7 +101,7 @@ export default function QuestionAnswer({ curProduct }) {
         <button
           type="button"
           data-testid="question-form-button"
-          onClick={() => setShowModal(!shown)}
+          onClick={() => setShowModal(!showModal)}
         >
           <small>ADD A QUESTION +</small>
         </button>

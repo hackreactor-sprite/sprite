@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Checkout from './Checkout';
 
 export default function AddToCart({ curProduct, curStyle, sizeId, setSizeId }) {
-  // //console.log('add to cart cur product: ', curProduct);
+  // // ('add to cart cur product: ', curProduct);
   const [selectedSku, setSelectedSku] = useState({}); // {id: , size: }
   const [allSkus, setAllSkus] = useState({}); // {323212: {xs: 12}, s: 4, m: 7}
 
@@ -22,8 +22,8 @@ export default function AddToCart({ curProduct, curStyle, sizeId, setSizeId }) {
     styleLoaded = true;
   }
 
-  // console.log('line 25 curStyle.skus: ', curStyle.skus);
-  // console.log('line 26 allSkus: ', allSkus);
+  //  ('line 25 curStyle.skus: ', curStyle.skus);
+  //  ('line 26 allSkus: ', allSkus);
   return (
     <div>
       <h3>Checkout</h3>

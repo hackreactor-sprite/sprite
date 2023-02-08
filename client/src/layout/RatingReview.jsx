@@ -15,7 +15,7 @@ export default function RatingReview({ curProduct, metadata }) {
   const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     axios
-      .get(`/reviews/?sort=${sortType}&productid=40348`)
+      .get(`/reviews/?sort=${sortType}&productid=${curProduct.id}`)
       .then((res) => {
         const sorted = res.data.results.sort(
           (a, b) => b.helpfulness - a.helpfulness,
@@ -56,25 +56,27 @@ export default function RatingReview({ curProduct, metadata }) {
             <ReviewItem review={review} key={i} />
           ))}
           <div className="section-btn-container">
-            {reviewList.length > 2
-            && partialReviewList.length < reviewList.length ? (
+            {reviewList.length > 2 &&
+            partialReviewList.length < reviewList.length ? (
               <button
                 type="button"
-                onClick={() => handleContentLoad({
-                  partialList: partialReviewList,
-                  setPartialList: setPartialReviewList,
-                  totalList: reviewList,
-                })}
+                onClick={() =>
+                  handleContentLoad({
+                    partialList: partialReviewList,
+                    setPartialList: setPartialReviewList,
+                    totalList: reviewList,
+                  })
+                }
               >
                 <small>MORE REVIEWS</small>
               </button>
-              ) : null}
+            ) : null}
             <button type="button" onClick={() => setShowModal(!showModal)}>
               <small>ADD A REVIEW +</small>
             </button>
           </div>
-          {showModal
-            && createPortal(
+          {showModal &&
+            createPortal(
               <Modal showModal={showModal} setShowModal={setShowModal}>
                 <ModalRoute
                   route="AddReviewForm"

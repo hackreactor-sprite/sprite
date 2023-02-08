@@ -17,11 +17,11 @@ export default function AddQuestionForm({ curProduct, state, setState }) {
       email: e.target.email.value,
       product_id: curProduct.id,
     };
-    //console.log('Submitted Form :', formObj);
+    //sku objects('Submitted Form :', formObj);
     axios
       .post('/qa/questions', formObj)
       .then(() => {
-        //console.log('success');
+        //sku objects('success');
         setState(!state);
       })
       .catch((err) => new Error(err));
