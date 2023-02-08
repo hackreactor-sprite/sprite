@@ -9,7 +9,7 @@ export default function Gallery({
   styles,
   curStyle,
   displayIndex,
-  setDisplayIndex
+  setDisplayIndex,
 }) {
   // //console.log('line 5 of Gallery the styles for gallery: ', curStyle.photos);
   const [showBigImage, setShowBigImage] = useState(false);
@@ -30,7 +30,7 @@ export default function Gallery({
     if (curStyle.photos[displayIndex].url === undefined) {
       photoUrl = curStyle.photos[0].url;
     } else {
-      console.log('in the else: ', curStyle.photos[displayIndex].url);
+      // console.log('in the else: ', curStyle.photos[displayIndex].url);
       photoUrl = curStyle.photos[displayIndex].url;
 
       content = {

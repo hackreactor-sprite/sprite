@@ -48,7 +48,10 @@ export default function ProductInfo({ curProduct, curStyle, metadata }) {
               {curStyle.sale_price}
             </p>
             <p className="crossOut">
-              <s>${curStyle.original_price}</s>
+              <s>
+                $
+                {curStyle.original_price}
+              </s>
             </p>
           </div>
         )}

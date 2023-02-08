@@ -6,14 +6,14 @@ import Carousel from '../components/reusable/Carousel';
 import { handleAddOutfit } from '../helper/handleOutfits';
 
 export default function RelatedProducts({
-  curProduct, setCurProduct, metadata, curStyle, styles, setStyles, allProducts, setDisplayIndex, relatedProds,
+  curProduct, setCurProduct, metadata, curStyle, relatedProds,
 }) {
 
   const [outfits, setOutfits] = useState([]);
   return (
     <section className="relatedproducts">
-      <h4 className="carousel">Related Products</h4>
-      <div className="carousel-list">
+      <h4 className="rel-prod-heading">Related Products</h4>
+      <div className="rel-prod-list">
         <Carousel>
           {
         relatedProds.map((id) => (
@@ -28,13 +28,23 @@ export default function RelatedProducts({
         }
         </Carousel>
       </div>
-      <h4>Your Outfit</h4>
-      <div className="carousel-list">
+      <h4 className="outfits-heading">Your Outfit</h4>
+      <div className="outfits-list">
         <Carousel>
-          <div className="carousel-item">
-            <div className="product">
+          <div
+            className="outfit-item"
+            style={{
+              minWidth: '200px', width: '200px', overflow: 'hidden', boxShadow: '0 0 2px black',
+            }}
+          >
+            <div
+              className="outfit"
+              style={{
+                position: 'relative',
+              }}
+            >
               <img
-                className="outfitPlaceholder"
+                id="outfitPlaceholder"
                 src="https://cdn1.iconfinder.com/data/icons/shopping-and-commerce-17/64/98-512.png"
                 alt="not found"
                 style={{
@@ -64,12 +74,16 @@ export default function RelatedProducts({
   );
 }
 
-RelatedProducts.propTypes = {
-  curProduct: PropTypes.shape({
-    id: PropTypes.number,
-  }).isRequired,
-  setCurProduct: PropTypes.func.isRequired,
-  metadata: PropTypes.shape({
-    product_id: PropTypes.string,
-  }).isRequired,
-};
+// RelatedProducts.propTypes = {
+//   curProduct: PropTypes.shape({
+//     id: PropTypes.number,
+//   }).isRequired,
+//   setCurProduct: PropTypes.func.isRequired,
+//   metadata: PropTypes.shape({
+//     product_id: PropTypes.string,
+//   }).isRequired,
+//   relatedProds: PropTypes.arrayOf(PropTypes.number).isRequired,
+//   curStyle: PropTypes.shape({
+//     product_id: PropTypes.number,
+//   }).isRequired,
+// };
