@@ -67,7 +67,7 @@ export default function RelatedProd({
         tabIndex="0"
         id={id}
       >
-        <button type="button" style={{ position: 'absolute', right: '0%' }} onClick={(ev) => { ev.stopPropagation(); setShowModal(!showModal); }}>
+        <button type="button" className="open-modal-button" style={{ position: 'absolute', right: '0%' }} onClick={(ev) => { ev.stopPropagation(); setShowModal(!showModal); }}>
           ☆
         </button>
         {showModal && createPortal(
