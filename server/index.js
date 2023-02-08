@@ -19,4 +19,4 @@ app.use('/interactions', interactions);
 
 const PORT = process.env.port || 3000;
 app.listen(PORT);
-console.log(`Listening at http://localhost:${PORT}`);
+`Listening at http://localhost:${PORT}`;
