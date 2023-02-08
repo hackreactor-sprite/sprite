@@ -123,9 +123,3 @@ test('should have outfitPlaceholder on first rendering', async () => {
   render(<RelatedProducts style={style1} curProduct={curProduct1} metadata={metadata1} relatedProds={relatedProds1} />);
   expect(document.getElementById('outfitPlaceholder')).toBeTruthy();
 });
-
-// test('should have 2 outfit items after clicking Add to Outfit once', async () => {
-//   render(<RelatedProducts curStyle={style1} curProduct={curProduct1} metadata={metadata1} relatedProds={relatedProds1} />);
-//   await userEvent.click(screen.getByText('Add to Outfit'));
-//   expect(document.getElementsByTagName('outfit-item').length).toHaveLength(2);
-// });
