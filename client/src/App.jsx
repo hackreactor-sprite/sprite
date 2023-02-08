@@ -10,7 +10,6 @@ function App() {
   const [metadata, setMetadata] = useState({});
   const [curStyle, setCurStyle] = useState({});
   const [styles, setStyles] = useState([]);
-  const [displayPic, setDisplayPic] = useState('');
   const [displayIndex, setDisplayIndex] = useState(0);
   const [relatedProds, setRelatedProds] = useState([]);
   const [QAList, setQAList] = useState([]);
@@ -35,7 +34,6 @@ function App() {
         .then((res) => {
           setStyles(res.data.results);
           setCurStyle(res.data.results[0]);
-          setDisplayPic(res.data.results[0].photos[0].url);
           return axios.get(`/products/${curProduct.id}/related`);
         })
         .then((res) => {
@@ -61,8 +59,6 @@ function App() {
         setStyles={setStyles}
         curStyle={curStyle}
         setCurStyle={setCurStyle}
-        displayPic={displayPic}
-        setDisplayPic={setDisplayPic}
         displayIndex={displayIndex}
         setDisplayIndex={setDisplayIndex}
       />

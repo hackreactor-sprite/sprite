@@ -6,8 +6,6 @@ import ProductInfo from '../components/Products/ProductInfo';
 import ProductOverview from '../components/Products/ProductOverview';
 
 export default function ProductDetail({
-  displayPic,
-  setDisplayPic,
   curProduct,
   styles,
   setStyles,
@@ -35,9 +33,6 @@ export default function ProductDetail({
     <section className="productDetail">
       <div className="left">
         <Gallery
-          displayPic={displayPic}
-          setDisplayPic={setDisplayPic}
-          styles={styles}
           curStyle={curStyle}
           displayIndex={displayIndex}
           setDisplayIndex={setDisplayIndex}
@@ -57,8 +52,6 @@ export default function ProductDetail({
           curStyle={curStyle}
           setCurStyle={setCurStyle}
           curProduct={curProduct}
-          displayPic={displayPic}
-          setDisplayPic={setDisplayPic}
           sizeId={sizeId}
           setSizeId={setSizeId}
         />
