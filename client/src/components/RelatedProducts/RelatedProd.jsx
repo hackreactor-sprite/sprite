@@ -8,7 +8,7 @@ import Modal from '../reusable/Modal';
 import Star from '../reusable/Stars';
 
 export default function RelatedProd({
-  id, curProduct, setCurProduct, setDisplayIndex,
+  id, curProduct, setCurProduct,
 }) {
   const [product, setProduct] = useState({});
   const [average, setAverage] = useState(0);
@@ -21,12 +21,7 @@ export default function RelatedProd({
 
   function handleProductClick(ev) {
     ev.preventDefault();
-    axios.get(`/products/${ev.target.parentElement.id}`)
-      .then((res) => {
-        setCurProduct(res.data);
-        setDisplayIndex(0);
-      })
-      .catch((err) => { throw new Error(err); });
+    setCurProduct(product);
   }
 
   useEffect(() => {
