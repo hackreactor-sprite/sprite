@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import handleInteractions from '../../helper/handleInteractions';
 
 export function handleClick(ev, direction, offset) {
   ev.preventDefault();
@@ -18,7 +19,7 @@ export function handleClick(ev, direction, offset) {
 }
 
 export default function Carousel({
-  children, size = 200, direction = 'row', numberToDisplay = 4, gap = 15,
+  children, location, size = 200, direction = 'row', numberToDisplay = 4, gap = 15,
 }) {
   const containerSize = size * numberToDisplay + (numberToDisplay - 1) * gap;
   const scrollOffset = size + gap;
@@ -28,9 +29,10 @@ export default function Carousel({
   } else if (direction === 'row') {
     sizeProperty = 'width';
   }
+
   return (
     <div style={{ display: 'flex', flexDirection: direction, justifyContent: 'center' }}>
-      <button type="button" onClick={(ev) => handleClick(ev, direction, -scrollOffset)} style={{ marginTop: 'auto' }}>{direction === 'row' ? '‹' : '⌃'}</button>
+      <button type="button" onClick={(ev) => { handleClick(ev, direction, -scrollOffset); handleInteractions({ element: 'left button', widget: location }); }} style={{ marginTop: 'auto' }}>{direction === 'row' ? '‹' : '⌃'}</button>
       <div
         className="item-container"
         style={{
@@ -45,7 +47,7 @@ export default function Carousel({
       >
         {children}
       </div>
-      <button type="button" onClick={(ev) => handleClick(ev, direction, scrollOffset)} style={{ marginTop: 'auto' }}>{direction === 'row' ? '›' : '⌄'}</button>
+      <button type="button" onClick={(ev) => { handleClick(ev, direction, -scrollOffset); handleInteractions({ element: 'left button', widget: location }); }} style={{ marginTop: 'auto' }}>{direction === 'row' ? '›' : '⌄'}</button>
     </div>
   );
 }
