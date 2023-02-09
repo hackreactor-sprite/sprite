@@ -5,8 +5,9 @@ import Helpful from '../reusable/Helpful';
 import Report from '../reusable/Report';
 import ModalRoute from '../Modal/ModalRoute';
 import Modal from '../reusable/Modal';
+import handleInteractions from '../../helper/handleInteractions';
 
-function AnswerItem({ answer }) {
+export default function AnswerItem({ answer }) {
   const [showModal, setShowModal] = useState(false);
   const [reported, setReported] = useState(false);
   const [curPhoto, setCurPhoto] = useState('');
@@ -44,14 +45,23 @@ function AnswerItem({ answer }) {
                 src={photo}
                 alt="Answer Image"
                 className="answer-photo"
-                onClick={() => handleImage(photo)}
+                onClick={() => {
+                  handleImage(photo);
+                  handleInteractions({
+                    element: 'QA-photo-expand',
+                    widget: 'AnswerItem',
+                  });
+                }}
               />
             </div>
           ))}
           {showModal &&
             createPortal(
-              <Modal showModal={showModal} setShowModal={setShowModal} key={i}>
-                <ModalRoute route="ImageExpand" content={{ photo: curPhoto }} />
+              <Modal showModal={showModal} setShowModal={setShowModal}>
+                <ModalRoute
+                  route="ImageExpand"
+                  content={{ url: curPhoto, alt: 'AnswerImage' }}
+                />
               </Modal>,
               document.body,
             )}
@@ -63,13 +73,18 @@ function AnswerItem({ answer }) {
             {', '}
             {convertedDate}
           </small>
-          <Helpful helpful={answer.helpfulness} answerid={answer.id} />
+          <Helpful
+            helpful={answer.helpfulness}
+            answerid={answer.id}
+            location="AnswerItem"
+          />
           {!reported ? (
             <Report
               id={answer.id}
               type="answers"
               setReported={setReported}
               reported={reported}
+              location="AnswerItem"
             />
           ) : (
             <small>Reported</small>

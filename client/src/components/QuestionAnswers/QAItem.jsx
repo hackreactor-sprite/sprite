@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-
 import AnswerItem from './AnswerItem';
 import Helpful from '../reusable/Helpful';
 import ModalRoute from '../Modal/ModalRoute';
 import Modal from '../reusable/Modal';
 import handleContentLoad from '../../helper/handleContentLoad';
+import handleInteractions from '../../helper/handleInteractions';
 
 export default function QAItem({ QA, curProduct }) {
   const [showModal, setShowModal] = useState(false);
@@ -32,11 +32,17 @@ export default function QAItem({ QA, curProduct }) {
           </h4>
 
           <div className="small-container">
-            <Helpful helpful={QA.question_helpfulness} />
+            <Helpful helpful={QA.question_helpfulness} location="QAItem" />
             <button
               type="button"
               data-testid="question-form-button"
-              onClick={() => setShowModal(!showModal)}
+              onClick={() => {
+                setShowModal(!showModal);
+                handleInteractions({
+                  element: 'Question-form-button',
+                  widget: 'QAItem',
+                });
+              }}
             >
               <small>Add Answer</small>
             </button>
@@ -51,13 +57,17 @@ export default function QAItem({ QA, curProduct }) {
           <button
             id="load-answers"
             type="button"
-            onClick={() =>
+            onClick={() => {
               handleContentLoad({
                 partialList: partialAnswers,
                 setPartialList: setPartialAnswers,
                 totalList: answerList,
-              })
-            }
+              });
+              handleInteractions({
+                element: 'Load-answers',
+                widget: 'QAItem',
+              });
+            }}
           >
             <small>
               {partialAnswers.length !== answerList.length
