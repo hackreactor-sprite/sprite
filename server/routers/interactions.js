@@ -12,7 +12,7 @@ router.post('/', (req, res) => {
     .then((data) => {
       res.send(data.data);
     })
-    .catch((err) => res.send(err));
+    .catch((err) => res.send('backend req error'));
 });
 
 module.exports = router;
