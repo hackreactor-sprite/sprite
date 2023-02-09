@@ -24,15 +24,21 @@ export default function Carousel({
   const containerSize = size * numberToDisplay + (numberToDisplay - 1) * gap;
   const scrollOffset = size + gap;
   let sizeProperty;
+  let firstButton;
+  let secondButton;
   if (direction === 'column') {
     sizeProperty = 'height';
+    firstButton = 'upButton';
+    secondButton = 'downButton';
   } else if (direction === 'row') {
     sizeProperty = 'width';
+    firstButton = 'leftButton';
+    secondButton = 'rightButton';
   }
 
   return (
     <div style={{ display: 'flex', flexDirection: direction, justifyContent: 'center' }}>
-      <button type="button" onClick={(ev) => { handleClick(ev, direction, -scrollOffset); handleInteractions({ element: 'left button', widget: location }); }} style={{ marginTop: 'auto' }}>{direction === 'row' ? '‹' : '⌃'}</button>
+      <button type="button" onClick={(ev) => { handleClick(ev, direction, -scrollOffset); handleInteractions({ element: firstButton, widget: location }); }} style={{ marginTop: 'auto' }}>{direction === 'row' ? '‹' : '⌃'}</button>
       <div
         className="item-container"
         style={{
@@ -47,7 +53,7 @@ export default function Carousel({
       >
         {children}
       </div>
-      <button type="button" onClick={(ev) => { handleClick(ev, direction, -scrollOffset); handleInteractions({ element: 'left button', widget: location }); }} style={{ marginTop: 'auto' }}>{direction === 'row' ? '›' : '⌄'}</button>
+      <button type="button" onClick={(ev) => { handleClick(ev, direction, -scrollOffset); handleInteractions({ element: secondButton, widget: location }); }} style={{ marginTop: 'auto' }}>{direction === 'row' ? '›' : '⌄'}</button>
     </div>
   );
 }
