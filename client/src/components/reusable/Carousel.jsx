@@ -18,7 +18,7 @@ export function handleClick(ev, direction, offset) {
 }
 
 export default function Carousel({
-  children, size = 200, direction = 'row', numberToDisplay = 4, gap = 15, height = 20,
+  children, size = 200, direction = 'row', numberToDisplay = 4, gap = 15,
 }) {
   const containerSize = size * numberToDisplay + (numberToDisplay - 1) * gap;
   const scrollOffset = size + gap;
@@ -30,7 +30,7 @@ export default function Carousel({
   }
   return (
     <div style={{ display: 'flex', flexDirection: direction, justifyContent: 'center' }}>
-      <button type="button" onClick={(ev) => handleClick(ev, direction, -scrollOffset)} style={{ height: `${height}px`, marginTop: 'auto' }}>{direction === 'row' ? '‹' : '⌃'}</button>
+      <button type="button" onClick={(ev) => handleClick(ev, direction, -scrollOffset)} style={{ marginTop: 'auto' }}>{direction === 'row' ? '‹' : '⌃'}</button>
       <div
         className="item-container"
         style={{
@@ -45,7 +45,7 @@ export default function Carousel({
       >
         {children}
       </div>
-      <button type="button" onClick={(ev) => handleClick(ev, direction, scrollOffset)} style={{ height: `${height}px`, marginTop: 'auto' }}>{direction === 'row' ? '›' : '⌄'}</button>
+      <button type="button" onClick={(ev) => handleClick(ev, direction, scrollOffset)} style={{ marginTop: 'auto' }}>{direction === 'row' ? '›' : '⌄'}</button>
     </div>
   );
 }
