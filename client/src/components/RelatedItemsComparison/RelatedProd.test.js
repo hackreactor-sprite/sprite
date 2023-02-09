@@ -115,6 +115,7 @@ describe('RelatedProd component test', () => {
       />,
     );
 
+    // makes sure all updates related to these “units” have been processed and applied to the DOM before you making any assertions
     await waitFor(async () => {
       const product = document.querySelector('.carousel-item > .product');
       expect(product).toBeTruthy();
