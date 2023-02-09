@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import RelatedProd from '../components/RelatedProducts/RelatedProd';
-import Outfit from '../components/RelatedProducts/Outfit';
+import RelatedProd from '../components/RelatedItemsComparison/RelatedProd';
+import Outfit from '../components/RelatedItemsComparison/Outfit';
 import Carousel from '../components/reusable/Carousel';
 import { handleAddOutfit } from '../helper/handleOutfits';
 
