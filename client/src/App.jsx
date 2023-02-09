@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ProductDetail from './layout/ProductDetail';
-import RelatedProducts from './layout/RelatedProducts';
+import RelatedItemsComparison from './layout/RelatedItemsComparison';
 import QuestionAnswer from './layout/QuestionAnswer';
 import RatingReview from './layout/RatingReview';
 
@@ -62,7 +62,7 @@ function App() {
         displayIndex={displayIndex}
         setDisplayIndex={setDisplayIndex}
       />
-      <RelatedProducts
+      <RelatedItemsComparison
         curProduct={curProduct}
         setCurProduct={setCurProduct}
         curStyle={curStyle}
