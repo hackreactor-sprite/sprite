@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import RelatedProd from '../components/RelatedProducts/RelatedProd';
-import Outfit from '../components/RelatedProducts/Outfit';
+import RelatedProd from '../components/RelatedItemsComparison/RelatedProd';
+import Outfit from '../components/RelatedItemsComparison/Outfit';
 import Carousel from '../components/reusable/Carousel';
 import { handleAddOutfit } from '../helper/handleOutfits';
+import handleInteractions from '../helper/handleInteractions';
 
 export default function RelatedProducts({
   curProduct, setCurProduct, metadata, curStyle, relatedProds,
@@ -51,7 +52,13 @@ export default function RelatedProducts({
                 }}
               />
               <div style={{ textAlign: 'center' }}>
-                <button type="button" onClick={(ev) => handleAddOutfit(ev, curStyle, outfits, setOutfits)}>
+                <button
+                  type="button"
+                  onClick={(ev) => {
+                    handleAddOutfit(ev, curStyle, outfits, setOutfits);
+                    handleInteractions({ element: 'AddOutfitButton', widget: 'RelatedItemsComparison' });
+                  }}
+                >
                   <h5>Add to Outfit</h5>
                 </button>
               </div>
