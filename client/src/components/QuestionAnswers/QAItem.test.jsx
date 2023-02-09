@@ -110,8 +110,10 @@ const mockProduct = {
 };
 
 describe('QA Item', () => {
-  test('should open the modal clicking on add answer button', async () => {
+  beforeEach(() => {
     render(<QuestionAnswer curProduct={mockProduct.curProduct} />);
+  });
+  test('should open the modal clicking on add answer button', async () => {
     await screen.getByRole('tree', { name: /list/i });
     await screen.getByRole('treeitem', {
       name: /q: new question who dis\? helpful\? \(2\) yes add answer qa-list load more answers/i,
