@@ -316,6 +316,10 @@ button {
   width: 100%;
 }
 
+html {
+  font-family: "Lato", sans-serif;
+}
+
 #root {
   margin: 0 5rem;
 }

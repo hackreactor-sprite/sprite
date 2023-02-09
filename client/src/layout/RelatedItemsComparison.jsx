@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import RelatedProd from '../components/RelatedProducts/RelatedProd';
-import Outfit from '../components/RelatedProducts/Outfit';
+import RelatedProd from '../components/RelatedItemsComparison/RelatedProd';
+import Outfit from '../components/RelatedItemsComparison/Outfit';
 import Carousel from '../components/reusable/Carousel';
 import { handleAddOutfit } from '../helper/handleOutfits';
+import handleInteractions from '../helper/handleInteractions';
 
 export default function RelatedProducts({
   curProduct, setCurProduct, metadata, curStyle, relatedProds,
 }) {
-
   const [outfits, setOutfits] = useState([]);
   return (
     <section className="relatedproducts">
@@ -48,23 +48,31 @@ export default function RelatedProducts({
                 src="https://cdn1.iconfinder.com/data/icons/shopping-and-commerce-17/64/98-512.png"
                 alt="not found"
                 style={{
-                  width: '200px', height: '225px', objectFit: 'cover', border: '1px solid black',
+                  width: '200px', height: '225px', objectFit: 'cover',
                 }}
               />
-              <div style={{ cursor: 'pointer' }} onClick={handleAddOutfit} onKeyPress={handleAddOutfit} role="button" tabIndex="0">
-                Add to Outfit
+              <div style={{ textAlign: 'center' }}>
+                <button
+                  type="button"
+                  onClick={(ev) => {
+                    handleAddOutfit(ev, curStyle, outfits, setOutfits);
+                    handleInteractions({ element: 'AddOutfitButton', widget: 'RelatedItemsComparison' });
+                  }}
+                >
+                  <h5>Add to Outfit</h5>
+                </button>
               </div>
             </div>
           </div>
           {
         outfits.map((style) => (
           <Outfit
-            id={style.style_id}
             key={style.style_id}
             style={style}
             metadata={metadata}
             curProduct={curProduct}
-            handleDeleteOutfit={handleDeleteOutfit}
+            outfits={outfits}
+            setOutfits={setOutfits}
           />
         ))
         }
