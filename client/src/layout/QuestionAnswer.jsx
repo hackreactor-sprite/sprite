@@ -14,11 +14,13 @@ export default function QuestionAnswer({ curProduct, QAList }) {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    const sorted = QAList.sort(
-      (a, b) => b.question_helpfulness - a.question_helpfulness,
-    );
+    if (curProduct.id && QAList) {
+      const sorted = QAList.sort(
+        (a, b) => b.question_helpfulness - a.question_helpfulness,
+      );
 
-    setPartialQAList(sorted.slice(0, 4));
+      setPartialQAList(sorted.slice(0, 4));
+    }
   }, [QAList]);
 
   useEffect(() => {
@@ -88,6 +90,7 @@ export default function QuestionAnswer({ curProduct, QAList }) {
         {QAList.length > 2 && partialQAList.length < QAList.length ? (
           <button
             type="button"
+            className="big-btn"
             onClick={() => {
               handleContentLoad({
                 partialList: partialQAList,
@@ -109,6 +112,7 @@ export default function QuestionAnswer({ curProduct, QAList }) {
         ) : null}
         <button
           type="button"
+          className="big-btn"
           data-testid="question-form-button"
           onClick={() => {
             setShowModal(!showModal);

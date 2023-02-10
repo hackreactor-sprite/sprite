@@ -27,14 +27,16 @@ export default function QAItem({ QA, curProduct }) {
     <>
       <div className="QA-item" role="treeitem" aria-selected="false">
         <div className="QA-body">
-          <h4 id="QA-body-content" aria-level="3">
-            {`Q: $${QA.question_body.toUpperCase()}`}
-          </h4>
-
+          <ins>
+            <h4 id="QA-body-content" aria-level="3">
+              {`Q: ${QA.question_body.toUpperCase()}`}
+            </h4>
+          </ins>
           <div className="small-container">
             <Helpful helpful={QA.question_helpfulness} location="QAItem" />
             <button
               type="button"
+              className="small-btn"
               data-testid="question-form-button"
               onClick={() => {
                 setShowModal(!showModal);
@@ -44,7 +46,7 @@ export default function QAItem({ QA, curProduct }) {
                 });
               }}
             >
-              <small>Add Answer</small>
+              <small className="greytxt">Add Answer</small>
             </button>
           </div>
         </div>
@@ -53,7 +55,7 @@ export default function QAItem({ QA, curProduct }) {
             <AnswerItem answer={answer} key={i} />
           ))}
         </div>
-        {answerList.length > 2 && partialAnswers.length < answerList.length ? (
+        {partialAnswers.length < answerList.length && curProduct.id ? (
           <button
             id="load-answers"
             type="button"

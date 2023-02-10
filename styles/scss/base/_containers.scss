@@ -1,12 +1,42 @@
+@import './mixins';
+
+body {
+  margin: 0 35rem;
+}
+
 .small-container {
   display: flex;
   align-items: center;
   gap: 1rem;
+  padding-top: 0.5rem;
 }
 
 .ImageExpand {
+  padding-top: 1rem;
   display: flex;
   width: 100%;
+  border-radius: 0.25rem;
 }
 
-//box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+.small-btn {
+  @include BoxShadow;
+  padding: 0.15rem 0.25rem;
+  text-align: center;
+  background: none;
+  border: 1px solid lightgray;
+  border-radius: 0.25rem;
+}
+
+.big-btn {
+  @include BoxShadow;
+  background: none;
+  text-align: center;
+  border: 1px solid lightgray;
+  border-radius: 0.25rem;
+  padding: 1rem 2rem;
+}
+
+.small-btn:hover,
+.big-btn:hover {
+  background-color: azure;
+}

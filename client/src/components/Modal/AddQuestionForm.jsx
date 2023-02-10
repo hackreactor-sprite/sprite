@@ -28,14 +28,19 @@ export default function AddQuestionForm({ curProduct, state, setState }) {
   }
   return (
     <form className="modal-form" onSubmit={handleSubmit}>
-      <h3>Ask your Question</h3>
-      <small>
+      <h1>Ask your Question</h1>
+      <p>
         {'About the '}
-        {curProduct.name}
+        <ins>{curProduct.name}</ins>
+      </p>
+      <small>
+        For privacy reasons, do not use your full name or email address
       </small>
-      <div>
+
+      <div className="question-form-header">
         <input
           type="text"
+          className="question-form-input"
           name="name"
           placeholder="Name"
           value={questionForm.name}
@@ -45,28 +50,26 @@ export default function AddQuestionForm({ curProduct, state, setState }) {
             setQuestionForm(newInput);
           }}
         />
-        <small>
-          For privacy reasons, do not use your full name or email address
-        </small>
-      </div>
-      <textarea
-        type="text"
-        name="body"
-        placeholder="Your Question?"
-        value={questionForm.body}
-        onChange={(e) => {
-          const newInput = { ...questionForm };
-          newInput.body = e.target.value;
-          setQuestionForm(newInput);
-        }}
-        maxLength="1000"
-        rows="4"
-        cols="50"
-      />
-      <div>
+
+        <textarea
+          type="text"
+          name="body"
+          className="question-form-input"
+          placeholder="Your Question?"
+          value={questionForm.body}
+          onChange={(e) => {
+            const newInput = { ...questionForm };
+            newInput.body = e.target.value;
+            setQuestionForm(newInput);
+          }}
+          maxLength="1000"
+          rows="4"
+          cols="50"
+        />
         <input
           type="text"
           name="email"
+          className="question-form-input"
           placeholder="Please input your email"
           value={questionForm.email}
           onChange={(e) => {
@@ -76,7 +79,9 @@ export default function AddQuestionForm({ curProduct, state, setState }) {
           }}
         />
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" className="modal-submit">
+        Submit
+      </button>
     </form>
   );
 }
