@@ -2,13 +2,13 @@
 @use './reset';
 @use './containers';
 @use './typography';
-
+@use'./mixins';
 //Layout
 @use '../layout/home';
 @use '../layout/productdetail';
 @use '../layout/questionanswer';
 @use '../layout/ratingreview';
-@use '../layout/relatedproducts';
+@use '../layout/relateditemscomparison';
 
 //Components
 @use '../components/modal';

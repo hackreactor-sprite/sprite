@@ -55,9 +55,10 @@ export default function QAItem({ QA, curProduct }) {
             <AnswerItem answer={answer} key={i} />
           ))}
         </div>
-        {partialAnswers.length < answerList.length && curProduct.id ? (
+        {partialAnswers?.length < answerList?.length && curProduct.id ? (
           <button
             id="load-answers"
+            className="small-btn"
             type="button"
             onClick={() => {
               handleContentLoad({

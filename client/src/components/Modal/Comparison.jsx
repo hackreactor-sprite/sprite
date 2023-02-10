@@ -11,13 +11,13 @@ export default function Comparison({
 
   return (
     <div className="comparison-modal">
-      <div>Comparing</div>
-      <table style={{ border: '1px solid black' }}>
+      <h3>Comparing</h3>
+      <table>
         <thead>
           <tr>
-            <th style={{ border: '1px solid black' }}>{curProd.name}</th>
-            <th style={{ border: '1px solid black' }}>Characteristics</th>
-            <th style={{ border: '1px solid black' }}>{product.name}</th>
+            <th>{curProd.name}</th>
+            <th />
+            <th>{product.name}</th>
           </tr>
         </thead>
         <tbody>

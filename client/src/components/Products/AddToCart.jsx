@@ -44,8 +44,8 @@ export default function AddToCart({ curStyle, sizeId, setSizeId }) {
           />
         ) : null}
         <div className="checkout-buttons">
-          <button id="submit" onClick={() => handleInteractions({ element: 'addToCart', widget: 'addToCart' })} type="submit">Add To Cart <i className="fa-solid fa-plus" /> </button>
-          <button id="heart" onClick={handleHeart} type="button">
+          <button className="big-btn submit" onClick={() => handleInteractions({ element: 'addToCart', widget: 'addToCart' })} type="submit">Add To Cart <i className="fa-solid fa-plus" /> </button>
+          <button className="big-btn heart" onClick={handleHeart} type="button">
             {heart
               ? <i className="fa-solid fa-heart" />
               : <i className="fa-regular fa-heart" />}

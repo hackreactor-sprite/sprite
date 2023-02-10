@@ -87,7 +87,7 @@ export default function QuestionAnswer({ curProduct, QAList }) {
         ))}
       </div>
       <div className="section-btn-container">
-        {QAList.length > 2 && partialQAList.length < QAList.length ? (
+        {QAList?.length > 2 && partialQAList?.length ? (
           <button
             type="button"
             className="big-btn"

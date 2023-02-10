@@ -8,6 +8,7 @@ import Check from '../../assets/check.svg';
 export default function ReviewItem({ review }) {
   const [reported, setReported] = useState(false);
   const [showBody, setShowBody] = useState(false);
+
   const options = {
     month: 'long',
     year: 'numeric',
@@ -54,8 +55,8 @@ export default function ReviewItem({ review }) {
         <Helpful helpful={review.helpfulness} answerid={review.id} />
         {!reported ? (
           <Report
-            id={review.id}
-            type="review"
+            id={review.review_id}
+            type="reviews"
             setReported={setReported}
             reported={reported}
           />

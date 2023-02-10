@@ -306,7 +306,7 @@ button {
 }
 
 body {
-  margin: 0 35rem;
+  margin: 0 5rem;
 }
 
 .small-container {
@@ -429,6 +429,7 @@ p {
 
 #QA-body-content {
   display: flex;
+  margin: 0.6rem 0;
 }
 
 .section-btn-container {
@@ -441,6 +442,7 @@ p {
 .answer-photo-container {
   display: flex;
   gap: 0.5rem;
+  padding-left: 1rem;
 }
 
 .QA-item-container {
@@ -499,6 +501,7 @@ p {
   border-radius: 0.25rem;
   height: 50vh;
   overflow-y: scroll;
+  scroll-behavior: smooth;
   overflow-x: hidden;
   padding: 0 1rem;
 }
@@ -688,6 +691,38 @@ input[type=range]::-ms-track {
   font-size: 3.5rem;
 }
 
+.QA-answer-header {
+  display: flex;
+  align-items: center;
+}
+
+.QA-answer-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (max-device-width: 600px) {
+  body {
+    margin: 0;
+  }
+  #root {
+    margin: 0 1rem;
+  }
+  .rating-content,
+.section-btn-container,
+.QA-body,
+.QA-answer-container {
+    flex-direction: column;
+  }
+  .QA-answer-detail {
+    justify-content: center;
+  }
+}
+.relatedItemsHeader {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .cover {
   z-index: 11;
   position: fixed;
@@ -826,7 +861,7 @@ input[type=range]::-ms-track {
 
 #gallery {
   border: 0.1rem solid #4c5c68;
-  border-radius: 2rem;
+  border-radius: 0.25rem;
   gap: 1rem;
   display: flex;
   flex-direction: row;
@@ -896,7 +931,7 @@ input[type=range]::-ms-track {
 .selected-style {
   padding: 0 0.25rem;
   border: 0.1rem solid #4c5c68;
-  border-radius: 2rem;
+  border-radius: 0.25rem;
 }
 
 .heading {
@@ -907,10 +942,11 @@ input[type=range]::-ms-track {
   padding: 0 1rem 1rem 1.5rem;
 }
 
-.product-info, .checkout, .overview {
+.product-info,
+.checkout,
+.overview {
   border: 0.1rem solid #4c5c68;
-
-  border-radius: 2rem;
+  border-radius: 0.25rem;
 }
 
 .overview {
@@ -945,8 +981,12 @@ input[type=range]::-ms-track {
   cursor: pointer;
 }
 
-#selected-style {
-  border-radius: 3px solid white;
+.selected-bubble {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  padding: 0.5rem;
+  border-radius: 50%;
+  height: 3.5rem;
+  width: 3.5rem;
 }
 
 #review-link {
@@ -965,18 +1005,31 @@ input[type=range]::-ms-track {
   align-items: center;
 }
 
-#heart,
-#submit,
+.heart,
+.submit,
 #quantity-select,
 #size-select {
   margin: 1rem;
-  width: 8rem;
-  height: 4rem;
 }
 
-#quantity-select,
-#size-select {
+#quantity-select {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  background: none;
+  border: 1px solid lightgray;
+  border-radius: 0.25rem;
   text-align: center;
+  height: 3.25rem;
+  width: 5.25rem;
+}
+
+#size-select {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  background: none;
+  border: 1px solid lightgray;
+  border-radius: 0.25rem;
+  text-align: center;
+  height: 3.25rem;
+  width: 10rem;
 }
 
 .fa-heart,
