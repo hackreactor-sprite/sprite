@@ -4,13 +4,13 @@ import axios from 'axios';
 
 export default function AddQuestionForm({ curProduct }) {
   const [questionForm, setQuestionForm] = useState({
-    overall: '',
-    size: '',
-    width: '',
-    comfort: '',
-    quality: '',
-    length: '',
-    fit: '',
+    Overall: '',
+    Size: '',
+    Width: '',
+    Comfort: '',
+    Quality: '',
+    Length: '',
+    Fit: '',
   });
   const ratingObj = {
     1: 'Poor',

@@ -306,7 +306,7 @@ button {
 }
 
 body {
-  margin: 0 35rem;
+  margin: 0 5rem;
 }
 
 .small-container {
@@ -909,7 +909,6 @@ input[type=range]::-ms-track {
 
 .product-info, .checkout, .overview {
   border: 0.1rem solid #4c5c68;
-
   border-radius: 2rem;
 }
 
