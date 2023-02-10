@@ -463,6 +463,10 @@ p {
   cursor: pointer;
 }
 
+.answer-photo:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 30px;
+}
+
 .QA-answer-detail > small {
   padding-right: 1rem;
   border-right: 1px solid black;
