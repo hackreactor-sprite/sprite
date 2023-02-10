@@ -17,7 +17,7 @@ export default function StyleBubble({ style, curStyle, setCurStyle, setSizeId })
     <div>
       {curStyle === style
         ? <img
-        className="bubble selected-style"
+        className="bubble selected-bubble"
         onClick={handleClick}
         id={style.style_id}
         src={style.photos[0].thumbnail_url}
