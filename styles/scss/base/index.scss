@@ -2,7 +2,7 @@
 @use './reset';
 @use './containers';
 @use './typography';
-
+@use'./mixins';
 //Layout
 @use '../layout/home';
 @use '../layout/productdetail';
