@@ -826,7 +826,7 @@ input[type=range]::-ms-track {
 
 #gallery {
   border: 0.1rem solid #4c5c68;
-  border-radius: 2rem;
+  border-radius: 0.25rem;
   gap: 1rem;
   display: flex;
   flex-direction: row;
@@ -896,7 +896,7 @@ input[type=range]::-ms-track {
 .selected-style {
   padding: 0 0.25rem;
   border: 0.1rem solid #4c5c68;
-  border-radius: 2rem;
+  border-radius: 0.25rem;
 }
 
 .heading {
@@ -907,9 +907,11 @@ input[type=range]::-ms-track {
   padding: 0 1rem 1rem 1.5rem;
 }
 
-.product-info, .checkout, .overview {
+.product-info,
+.checkout,
+.overview {
   border: 0.1rem solid #4c5c68;
-  border-radius: 2rem;
+  border-radius: 0.25rem;
 }
 
 .overview {
@@ -944,8 +946,12 @@ input[type=range]::-ms-track {
   cursor: pointer;
 }
 
-#selected-style {
-  border-radius: 3px solid white;
+.selected-bubble {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  padding: 0.5rem;
+  border-radius: 50%;
+  height: 3.5rem;
+  width: 3.5rem;
 }
 
 #review-link {
@@ -964,18 +970,31 @@ input[type=range]::-ms-track {
   align-items: center;
 }
 
-#heart,
-#submit,
+.heart,
+.submit,
 #quantity-select,
 #size-select {
   margin: 1rem;
-  width: 8rem;
-  height: 4rem;
 }
 
-#quantity-select,
-#size-select {
+#quantity-select {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  background: none;
+  border: 1px solid lightgray;
+  border-radius: 0.25rem;
   text-align: center;
+  height: 3.25rem;
+  width: 5.25rem;
+}
+
+#size-select {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  background: none;
+  border: 1px solid lightgray;
+  border-radius: 0.25rem;
+  text-align: center;
+  height: 3.25rem;
+  width: 10rem;
 }
 
 .fa-heart,
