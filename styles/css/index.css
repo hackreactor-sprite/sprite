@@ -565,10 +565,6 @@ progress {
   width: 1rem;
 }
 
-body {
-  background: #DCDCDD;
-}
-
 .left {
   display: flex;
   flex-direction: column;
@@ -584,7 +580,7 @@ body {
 }
 
 #gallery {
-  border: 0.25rem solid #4c5c68;
+  border: 0.1rem solid #4c5c68;
   border-radius: 2rem;
   gap: 1rem;
   display: flex;
@@ -655,7 +651,7 @@ body {
 
 .selected-style {
   padding: 0 0.25rem;
-  border: 0.25rem solid #4c5c68;
+  border: 0.1rem solid #4c5c68;
   border-radius: 2rem;
 }
 
@@ -668,7 +664,7 @@ body {
 }
 
 .product-info, .checkout, .overview {
-  border: 0.25rem solid #4c5c68;
+  border: 0.1rem solid #4c5c68;
   border-radius: 2rem;
 }
 
@@ -678,7 +674,7 @@ body {
 
 #slogan {
   padding: 0.5rem 2rem;
-  border-bottom: 0.25rem solid #4c5c68;
+  border-bottom: 0.1rem solid #4c5c68;
 }
 
 #description {
@@ -686,7 +682,7 @@ body {
 }
 
 .feature {
-  border-top: 0.25rem solid #4c5c68;
+  border-top: 0.1rem solid #4c5c68;
   padding: 0.5rem 2rem;
 }
 
@@ -694,10 +690,19 @@ body {
   transform: scale(2);
   width: 2rem;
   padding: 0 1rem;
+  color: #1985a1;
 }
 
 .bubble:hover, .displayImage:hover, .fa-solid:hover, .galleryThumb:hover {
   cursor: pointer;
+}
+
+#selected-style {
+  border-radius: 3px solid white;
+}
+
+#review-link {
+  color: #1985a1;
 }
 
 #crossedOut {

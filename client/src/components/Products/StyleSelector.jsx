@@ -26,6 +26,7 @@ export default function StyleSelector({
           {styles.map((style) => (
             <StyleBubble
               key={style.style_id}
+              curStyle={curStyle}
               setCurStyle={setCurStyle}
               style={style}
               setSizeId={setSizeId}
