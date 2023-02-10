@@ -72,7 +72,6 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted; /* 2 */
 }
 
@@ -172,12 +171,12 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
+[type=button],
+[type=reset],
+[type=submit] button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -186,9 +185,9 @@ button,
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type='button']:-moz-focusring,
-[type='reset']:-moz-focusring,
-[type='submit']:-moz-focusring {
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -232,8 +231,8 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-[type='checkbox'],
-[type='radio'] {
+[type=checkbox],
+[type=radio] {
   box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
 }
@@ -241,8 +240,8 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -250,14 +249,14 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type='search'] {
+[type=search] {
   outline-offset: -2px; /* 2 */
 }
 
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type='search']::-webkit-search-decoration {
+[type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -348,7 +347,7 @@ body {
 }
 
 html {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .greytxt {
@@ -421,8 +420,6 @@ p {
 }
 
 #load-answers {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -533,8 +530,7 @@ p {
 .review-item {
   padding: 0.5rem 0;
   border-bottom: 1px grey solid;
-  box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px,
-    rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+  box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
 }
 
 .rating-progress-bar,
@@ -550,7 +546,6 @@ p {
 progress {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   height: 0.5rem;
   box-shadow: 0 0.05rem 0.07rem grey inset;
@@ -638,21 +633,21 @@ progress::-webkit-progress-value {
   padding: 0.5rem 0;
 }
 
-input[type='range'] {
+input[type=range] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
   width: 100%; /* Specific width is required for Firefox. */
   background: transparent; /* Otherwise white in Chrome */
 }
 
-input[type='range']::-webkit-slider-thumb {
+input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
 }
 
-input[type='range']:focus {
+input[type=range]:focus {
   outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
 }
 
-input[type='range']::-ms-track {
+input[type=range]::-ms-track {
   width: 100%;
   cursor: pointer;
   /* Hides the slider so custom styles can be added */
@@ -662,7 +657,7 @@ input[type='range']::-ms-track {
 }
 
 /* Special styling for WebKit/Blink */
-input[type='range']::-webkit-slider-thumb {
+input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   background: #ffffff;
   cursor: pointer;
@@ -675,8 +670,8 @@ input[type='range']::-webkit-slider-thumb {
   margin: 2rem;
 }
 
-input[type='range']::-webkit-slider-thumb,
-input[type='range']::-ms-track {
+input[type=range]::-webkit-slider-thumb,
+input[type=range]::-ms-track {
   border: 1px solid black;
   height: 36px;
   width: 16px;
@@ -713,8 +708,7 @@ input[type='range']::-ms-track {
   border-radius: 0.2rem;
   padding: 0 2rem 1rem 2rem;
   width: max-content;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   z-index: 12;
 }
 
@@ -768,7 +762,7 @@ input[type='range']::-ms-track {
   gap: 0.5rem;
 }
 
-.modal > input[type='file'] {
+.modal > input[type=file] {
   padding: 1rem 0;
 }
 
@@ -790,14 +784,12 @@ input[type='range']::-ms-track {
   padding: 1rem 2rem;
   border-radius: 0.5rem;
   border: 1px solid black;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   margin-top: 1rem;
 }
 
 .modal-submit:hover {
-  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
-    rgba(255, 255, 255, 0.3) -3px -3px 6px 1px inset;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.3) -3px -3px 6px 1px inset;
   transition: 0.3s ease-in-out;
 }
 
@@ -819,7 +811,7 @@ input[type='range']::-ms-track {
 }
 
 body {
-  background: #dcdcdd;
+  background: #DCDCDD;
 }
 
 .left {
@@ -849,7 +841,7 @@ body {
   display: flex;
   align-items: center;
   align-content: center;
-  background: #c5c3c6;
+  background: #C5C3C6;
   margin-top: 3rem;
 }
 
@@ -865,7 +857,6 @@ body {
 }
 
 .displayImage {
-  -o-object-fit: scale-down;
   object-fit: scale-down;
   height: 28rem;
   width: 30rem;
@@ -920,9 +911,7 @@ body {
   padding: 0 1rem 1rem 1.5rem;
 }
 
-.product-info,
-.checkout,
-.overview {
+.product-info, .checkout, .overview {
   border: 0.25rem solid #4c5c68;
   border-radius: 2rem;
 }
@@ -951,10 +940,7 @@ body {
   padding: 0 1rem;
 }
 
-.bubble:hover,
-.displayImage:hover,
-.fa-solid:hover,
-.galleryThumb:hover {
+.bubble:hover, .displayImage:hover, .fa-solid:hover, .galleryThumb:hover {
   cursor: pointer;
 }
 
@@ -970,27 +956,21 @@ body {
   align-items: center;
 }
 
-#heart,
-#submit,
-#quantity-select,
-#size-select {
+#heart, #submit, #quantity-select, #size-select {
   margin: 1rem;
   width: 8rem;
   height: 4rem;
 }
 
-#quantity-select,
-#size-select {
+#quantity-select, #size-select {
   text-align: center;
 }
 
-.fa-heart,
-.fa-circle-arrow-left,
-.fa-circle-arrow-right {
+.fa-heart, .fa-circle-arrow-left, .fa-circle-arrow-right {
   transform: scale(1.5);
   color: #1985a1;
 }
 
 #dash {
   font-size: large;
-} /*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */
