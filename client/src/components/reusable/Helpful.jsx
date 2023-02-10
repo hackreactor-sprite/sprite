@@ -36,7 +36,7 @@ export default function Helpful({ helpful, answerid, location }) {
             : null
         }
       >
-        <small>
+        <small className="greytxt">
           <ins>Yes</ins>
         </small>
       </button>

@@ -24,7 +24,7 @@ export default function Report({ id, type, reported, setReported, location }) {
         });
       }}
     >
-      <small>Report</small>
+      <small className="greytxt">Report</small>
     </button>
   );
 }

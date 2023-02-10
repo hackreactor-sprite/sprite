@@ -67,7 +67,7 @@ export default function AnswerItem({ answer }) {
             )}
         </div>
         <div className="small-container QA-answer-detail">
-          <small>
+          <small className="greytxt">
             {'by '}
             {answer.answerer_name}
             {', '}

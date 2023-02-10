@@ -348,6 +348,10 @@ html {
   font-family: "Lato", sans-serif;
 }
 
+.greytxt {
+  color: slategray;
+}
+
 #root {
   margin: 0 5rem;
 }
@@ -570,6 +574,7 @@ progress::-webkit-progress-value {
 .rating-sort {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .rating-inner-search {

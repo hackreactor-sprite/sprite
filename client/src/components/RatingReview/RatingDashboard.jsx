@@ -71,7 +71,9 @@ export default function RatingDashboard({ reviewList, metadata }) {
               />
               <div className="rating-char-desc">
                 {charList[char].map((comment, i) => (
-                  <small key={i}>{comment}</small>
+                  <small className="greytxt" key={i}>
+                    {comment}
+                  </small>
                 ))}
               </div>
             </div>

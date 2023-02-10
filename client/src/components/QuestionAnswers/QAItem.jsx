@@ -46,7 +46,7 @@ export default function QAItem({ QA, curProduct }) {
                 });
               }}
             >
-              <small>Add Answer</small>
+              <small className="greytxt">Add Answer</small>
             </button>
           </div>
         </div>
