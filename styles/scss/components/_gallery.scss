@@ -1,6 +1,3 @@
-body {
-  background: #DCDCDD;
-}
 .left {
   display: flex;
   flex-direction: column;
@@ -11,11 +8,9 @@ body {
   width: 30%;
 }
 
-
-.main-view{
+.main-view {
   padding-left: 1rem;
 }
-
 
 #gallery {
   border: 0.25rem solid #4c5c68;
@@ -30,7 +25,7 @@ body {
   display: flex;
   align-items: center;
   align-content: center;
-  background: #C5C3C6;
+  background: #c5c3c6;
   margin-top: 3rem;
 }
 
@@ -73,7 +68,6 @@ body {
 .bubbles {
   display: flex;
   flex-flow: row wrap;
-  ;
 }
 
 .bubble {
@@ -82,7 +76,6 @@ body {
   border-radius: 50%;
   height: 3.5rem;
   width: 3.5rem;
-
 }
 
 .overview {
@@ -103,7 +96,9 @@ body {
   padding: 0 1rem 1rem 1.5rem;
 }
 
-.product-info, .checkout, .overview {
+.product-info,
+.checkout,
+.overview {
   border: 0.25rem solid #4c5c68;
   border-radius: 2rem;
 }
@@ -131,7 +126,10 @@ body {
   width: 2rem;
   padding: 0 1rem;
 }
-.bubble:hover, .displayImage:hover, .fa-solid:hover, .galleryThumb:hover {
+.bubble:hover,
+.displayImage:hover,
+.fa-solid:hover,
+.galleryThumb:hover {
   cursor: pointer;
 }
 
@@ -147,21 +145,27 @@ body {
   align-items: center;
 }
 
-#heart, #submit, #quantity-select, #size-select{
+#heart,
+#submit,
+#quantity-select,
+#size-select {
   margin: 1rem;
   width: 8rem;
   height: 4rem;
 }
 
-#quantity-select, #size-select {
+#quantity-select,
+#size-select {
   text-align: center;
 }
 
-.fa-heart, .fa-circle-arrow-left, .fa-circle-arrow-right {
+.fa-heart,
+.fa-circle-arrow-left,
+.fa-circle-arrow-right {
   transform: scale(1.5);
-  color: #1985a1
+  color: #1985a1;
 }
 
-#dash{
+#dash {
   font-size: large;
 }
