@@ -42,7 +42,7 @@ export default function ReviewItem({ review }) {
       {review.recommend ? (
         <div className="review-recommend">
           {<Check style={{ height: '1rem', width: '1rem' }} />}
-          {` I recommend this product`}
+          <small className="greytxt">{` I recommend this product`}</small>
         </div>
       ) : null}
       {review.response ? <div>{review.response}</div> : null}
