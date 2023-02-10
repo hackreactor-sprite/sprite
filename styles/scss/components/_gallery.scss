@@ -16,7 +16,7 @@
 
 #gallery {
   border: 0.1rem solid #4c5c68;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   gap: 1rem;
   display: flex;
   flex-direction: row;
@@ -87,7 +87,7 @@
 .selected-style {
   padding: 0 0.25rem;
   border: 0.1rem solid #4c5c68;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 .heading {
@@ -98,11 +98,12 @@
   padding: 0 1rem 1rem 1.5rem;
 }
 
-
-.product-info, .checkout, .overview {
+.product-info,
+.checkout,
+.overview {
   border: 0.1rem solid #4c5c68;
 
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 .overview {
@@ -127,7 +128,7 @@
   transform: scale(2);
   width: 2rem;
   padding: 0 1rem;
-  color:#1985a1;
+  color: #1985a1;
 }
 
 .bubble:hover,
@@ -139,15 +140,14 @@
 
 .selected-bubble {
   @include BoxShadow;
-  padding: .5rem;
+  padding: 0.5rem;
   border-radius: 50%;
   height: 3.5rem;
   width: 3.5rem;
-
 }
 
 #review-link {
-  color:#1985a1;
+  color: #1985a1;
 }
 
 #crossedOut {
