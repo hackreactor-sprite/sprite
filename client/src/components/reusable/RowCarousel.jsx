@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import handleInteractions from '../../helper/handleInteractions';
 
@@ -19,9 +19,34 @@ export function handleRowCarouselClick(ev, direction, offset) {
   container.scrollBy(scrollOptions);
 }
 
+export function offsetHandler(direction, numberToDisplay, length) {
+  let count = 0;
+  return (ev, offset) => {
+    const firstButton = ev.target.parentElement.querySelector('.carousel-button');
+    const secondButton = ev.target.parentElement.querySelectorAll('.carousel-button')[1];
+    if (offset >= 0) {
+      count += 1;
+    } else if (offset < 0) {
+      count -= 1;
+    }
+    if (count === 0) {
+      firstButton.style.visibility = 'hidden';
+      secondButton.style.visibility = 'visible';
+    } else if (count + numberToDisplay === length) {
+      firstButton.style.visibility = 'visible';
+      secondButton.style.visibility = 'hidden';
+    } else {
+      firstButton.style.visibility = 'visible';
+      secondButton.style.visibility = 'visible';
+    }
+    handleRowCarouselClick(ev, direction, offset);
+  };
+}
+
 export default function RowCarousel({
   children, location, size = 200, direction = 'row', numberToDisplay = 4, gap = 15, buttonSize = 1,
 }) {
+  const clickHandler = offsetHandler(direction, numberToDisplay, children.length);
   const containerSize = size * (Math.min(children.length, numberToDisplay)) + (Math.min(children.length, numberToDisplay) - 1) * gap;
   const scrollOffset = size + gap;
   let sizeProperty;
@@ -42,23 +67,19 @@ export default function RowCarousel({
       display: 'flex', position: 'relative', flexDirection: direction, justifyContent: 'center',
     }}
     >
-      <div>
-        {children.length <= 1 ? null : (
-          <button
-            type="button"
-            onClick={(ev) => {
-              handleRowCarouselClick(ev, direction, -scrollOffset);
-              handleInteractions({ element: firstButton, widget: location });
-            }}
-            style={{
-              backgroundColor: 'transparent', border: 'none', fontSize: `${buttonSize}rem`, position: 'absolute', [direction === 'row' ? 'right' : 'bottom']: '100%', [direction === 'row' ? 'top' : 'left']: '40%',
-            }}
-          >
-            {direction === 'row' ? '‹' : '⌃'}
-          </button>
-        )}
-
-      </div>
+      <button
+        className="carousel-button"
+        type="button"
+        onClick={(ev) => {
+          clickHandler(ev, -scrollOffset);
+          handleInteractions({ element: firstButton, widget: location });
+        }}
+        style={{
+          visibility: 'hidden', backgroundColor: 'transparent', border: 'none', fontSize: `${buttonSize}rem`, position: 'absolute', [direction === 'row' ? 'right' : 'bottom']: '100%', [direction === 'row' ? 'top' : 'left']: '40%',
+        }}
+      >
+        {direction === 'row' ? '‹' : '⌃'}
+      </button>
       <div
         className="item-container"
         style={{
@@ -72,8 +93,9 @@ export default function RowCarousel({
         {children.map((child) => (<div style={{ [`min${sizeProperty[0].toUpperCase()}${sizeProperty.slice(1)}`]: `${size}px` }}>{child}</div>))}
       </div>
       <button
+        className="carousel-button"
         type="button"
-        onClick={(ev) => { handleRowCarouselClick(ev, direction, scrollOffset); handleInteractions({ element: secondButton, widget: location }); }}
+        onClick={(ev) => { clickHandler(ev, scrollOffset); handleInteractions({ element: secondButton, widget: location }); }}
         style={{
           backgroundColor: 'transparent', border: 'none', fontSize: `${buttonSize}rem`, position: 'absolute', [direction === 'row' ? 'left' : 'top']: '100%', [direction === 'row' ? 'top' : 'left']: '40%',
         }}
