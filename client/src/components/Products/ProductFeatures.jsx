@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-export default function ProductOverview({ feature }) {
+export default function ProductFeature({ feature }) {
   //  ('current product: ', curProduct);
   return (
-    <section>
+    <div className="feature">
       <p>{feature.feature} | {feature.value}</p>
-    </section>
+    </div>
   );
 }

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Checkout from './Checkout';
+import handleInteractions from '../../helper/handleInteractions';
 
 export default function AddToCart({ curStyle, sizeId, setSizeId }) {
   // //console.log('add to cart cur product: ', curProduct);
   const [allSkus, setAllSkus] = useState({}); // {323212: {xs: 12}, s: 4, m: 7}
+  const [heart, setHeart] = useState(false);
 
   useEffect(() => {
     setSizeId('');
@@ -12,6 +14,12 @@ export default function AddToCart({ curStyle, sizeId, setSizeId }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+  };
+
+  const handleHeart = (event) => {
+    event.preventDefault();
+    setHeart(!heart);
+    handleInteractions({ element: 'heart', widget: 'addToCart' });
   };
 
   let styleLoaded;
@@ -24,9 +32,9 @@ export default function AddToCart({ curStyle, sizeId, setSizeId }) {
   //  ('line 25 curStyle.skus: ', curStyle.skus);
   //  ('line 26 allSkus: ', allSkus);
   return (
-    <div>
-      <h3>Checkout</h3>
-      <form onSubmit={handleSubmit}>
+    <div className="checkout">
+      <h3 className="heading">Checkout</h3>
+      <form id="checkout-form" onSubmit={handleSubmit}>
         {styleLoaded ? (
           <Checkout
             setSizeId={setSizeId}
@@ -35,8 +43,14 @@ export default function AddToCart({ curStyle, sizeId, setSizeId }) {
             skus={curStyle.skus}
           />
         ) : null}
-        <button type="submit">Add To Cart</button>
-        <button type="button">heart</button>
+        <div className="checkout-buttons">
+          <button id="submit" onClick={() => handleInteractions({ element: 'addToCart', widget: 'addToCart' })} type="submit">Add To Cart <i className="fa-solid fa-plus" /> </button>
+          <button id="heart" onClick={handleHeart} type="button">
+            {heart
+              ? <i className="fa-solid fa-heart" />
+              : <i className="fa-regular fa-heart" />}
+          </button>
+        </div>
       </form>
     </div>
   );

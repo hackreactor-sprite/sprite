@@ -4,6 +4,7 @@ import ModalRoute from '../Modal/ModalRoute';
 import Modal from '../reusable/Modal';
 import GalleryThumbnails from './GalleryThumbnails';
 import Carousel from '../reusable/Carousel';
+import handleInteractions from '../../helper/handleInteractions';
 
 export default function Gallery({
   curStyle,
@@ -42,60 +43,62 @@ export default function Gallery({
   }
 
   return (
-    <section>
-      <h3>Image Gallery</h3>
-      <div className="galleryPic">
-        {bigImage ? (
-          <>
-            {displayIndex >= 1 ? (
-              <div
+    <section id="gallery">
+      <div className="main-view">
+        <h3>Image Gallery</h3>
+        <div className="galleryPic">
+          {bigImage ? (
+            <>
+              {displayIndex >= 1 ? (
+                <div
+                  onClick={() => {
+                    setDisplayIndex(displayIndex - 1);
+                    handleInteractions({ element: 'leftArrow', widget: 'gallery' });
+                  }}
+                >
+                  <i className="fa-solid fa-circle-arrow-left" />
+                </div>
+              ) : null}
+              <img
+                className="displayImage"
                 onClick={() => {
-                  setDisplayIndex(displayIndex - 1);
+                  setShowBigImage(!showBigImage);
+                  handleInteractions({ element: 'displayImage', widget: 'gallery' });
                 }}
-              >
-                &lt;
-              </div>
-            ) : null}
-            <img
-              src={curStyle.photos[displayIndex].url}
-              alt=""
-              height="400px"
-            />
-            {displayIndex < length ? (
-              <div
-                onClick={() => {
-                  setDisplayIndex(displayIndex + 1);
-                }}
-              >
-                &gt;
-              </div>
-            ) : null}
-          </>
-        ) : null}
-        <button
-          type="button"
-          onClick={() => {
-            setShowBigImage(!showBigImage);
-          }}
-        >
-          +
-        </button>
+                src={curStyle.photos[displayIndex].url}
+                alt=""
+                // height="600px"
+              />
+              {displayIndex < length ? (
+                <div
+                  onClick={() => {
+                    setDisplayIndex(displayIndex + 1);
+                    handleInteractions({ element: 'rightArrow', widget: 'gallery' });
+                  }}
+                >
+                  <i className="fa-solid fa-circle-arrow-right" />
+
+                </div>
+              ) : null}
+            </>
+          ) : null}
+        </div>
+        {showBigImage
+          && createPortal(
+            <Modal displayIndex={displayIndex} showModal={showBigImage} setShowModal={setShowBigImage}>
+              <ModalRoute
+                route="ImageExpand"
+                content={content}
+                state={showBigImage}
+                setState={setShowBigImage}
+              />
+            </Modal>,
+            document.body,
+          )}
       </div>
-      {showBigImage &&
-        createPortal(
-          <Modal showModal={showBigImage} setShowModal={setShowBigImage}>
-            <ModalRoute
-              route="ImageExpand"
-              content={content}
-              state={showBigImage}
-              setState={setShowBigImage}
-            />
-          </Modal>,
-          document.body,
-        )}
       <div className="galleryThumbs">
         {thumbnails ? (
-          <Carousel>
+          <Carousel location="gallery" direction="column" numberToDisplay={7} gap={20} size={50}>
             {curStyle.photos.map((picture, i) => (
               <GalleryThumbnails
                 picture={picture}
