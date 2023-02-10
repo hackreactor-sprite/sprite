@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Helpful from '../reusable/Helpful';
 import Report from '../reusable/Report';
 import Star from '../reusable/Stars';
+import Check from '../../assets/check.svg';
 
 export default function ReviewItem({ review }) {
   const [reported, setReported] = useState(false);
@@ -21,7 +22,7 @@ export default function ReviewItem({ review }) {
       <div className="reviewitem-header">
         <Star totalRanking={review.rating} />
 
-        <small>
+        <small className="greytxt">
           {'by '}
           {review.reviewer_name}
           {', '}
@@ -38,7 +39,12 @@ export default function ReviewItem({ review }) {
           <img src={photo} alt="review-photo" />
         ))}
       </div>
-      {review.recommend ? <div>I recommend this product</div> : null}
+      {review.recommend ? (
+        <div className="review-recommend">
+          {<Check style={{ height: '1rem', width: '1rem' }} />}
+          <small className="greytxt">{` I recommend this product`}</small>
+        </div>
+      ) : null}
       {review.response ? <div>{review.response}</div> : null}
       {review.photos.map((photo) => (
         // eslint-disable-next-line jsx-a11y/img-redundant-alt

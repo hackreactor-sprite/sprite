@@ -58,16 +58,13 @@ export default function AnswerItem({ answer }) {
           {showModal &&
             createPortal(
               <Modal showModal={showModal} setShowModal={setShowModal}>
-                <ModalRoute
-                  route="ImageExpand"
-                  content={{ url: curPhoto, alt: 'AnswerImage' }}
-                />
+                <ModalRoute route="Image" content={curPhoto} />
               </Modal>,
               document.body,
             )}
         </div>
         <div className="small-container QA-answer-detail">
-          <small>
+          <small className="greytxt">
             {'by '}
             {answer.answerer_name}
             {', '}
