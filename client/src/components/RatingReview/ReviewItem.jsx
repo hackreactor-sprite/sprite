@@ -47,9 +47,9 @@ export default function ReviewItem({ review }) {
         </div>
       ) : null}
       {review.response ? <div>{review.response}</div> : null}
-      {review.photos.map((photo) => (
+      {review.photos.map((photo, i) => (
         // eslint-disable-next-line jsx-a11y/img-redundant-alt
-        <img src={photo} alt="review-photo" />
+        <img src={photo} alt="review-photo" key={i} />
       ))}
       <div className="small-container review-detail">
         <Helpful helpful={review.helpfulness} answerid={review.id} />
