@@ -782,6 +782,11 @@ input[type=range]::-ms-track {
   margin-top: 1rem;
 }
 
+.modal-submit:hover {
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.3) -3px -3px 6px 1px inset;
+  transition: 0.3s ease-in-out;
+}
+
 .question-form-header {
   display: flex;
   flex-direction: column;
