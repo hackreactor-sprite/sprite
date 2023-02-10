@@ -26,7 +26,7 @@ export default function Checkout({
 
   return (
     <div>
-      <select data-testid="sizeSelect" onChange={handleUpdate}>
+      <select id="size-select" data-testid="sizeSelect" onChange={handleUpdate}>
         <option value="" selected>
           Select Size
         </option>
@@ -34,9 +34,9 @@ export default function Checkout({
           <Size key={sku} skus={skus} sku={sku} />
         ))}
       </select>
-      <select data-testid="quantitySelect" onChange={() => handleInteractions({ element: 'quantitySelect', widget: 'checkout' })}>
-        <option value="" selected>
-          -
+      <select id="quantity-select" data-testid="quantitySelect" onChange={() => handleInteractions({ element: 'quantitySelect', widget: 'checkout' })}>
+        <option id="dash" value="" selected>
+          ---
         </option>
         {isLoaded
           ? range(allSkus, sizeId).map((num) => (

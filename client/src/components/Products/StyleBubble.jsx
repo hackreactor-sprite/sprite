@@ -21,8 +21,6 @@ export default function StyleBubble({ style, setCurStyle, setSizeId }) {
         id={style.style_id}
         src={style.photos[0].thumbnail_url}
         alt={style.name}
-        height="40px"
-        width="40px"
       />
     </div>
   );

@@ -32,9 +32,9 @@ export default function AddToCart({ curStyle, sizeId, setSizeId }) {
   //  ('line 25 curStyle.skus: ', curStyle.skus);
   //  ('line 26 allSkus: ', allSkus);
   return (
-    <div>
-      <h3>Checkout</h3>
-      <form onSubmit={handleSubmit}>
+    <div className="checkout">
+      <h3 className="heading">Checkout</h3>
+      <form id="checkout-form" onSubmit={handleSubmit}>
         {styleLoaded ? (
           <Checkout
             setSizeId={setSizeId}
@@ -43,12 +43,14 @@ export default function AddToCart({ curStyle, sizeId, setSizeId }) {
             skus={curStyle.skus}
           />
         ) : null}
-        <button onClick={() => handleInteractions({ element: 'addToCart', widget: 'addToCart' })} type="submit">Add To Cart</button>
-        <button onClick={handleHeart} type="button">
-          {heart
-            ? <i className="fa-solid fa-heart" />
-            : <i className="fa-regular fa-heart" />}
-        </button>
+        <div className="checkout-buttons">
+          <button id="submit" onClick={() => handleInteractions({ element: 'addToCart', widget: 'addToCart' })} type="submit">Add To Cart <i className="fa-solid fa-plus" /> </button>
+          <button id="heart" onClick={handleHeart} type="button">
+            {heart
+              ? <i className="fa-solid fa-heart" />
+              : <i className="fa-regular fa-heart" />}
+          </button>
+        </div>
       </form>
     </div>
   );

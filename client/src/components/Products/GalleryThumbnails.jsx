@@ -10,14 +10,14 @@ export default function GalleryThumbnails({ picture, setDisplayIndex, i }) {
   };
 
   return (
-    <section>
-      <img
-        id={i}
-        onClick={handleClick}
-        src={picture.thumbnail_url}
-        alt={picture.url}
-        height="40px"
-      />
-    </section>
+      <div className="galleryThumb">
+        <img
+          id={i}
+          onClick={handleClick}
+          src={picture.thumbnail_url}
+          alt={picture.url}
+          height="50px"
+        />
+      </div>
   );
 }

@@ -43,61 +43,62 @@ export default function Gallery({
   }
 
   return (
-    <section>
-      <h3>Image Gallery</h3>
-      <div className="galleryPic">
-        {bigImage ? (
-          <>
-            {displayIndex >= 1 ? (
-              <div
+    <section id="gallery">
+      <div className="main-view">
+        <h3>Image Gallery</h3>
+        <div className="galleryPic">
+          {bigImage ? (
+            <>
+              {displayIndex >= 1 ? (
+                <div
+                  onClick={() => {
+                    setDisplayIndex(displayIndex - 1);
+                    handleInteractions({ element: 'leftArrow', widget: 'gallery' });
+                  }}
+                >
+                  <i className="fa-solid fa-circle-arrow-left" />
+                </div>
+              ) : null}
+              <img
+                className="displayImage"
                 onClick={() => {
-                  setDisplayIndex(displayIndex - 1);
-                  handleInteractions({ element: 'leftArrow', widget: 'gallery' });
-
+                  setShowBigImage(!showBigImage);
+                  handleInteractions({ element: 'displayImage', widget: 'gallery' });
                 }}
-              >
-                <i className="fa-solid fa-circle-arrow-left" />
-              </div>
-            ) : null}
-            <img
-              onClick={() => {
-                setShowBigImage(!showBigImage);
-                handleInteractions({ element: 'displayImage', widget: 'gallery' });
-              }}
-              src={curStyle.photos[displayIndex].url}
-              alt=""
-              height="400px"
-            />
-            {displayIndex < length ? (
-              <div
-                onClick={() => {
-                  setDisplayIndex(displayIndex + 1);
-                  handleInteractions({ element: 'rightArrow', widget: 'gallery' });
+                src={curStyle.photos[displayIndex].url}
+                alt=""
+                // height="600px"
+              />
+              {displayIndex < length ? (
+                <div
+                  onClick={() => {
+                    setDisplayIndex(displayIndex + 1);
+                    handleInteractions({ element: 'rightArrow', widget: 'gallery' });
+                  }}
+                >
+                  <i className="fa-solid fa-circle-arrow-right" />
 
-                }}
-              >
-                <i className="fa-solid fa-circle-arrow-right" />
-
-              </div>
-            ) : null}
-          </>
-        ) : null}
+                </div>
+              ) : null}
+            </>
+          ) : null}
+        </div>
+        {showBigImage
+          && createPortal(
+            <Modal displayIndex={displayIndex} showModal={showBigImage} setShowModal={setShowBigImage}>
+              <ModalRoute
+                route="ImageExpand"
+                content={content}
+                state={showBigImage}
+                setState={setShowBigImage}
+              />
+            </Modal>,
+            document.body,
+          )}
       </div>
-      {showBigImage &&
-        createPortal(
-          <Modal displayIndex={displayIndex} showModal={showBigImage} setShowModal={setShowBigImage}>
-            <ModalRoute
-              route="ImageExpand"
-              content={content}
-              state={showBigImage}
-              setState={setShowBigImage}
-            />
-          </Modal>,
-          document.body,
-        )}
       <div className="galleryThumbs">
         {thumbnails ? (
-          <Carousel location={'gallery'}>
+          <Carousel location="gallery" direction="column" numberToDisplay={7} gap={20} size={50}>
             {curStyle.photos.map((picture, i) => (
               <GalleryThumbnails
                 picture={picture}
