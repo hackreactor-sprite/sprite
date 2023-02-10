@@ -14,7 +14,7 @@ export default function RatingReview({ curProduct, metadata }) {
   const [reviewList, setReviewList] = useState([]);
   const [sortType, setSortType] = useState('newest');
   const [showModal, setShowModal] = useState(false);
-  console.log(curProduct.id);
+
   useEffect(() => {
     axios
       .get(`/reviews/?sort=${sortType}&productid=${curProduct.id}`)
@@ -22,7 +22,7 @@ export default function RatingReview({ curProduct, metadata }) {
         const sorted = res.data.results.sort(
           (a, b) => b.helpfulness - a.helpfulness,
         );
-        console.log(sorted, 'hello');
+
         setPartialReviewList(sorted.slice(0, 2));
         setReviewList(sorted);
       })
