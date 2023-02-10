@@ -57,7 +57,7 @@ export default function RatingDashboard({ reviewList, metadata }) {
           </div>
         ))}
       </div>
-      {totalRating && metadata.characteristics['Size']
+      {totalRating && metadata?.characteristics['Size']
         ? Object.keys(charList).map((char, i) => (
             <div key={i} className="rating-slider-container">
               <div>{char}</div>
