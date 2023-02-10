@@ -103,6 +103,7 @@ export default function Gallery({
               <GalleryThumbnails
                 picture={picture}
                 key={picture.url}
+                displayIndex={displayIndex}
                 setDisplayIndex={setDisplayIndex}
                 i={i}
               />
