@@ -90,6 +90,7 @@ export default function QuestionAnswer({ curProduct, QAList }) {
         {QAList.length > 2 && partialQAList.length < QAList.length ? (
           <button
             type="button"
+            className="big-btn"
             onClick={() => {
               handleContentLoad({
                 partialList: partialQAList,

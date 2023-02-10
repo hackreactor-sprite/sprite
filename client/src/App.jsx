@@ -15,7 +15,7 @@ function App() {
   const [QAList, setQAList] = useState([]);
   useEffect(() => {
     axios
-      .get('/products/40346')
+      .get('/products/40348')
       .then((res) => {
         setCurProduct(res.data);
       })

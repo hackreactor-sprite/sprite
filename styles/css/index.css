@@ -375,6 +375,10 @@ p {
   background: none;
 }
 
+.helpfulbtn:active {
+  text-emphasis-color: green;
+}
+
 .productDetail {
   display: flex;
   justify-content: space-around;

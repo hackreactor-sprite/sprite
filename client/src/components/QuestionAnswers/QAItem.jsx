@@ -27,10 +27,11 @@ export default function QAItem({ QA, curProduct }) {
     <>
       <div className="QA-item" role="treeitem" aria-selected="false">
         <div className="QA-body">
-          <h4 id="QA-body-content" aria-level="3">
-            {`Q: $${QA.question_body.toUpperCase()}`}
-          </h4>
-
+          <ins>
+            <h4 id="QA-body-content" aria-level="3">
+              {`Q: $${QA.question_body.toUpperCase()}`}
+            </h4>
+          </ins>
           <div className="small-container">
             <Helpful helpful={QA.question_helpfulness} location="QAItem" />
             <button
