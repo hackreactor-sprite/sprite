@@ -1,0 +1,48 @@
+#gallery {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+}
+
+.galleryPic {
+  display: flex;
+  background: lightgrey;
+  margin: 2rem;
+  align-items: center;
+  flex-direction: row;
+  padding-top: 2rem;
+  width: 30rem;
+}
+.bigImage {
+  object-fit: scale-down;
+}
+
+.thumbs {
+  height: 3.5rem;
+  width: 2.5rem;
+  overflow: hidden;
+}
+
+#productInfo {
+  margin-right: 2.5rem;
+  padding: 1rem 2rem;
+  width: 40%;
+}
+
+#selectedStyle {
+  margin-right: 2.5rem;
+  padding: 1rem 2rem;
+  width: 40%;
+}
+
+.bubbles {
+  display: flex;
+  flex-flow: row wrap;
+  ;
+}
+
+.bubble {
+  // flex: 1 0 21%;
+  padding: .5rem;
+
+}

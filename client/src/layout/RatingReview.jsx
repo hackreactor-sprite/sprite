@@ -7,6 +7,7 @@ import ModalRoute from '../components/Modal/ModalRoute';
 import Modal from '../components/reusable/Modal';
 import handleContentLoad from '../helper/handleContentLoad';
 import ChevronDown from '../assets/chevron-down.svg';
+import handleInteractions from '../helper/handleInteractions';
 
 export default function RatingReview({ curProduct, metadata }) {
   const [partialReviewList, setPartialReviewList] = useState([]);
@@ -41,7 +42,13 @@ export default function RatingReview({ curProduct, metadata }) {
             <div className="rating-inner-search">
               <select
                 className="rating-filterdropdown"
-                onChange={(e) => setSortType(e.target.value)}
+                onChange={(e) => {
+                  setSortType(e.target.value);
+                  handleInteractions({
+                    element: 'RatingFilter',
+                    widget: 'RatingReview',
+                  });
+                }}
               >
                 {sortOptions.map((option, i) => (
                   <option value={option} key={i}>

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -6,6 +5,7 @@ import QAItem from '../components/QuestionAnswers/QAItem';
 import ModalRoute from '../components/Modal/ModalRoute';
 import Modal from '../components/reusable/Modal';
 import handleContentLoad from '../helper/handleContentLoad';
+import handleInteractions from '../helper/handleInteractions';
 import handleSearch from '../helper/handleSearch';
 
 export default function QuestionAnswer({ curProduct, QAList }) {
@@ -58,14 +58,19 @@ export default function QuestionAnswer({ curProduct, QAList }) {
           setSearch(e.target.value);
         }}
         onKeyDown={
-          (e) =>
+          (e) => {
             // eslint-disable-next-line implicit-arrow-linebreak
             handleSearch({
               e,
               search,
               list: QAList,
               setPartialList: setPartialQAList,
-            })
+            });
+            handleInteractions({
+              element: 'QA-search',
+              widget: 'QuestionAnswer',
+            });
+          }
           // eslint-disable-next-line react/jsx-curly-newline
         }
         style={{
@@ -83,13 +88,17 @@ export default function QuestionAnswer({ curProduct, QAList }) {
         {QAList.length > 2 && partialQAList.length < QAList.length ? (
           <button
             type="button"
-            onClick={() =>
+            onClick={() => {
               handleContentLoad({
                 partialList: partialQAList,
                 setPartialList: setPartialQAList,
                 totalList: QAList,
-              })
-            }
+              });
+              handleInteractions({
+                element: 'Load-question-button',
+                widget: 'QuestionAnswer',
+              });
+            }}
           >
             <small>
               {partialQAList.length !== QAList.length
@@ -101,7 +110,13 @@ export default function QuestionAnswer({ curProduct, QAList }) {
         <button
           type="button"
           data-testid="question-form-button"
-          onClick={() => setShowModal(!showModal)}
+          onClick={() => {
+            setShowModal(!showModal);
+            handleInteractions({
+              element: 'Question-form-button',
+              widget: 'QuestionAnswer',
+            });
+          }}
         >
           <small>ADD A QUESTION +</small>
         </button>

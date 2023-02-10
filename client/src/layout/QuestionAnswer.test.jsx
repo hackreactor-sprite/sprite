@@ -77,14 +77,6 @@ describe('Question & Answers', () => {
     expect(list).toBeTruthy();
   });
 
-  test('should open the modal clicking on add question button', async () => {
-    const addQuestionButton = await screen.getByTestId('question-form-button');
-    fireEvent.click(addQuestionButton);
-    const modal = await screen.getByTestId('modal');
-
-    expect(modal).toBeInTheDocument();
-  });
-
   test('renders a list with the correct number', async () => {
     const list = await screen.getByRole('tree', { name: /list/i });
     expect(list.childNodes.length).toBe(2);
@@ -97,5 +89,16 @@ describe('Question & Answers', () => {
     });
     fireEvent.change(input, { target: { value: 'who' } });
     expect(list.childNodes.length).toBe(1);
+  });
+
+  test('should open the modal clicking on add question button', async () => {
+    const addQuestionButton = await screen.getByRole('button', {
+      name: /add a question \+/i,
+    });
+
+    fireEvent.click(addQuestionButton);
+    const modal = await screen.getByTestId('modal');
+
+    expect(modal).toBeInTheDocument();
   });
 });
