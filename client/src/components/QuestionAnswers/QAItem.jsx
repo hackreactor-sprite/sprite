@@ -35,6 +35,7 @@ export default function QAItem({ QA, curProduct }) {
             <Helpful helpful={QA.question_helpfulness} location="QAItem" />
             <button
               type="button"
+              className="small-btn"
               data-testid="question-form-button"
               onClick={() => {
                 setShowModal(!showModal);

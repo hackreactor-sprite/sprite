@@ -14,6 +14,7 @@ export default function Report({ id, type, reported, setReported, location }) {
   }
   return (
     <button
+      className="small-btn"
       type="button"
       onClick={() => {
         sendReport();

@@ -320,6 +320,29 @@ body {
   width: 100%;
 }
 
+.small-btn {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  padding: 0.15rem 0.25rem;
+  text-align: center;
+  background: none;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+}
+
+.big-btn {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  background: none;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  padding: 1rem 2rem;
+}
+
+.small-btn:hover,
+.big-btn:hover {
+  background-color: azure;
+}
+
 html {
   font-family: "Lato", sans-serif;
 }
@@ -446,7 +469,8 @@ p {
 }
 
 .QA-list {
-  border: 1px solid black;
+  border: 1px solid lightgrey;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
   border-radius: 0.25rem;
   height: 50vh;
   overflow-y: scroll;

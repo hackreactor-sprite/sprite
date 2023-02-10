@@ -1,3 +1,5 @@
+@import './mixins';
+
 body {
   margin: 0 35rem;
 }
@@ -11,4 +13,27 @@ body {
 .ImageExpand {
   display: flex;
   width: 100%;
+}
+
+.small-btn {
+  @include BoxShadow;
+  padding: 0.15rem 0.25rem;
+  text-align: center;
+  background: none;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+}
+
+.big-btn {
+  @include BoxShadow;
+  background: none;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  padding: 1rem 2rem;
+}
+
+.small-btn:hover,
+.big-btn:hover {
+  background-color: azure;
 }

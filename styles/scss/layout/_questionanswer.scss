@@ -96,8 +96,8 @@
 }
 
 .QA-list {
-  border: 1px solid black;
-
+  border: 1px solid lightgrey;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
   border-radius: 0.25rem;
   height: 50vh;
   overflow-y: scroll;

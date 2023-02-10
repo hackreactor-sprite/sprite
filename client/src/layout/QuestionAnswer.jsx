@@ -111,6 +111,7 @@ export default function QuestionAnswer({ curProduct, QAList }) {
         ) : null}
         <button
           type="button"
+          className="big-btn"
           data-testid="question-form-button"
           onClick={() => {
             setShowModal(!showModal);

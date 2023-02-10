@@ -23,6 +23,7 @@ export default function Helpful({ helpful, answerid, location }) {
       <small> {`Helpful? (${helpfulCount})`}</small>
       <button
         type="button"
+        className="small-btn"
         onClick={
           !submit
             ? () => {
