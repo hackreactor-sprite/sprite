@@ -3,15 +3,13 @@
   flex-direction: column;
   gap: 1rem;
 }
-
-.reviewitem-header,
 .rating-content {
   display: flex;
-  justify-content: space-between;
+  gap: 3rem;
 }
-
-.rating-content {
-  gap: 0.5rem;
+.reviewitem-header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .reviewitem-body {
@@ -80,4 +78,19 @@ progress {
   height: 0.5rem;
   background: lightgray;
   box-shadow: 0 0.05rem 0.07rem grey inset;
+}
+
+.rating-dashboard-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.rating-dashboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-bar-container {
+  margin-bottom: 1rem;
 }

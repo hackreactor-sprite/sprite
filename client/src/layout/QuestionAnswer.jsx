@@ -14,11 +14,13 @@ export default function QuestionAnswer({ curProduct, QAList }) {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    const sorted = QAList.sort(
-      (a, b) => b.question_helpfulness - a.question_helpfulness,
-    );
+    if (curProduct.id) {
+      const sorted = QAList.sort(
+        (a, b) => b.question_helpfulness - a.question_helpfulness,
+      );
 
-    setPartialQAList(sorted.slice(0, 4));
+      setPartialQAList(sorted.slice(0, 4));
+    }
   }, [QAList]);
 
   useEffect(() => {

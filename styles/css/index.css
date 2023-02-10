@@ -305,6 +305,10 @@ button {
   cursor: pointer;
 }
 
+body {
+  margin: 0 35rem;
+}
+
 .small-container {
   display: flex;
   align-items: center;
@@ -326,10 +330,6 @@ html {
 
 section {
   margin: 1rem 0 1rem;
-}
-
-section {
-  border: 1px black solid;
 }
 
 .starsvg {
@@ -413,8 +413,11 @@ p {
 }
 
 .answer-photo {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  border-radius: 0.75rem;
   height: 4rem;
   object-fit: scale-down;
+  margin-bottom: 0.25rem;
   cursor: pointer;
 }
 
@@ -429,10 +432,13 @@ p {
 }
 
 .QA-search {
-  border: black 1px black;
-  width: 99%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  padding: 0 0.5rem;
+  margin: 0 0.5rem;
+  width: 100%;
   height: 3rem;
   margin: 1rem 0;
+  border-radius: 0.25rem;
 }
 
 .QA-mag-glass {
@@ -440,6 +446,8 @@ p {
 }
 
 .QA-list {
+  border: 1px solid black;
+  border-radius: 0.25rem;
   height: 50vh;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -452,14 +460,14 @@ p {
   gap: 1rem;
 }
 
-.reviewitem-header,
 .rating-content {
   display: flex;
-  justify-content: space-between;
+  gap: 3rem;
 }
 
-.rating-content {
-  gap: 0.5rem;
+.reviewitem-header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .reviewitem-body {
@@ -532,6 +540,21 @@ progress {
   height: 0.5rem;
   background: lightgray;
   box-shadow: 0 0.05rem 0.07rem grey inset;
+}
+
+.rating-dashboard-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.rating-dashboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-bar-container {
+  margin-bottom: 1rem;
 }
 
 .modal {
