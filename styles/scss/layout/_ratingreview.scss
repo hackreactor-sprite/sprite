@@ -1,17 +1,17 @@
+@import '../base/mixins';
+
 .ratingreview {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-
-.reviewitem-header,
 .rating-content {
   display: flex;
-  justify-content: space-between;
+  gap: 3rem;
 }
-
-.rating-content {
-  gap: 0.5rem;
+.reviewitem-header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .reviewitem-body {
@@ -24,6 +24,8 @@
 .review-item {
   padding: 0.5rem 0;
   border-bottom: 1px grey solid;
+  box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px,
+    rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
 }
 
 .rating-progress-bar,
@@ -36,10 +38,20 @@
   gap: 0.5rem;
 }
 progress {
+  @include BoxShadow;
   -webkit-appearance: none;
   appearance: none;
   height: 0.5rem;
   box-shadow: 0 0.05rem 0.07rem grey inset;
+  border: 1px solid grey;
+}
+
+::-webkit-progress-bar {
+  background-color: white;
+}
+
+progress::-webkit-progress-value {
+  background-color: teal !important;
 }
 
 .rating-filterdropdown {
@@ -62,6 +74,7 @@ progress {
 .rating-sort {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 .rating-inner-search {
   display: flex;
@@ -80,4 +93,91 @@ progress {
   height: 0.5rem;
   background: lightgray;
   box-shadow: 0 0.05rem 0.07rem grey inset;
+}
+
+.rating-slider-container {
+  padding: 0.5rem 0;
+}
+
+.rating-dashboard-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.rating-dashboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-bar-container {
+  margin-bottom: 1rem;
+}
+
+.rating-progress-bar {
+  padding-bottom: 0.25rem;
+}
+
+.rating-char-desc {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+input[type='range'] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type='range']:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type='range']::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -1rem; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid black;
+  margin: 2rem;
+}
+
+input[type='range']::-webkit-slider-thumb,
+input[type='range']::-ms-track {
+  border: 1px solid black;
+  height: 36px;
+  width: 16px;
+
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -1rem; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid black;
+  margin: 2rem;
+}
+
+.rating-dashboard-header > h1 {
+  font-size: 3.5rem;
 }

@@ -33,12 +33,15 @@ export default function AddQuestionForm({
   return (
     <form className="modal-form" onSubmit={handleSubmit}>
       <h3>Your Answer</h3>
-      <small>
+      <p>
         {curProduct.name}
         {' : '}
         {curQuestion.question_body}
+      </p>
+      <small>
+        For privacy reasons, do not use your full name or email address
       </small>
-      <div>
+      <div className="question-form-header">
         <input
           type="text"
           name="name"
@@ -50,25 +53,21 @@ export default function AddQuestionForm({
             setAnswerForm(newInput);
           }}
         />
-        <small>
-          For privacy reasons, do not use your full name or email address
-        </small>
-      </div>
-      <textarea
-        type="text"
-        name="body"
-        placeholder="Your Answer"
-        value={answerForm.body}
-        onChange={(e) => {
-          const newInput = { ...answerForm };
-          newInput.name = e.target.value;
-          setAnswerForm(newInput);
-        }}
-        maxLength="1000"
-        rows="4"
-        cols="50"
-      />
-      <div>
+        <textarea
+          type="text"
+          name="body"
+          placeholder="Your Answer"
+          value={answerForm.body}
+          onChange={(e) => {
+            const newInput = { ...answerForm };
+            newInput.name = e.target.value;
+            setAnswerForm(newInput);
+          }}
+          maxLength="1000"
+          rows="4"
+          cols="50"
+        />
+
         <input
           type="text"
           name="email"
@@ -81,13 +80,16 @@ export default function AddQuestionForm({
           }}
         />
       </div>
+
       <input
         type="file"
         name="photos"
         accept="image/png, image/jpeg"
         placeholder="upload a photo"
       />
-      <button type="submit">Submit</button>
+      <button type="submit" className="modal-submit">
+        Submit
+      </button>
     </form>
   );
 }
