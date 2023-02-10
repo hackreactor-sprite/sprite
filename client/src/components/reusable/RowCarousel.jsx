@@ -78,7 +78,7 @@ export default function RowCarousel({
           visibility: 'hidden', backgroundColor: 'transparent', border: 'none', fontSize: `${buttonSize}rem`, position: 'absolute', [direction === 'row' ? 'right' : 'bottom']: '100%', [direction === 'row' ? 'top' : 'left']: '40%',
         }}
       >
-        {direction === 'row' ? '‹' : '⌃'}
+        {direction === 'row' ? '<' : '⌃'}
       </button>
       <div
         className="item-container"
@@ -100,7 +100,7 @@ export default function RowCarousel({
           backgroundColor: 'transparent', border: 'none', fontSize: `${buttonSize}rem`, position: 'absolute', [direction === 'row' ? 'left' : 'top']: '100%', [direction === 'row' ? 'top' : 'left']: '40%',
         }}
       >
-        {direction === 'row' ? '›' : '⌄'}
+        {direction === 'row' ? '>' : '⌄'}
       </button>
     </div>
   );

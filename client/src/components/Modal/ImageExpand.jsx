@@ -22,7 +22,7 @@ export default function ImageExpand({
           <i className="fa-solid fa-circle-arrow-left" />
         </div>
       ) : null}
-      <img className="ImageExpand" src={url} alt={alt} />
+      <img className="image-expand" src={url} alt={alt} />
       {displayIndex < length ? (
         <div
           className="rightArrow"
