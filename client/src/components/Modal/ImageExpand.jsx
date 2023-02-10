@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import handleInteractions from '../../helper/handleInteractions';
 
 export default function ImageExpand({
   url,
@@ -8,7 +9,6 @@ export default function ImageExpand({
   setDisplayIndex,
   length,
 }) {
-  //  (displayIndex);
   return (
     <div className="expanded">
       {displayIndex >= 1 ? (
@@ -16,9 +16,10 @@ export default function ImageExpand({
           className="leftArrow"
           onClick={() => {
             setDisplayIndex(displayIndex - 1);
+            handleInteractions({ element: 'leftArrow', widget: 'imageExpanded' });
           }}
         >
-          &lt;
+          <i className="fa-solid fa-circle-arrow-left" />
         </div>
       ) : null}
       <img className="ImageExpand" src={url} alt={alt} />
@@ -27,9 +28,10 @@ export default function ImageExpand({
           className="rightArrow"
           onClick={() => {
             setDisplayIndex(displayIndex + 1);
+            handleInteractions({ element: 'rightArrow', widget: 'imageExpanded' });
           }}
         >
-          &gt;
+          <i className="fa-solid fa-circle-arrow-right" />
         </div>
       ) : null}
     </div>
