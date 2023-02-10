@@ -1,6 +1,9 @@
 import React from 'react';
+import handleInteractions from '../../helper/handleInteractions';
 
-export default function Modal({ children, showModal, setShowModal }) {
+export default function Modal({
+  children, showModal, setShowModal, location,
+}) {
   return (
     <div className="modal" data-testid="modal">
       <button
@@ -8,6 +11,7 @@ export default function Modal({ children, showModal, setShowModal }) {
         onClick={(ev) => {
           ev.stopPropagation();
           setShowModal(!showModal);
+          handleInteractions({ element: 'x modal button', widget: location });
         }}
       >
         <small>x</small>

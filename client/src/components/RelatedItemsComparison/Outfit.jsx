@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import getAverage from '../../helper/getAverage';
 import Star from '../reusable/Stars';
 import { handleDeleteOutfit } from '../../helper/handleOutfits';
+import handleInteractions from '../../helper/handleInteractions';
 
 export default function Outfit({
   style, metadata, curProduct, outfits, setOutfits,
@@ -22,7 +23,15 @@ export default function Outfit({
         }}
         id={style.style_id}
       >
-        <button type="button" style={{ position: 'absolute', right: '0%' }} onClick={(ev) => handleDeleteOutfit(ev, outfits, setOutfits)}>
+        <button
+          type="button"
+          className="deleteOutfitButton"
+          style={{ position: 'absolute', right: '0%' }}
+          onClick={(ev) => {
+            handleDeleteOutfit(ev, outfits, setOutfits);
+            handleInteractions({ element: ev.target.className, widget: 'Outfit' });
+          }}
+        >
           X
         </button>
         {photo ? <img className="productPhoto" src={photo} alt="primary product style" style={{ width: '200px', height: '225px', objectFit: 'cover' }} /> : <img className="productPhoto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png" alt="not found" style={{ width: '200px', height: '225px', objectFit: 'cover' }} />}
