@@ -6,6 +6,12 @@ export default function RatingDashboard({ reviewList, metadata }) {
   const [totalRank, setTotalRank] = useState(0);
   const [recPercent, setRecPercent] = useState(0);
   const [totalRating, setTotalRating] = useState(0);
+  const charList = {
+    Size: ['runs small', 'just right', 'runs large'],
+    Width: ['small', 'ok', 'wide'],
+    Comfort: ['not good', 'just right', 'great'],
+    Quality: ['not good', 'decent', 'great'],
+  };
 
   useEffect(() => {
     if (metadata.product_id) {
@@ -52,7 +58,7 @@ export default function RatingDashboard({ reviewList, metadata }) {
         ))}
       </div>
       {totalRating
-        ? Object.keys(metadata.characteristics).map((char, i) => (
+        ? Object.keys(charList).map((char, i) => (
             <div key={i} className="rating-slider-container">
               <div>{char}</div>
               <input
@@ -63,6 +69,11 @@ export default function RatingDashboard({ reviewList, metadata }) {
                 value={metadata.characteristics[char].value}
                 readOnly
               />
+              <div className="rating-char-desc">
+                {charList[char].map((comment, i) => (
+                  <small key={i}>{comment}</small>
+                ))}
+              </div>
             </div>
           ))
         : null}

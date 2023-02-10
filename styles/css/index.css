@@ -607,6 +607,13 @@ progress {
   padding-bottom: 0.25rem;
 }
 
+.rating-char-desc {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
 input[type=range] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
   width: 100%; /* Specific width is required for Firefox. */
