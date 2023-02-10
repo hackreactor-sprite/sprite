@@ -19,7 +19,7 @@ export default function ImageExpand({
             handleInteractions({ element: 'leftArrow', widget: 'imageExpanded' });
           }}
         >
-          <i className="fa-solid fa-circle-arrow-left" />
+          <i class="fa-solid fa-chevron-left" />
         </div>
       ) : null}
       <img className="image-expand" src={url} alt={alt} />
@@ -31,7 +31,7 @@ export default function ImageExpand({
             handleInteractions({ element: 'rightArrow', widget: 'imageExpanded' });
           }}
         >
-          <i className="fa-solid fa-circle-arrow-right" />
+          <i class="fa-solid fa-chevron-right" />
         </div>
       ) : null}
     </div>
