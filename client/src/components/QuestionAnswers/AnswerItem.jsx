@@ -75,7 +75,7 @@ export default function AnswerItem({ answer }) {
           {!reported ? (
             <Report
               id={answer.id}
-              type="answers"
+              type="qa/answers"
               setReported={setReported}
               reported={reported}
               location="AnswerItem"
