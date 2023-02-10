@@ -113,12 +113,11 @@
   padding: 0 1rem 1rem 1.5rem;
 }
 
-
 .product-info, .checkout, .overview {
   @include BoxShadow;
   border: 0.1rem solid #4c5c68;
+  border-radius: .25rem;
 
-  border-radius: 0.25rem;
 }
 
 .overview {
@@ -161,7 +160,6 @@
   height: 3.5rem;
   width: 3.5rem;
   margin: .5rem;
-}
 
 #review-link {
   color: #1985a1;
