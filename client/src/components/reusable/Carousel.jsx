@@ -53,7 +53,7 @@ export default function Carousel({
       >
         {children}
       </div>
-      <button type="button" onClick={(ev) => { handleClick(ev, direction, -scrollOffset); handleInteractions({ element: secondButton, widget: location }); }} style={{ marginTop: 'auto' }}>{direction === 'row' ? '›' : '⌄'}</button>
+      <button type="button" onClick={(ev) => { handleClick(ev, direction, scrollOffset); handleInteractions({ element: secondButton, widget: location }); }} style={{ marginTop: 'auto' }}>{direction === 'row' ? '›' : '⌄'}</button>
     </div>
   );
 }
