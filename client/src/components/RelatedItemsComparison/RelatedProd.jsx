@@ -51,7 +51,7 @@ export default function RelatedProd({
     <div
       className="carousel-item"
       style={{
-        minWidth: '200px', width: '200px', overflow: 'hidden', boxShadow: '0 0 2px black',
+        minWidth: '200px', width: '200px', overflow: 'hidden', boxSizing: 'border-box', border: '1px solid rgba(0, 0, 0, 0.2)',
       }}
     >
       <div
@@ -93,7 +93,17 @@ export default function RelatedProd({
           </Modal>,
           document.body,
         )}
-        {photo ? <img className="productPhoto" id={id} src={photo} alt="primary product style" style={{ width: '200px', height: '225px', objectFit: 'cover' }} /> : <img className="productPhoto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png" alt="not found" style={{ width: '200px', height: '225px', objectFit: 'cover' }} />}
+        {photo ? (
+          <img
+            className="productPhoto"
+            id={id}
+            src={photo}
+            alt="primary product style"
+            style={{
+              width: '200px', height: '225px', objectFit: 'cover',
+            }}
+          />
+        ) : <img className="productPhoto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png" alt="not found" style={{ width: '200px', height: '225px', objectFit: 'cover' }} />}
         <div>{product.category}</div>
         <div>{product.name}</div>
         <div>
