@@ -2,6 +2,7 @@ import React from 'react';
 import Size from './Size';
 import Quantity from './Quantity';
 import range from '../../helper/getRange';
+import handleInteractions from '../../helper/handleInteractions';
 
 export default function Checkout({
   allSkus,
@@ -13,6 +14,7 @@ export default function Checkout({
 
   const handleUpdate = (event) => {
     setSizeId(event.target.value);
+    handleInteractions({ element: 'sizeSelect', widget: 'checkout' });
   };
 
   let isLoaded;
@@ -32,7 +34,7 @@ export default function Checkout({
           <Size key={sku} skus={skus} sku={sku} />
         ))}
       </select>
-      <select data-testid="quantitySelect">
+      <select data-testid="quantitySelect" onChange={() => handleInteractions({ element: 'quantitySelect', widget: 'checkout' })}>
         <option value="" selected>
           -
         </option>

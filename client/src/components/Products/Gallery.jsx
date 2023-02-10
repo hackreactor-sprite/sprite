@@ -4,6 +4,7 @@ import ModalRoute from '../Modal/ModalRoute';
 import Modal from '../reusable/Modal';
 import GalleryThumbnails from './GalleryThumbnails';
 import Carousel from '../reusable/Carousel';
+import handleInteractions from '../../helper/handleInteractions';
 
 export default function Gallery({
   curStyle,
@@ -51,12 +52,18 @@ export default function Gallery({
               <div
                 onClick={() => {
                   setDisplayIndex(displayIndex - 1);
+                  handleInteractions({ element: 'leftArrow', widget: 'gallery' });
+
                 }}
               >
-                &lt;
+                <i className="fa-solid fa-circle-arrow-left" />
               </div>
             ) : null}
             <img
+              onClick={() => {
+                setShowBigImage(!showBigImage);
+                handleInteractions({ element: 'displayImage', widget: 'gallery' });
+              }}
               src={curStyle.photos[displayIndex].url}
               alt=""
               height="400px"
@@ -65,25 +72,20 @@ export default function Gallery({
               <div
                 onClick={() => {
                   setDisplayIndex(displayIndex + 1);
+                  handleInteractions({ element: 'rightArrow', widget: 'gallery' });
+
                 }}
               >
-                &gt;
+                <i className="fa-solid fa-circle-arrow-right" />
+
               </div>
             ) : null}
           </>
         ) : null}
-        <button
-          type="button"
-          onClick={() => {
-            setShowBigImage(!showBigImage);
-          }}
-        >
-          +
-        </button>
       </div>
       {showBigImage &&
         createPortal(
-          <Modal showModal={showBigImage} setShowModal={setShowBigImage}>
+          <Modal displayIndex={displayIndex} showModal={showBigImage} setShowModal={setShowBigImage}>
             <ModalRoute
               route="ImageExpand"
               content={content}
@@ -95,7 +97,7 @@ export default function Gallery({
         )}
       <div className="galleryThumbs">
         {thumbnails ? (
-          <Carousel>
+          <Carousel location={'gallery'}>
             {curStyle.photos.map((picture, i) => (
               <GalleryThumbnails
                 picture={picture}

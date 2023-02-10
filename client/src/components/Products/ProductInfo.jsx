@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Star from '../reusable/Stars';
-import getAverage from '../../helper/getAverage';
+import handleInteractions from '../../helper/handleInteractions';
 
 export default function ProductInfo({ curProduct, curStyle, metadata }) {
   // line 11 price needs to be set to the style's price
@@ -29,21 +29,33 @@ export default function ProductInfo({ curProduct, curStyle, metadata }) {
   return (
     <section>
       <h3 data-testid="productInfo">Product Info</h3>
-      <h5>{totalRank}</h5>
-      {/* <p>Read all {# of reviews} reviews</p> */}
+      <h5>{totalRank} stars</h5>
       <Star totalRanking={totalRank} />
+      <a onClick={() => handleInteractions({ element: 'reviewLink', widget: 'productInfo' })} href="#scroll">Read all Reviews</a>
       <h5>{curProduct.category}</h5>
       <h3>{curProduct.name}</h3>
       {!curStyle.sale_price ? (
-        <p>${curStyle.original_price}</p>
+        <p>
+          $
+          {curStyle.original_price}
+        </p>
       ) : (
         <div>
-          <p className="saleOut">${curStyle.sale_price}</p>
-          <p className="crossOut">
-            <s>${curStyle.original_price}</s>
+          <p className="sale">
+            $
+            {curStyle.sale_price}
+            {' '}
+            <s id="crossedOut">
+              $
+              {curStyle.original_price}
+            </s>
           </p>
         </div>
       )}
+      <h3>Share:</h3>
+      <a onClick={() => handleInteractions({ element: 'iconTwitter', widget: 'productInfo' })} href="https://twitter.com/intent/tweet?url=http://44.195.30.52:3000/&text=Up%20Store&via=upstorefront" target="_blank" rel="nofollow noopener noreferrer"><i className="fa-brands fa-twitter" /></a>
+      <a onClick={() => handleInteractions({ element: 'iconFB', widget: 'productInfo' })} href="https://www.facebook.com/sharer/sharer.php?u=http://44.195.30.52:3000/" target="_blank" rel="nofollow noopener noreferrer"><i className="fa-brands fa-facebook" /></a>
+      <a onClick={() => handleInteractions({ element: 'iconPin', widget: 'productInfo' })} href="https://www.pinterest.com/pin/create/button?url=http://44.195.30.52:3000/&media=&description=Up%20Store" target="_blank" rel="nofollow noopener noreferrer"><i className="fa-brands fa-pinterest" /></a>
     </section>
   );
 }
