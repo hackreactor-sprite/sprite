@@ -12,11 +12,12 @@ export default function GalleryThumbnails({ picture, setDisplayIndex, i }) {
   return (
       <div className="galleryThumb">
         <img
+          className="thumbnail-image"
           id={i}
           onClick={handleClick}
           src={picture.thumbnail_url}
           alt={picture.url}
-          height="50px"
+          min-height="50px"
         />
       </div>
   );
