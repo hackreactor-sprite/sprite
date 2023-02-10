@@ -5,7 +5,7 @@ import handleInteractions from '../../helper/handleInteractions';
 export default function Report({ id, type, reported, setReported, location }) {
   function sendReport() {
     axios
-      .put(`qa/${type}/${id}/report`)
+      .put(`${type}/${id}/report`)
       .then(() => {
         setReported(!reported);
         // ('success');

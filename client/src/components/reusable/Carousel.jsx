@@ -10,7 +10,7 @@ export function handleClick(ev, direction, offset) {
   } else if (direction === 'column') {
     directionProp = 'top';
   }
-  const container = ev.target.parentElement.children[1];
+  const container = ev.target.parentElement.parentElement.children[1];
   const scrollOptions = {
     [directionProp]: offset,
     behavior: 'smooth',
@@ -38,7 +38,7 @@ export default function Carousel({
 
   return (
     <div style={{ display: 'flex', flexDirection: direction, justifyContent: 'center' }}>
-      <button type="button" onClick={(ev) => { handleClick(ev, direction, -scrollOffset); handleInteractions({ element: firstButton, widget: location }); }} style={{ marginTop: 'auto' }}>{direction === 'row' ? '‹' : '⌃'}</button>
+      <button className="vertical-scroller" type="button" style={{ marginTop: 'auto' }}>{direction === 'row' ? '‹' : <i  onClick={(ev) => { handleClick(ev, direction, -scrollOffset); handleInteractions({ element: firstButton, widget: location }); }} className="fa-solid fa-chevron-up" />}</button>
       <div
         className="item-container"
         style={{
@@ -53,7 +53,7 @@ export default function Carousel({
       >
         {children}
       </div>
-      <button type="button" onClick={(ev) => { handleClick(ev, direction, scrollOffset); handleInteractions({ element: secondButton, widget: location }); }} style={{ marginTop: 'auto' }}>{direction === 'row' ? '›' : '⌄'}</button>
+      <button className="vertical-scroller" type="button" style={{ marginTop: 'auto' }}>{direction === 'row' ? '›' : <i onClick={(ev) => { console.log('click');handleClick(ev, direction, scrollOffset); handleInteractions({ element: secondButton, widget: location }); }} className="fa-solid fa-chevron-down" />}</button>
     </div>
   );
 }
