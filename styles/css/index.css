@@ -313,6 +313,7 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
+  padding-top: 0.5rem;
 }
 
 .ImageExpand {
@@ -325,7 +326,7 @@ body {
   padding: 0.15rem 0.25rem;
   text-align: center;
   background: none;
-  border: 1px solid black;
+  border: 1px solid lightgray;
   border-radius: 0.25rem;
 }
 
@@ -333,7 +334,7 @@ body {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   background: none;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid lightgray;
   border-radius: 0.25rem;
   padding: 1rem 2rem;
 }
@@ -362,6 +363,16 @@ section {
 h5,
 p {
   margin: 0.75rem 0;
+}
+
+.helpfulbtn {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.helpfulbtn:hover {
+  background: none;
 }
 
 .productDetail {
@@ -505,6 +516,7 @@ p {
 .review-item {
   padding: 0.5rem 0;
   border-bottom: 1px grey solid;
+  box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
 }
 
 .rating-progress-bar,
@@ -518,10 +530,16 @@ p {
 }
 
 progress {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   -webkit-appearance: none;
   appearance: none;
   height: 0.5rem;
   box-shadow: 0 0.05rem 0.07rem grey inset;
+  border: 1px solid grey;
+}
+
+::-webkit-progress-bar {
+  background-color: white;
 }
 
 .rating-filterdropdown {
@@ -581,20 +599,170 @@ progress {
   margin-bottom: 1rem;
 }
 
+.rating-progress-bar {
+  padding-bottom: 0.25rem;
+}
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -1rem; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid black;
+  margin: 2rem;
+}
+
+input[type=range]::-webkit-slider-thumb,
+input[type=range]::-ms-track {
+  border: 1px solid black;
+  height: 36px;
+  width: 16px;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -1rem; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid black;
+  margin: 2rem;
+}
+
+.rating-dashboard-header > h1 {
+  font-size: 3.5rem;
+}
+
+.cover {
+  z-index: 11;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
 .modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: grey;
-  border-radius: 1rem;
-  padding: 0 2rem 2rem 2rem;
+  background: lightblue;
+  border-radius: 0.2rem;
+  padding: 0 2rem 1rem 2rem;
+  width: max-content;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  z-index: 12;
+}
+
+.modal > button {
+  background: black;
+  right: 0;
+  height: 1.5rem;
+  width: 1.5rem;
+  position: absolute;
+  background: white;
+  border-radius: 5rem;
+  border: 0;
+  margin: 0.25rem;
+}
+
+.modal > button:hover {
+  background: lightcoral;
 }
 
 .modal,
 .modal-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.overall-choice-container,
+.recommend-choice-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recommend-choice,
+.overall-choice {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.overall-choice > label,
+.characteristic-choice > label,
+.recommend-choice > label {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+}
+
+.characteristic-choice {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.modal > input[type=file] {
+  padding: 1rem 0;
+}
+
+.character-popup {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 0.5rem;
+}
+
+.characteristic-choice-container {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  padding-bottom: 1rem;
+}
+
+.modal-submit {
+  background: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  margin-top: 1rem;
+}
+
+.question-form-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
 }
 
 .stars {

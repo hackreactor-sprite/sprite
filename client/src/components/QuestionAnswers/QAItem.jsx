@@ -54,7 +54,7 @@ export default function QAItem({ QA, curProduct }) {
             <AnswerItem answer={answer} key={i} />
           ))}
         </div>
-        {answerList.length > 2 && partialAnswers.length < answerList.length ? (
+        {partialAnswers.length < answerList.length && curProduct.id ? (
           <button
             id="load-answers"
             type="button"

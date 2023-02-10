@@ -81,7 +81,7 @@ export default function AddQuestionForm({ curProduct }) {
     axios
       .post('/qa/questions', formObj)
       .then(() => {
-        // ('success');
+        console.log('success');
       })
       .catch((err) => new Error(err));
   }
@@ -93,68 +93,84 @@ export default function AddQuestionForm({ curProduct }) {
   }
   return (
     <form className="modal-form" onSubmit={handleSubmit}>
-      <h3>Write your Review</h3>
-      <small>
+      <h1>Write your Review</h1>
+      <p>
         {'About the '}
-        {curProduct.name}
-      </small>
+        <ins>{curProduct.name}</ins>
+      </p>
 
-      <div>
-        <h5>Overall Rating</h5>
-        <p>{questionForm.overall}</p>
-        {Object.keys(ratingObj).map((rating) => (
-          <label htmlFor="overall-rating">
-            <input
-              type="radio"
-              value={rating}
-              name="overall-rating"
-              onClick={() => {
-                const set = { ...questionForm };
-                set.overall = ratingObj[rating];
-                setQuestionForm(set);
-              }}
-            />
-            {rating}
-          </label>
-        ))}
-      </div>
-      <div>
-        <h5>Do you recommend this product?</h5>
-        <div>
-          <label htmlFor="yes">
-            <input type="radio" value="yes" />
-            Yes
-          </label>
-          <label htmlFor="no">
-            <input type="radio" value="no" />
-            No
-          </label>
-        </div>
-      </div>
-      {Object.keys(characteristics).map((type) => (
-        <div>
-          <h5>{type}</h5>
-          <p>{questionForm[type]}</p>
-          {Object.keys(characteristics[type]).map((rank) => (
-            <label htmlFor={type}>
+      <h5>Overall Rating</h5>
+      <div className="overall-choice-container">
+        {questionForm.overall ? (
+          <small className="character-popup">{questionForm.overall}</small>
+        ) : null}
+        <div className="overall-choice">
+          {Object.keys(ratingObj).map((rating, i) => (
+            <label htmlFor="overall-rating" key={i}>
               <input
                 type="radio"
-                value={rank}
-                name={type}
-                onClick={() => handleCharacteristicTip(type, rank)}
+                value={rating}
+                name="overall-rating"
+                onClick={() => {
+                  const set = { ...questionForm };
+                  set.overall = ratingObj[rating];
+                  setQuestionForm(set);
+                }}
               />
-              {rank}
+              {rating}
             </label>
           ))}
         </div>
-      ))}
+      </div>
+      <label htmlFor="yes_no_radio">
+        <h5>Do you recommend this product?</h5>
+      </label>
+      <div className="recommend-choice-container">
+        <div className="recommend-choice">
+          <input type="radio" name="yes_no" />
+          Yes
+          <input type="radio" name="yes_no" />
+          No
+        </div>
+      </div>
+      <div className="characteristic-choice-container">
+        {Object.keys(characteristics).map((type, i) => (
+          <div className="characteristic-type" key={i}>
+            <ins>
+              <h5>
+                {`${type} ${
+                  questionForm[type].length !== 0
+                    ? `: ${questionForm[type]}`
+                    : ''
+                }`}
+              </h5>
+            </ins>
+
+            <div className="characteristic-choice">
+              {Object.keys(characteristics[type]).map((rank) => (
+                <label htmlFor={type}>
+                  <input
+                    type="radio"
+                    value={rank}
+                    name={type}
+                    onClick={() => handleCharacteristicTip(type, rank)}
+                  />
+                  {rank}
+                </label>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
       <input
         type="file"
         name="photos"
         accept="image/png, image/jpeg"
         placeholder="upload a photo"
       />
-      <button type="submit">Submit</button>
+      <button type="submit" className="modal-submit">
+        Submit
+      </button>
     </form>
   );
 }

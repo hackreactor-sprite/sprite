@@ -14,7 +14,7 @@ export default function QuestionAnswer({ curProduct, QAList }) {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    if (curProduct.id) {
+    if (curProduct.id && QAList) {
       const sorted = QAList.sort(
         (a, b) => b.question_helpfulness - a.question_helpfulness,
       );
