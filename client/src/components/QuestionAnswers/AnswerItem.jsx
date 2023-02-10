@@ -29,11 +29,8 @@ export default function AnswerItem({ answer }) {
 
   return (
     <div className="QA-answer-container">
-      <div className="QA-answer-header" role="heading" aria-level="4">
-        <h5 className="QA-title">A:</h5>
-      </div>
       <div className="QA-answer-body">
-        <p aria-labelledby="answer">{answer.body}</p>
+        <p aria-labelledby="answer">{`A: ${answer.body}`}</p>
         <div
           className="answer-photo-container"
           role="img"

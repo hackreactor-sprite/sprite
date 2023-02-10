@@ -35,6 +35,7 @@ export default function RelatedProducts({
         <div style={{ textAlign: 'center' }}>
           <button
             id="addOutfitButton"
+            className="big-btn"
             type="button"
             onClick={(ev) => {
               handleAddOutfit(ev, curStyle, outfits, setOutfits);
@@ -51,7 +52,7 @@ export default function RelatedProducts({
     <section className="RelatedItemsComparison">
       <div style={{ width: 'max-content', margin: '0 auto' }}>
         <div style={{ width: 'max-content' }}>
-          <h4 className="rel-prod-heading">Related Products</h4>
+          <header className="relatedItemsHeader rel-prod-heading">RELATED PRODUCTS</header>
           <div className="rel-prod-list" style={{ width: 'max-content' }}>
             <RowCarousel location={location} buttonSize={3}>
               {
@@ -69,7 +70,7 @@ export default function RelatedProducts({
           </div>
         </div>
         <div style={{ width: 'max-content' }}>
-          <h4 className="outfits-heading">Your Outfit</h4>
+          <header className="relatedItemsHeader outfits-heading">YOUR OUTFIT</header>
           <div className="outfits-list" style={{ width: 'max-content' }}>
             <RowCarousel location={location} buttonSize={3}>
               {[placeholder, ...outfits.map((style) => (
