@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
+import AnswerItem from './AnswerItem';
 import Helpful from '../reusable/Helpful';
-import Report from '../reusable/Report';
 import ModalRoute from '../Modal/ModalRoute';
 import Modal from '../reusable/Modal';
+import handleContentLoad from '../../helper/handleContentLoad';
+import handleInteractions from '../../helper/handleInteractions';
 
 export default function QAItem({ QA, curProduct }) {
   const [showModal, setShowModal] = useState(false);
   const [shownAnswer, setShownAnswer] = useState(false);
   const [answerList, setAnswerList] = useState([]);
   const [partialAnswers, setPartialAnswers] = useState([]);
+
   useEffect(() => {
     const sort = Object.values(QA.answers).sort(
       (a, b) => b.helpfulness - a.helpfulness,
@@ -25,13 +28,22 @@ export default function QAItem({ QA, curProduct }) {
       <div className="QA-item" role="treeitem" aria-selected="false">
         <div className="QA-body">
           <h4 id="QA-body-content" aria-level="3">
-            {'Q: '}
-            {QA.question_body.toUpperCase()}
+            {`Q: $${QA.question_body.toUpperCase()}`}
           </h4>
 
           <div className="small-container">
-            <Helpful helpful={QA.question_helpfulness} />
-            <button type="button" onClick={() => setShowModal(!showModal)}>
+            <Helpful helpful={QA.question_helpfulness} location="QAItem" />
+            <button
+              type="button"
+              data-testid="question-form-button"
+              onClick={() => {
+                setShowModal(!showModal);
+                handleInteractions({
+                  element: 'Question-form-button',
+                  widget: 'QAItem',
+                });
+              }}
+            >
               <small>Add Answer</small>
             </button>
           </div>
@@ -45,13 +57,17 @@ export default function QAItem({ QA, curProduct }) {
           <button
             id="load-answers"
             type="button"
-            onClick={() =>
+            onClick={() => {
               handleContentLoad({
                 partialList: partialAnswers,
                 setPartialList: setPartialAnswers,
                 totalList: answerList,
-              })
-            }
+              });
+              handleInteractions({
+                element: 'Load-answers',
+                widget: 'QAItem',
+              });
+            }}
           >
             <small>
               {partialAnswers.length !== answerList.length
@@ -77,80 +93,6 @@ export default function QAItem({ QA, curProduct }) {
   );
 }
 
-function AnswerItem({ answer }) {
-  const [showModal, setShowModal] = useState(false);
-  const [reported, setReported] = useState(false);
-  const [curPhoto, setCurPhoto] = useState('');
-
-  const options = {
-    month: 'long',
-    year: 'numeric',
-    day: 'numeric',
-  };
-  const convertedDate = new Date(answer.date).toLocaleDateString(
-    undefined,
-    options,
-  );
-
-  const handleImage = (photo) => {
-    setCurPhoto(photo);
-    setShowModal(!showModal);
-  };
-
-  return (
-    <div className="QA-answer-container">
-      <div className="QA-answer-header" role="heading" aria-level="4">
-        <h5 className="QA-title">A:</h5>
-      </div>
-      <div className="QA-answer-body">
-        <p aria-labelledby="answer">{answer.body}</p>
-        <div
-          className="answer-photo-container"
-          role="img"
-          aria-label="answer-photo"
-        >
-          {answer.photos.map((photo, i) => (
-            <div key={i}>
-              <img
-                src={photo}
-                alt="Answer Image"
-                className="answer-photo"
-                onClick={() => handleImage(photo)}
-              />
-            </div>
-          ))}
-          {showModal &&
-            createPortal(
-              <Modal showModal={showModal} setShowModal={setShowModal} key={i}>
-                <ModalRoute route="ImageExpand" content={{ photo: curPhoto }} />
-              </Modal>,
-              document.body,
-            )}
-        </div>
-        <div className="small-container QA-answer-detail">
-          <small>
-            {'by '}
-            {answer.answerer_name}
-            {', '}
-            {convertedDate}
-          </small>
-          <Helpful helpful={answer.helpfulness} answerid={answer.id} />
-          {!reported ? (
-            <Report
-              id={answer.id}
-              type="answers"
-              setReported={setReported}
-              reported={reported}
-            />
-          ) : (
-            <small>Reported</small>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 QAItem.propTypes = {
   QA: PropTypes.shape({
     id: PropTypes.number,
@@ -162,15 +104,5 @@ QAItem.propTypes = {
   }).isRequired,
   curProduct: PropTypes.shape({
     id: PropTypes.number,
-  }).isRequired,
-};
-
-AnswerItem.propTypes = {
-  answer: PropTypes.shape({
-    id: PropTypes.number,
-    date: PropTypes.string,
-    answerer_name: PropTypes.string,
-    body: PropTypes.string,
-    helpfulness: PropTypes.number,
   }).isRequired,
 };
