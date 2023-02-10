@@ -56,7 +56,7 @@ export default function Gallery({
                     handleInteractions({ element: 'leftArrow', widget: 'gallery' });
                   }}
                 >
-                  <i className="fa-solid fa-circle-arrow-left" />
+                  <i className="fa-solid fa-chevron-left" />
                 </div>
               ) : null}
               <img
@@ -76,7 +76,7 @@ export default function Gallery({
                     handleInteractions({ element: 'rightArrow', widget: 'gallery' });
                   }}
                 >
-                  <i className="fa-solid fa-circle-arrow-right" />
+                  <i className="fa-solid fa-chevron-right" />
 
                 </div>
               ) : null}
@@ -98,7 +98,7 @@ export default function Gallery({
       </div>
       <div className="galleryThumbs">
         {thumbnails ? (
-          <Carousel location="gallery" direction="column" numberToDisplay={7} gap={20} size={50}>
+          <Carousel location="gallery" direction="column" gap={20} size={50} numberToDisplay={7}>
             {curStyle.photos.map((picture, i) => (
               <GalleryThumbnails
                 picture={picture}
