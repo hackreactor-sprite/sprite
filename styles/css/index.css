@@ -825,7 +825,7 @@ input[type=range]::-ms-track {
 }
 
 #gallery {
-  border: 0.25rem solid #4c5c68;
+  border: 0.1rem solid #4c5c68;
   border-radius: 2rem;
   gap: 1rem;
   display: flex;
@@ -895,7 +895,7 @@ input[type=range]::-ms-track {
 
 .selected-style {
   padding: 0 0.25rem;
-  border: 0.25rem solid #4c5c68;
+  border: 0.1rem solid #4c5c68;
   border-radius: 2rem;
 }
 
@@ -907,10 +907,9 @@ input[type=range]::-ms-track {
   padding: 0 1rem 1rem 1.5rem;
 }
 
-.product-info,
-.checkout,
-.overview {
-  border: 0.25rem solid #4c5c68;
+.product-info, .checkout, .overview {
+  border: 0.1rem solid #4c5c68;
+
   border-radius: 2rem;
 }
 
@@ -920,7 +919,7 @@ input[type=range]::-ms-track {
 
 #slogan {
   padding: 0.5rem 2rem;
-  border-bottom: 0.25rem solid #4c5c68;
+  border-bottom: 0.1rem solid #4c5c68;
 }
 
 #description {
@@ -928,7 +927,7 @@ input[type=range]::-ms-track {
 }
 
 .feature {
-  border-top: 0.25rem solid #4c5c68;
+  border-top: 0.1rem solid #4c5c68;
   padding: 0.5rem 2rem;
 }
 
@@ -936,6 +935,7 @@ input[type=range]::-ms-track {
   transform: scale(2);
   width: 2rem;
   padding: 0 1rem;
+  color: #1985a1;
 }
 
 .bubble:hover,
@@ -943,6 +943,14 @@ input[type=range]::-ms-track {
 .fa-solid:hover,
 .galleryThumb:hover {
   cursor: pointer;
+}
+
+#selected-style {
+  border-radius: 3px solid white;
+}
+
+#review-link {
+  color: #1985a1;
 }
 
 #crossedOut {

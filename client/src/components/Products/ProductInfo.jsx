@@ -36,7 +36,7 @@ export default function ProductInfo({ curProduct, curStyle, metadata }) {
           stars
         </h3>
         <Star totalRanking={totalRank} />
-        <a onClick={() => handleInteractions({ element: 'reviewLink', widget: 'productInfo' })} href="#scroll">Read all Reviews</a>
+        <a id="review-link" onClick={() => handleInteractions({ element: 'reviewLink', widget: 'productInfo' })} href="#scroll">Read all Reviews</a>
         <h3>Category: {curProduct.category}</h3>
         <h3>{curProduct.name}</h3>
         {!curStyle.sale_price ? (
