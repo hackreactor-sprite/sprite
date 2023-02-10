@@ -1,15 +1,114 @@
+.cover {
+  z-index: 11;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
 .modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: grey;
-  border-radius: 1rem;
-  padding: 0 2rem 2rem 2rem;
+  background: lightblue;
+  border-radius: 0.2rem;
+  padding: 0 2rem 1rem 2rem;
+  width: max-content;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  z-index: 12;
+}
+
+.modal > button {
+  background: black;
+  right: 0;
+  height: 1.5rem;
+  width: 1.5rem;
+  position: absolute;
+  background: white;
+  border-radius: 5rem;
+  border: 0;
+  margin: 0.25rem;
+}
+
+.modal > button:hover {
+  background: lightcoral;
 }
 
 .modal,
 .modal-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.overall-choice-container,
+.recommend-choice-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recommend-choice,
+.overall-choice {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.overall-choice > label,
+.characteristic-choice > label,
+.recommend-choice > label {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+}
+
+.characteristic-choice {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.modal > input[type='file'] {
+  padding: 1rem 0;
+}
+
+.character-popup {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 0.5rem;
+}
+
+.characteristic-choice-container {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  padding-bottom: 1rem;
+}
+
+.modal-submit {
+  background: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  margin-top: 1rem;
+}
+
+.modal-submit:hover {
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.3) -3px -3px 6px 1px inset;
+  transition: 0.3s ease-in-out;
+}
+
+.question-form-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
 }

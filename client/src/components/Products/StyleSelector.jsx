@@ -12,19 +12,27 @@ export default function StyleSelector({
   //  ('line 6 styles: ', styles);
 
   return (
-    <section>
-      <h3>Selected Style &gt; {curStyle.name} </h3>
+    <section className="selected-style">
+      <h3 className="heading">
+        Selected Style &gt;
+        {' '}
+        {curStyle.name}
+        {' '}
+      </h3>
       {!setStyles ? (
         <div className="empty" />
       ) : (
-        styles.map((style) => (
-          <StyleBubble
-            key={style.style_id}
-            setCurStyle={setCurStyle}
-            style={style}
-            setSizeId={setSizeId}
-          />
-        ))
+        <div className="bubbles">
+          {styles.map((style) => (
+            <StyleBubble
+              key={style.style_id}
+              curStyle={curStyle}
+              setCurStyle={setCurStyle}
+              style={style}
+              setSizeId={setSizeId}
+            />
+          ))}
+        </div>
       )}
     </section>
   );

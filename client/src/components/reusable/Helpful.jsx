@@ -23,6 +23,7 @@ export default function Helpful({ helpful, answerid, location }) {
       <small> {`Helpful? (${helpfulCount})`}</small>
       <button
         type="button"
+        className="small-btn helpfulbtn"
         onClick={
           !submit
             ? () => {
@@ -35,7 +36,9 @@ export default function Helpful({ helpful, answerid, location }) {
             : null
         }
       >
-        <small>Yes</small>
+        <small className="greytxt">
+          <ins>Yes</ins>
+        </small>
       </button>
     </div>
   );

@@ -4,6 +4,7 @@ import AddQuestionForm from './AddQuestionForm';
 import AddAnswerForm from './AddAnswerForm';
 import AddReviewForm from './AddReviewForm';
 import ImageExpand from './ImageExpand';
+import Image from './Image';
 import Comparison from './Comparison';
 
 // eslint-disable-next-line object-curly-newline
@@ -31,7 +32,17 @@ export default function ModalRoute({ content, route, state, setState }) {
         <AddReviewForm curProduct={content} state={state} setState={setState} />
       );
     case 'ImageExpand':
-      return <ImageExpand length={content.length} setDisplayIndex={content.setDisplayIndex} displayIndex={content.displayIndex} url={content.photo} alt="Expanded Image" />;
+      return (
+        <ImageExpand
+          length={content.length}
+          setDisplayIndex={content.setDisplayIndex}
+          displayIndex={content.displayIndex}
+          url={content.photo}
+          alt="Expanded Image"
+        />
+      );
+    case 'Image':
+      return <Image url={content} alt="Expanded Image" />;
     case 'Comparison':
       return (
         <Comparison

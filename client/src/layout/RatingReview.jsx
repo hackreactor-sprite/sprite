@@ -38,7 +38,7 @@ export default function RatingReview({ curProduct, metadata }) {
         <RatingDashboard reviewList={reviewList} metadata={metadata} />
         <div className="rating-right">
           <div className="rating-sort">
-            <h2>{`${reviewList.length} reviews, sorted by`}</h2>
+            <h2>{`${reviewList.length} reviews, sorted by `}</h2>
             <div className="rating-inner-search">
               <select
                 className="rating-filterdropdown"
@@ -67,6 +67,7 @@ export default function RatingReview({ curProduct, metadata }) {
             partialReviewList.length < reviewList.length ? (
               <button
                 type="button"
+                className="big-btn"
                 onClick={() =>
                   handleContentLoad({
                     partialList: partialReviewList,
@@ -78,7 +79,11 @@ export default function RatingReview({ curProduct, metadata }) {
                 <small>MORE REVIEWS</small>
               </button>
             ) : null}
-            <button type="button" onClick={() => setShowModal(!showModal)}>
+            <button
+              type="button"
+              className="big-btn"
+              onClick={() => setShowModal(!showModal)}
+            >
               <small>ADD A REVIEW +</small>
             </button>
           </div>
