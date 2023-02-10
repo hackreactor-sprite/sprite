@@ -35,6 +35,7 @@ export default function RelatedProducts({
         <div style={{ textAlign: 'center' }}>
           <button
             id="addOutfitButton"
+            className="big-btn"
             type="button"
             onClick={(ev) => {
               handleAddOutfit(ev, curStyle, outfits, setOutfits);
