@@ -50,6 +50,10 @@ progress {
   background-color: white;
 }
 
+progress::-webkit-progress-value {
+  background-color: teal !important;
+}
+
 .rating-filterdropdown {
   background: none;
   -webkit-appearance: none;
