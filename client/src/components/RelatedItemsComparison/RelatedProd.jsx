@@ -6,6 +6,7 @@ import getAverage from '../../helper/getAverage';
 import ModalRoute from '../Modal/ModalRoute';
 import Modal from '../reusable/Modal';
 import Star from '../reusable/Stars';
+import handleInteractions from '../../helper/handleInteractions';
 
 export default function RelatedProd({
   id, curProduct, setCurProduct,
@@ -18,7 +19,7 @@ export default function RelatedProd({
   const content = {
     curProd, product,
   };
-
+  const location = 'RelatedProd';
   function handleProductClick(ev) {
     ev.preventDefault();
     setCurProduct(product);
@@ -55,18 +56,34 @@ export default function RelatedProd({
     >
       <div
         role="button"
-        className="product"
-        style={{ cursor: 'pointer', position: 'relative' }}
-        onClick={handleProductClick}
-        onKeyPress={handleProductClick}
-        tabIndex="0"
         id={id}
+        className="related-product"
+        style={{ cursor: 'pointer', position: 'relative' }}
+        onClick={(ev) => {
+          handleProductClick(ev);
+          handleInteractions({ element: `${ev.target.className}-id#${ev.target.id}`, widget: 'RelatedProd' });
+        }}
+        onKeyPress={(ev) => {
+          handleProductClick(ev);
+          handleInteractions({ element: `${ev.target.className}-id#${ev.target.id}`, widget: 'RelatedProd' });
+        }}
+        tabIndex="0"
       >
-        <button type="button" className="open-modal-button" style={{ position: 'absolute', right: '0%' }} onClick={(ev) => { ev.stopPropagation(); setShowModal(!showModal); }}>
+        <button
+          type="button"
+          id={id}
+          className="open-modal-button"
+          style={{ position: 'absolute', right: '0%' }}
+          onClick={(ev) => {
+            ev.stopPropagation();
+            setShowModal(!showModal);
+            handleInteractions({ element: `${ev.target.className}-id#${ev.target.id}`, widget: 'RelatedProd' });
+          }}
+        >
           ☆
         </button>
         {showModal && createPortal(
-          <Modal showModal={showModal} setShowModal={setShowModal}>
+          <Modal showModal={showModal} setShowModal={setShowModal} location={location}>
             <ModalRoute
               route="Comparison"
               content={content}
@@ -76,7 +93,7 @@ export default function RelatedProd({
           </Modal>,
           document.body,
         )}
-        {photo ? <img className="productPhoto" src={photo} alt="primary product style" style={{ width: '200px', height: '225px', objectFit: 'cover' }} /> : <img className="productPhoto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png" alt="not found" style={{ width: '200px', height: '225px', objectFit: 'cover' }} />}
+        {photo ? <img className="productPhoto" id={id} src={photo} alt="primary product style" style={{ width: '200px', height: '225px', objectFit: 'cover' }} /> : <img className="productPhoto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png" alt="not found" style={{ width: '200px', height: '225px', objectFit: 'cover' }} />}
         <div>{product.category}</div>
         <div>{product.name}</div>
         <div>

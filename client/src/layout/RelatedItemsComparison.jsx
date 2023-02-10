@@ -9,12 +9,13 @@ import handleInteractions from '../helper/handleInteractions';
 export default function RelatedProducts({
   curProduct, setCurProduct, metadata, curStyle, relatedProds,
 }) {
+  const location = 'RelatedProducts';
   const [outfits, setOutfits] = useState([]);
   return (
     <section className="relatedproducts">
       <h4 className="rel-prod-heading">Related Products</h4>
       <div className="rel-prod-list">
-        <Carousel>
+        <Carousel location={location}>
           {
         relatedProds.map((id) => (
           <RelatedProd
@@ -30,7 +31,7 @@ export default function RelatedProducts({
       </div>
       <h4 className="outfits-heading">Your Outfit</h4>
       <div className="outfits-list">
-        <Carousel>
+        <Carousel location={location}>
           <div
             className="outfit-item"
             style={{
@@ -53,10 +54,11 @@ export default function RelatedProducts({
               />
               <div style={{ textAlign: 'center' }}>
                 <button
+                  id="addOutfitButton"
                   type="button"
                   onClick={(ev) => {
                     handleAddOutfit(ev, curStyle, outfits, setOutfits);
-                    handleInteractions({ element: 'AddOutfitButton', widget: 'RelatedItemsComparison' });
+                    handleInteractions({ element: ev.target.id, widget: 'RelatedItemsComparison' });
                   }}
                 >
                   <h5>Add to Outfit</h5>

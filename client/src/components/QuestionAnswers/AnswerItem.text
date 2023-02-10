@@ -2,7 +2,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import QAItem from './QAItem';
-import QuestionAnswer from '../../layout/QuestionAnswer';
 
 const mockProduct = {
   id: 40346,
@@ -54,9 +53,7 @@ describe('QA Item', () => {
   });
 
   test('should open the modal clicking on add answer button', async () => {
-    const treeitem = screen.getByRole('treeitem', {
-      name: /q: qrqoij` slideheading add answer qa\-list/i,
-    });
+    const treeitem = screen.getByRole('treeitem');
 
     const addAnswerButton = within(treeitem).getByRole('button', {
       name: /add answer/i,
