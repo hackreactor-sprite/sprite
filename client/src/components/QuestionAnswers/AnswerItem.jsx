@@ -58,10 +58,7 @@ export default function AnswerItem({ answer }) {
           {showModal &&
             createPortal(
               <Modal showModal={showModal} setShowModal={setShowModal}>
-                <ModalRoute
-                  route="ImageExpand"
-                  content={{ url: curPhoto, alt: 'AnswerImage' }}
-                />
+                <ModalRoute route="Image" content={curPhoto} />
               </Modal>,
               document.body,
             )}
