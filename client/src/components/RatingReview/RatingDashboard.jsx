@@ -7,10 +7,10 @@ export default function RatingDashboard({ reviewList, metadata }) {
   const [recPercent, setRecPercent] = useState(0);
   const [totalRating, setTotalRating] = useState(0);
   const charList = {
-    Size: ['runs small', 'just right', 'runs large'],
-    Width: ['small', 'ok', 'wide'],
-    Comfort: ['not good', 'just right', 'great'],
-    Quality: ['not good', 'decent', 'great'],
+    Size: ['Runs small', 'Just right', 'Runs large'],
+    Width: ['Small', 'Ok', 'Wide'],
+    Comfort: ['Not good', 'Just right', 'Great'],
+    Quality: ['Not good', 'Decent', 'Great'],
   };
 
   useEffect(() => {
