@@ -29,7 +29,7 @@ export default function QAItem({ QA, curProduct }) {
         <div className="QA-body">
           <ins>
             <h4 id="QA-body-content" aria-level="3">
-              {`Q: $${QA.question_body.toUpperCase()}`}
+              {`Q: ${QA.question_body.toUpperCase()}`}
             </h4>
           </ins>
           <div className="small-container">
