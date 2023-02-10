@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get('/products/40348')
+      .get('/products/40351')
       .then((res) => {
         setCurProduct(res.data);
       })

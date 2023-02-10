@@ -181,3 +181,33 @@ input[type='range']::-ms-track {
 .rating-dashboard-header > h1 {
   font-size: 3.5rem;
 }
+
+.QA-answer-header {
+  display: flex;
+  align-items: center;
+}
+
+.QA-answer-container {
+  display: flex;
+  gap: 0.5rem;
+  // flex-direction: column;
+}
+
+@media (max-device-width: 600px) {
+  body {
+    margin: 0;
+  }
+  #root {
+    margin: 0 1rem;
+  }
+  .rating-content,
+  .section-btn-container,
+  .QA-body,
+  .QA-answer-container {
+    flex-direction: column;
+  }
+
+  .QA-answer-detail {
+    justify-content: center;
+  }
+}
