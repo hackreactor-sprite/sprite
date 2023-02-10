@@ -95,6 +95,10 @@ progress::-webkit-progress-value {
   box-shadow: 0 0.05rem 0.07rem grey inset;
 }
 
+.rating-slider-container {
+  padding: 0.5rem 0;
+}
+
 .rating-dashboard-header {
   display: flex;
   gap: 1rem;
