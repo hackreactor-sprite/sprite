@@ -429,6 +429,7 @@ p {
 
 #QA-body-content {
   display: flex;
+  margin: 0.6rem 0;
 }
 
 .section-btn-container {
@@ -441,6 +442,7 @@ p {
 .answer-photo-container {
   display: flex;
   gap: 0.5rem;
+  padding-left: 1rem;
 }
 
 .QA-item-container {
@@ -688,6 +690,33 @@ input[type=range]::-ms-track {
   font-size: 3.5rem;
 }
 
+.QA-answer-header {
+  display: flex;
+  align-items: center;
+}
+
+.QA-answer-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (max-device-width: 600px) {
+  body {
+    margin: 0;
+  }
+  #root {
+    margin: 0 1rem;
+  }
+  .rating-content,
+.section-btn-container,
+.QA-body,
+.QA-answer-container {
+    flex-direction: column;
+  }
+  .QA-answer-detail {
+    justify-content: center;
+  }
+}
 .cover {
   z-index: 11;
   position: fixed;
