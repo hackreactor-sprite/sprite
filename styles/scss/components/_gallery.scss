@@ -152,6 +152,10 @@
 .galleryThumb:hover {
   cursor: pointer;
 }
+.selected-thumbnail {
+  @include BoxShadow;
+  border: 4px solid #1985a1;
+}
 
 .selected-bubble {
   @include BoxShadow;
@@ -160,6 +164,7 @@
   height: 3.5rem;
   width: 3.5rem;
   margin: .5rem;
+}
 
 #review-link {
   color: #1985a1;
