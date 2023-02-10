@@ -99,11 +99,13 @@ export default function AddQuestionForm({ curProduct }) {
         <ins>{curProduct.name}</ins>
       </p>
 
-      <h5>Overall Rating</h5>
+      <h5 className="character-popup">{`Overall Rating ${
+        questionForm.overall ? `: ${questionForm.overall}` : ''
+      }`}</h5>
       <div className="overall-choice-container">
-        {questionForm.overall ? (
+        {/* {questionForm.overall ? (
           <small className="character-popup">{questionForm.overall}</small>
-        ) : null}
+        ) : null} */}
         <div className="overall-choice">
           {Object.keys(ratingObj).map((rating, i) => (
             <label htmlFor="overall-rating" key={i}>
