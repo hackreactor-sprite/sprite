@@ -9,7 +9,7 @@ import handleContentLoad from '../helper/handleContentLoad';
 import ChevronDown from '../assets/chevron-down.svg';
 import handleInteractions from '../helper/handleInteractions';
 
-export default function RatingReview({ curProduct, metadata }) {
+export default function RatingReview({ curProduct, metadata, reviewLength }) {
   const [partialReviewList, setPartialReviewList] = useState([]);
   const [reviewList, setReviewList] = useState([]);
   const [sortType, setSortType] = useState('newest');
@@ -40,7 +40,7 @@ export default function RatingReview({ curProduct, metadata }) {
         <RatingDashboard reviewList={reviewList} metadata={metadata} />
         <div className="rating-right">
           <div className="rating-sort">
-            <h2>{`${reviewList.length} reviews, sorted by `}</h2>
+            <h2>{`${reviewLength ? reviewLength : ''} reviews, sorted by `}</h2>
             <div className="rating-inner-search">
               <select
                 className="rating-filterdropdown"

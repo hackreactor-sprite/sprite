@@ -77,6 +77,7 @@ function App() {
         curProduct={curProduct}
         setCurProduct={setCurProduct}
         metadata={metadata}
+        reviewLength={QAList.length}
       />
     </div>
   );
