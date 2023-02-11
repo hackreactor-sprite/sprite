@@ -153,6 +153,10 @@
 .galleryThumb:hover {
   cursor: pointer;
 }
+.selected-thumbnail {
+  @include BoxShadow;
+  border: 4px solid #1985a1;
+}
 
 .selected-bubble {
   @include BoxShadow;
