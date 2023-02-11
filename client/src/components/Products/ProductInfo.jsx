@@ -46,7 +46,7 @@ export default function ProductInfo({
           }
           href="#scroll"
         >
-          Read {reviewLength} Reviews
+          Read {reviewLength ? reviewLength : 'all'} Reviews
         </a>
         <h3>Category: {curProduct.category}</h3>
         <h3>{curProduct.name}</h3>
