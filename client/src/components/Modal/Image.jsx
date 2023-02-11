@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function ImageExpand({ url, alt }) {
-  console.log('image', url);
-  //  (displayIndex);
   return (
     <img
       className="ImageExpand"

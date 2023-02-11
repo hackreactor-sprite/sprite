@@ -2,12 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Star from '../reusable/Stars';
 import handleInteractions from '../../helper/handleInteractions';
 
-export default function ProductInfo({
-  curProduct,
-  curStyle,
-  metadata,
-  reviewLength,
-}) {
+export default function ProductInfo({ curProduct, curStyle, metadata }) {
   // line 11 price needs to be set to the style's price
   'line 5 of product info: ', metadata;
   const [reviewRank, setReviewRank] = useState({});
@@ -46,7 +41,7 @@ export default function ProductInfo({
           }
           href="#scroll"
         >
-          Read {reviewLength ? reviewLength : 'all'} Reviews
+          Read All Reviews
         </a>
         <h3>Category: {curProduct.category}</h3>
         <h3>{curProduct.name}</h3>

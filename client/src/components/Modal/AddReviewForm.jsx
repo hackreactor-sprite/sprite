@@ -149,8 +149,8 @@ export default function AddQuestionForm({ curProduct }) {
             </ins>
 
             <div className="characteristic-choice">
-              {Object.keys(characteristics[type]).map((rank) => (
-                <label htmlFor={type}>
+              {Object.keys(characteristics[type]).map((rank, i) => (
+                <label htmlFor={type} key={i}>
                   <input
                     type="radio"
                     value={rank}

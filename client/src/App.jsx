@@ -53,7 +53,6 @@ function App() {
   return (
     <div className="App">
       <ProductDetail
-        reviewLength={QAList.length}
         curProduct={curProduct}
         setCurProduct={setCurProduct}
         metadata={metadata}
@@ -77,7 +76,6 @@ function App() {
         curProduct={curProduct}
         setCurProduct={setCurProduct}
         metadata={metadata}
-        reviewLength={QAList.length}
       />
     </div>
   );

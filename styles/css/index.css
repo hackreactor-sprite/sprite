@@ -709,9 +709,9 @@ input[type=range]::-ms-track {
     margin: 0 1rem;
   }
   .rating-content,
-.section-btn-container,
-.QA-body,
-.QA-answer-container {
+  .section-btn-container,
+  .QA-body,
+  .QA-answer-container {
     flex-direction: column;
   }
   .QA-answer-detail {
@@ -741,7 +741,7 @@ input[type=range]::-ms-track {
   transform: translate(-50%, -50%);
   background: lightblue;
   border-radius: 0.2rem;
-  padding: 0 2rem 1rem 2rem;
+  padding: 0 1rem 1rem 1rem;
   width: max-content;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   z-index: 12;
@@ -816,7 +816,7 @@ input[type=range]::-ms-track {
 
 .modal-submit {
   background: white;
-  padding: 1rem 2rem;
+  padding: 0.5rem 0.5rem;
   border-radius: 0.5rem;
   border: 1px solid black;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
@@ -888,8 +888,7 @@ input[type=range]::-ms-track {
 .thumbnail-image {
   height: 55px;
   width: 40px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .galleryThumbs {
@@ -958,8 +957,9 @@ input[type=range]::-ms-track {
   padding: 0 1rem 1rem 1.5rem;
 }
 
-
-.product-info, .checkout, .overview {
+.product-info,
+.checkout,
+.overview {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   border: 0.1rem solid #4c5c68;
   border-radius: 0.25rem;
