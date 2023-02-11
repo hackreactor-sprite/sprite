@@ -1,5 +1,3 @@
-Welcome to the Up
-
 # Up
 
 E-commerce website
@@ -15,12 +13,44 @@ E-commerce website
   <img src="https://img.shields.io/badge/-AWS-232F3E?logo=amazonaws&logoColor=white&style=for-the-badge" />
 </div>
 
+## PRODUCT OVERVIEW
+Created By: [Tyler Towery](https://github.com/tylertowery)
+<p align="center"><img width="1300" alt="related-products" src="https://user-images.githubusercontent.com/46610320/218278650-3c824b31-483c-4b04-904f-fb66f7d18699.png">
+</p>
+
+## RELATED ITEMS AND COMPARISON
+Created By: [Kathy Ye](https://github.com/kathyye15)
+<p align="center"><img width="1300" alt="related-products" src="https://user-images.githubusercontent.com/46610320/218278848-839b74e1-77b9-4aca-8a60-2c84f7a30e7a.png">
+
+## QUESTIONS AND ANSWERS
+Created By: [Samuel Ho](https://github.com/samuelho-dev)
+<p align="center"><img width="1300" alt="related-products" src="https://user-images.githubusercontent.com/46610320/218278955-eaf4334a-63c7-48e2-8185-68ec003e0d5f.png">
+
+## RATINGS AND REVIEWS
+Created By: [Samuel Ho](https://github.com/samuelho-dev)
+<p align="center"><img width="1300" alt="related-products" src="https://user-images.githubusercontent.com/46610320/218279001-3c30af0e-33d7-4d20-908b-d62f1c1f7443.png">
+
+
+
+
 # How to get started
+Create a `config.js` file that copies the contents of `config.js`:
+```
+module.exports = {
+  TOKEN: 'add token here',
+};
+```
+
+Default port number is 3000. OPTIONAL: Create a `.env` file to specify a port number
+```
+PORT = 'add port number here',
+```
 
 Run the following terminal commands in sequence:
-
 ```
 npm install
 npm run build
-npm run server
+npm start
 ```
+
+Open http://localhost:{port.env || 3000}
