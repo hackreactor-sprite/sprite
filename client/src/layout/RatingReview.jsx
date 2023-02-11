@@ -31,7 +31,7 @@ export default function RatingReview({ curProduct, metadata }) {
 
   const sortOptions = ['Newest', 'Helpful', 'Relevant'];
   return (
-    <section className="ratingreview">
+    <section className="ratingreview" href="#scroll">
       <div>
         <header>RATINGS AND REVIEWS</header>
       </div>
@@ -40,7 +40,7 @@ export default function RatingReview({ curProduct, metadata }) {
         <RatingDashboard reviewList={reviewList} metadata={metadata} />
         <div className="rating-right">
           <div className="rating-sort">
-            <h2>{`${reviewList.length} reviews, sorted by `}</h2>
+            <h2>{`${reviewList?.length} reviews, sorted by `}</h2>
             <div className="rating-inner-search">
               <select
                 className="rating-filterdropdown"

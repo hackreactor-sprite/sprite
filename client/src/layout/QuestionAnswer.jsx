@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-redundant-roles */
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -38,7 +39,6 @@ export default function QuestionAnswer({ curProduct, QAList }) {
     }
   }, [search]);
   return (
-    // eslint-disable-next-line jsx-a11y/no-redundant-roles
     <section
       className="questionanswers"
       title="questionanswers"
@@ -59,22 +59,19 @@ export default function QuestionAnswer({ curProduct, QAList }) {
         onChange={(e) => {
           setSearch(e.target.value);
         }}
-        onKeyDown={
-          (e) => {
-            // eslint-disable-next-line implicit-arrow-linebreak
-            handleSearch({
-              e,
-              search,
-              list: QAList,
-              setPartialList: setPartialQAList,
-            });
-            handleInteractions({
-              element: 'QA-search',
-              widget: 'QuestionAnswer',
-            });
-          }
-          // eslint-disable-next-line react/jsx-curly-newline
-        }
+        onKeyDown={(e) => {
+          // eslint-disable-next-line implicit-arrow-linebreak
+          handleSearch({
+            e,
+            search,
+            list: QAList,
+            setPartialList: setPartialQAList,
+          });
+          handleInteractions({
+            element: 'QA-search',
+            widget: 'QuestionAnswer',
+          });
+        }}
         style={{
           backgroundPosition: 'right',
           backgroundRepeat: 'no - repeat',
@@ -86,17 +83,23 @@ export default function QuestionAnswer({ curProduct, QAList }) {
           <QAItem QA={QA} key={i} curProduct={curProduct} />
         ))}
       </div>
+
       <div className="section-btn-container">
         {QAList?.length > 2 && partialQAList?.length ? (
           <button
             type="button"
             className="big-btn"
             onClick={() => {
-              handleContentLoad({
-                partialList: partialQAList,
-                setPartialList: setPartialQAList,
-                totalList: QAList,
-              });
+              if (partialQAList.length === QAList.length) {
+                setPartialQAList(QAList.slice(0, 4));
+              } else {
+                handleContentLoad({
+                  partialList: partialQAList,
+                  setPartialList: setPartialQAList,
+                  totalList: QAList,
+                });
+              }
+
               handleInteractions({
                 element: 'Load-question-button',
                 widget: 'QuestionAnswer',
