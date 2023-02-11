@@ -15,6 +15,7 @@ export default function ProductDetail({
   setMetadata,
   displayIndex,
   setDisplayIndex,
+  reviewLength,
 }) {
   // const [styles, setStyles] = useState([]);
   // want displayPic to just be an index number of array of current styles pictures
@@ -41,6 +42,7 @@ export default function ProductDetail({
       </div>
       <div className="right">
         <ProductInfo
+          reviewLength={reviewLength}
           curProduct={curProduct}
           curStyle={curStyle}
           metadata={metadata}
