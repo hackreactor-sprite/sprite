@@ -1,5 +1,3 @@
-Welcome to the Up
-
 # Up
 
 E-commerce website
@@ -15,12 +13,31 @@ E-commerce website
   <img src="https://img.shields.io/badge/-AWS-232F3E?logo=amazonaws&logoColor=white&style=for-the-badge" />
 </div>
 
+## PRODUCT OVERVIEW
+<p align="center"><img width="1300" alt="related-products" src="https://user-images.githubusercontent.com/46610320/218278650-3c824b31-483c-4b04-904f-fb66f7d18699.png">
+</p>
+<!-- <details><summary>See 'your outfit' image</summary> -->
+
+
+
 # How to get started
+Create a `config.js` file that copies the contents of `config.js`:
+```
+module.exports = {
+  TOKEN: 'add token here',
+};
+```
+
+Default port number is 3000. OPTIONAL: Create a `.env` file to specify a port number
+```
+PORT = 'add port number here',
+```
 
 Run the following terminal commands in sequence:
-
 ```
 npm install
 npm run build
-npm run server
+npm start
 ```
+
+Open http://localhost:{port.env || 3000}
