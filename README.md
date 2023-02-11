@@ -14,17 +14,20 @@ E-commerce website
 </div>
 
 ## PRODUCT OVERVIEW
+Created By: [Tyler Towery](https://www.yushi.dev/)
 <p align="center"><img width="1300" alt="related-products" src="https://user-images.githubusercontent.com/46610320/218278650-3c824b31-483c-4b04-904f-fb66f7d18699.png">
 </p>
-<!-- <details><summary>See 'your outfit' image</summary> -->
 
 ## RELATED ITEMS AND COMPARISON
+Created By: [Kathy Ye](https://github.com/kathyye15)
 <p align="center"><img width="1300" alt="related-products" src="https://user-images.githubusercontent.com/46610320/218278848-839b74e1-77b9-4aca-8a60-2c84f7a30e7a.png">
 
 ## QUESTIONS AND ANSWERS
+Created By: [Samuel Ho](https://www.yushi.dev/)
 <p align="center"><img width="1300" alt="related-products" src="https://user-images.githubusercontent.com/46610320/218278955-eaf4334a-63c7-48e2-8185-68ec003e0d5f.png">
 
 ## RATINGS AND REVIEWS
+Created By: [Samuel Ho](https://www.yushi.dev/)
 <p align="center"><img width="1300" alt="related-products" src="https://user-images.githubusercontent.com/46610320/218279001-3c30af0e-33d7-4d20-908b-d62f1c1f7443.png">
 
 
