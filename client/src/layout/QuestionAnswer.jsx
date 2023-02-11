@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-redundant-roles */
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -38,7 +39,6 @@ export default function QuestionAnswer({ curProduct, QAList }) {
     }
   }, [search]);
   return (
-    // eslint-disable-next-line jsx-a11y/no-redundant-roles
     <section
       className="questionanswers"
       title="questionanswers"

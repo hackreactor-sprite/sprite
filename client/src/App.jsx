@@ -72,11 +72,7 @@ function App() {
         relatedProds={relatedProds}
       />
       <QuestionAnswer curProduct={curProduct} QAList={QAList} />
-      <RatingReview
-        curProduct={curProduct}
-        setCurProduct={setCurProduct}
-        metadata={metadata}
-      />
+      <RatingReview curProduct={curProduct} metadata={metadata} />
     </div>
   );
 }
